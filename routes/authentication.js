@@ -28,11 +28,11 @@ router
 
   .post("/api/signup/noowner", async (req, res, next) => {
 
-    const { email, first_name, last_name, role, password } = req.body
+    const { email, firstName, lastName, crewRole, password } = req.body
 
     try {
       const anketa = new Pilot({
-        email, first_name, last_name, role,
+        email, firstName, lastName, crewRole,
         password: await bcrypt.hash(password, saltRounds),
         keyForNewPassword: ''
       });
@@ -146,11 +146,11 @@ router
       if (userComander && (await bcrypt.compare(password, userComander.password))) {
         req.session.user = userComander;
         console.log("userComander - login, success", userComander.town)
-        res.status(200).json({ response: "success", role: userComander.role, town: userComander.town });
+        res.status(200).json({ response: "success", crewRole: userComander.crewRole, town: userComander.town });
       } else if (userPilot && (await bcrypt.compare(password, userPilot.password))) {
         req.session.user = userPilot;
         console.log("userPilot - login, success", userPilot.town)
-        res.status(200).json({ response: "success", role: userPilot.role, town: userPilot.town });
+        res.status(200).json({ response: "success", crewRole: userPilot.crewRole, town: userPilot.town });
       } else {
         console.log("fail")
         res.status(400).json({ response: "fail" });

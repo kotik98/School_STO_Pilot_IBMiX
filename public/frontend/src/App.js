@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <Router>
         {(this.props.isLogin && this.props.cookies.get("Role") === 'командир на будущее') || (isLogin && this.props.cookies.get("Role") === 'командир на будущее') ? <NavbarPilot /> : ""}
-        {(this.props.isLogin && this.props.cookies.get("Role") === 'пилот') || (isLogin && this.props.cookies.get("Role") === 'пилот') ? <NavbarComander /> : ""}
+        {(this.props.isLogin && this.props.cookies.get("Role") !== 'командир') || (isLogin && this.props.cookies.get("Role") !== 'командир') ? <NavbarComander /> : ""}
 
         <Switch>
           <Route exact path={"/"} component={Logout} />

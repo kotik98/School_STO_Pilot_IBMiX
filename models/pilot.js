@@ -2,12 +2,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const pilot = Schema({
-  first_name: { type: String },
-  last_name: { type: String },
+  firstName: { type: String },
+  lastName: { type: String },
+  patronymic: { type: String },
   email: { type: String },
-  role: { type: String },
+  crewRole: { type: String },
+  standingFromDate: { type: String },
+  standingFromDateInRole: { type: String },
+  reliabilityIndex: { type: String },
+  rewardsAndPunishments: { type: String },
+  phone: { type: String },
   password: { type: String },
   keyForNewPassword: { type: String },
 });
 
-module.exports = mongoose.model("pilot", pilot);
+module.exports = mongoose.model("Pilot", pilot);

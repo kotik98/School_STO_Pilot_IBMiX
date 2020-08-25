@@ -44,9 +44,9 @@ class Login extends Component {
                 if (result.response === 'success') {
 
                     this.props.cookies.set('isLogin', true, { path: "/" });
-                    this.props.cookies.set('Role', result.role, { path: "/" });
+                    this.props.cookies.set('Role', result.crewRole, { path: "/" });
                     this.props.addIsLogin(true);
-                    if (result.role === 'командир отдельно на будещее') {
+                    if (result.crewRole === 'командир отдельно на будещее') {
 
                         this.setState({
                             isRedirect: true,
@@ -54,7 +54,7 @@ class Login extends Component {
                             dashboard: "/dashboard3"
                         })
 
-                    } else if (result.role === 'пилот' || result.role === 'командир') {
+                    } else if (result.crewRole || result.crewRole !== 'командир отдельно на будещее') {
                         this.setState({
                             isRedirect: true,
                             iconLoading: false,

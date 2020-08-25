@@ -32,7 +32,7 @@ class Signup extends Component {
     state = {
         isRedirect: false,
         iconLoading: false,
-        role: '',
+        crewRole: '',
         jack: 'jack',
         lucy: 'lucy',
         tom: 'tom'
@@ -47,18 +47,18 @@ class Signup extends Component {
             if (!err) {
                 this.setState({ iconLoading: true })
                 const {
-                    first_name,
-                    last_name,
+                    firstName,
+                    lastName,
                     email,
-                    role,
+                    crewRole,
                     password
                 } = values
                 console.log(values)
                 const userMainInfo = {
-                    first_name,
-                    last_name,
+                    firstName,
+                    lastName,
                     email,
-                    role,
+                    crewRole,
                     password
                 };
                 localStorage.setItem('userMainInfo', JSON.stringify(userMainInfo));
@@ -67,9 +67,9 @@ class Signup extends Component {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        first_name: first_name,
-                        last_name: last_name,
-                        role: role,
+                        firstName: firstName,
+                        lastName: lastName,
+                        crewRole: crewRole,
                         email: email,
                         password: password
                     })
@@ -77,18 +77,19 @@ class Signup extends Component {
                 const result = await response.json();
 
                 if (result.response === 'success') {
-                    if (role === 'пилот') {
+                    if (crewRole === 'пилот') {
                         message.success(`Новый пилот успешно зарегистрирован`, 5)
-                        this.props.cookies.set('Role', role);
+                        this.props.cookies.set('Role', crewRole);
                         this.props.cookies.set('station', 'station');
                     } else {
                         message.success(`Новый командир эскадрильи успешно зарегистрирован`, 5)
-                        this.props.cookies.set('Role', role);
+                        this.props.cookies.set('Role', crewRole);
                         this.props.cookies.set('station', 'station');
                     }
 
                     function foo() {
-                        window.location.href = 'http://e19a450f7466.ngrok.io/signupAll';
+                        // window.location.href = 'http://какой то адрес/signupAll';
+                        window.location = window.location.href + '/login'
                     }
 
 
@@ -117,12 +118,12 @@ class Signup extends Component {
 
     render() {
         if (this.state.isRedirect) {
-            if (this.state.role === 'командир оставляем на будущее') {
+            if (this.state.crewRole === 'командир оставляем на будущее') {
                 window.location.href = 'http://localhost:3000/signup/where_owner';
 
 
                 // return <Redirect to={'/signup/where_owner'} />
-            } else if (this.state.role === 'пилот' || this.state.role === 'командир') {
+            } else if (this.state.crewRole || this.state.crewRole !== 'командир') {
                 window.location.href = 'http://localhost:3000/signup/you';
 
                 // return <Redirect to={'/signup/where'} />
@@ -141,7 +142,7 @@ class Signup extends Component {
                     <br />
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Item>
-                            {getFieldDecorator('first_name', {
+                            {getFieldDecorator('firstName', {
                                 rules: [
                                     {
                                         required: true,
@@ -151,7 +152,7 @@ class Signup extends Component {
                             })(<Input placeholder="Имя" />)}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('last_name', {
+                            {getFieldDecorator('lastName', {
                                 rules: [
                                     {
                                         required: true,
@@ -205,7 +206,7 @@ class Signup extends Component {
 
 
                         <Form.Item>
-                            {getFieldDecorator('role', {
+                            {getFieldDecorator('crewRole', {
                                 rules: [
                                     {
                                         required: true,

@@ -195,8 +195,8 @@ class DashBoard extends Component {
                 )}
                 {this.props.users && (
                     <p style={{ fontSize: "25px" }} align={"center"}>
-                        {this.props.user.role === 'капитан' && ('Приветственное сообщение для капитана')}   {this.props.user.role === 'пилот' && ('Приветственное сообщение для пилота')}
-
+                        {/* {this.props.user.crewRole === 'капитан' && ('Приветственное сообщение для капитана')}   {this.props.user.crewRole === 'пилот' && ('Приветственное сообщение для пилота')} */}
+                        Приветственное сообщение для {this.props.user.crewRole}
                     </p>
 
 

@@ -26,7 +26,7 @@ class Navigation extends Component {
               {/* <div style={{ paddingBottom: '10px' }}> */}
               <Avatar size="large" shape="square" icon="user" src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png" />
               &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className='navbarUserName'>{this.props.user && this.props.user.first_name} {this.props.user && this.props.user.last_name}</span>
+                <span className='navbarUserName'>{this.props.user && this.props.user.firstName} {this.props.user && this.props.user.lastName}</span>
               {/* <span className='navbarUserName'>Имя Фамилия</span> */}
               {/* </div> */}
             </Link>

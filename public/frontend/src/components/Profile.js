@@ -32,9 +32,9 @@ class Profile extends Component {
     }
     let linkEdite = '';
 
-    if (this.props.user.role === 'командир') {
+    if (this.props.user.crewRole === 'командир') {
       linkEdite = '/edit/profile_comander'
-    } else if (this.props.user.role === 'пилот') {
+    } else if (this.props.user.crewRole !== 'командир') {
       linkEdite = '/edit/profile_pilot'
     }
     else {
@@ -82,7 +82,7 @@ class Profile extends Component {
                 <div>
                   <h1
                     style={{ color: "#ffffff" }}
-                  >{`${this.props.user.first_name} ${this.props.user.last_name}`}</h1>
+                  >{`${this.props.user.firstName} ${this.props.user.lastName}`}</h1>
                   <div>
                     <h3 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>

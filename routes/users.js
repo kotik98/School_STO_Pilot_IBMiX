@@ -12,16 +12,30 @@ router.get("/api/profilePilot", sessionChecker, async (req, res, next) => {
     const userMainInfo = await Pilot.findOne({ email });
 
     const {
-      first_name,
-      last_name,
-      role,
+      firstName,
+      lastName,
+      patronymic,
+      crewRole,
+      standingFromDate,
+      standingFromDateInRole,
+      reliabilityIndex,
+      rewardsAndPunishments,
+      phone,
+      keyForNewPassword
     } = userMainInfo;
 
 
     const user = {
-      first_name,
-      last_name,
-      role,
+      firstName,
+      lastName,
+      patronymic,
+      crewRole,
+      standingFromDate,
+      standingFromDateInRole,
+      reliabilityIndex,
+      rewardsAndPunishments,
+      phone,
+      keyForNewPassword,
       email
     };
     console.log('Да, вот он юзер', user)
@@ -37,9 +51,9 @@ router.post("/api/pilot/edit", sessionChecker, async (req, res, next) => {
     const { email } = req.session.user;
 
     const {
-      first_name,
-      last_name,
-      role,
+      firstName,
+      lastName,
+      crewRole,
     } = req.body.editUser;
 
 
@@ -48,9 +62,9 @@ router.post("/api/pilot/edit", sessionChecker, async (req, res, next) => {
       { email },
       {
         $set: {
-          first_name,
-          last_name,
-          role,
+          firstName,
+          lastName,
+          crewRole,
         }
       }
     );
@@ -68,9 +82,9 @@ router.post("/api/comander/edit", sessionChecker, async (req, res, next) => {
     const { email } = req.session.user;
     console.log('Заходит')
     const {
-      first_name,
-      last_name,
-      role,
+      firstName,
+      lastName,
+      crewRole,
 
     } = req.body.editUser;
 
@@ -80,9 +94,9 @@ router.post("/api/comander/edit", sessionChecker, async (req, res, next) => {
       { email },
       {
         $set: {
-          first_name,
-          last_name,
-          role,
+          firstName,
+          lastName,
+          crewRole,
         }
       }
     );

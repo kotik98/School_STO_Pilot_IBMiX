@@ -24,7 +24,7 @@ class Navigation extends Component {
             <Link to={'/profile'}>
               <Avatar size="large" shape="square" icon="user" src={this.props.photos.length !== 0 && this.props.photos[0].thumbUrl} />
               &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className='navbarUserName'>{this.props.user && this.props.user.first_name}</span>
+                <span className='navbarUserName'>{this.props.user && this.props.user.firstName}</span>
             </Link>
           </Menu.Item>
           <Menu.Item key='team' className='navbarText'>

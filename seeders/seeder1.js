@@ -19,8 +19,8 @@
 // const Schema = mongoose.Schema;
 
 // const user = Schema({
-//   first_name: { type: String },
-//   last_name: { type: String },
+//   firstName: { type: String },
+//   lastName: { type: String },
 //   email: { type: String },
 //   phone: { type: String },
 //   photo: { type: String },
@@ -35,8 +35,8 @@
 //   const saltRounds = 10;
 //   for (let i = 0; i < 10; i++) {
 //     const users = new User({
-//       first_name: faker.name.firstName(),
-//       last_name: faker.name.lastName(),
+//       firstName: faker.name.firstName(),
+//       lastName: faker.name.lastName(),
 //       email: faker.internet.email(),
 //       phone: faker.phone.phoneNumberFormat(),
 //       photo: faker.internet.avatar(),
@@ -59,8 +59,8 @@
 // });
 
 // const User = mongoose.model('User', {
-//   first_name: { type: String },
-//   last_name: { type: String },
+//   firstName: { type: String },
+//   lastName: { type: String },
 //   email: { type: String },
 //   phone: { type: String },
 //   photo: { type: String },
@@ -105,8 +105,8 @@
 //   const saltRounds = 10;
 //   for (let i = 0; i < 20; i++) {
 //     const user = new User({
-//       first_name: faker.name.firstName(),
-//       last_name: faker.name.lastName(),
+//       firstName: faker.name.firstName(),
+//       lastName: faker.name.lastName(),
 //       email: faker.internet.email(),
 //       phone: faker.phone.phoneNumberFormat(),
 //       photo: faker.internet.avatar(),
