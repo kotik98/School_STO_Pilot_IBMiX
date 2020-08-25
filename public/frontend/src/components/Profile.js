@@ -86,10 +86,17 @@ class Profile extends Component {
                   <div>
                     <h3 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
-                        <Icon type="user" /> &nbsp; Статус: {`${this.props.user.role}`}
+                        <Icon type="user" /> &nbsp; Должность: {`${this.props.user.crewRole}`}
                       </span>{" "}
                       <span style={{ fontWeight: "normal" }}>
                         {this.props.user.username}
+                      </span>
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 style={{ color: "#ffffff" }}>
+                      <span style={{ fontWeight: "bold" }}>
+                        <Icon type="calendar" /> &nbsp; Стаж работы в должности:  с {`${this.props.user.standingFromDateInRole}`}
                       </span>
                     </h3>
                   </div>
@@ -116,10 +123,21 @@ class Profile extends Component {
                   <div>
                     <h3 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
-                        <Icon type="calendar" /> &nbsp; Возраст: {" "}
+                        <Icon type="calendar" /> &nbsp; Стаж работы в авиакомпании:  с {`${this.props.user.standingFromDate}`}
                       </span>
-                      <span style={{ fontWeight: "normal" }}>
-                        {this.props.user.age}
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 style={{ color: "#ffffff" }}>
+                      <span style={{ fontWeight: "bold" }}>
+                        <Icon type="global" /> &nbsp; Индекс сеньорити: {`${this.props.user.reliabilityIndex}`}
+                      </span>
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 style={{ color: "#ffffff" }}>
+                      <span style={{ fontWeight: "bold" }}>
+                        <Icon type="bell" /> &nbsp; Индекс поощрений и наказаний:  с {`${this.props.user.rewardsAndPunishments}`}
                       </span>
                     </h3>
                   </div>
@@ -139,7 +157,7 @@ class Profile extends Component {
                     <div>
                       <h3 style={{ color: "#ffffff" }}>
                         <span style={{ fontWeight: "bold" }}>
-                          <Icon type="compass" /> &nbsp; Родной город:{" "}
+                          <Icon type="compass" /> &nbsp; Приоритетный город для полетов:{" "}
                         </span>{" "}
                         <span style={{ fontWeight: "normal" }}>
                           {this.props.user.nativeLocation}
@@ -162,13 +180,13 @@ class Profile extends Component {
                 tab={
                   <span>
                     <Icon type="picture" />
-                    Мои фотографии
+                    Все заявки
                   </span>
                 }
                 key="1"
               >
                 <div style={{ display: "block", textAlign: "center" }}>
-                  {this.props.photos &&
+                  {/* {this.props.photos &&
                     this.props.photos.map((url, i) => {
                       return (
                         <Avatar
@@ -181,14 +199,15 @@ class Profile extends Component {
                           key={i}
                         />
                       );
-                    })}
+                    })} */}
+                      Какая то информация
                 </div>
               </TabPane>
               <TabPane
                 tab={
                   <span>
-                    <Icon type="heart" theme="twoTone" twoToneColor="#eb2f96" />
-
+                    <Icon type="picture" theme="twoTone" twoToneColor="#eb2f96" />
+Удовлетворенные заявки
                   </span>
                 }
                 key="2"
