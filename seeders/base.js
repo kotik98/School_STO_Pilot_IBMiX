@@ -82,4 +82,4 @@ seedPilots = async () => {
         console.log(i)
     }
 };
-seedPilots();
+// seedPilots();
