@@ -51,6 +51,8 @@ class DashBoard extends Component {
             modalUser: null,
             loading: false,
 
+            visibleSort: false,
+
             showLongWork: true,
             showShortWork: true,
 
@@ -80,6 +82,13 @@ class DashBoard extends Component {
                 airport_name: user.airport_name,
             },
             visible: true
+        });
+    };
+
+    showSort = () => {
+
+        this.setState({
+            visibleSort: true
         });
     };
 
@@ -175,6 +184,13 @@ class DashBoard extends Component {
         });
     };
 
+    handleCancel3 = () => {
+
+        this.setState({
+            visibleSort: false,
+        });
+    };
+
     ym = () => {
         return (
             "<script src='https://mc.yandex.ru/metrika/watch.js' type='text/javascript'></script>\
@@ -208,70 +224,77 @@ class DashBoard extends Component {
                         <Spin size="small" tip="Загрузка..." />
                     </div>
                 )}
-                {this.props.users && (
-                    <p style={{ fontSize: "25px" }} align={"center"}>
-                        {/* {this.props.user.crewRole === 'капитан' && ('Приветственное сообщение для капитана')}   {this.props.user.crewRole === 'пилот' && ('Приветственное сообщение для пилота')} */}
-                        Приветственное сообщение для {this.props.user.crewRole}
-                    </p>
 
+                {this.state.visibleSort === true && (
+                    <div className='modalWidth'>
+                        <Modal
+                            width='700px'
+                            title="Фильтрация полетов"
+                            visible={this.state.visibleSort}
+                            onCancel={this.handleCancel3}
 
+                            footer={[
+
+                            ]}
+                        >
+                            <div style={{ textAlign: 'center' }} >
+                                <div className="dashBoardContainerMoreFiltres">
+                                    <div className="dashBoardContentMoreFiltres">
+                                        <Card size="small" title="Длительность смены"
+                                            className="userCardFilter"
+                                        >
+                                            <div style={{ textAlign: "left" }}>
+                                                <Switch defaultChecked onChange={this.onChangeLongWork} /> Трансатлантические рейсы
+                                    </div>
+                                            <div style={{ textAlign: "left" }}>
+                                                <Switch defaultChecked onChange={this.onChangeShortWork} /> Короткие разворотные рейсы
+                                    </div>
+
+                                        </Card>
+                                        <Card size="small" title="Время полета" className="userCardFilter">
+                                            <div style={{ marginLeft: 'auto', marginRight: 'auto', width: 'auto' }}>
+                                                <Slider range value={[this.state.minPrice, this.state.maxPrice]} max={24}
+                                                    onChange={this.onChangeTime}
+                                                    defaultValue={[this.state.minTime, this.state.maxTime]}
+                                                    marks={{ 0: 'ч', 24: 'ч.' }} />
+                                            </div>
+                                        </Card>
+
+                                        <Card size="small" title="Время полета" className="userCardFilter">
+                                            <div style={{ textAlign: "left" }}>
+                                                <Switch defaultChecked onChange={this.onChangeMorning} /> Утро
+                                    </div>
+                                            <div style={{ textAlign: "left" }}>
+                                                <Switch defaultChecked onChange={this.onChangeDay} /> День
+                                    </div>
+
+                                        </Card>
+
+                                        <Card size="small" title="Время полета" className="userCardFilter">
+                                            <div style={{ textAlign: "left" }}>
+                                                <Switch defaultChecked onChange={this.onChangeEvening} /> Вечер
+                                    </div>
+                                            <div style={{ textAlign: "left" }}>
+                                                <Switch defaultChecked onChange={this.onChangeNight} /> Ночь
+                                    </div>
+
+                                        </Card>
+                                    </div>
+                                </div>
+                            </div>
+                        </Modal>
+                    </div>
                 )}
 
-                <Collapse>
-                    <Panel header="Фильтры по моему расписанию" key="1">
-                        <div className="dashBoardContainerMoreFiltres">
-                            <div className="dashBoardContentMoreFiltres">
-                                <Card size="small" title="Длительность смены"
-                                    className="userCard"
-                                >
-                                    <div style={{ textAlign: "left" }}>
-                                        <Switch defaultChecked onChange={this.onChangeLongWork} /> Трансатлантические рейсы
-                                    </div>
-                                    <div style={{ textAlign: "left" }}>
-                                        <Switch defaultChecked onChange={this.onChangeShortWork} /> Короткие разворотные рейсы
-                                    </div>
-
-                                </Card>
-                                <Card size="small" title="Время полета" className="userCard">
-                                    <div style={{ marginLeft: 'auto', marginRight: 'auto', width: 'auto' }}>
-                                        <Slider range value={[this.state.minPrice, this.state.maxPrice]} max={24}
-                                            onChange={this.onChangeTime}
-                                            defaultValue={[this.state.minTime, this.state.maxTime]}
-                                            marks={{ 0: 'ч', 24: 'ч.' }} />
-                                    </div>
-                                </Card>
-
-                                <Card size="small" title="Время полета" className="userCard">
-                                    <div style={{ textAlign: "left" }}>
-                                        <Switch defaultChecked onChange={this.onChangeMorning} /> Утро
-                                    </div>
-                                    <div style={{ textAlign: "left" }}>
-                                        <Switch defaultChecked onChange={this.onChangeDay} /> День
-                                    </div>
-
-                                </Card>
-
-                                <Card size="small" title="Время полета" className="userCard">
-                                    <div style={{ textAlign: "left" }}>
-                                        <Switch defaultChecked onChange={this.onChangeEvening} /> Вечер
-                                    </div>
-                                    <div style={{ textAlign: "left" }}>
-                                        <Switch defaultChecked onChange={this.onChangeNight} /> Ночь
-                                    </div>
-
-                                </Card>
-                            </div>
-                        </div>
-                    </Panel>
-
-
-                </Collapse>
+                {/* </Collapse> */}
 
 
                 <div className="dashBoardContainer">
 
                     <div className="dashBoardContent">
-                        <div className='yourTrip' > <div><p>Ваши Рейсы</p> </div></div>
+                        <div className='yourTrip'> <p  >Ваши Рейсы</p> </div>
+                        <div className='sortString' > <p onClick={() => this.showSort()}>Сортировка</p></div>
+
                         <div className="flightsCard">
                             <Suspense fallback={<h1>Loading posts...</h1>}>
                                 {this.props.users.response &&
@@ -295,7 +318,7 @@ class DashBoard extends Component {
                                                 <div key={i}>
 
                                                     <Card width='100%'
-                                                        onClick={() => this.showModal(user)}
+                                                        // onClick={() => this.showModal(user)}
                                                         className="userCard hoverCard"
                                                     // cover={
                                                     //     <img
@@ -306,10 +329,44 @@ class DashBoard extends Component {
                                                     // }
 
                                                     >
-                                                        <div>
-                                                            <h3 style={{ float: "left" }}>
-                                                                {user.where_from} - {user.where_to}
-                                                            </h3>
+
+
+                                                        {/* <Alert style={{ background: 'white !important', width: '10%', height: '10%' }} message={
+                                                            <p>
+                                                                <div
+                                                                    className={'fontModal'}>Информация
+                                                        </div>
+                                                            </p>
+                                                        } type="info" /> */}
+                                                        <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Рейс <br />
+                                                                <Tag color="magenta">7634</Tag>
+                                                            </div>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Маршрут <br />
+                                                                <Tag color="red">{user.where_from}-{user.where_to}</Tag>
+                                                            </div>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Время полета <br />
+                                                                <Tag color="volcano">{user.flight_time}</Tag>
+                                                            </div>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Вылет <br />
+                                                                <Tag color="orange">{user.time_of_departure}</Tag>
+                                                            </div>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Прибытие <br />
+                                                                <Tag color="gold">{user.time_of_arrival}</Tag>
+                                                            </div>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Сложность <br />
+                                                                <Tag color="lime">{user.level_flights}</Tag>
+                                                            </div>
+                                                            <div style={{ background: 'white', borderRadius: '10px', marginRight: '10px', padding: '10px' }}>
+                                                                Аэропорт <br />
+                                                                <Tag color="lime">{user.airport_name}</Tag>
+                                                            </div>
                                                         </div>
                                                     </Card>
                                                 </div>
@@ -464,21 +521,26 @@ class DashBoard extends Component {
 
                     )}
 
-                    <div className="site-card-border-less-wrapper">
-                        <div className="site-calendar-demo-card" style={{ backgroundColor: 'lightblue' }}>
-                            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                    <div className='rightBar'>
+
+
+                        <div className="site-card-border-less-wrapper">
+                            <div className="site-calendar-demo-card" style={{ backgroundColor: '#F6F9FE;' }}>
+                                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                            </div>
+                            <Card title="Хотелки на ноябрь" bordered={false} style={{ width: 300 }}>
+                                <p>Короткие полеты</p>
+                                <p>Утром</p>
+                                <p>В Рио-де-Жанейро</p>
+                            </Card>
+                            <Card title="Хотелки на октябрь" bordered={false} style={{ width: 300 }}>
+                                <p>Длительные полеты</p>
+                                <p>Вечером</p>
+                                <p>В Хабаровск</p>
+                            </Card>
                         </div>
-                        <Card title="Хотелки на ноябрь" bordered={false} style={{ width: 300 }}>
-                            <p>Короткие полеты</p>
-                            <p>Утром</p>
-                            <p>В Рио-де-Жанейро</p>
-                        </Card>
-                        <Card title="Хотелки на октябрь" bordered={false} style={{ width: 300 }}>
-                            <p>Длительные полеты</p>
-                            <p>Вечером</p>
-                            <p>В Хабаровск</p>
-                        </Card>
                     </div>
+
                 </div>
 
                 {/* <div className="dashBoardContainer">

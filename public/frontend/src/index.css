@@ -17,10 +17,12 @@ a {
 }
 
 #root {
-  height: 100%;
-  width: 100%;
-  background-color: #EDEEF0;
+  /* height: 100%;
+  width: 100%; */
+  background-color:#E5E5E5; 
 }
+
+
 
 .loginForm{
   display: flex;
@@ -58,7 +60,18 @@ a {
 }
 
 .navbarText {
+  font-family: Gotham Pro;
+  font-style: normal;
   font-weight: bold;
+  font-size: 21px;
+  color: black !important;
+}
+
+.rightBar{
+  padding: 30px;
+background: #F6F9FE;
+box-shadow: 0px 0px 9.53192px -0.953192px #F6F9FE;
+border-radius: 14.3px 14.2979px 14.2979px 14.2979px;
 }
 
 .newCard {
@@ -68,9 +81,13 @@ a {
 }
 
 .navbarUserName {
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #ffffff;
+  font-family: Gotham Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 21px;
+line-height: 32px;
+
+color: #282828;
 }
 
 .dashBoardContainerMoreFiltres{
@@ -108,6 +125,15 @@ line-height: 17px;
 margin-top: 30px;
 }
 
+.sortString{
+  font-family: Gotham Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 17px;
+text-align: right;
+}
+
 .flightsCard{
   display: flex;
   flex-flow: row wrap;
@@ -135,9 +161,13 @@ border-radius: 15px;
 .userCard{
   width: 1000px !important;
   border-radius: 10px !important;
-  padding: 8px 8px 0 8px !important;
-  margin: 10px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
   background-color: #7D58FF !important;
+}
+
+.tagFlights{
+  margin-right: 20px;
 }
 
 .anketaCard {
