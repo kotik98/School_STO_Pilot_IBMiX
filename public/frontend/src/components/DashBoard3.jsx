@@ -271,50 +271,53 @@ class DashBoard extends Component {
                 <div className="dashBoardContainer">
 
                     <div className="dashBoardContent">
-                        <Suspense fallback={<h1>Loading posts...</h1>}>
-                            {this.props.users.response &&
+                        <div className='yourTrip' > <div><p>Ваши Рейсы</p> </div></div>
+                        <div className="flightsCard">
+                            <Suspense fallback={<h1>Loading posts...</h1>}>
+                                {this.props.users.response &&
 
-                                this.props.users.response.map((user, i) => {
+                                    this.props.users.response.map((user, i) => {
 
-                                    // if (this.filterPrise(user.time)) {
-                                    if (user.city_photo) {
+                                        // if (this.filterPrise(user.time)) {
+                                        if (user.city_photo) {
 
-                                        console.log(user)
+                                            console.log(user)
 
 
-                                        let srcImg;
-                                        if (!user.city_photo) {
-                                            srcImg = user.city_photo;
-                                        } else {
-                                            srcImg = plane;
+                                            let srcImg;
+                                            if (!user.city_photo) {
+                                                srcImg = user.city_photo;
+                                            } else {
+                                                srcImg = plane;
+                                            }
+                                            return (
+
+                                                <div key={i}>
+
+                                                    <Card width='100%'
+                                                        onClick={() => this.showModal(user)}
+                                                        className="userCard hoverCard"
+                                                    // cover={
+                                                    //     <img
+                                                    //         style={{ borderRadius: "10px 10px 0px 0px" }}
+                                                    //         alt="example"
+                                                    //         src={srcImg}
+                                                    //     />
+                                                    // }
+
+                                                    >
+                                                        <div>
+                                                            <h3 style={{ float: "left" }}>
+                                                                {user.where_from} - {user.where_to}
+                                                            </h3>
+                                                        </div>
+                                                    </Card>
+                                                </div>
+                                            );
                                         }
-                                        return (
-
-                                            <div key={i}>
-
-                                                <Card width='100%'
-                                                    onClick={() => this.showModal(user)}
-                                                    className="userCard hoverCard"
-                                                    cover={
-                                                        <img
-                                                            style={{ borderRadius: "10px 10px 0px 0px" }}
-                                                            alt="example"
-                                                            src={srcImg}
-                                                        />
-                                                    }
-                                                    title="Рейс"
-                                                >
-                                                    <div>
-                                                        <h3 style={{ float: "left" }}>
-                                                            {user.where_from} - {user.where_to}
-                                                        </h3>
-                                                    </div>
-                                                </Card>
-                                            </div>
-                                        );
-                                    }
-                                })}
-                        </Suspense>
+                                    })}
+                            </Suspense>
+                        </div>
                     </div>
 
                     {this.state.modalUser && (
