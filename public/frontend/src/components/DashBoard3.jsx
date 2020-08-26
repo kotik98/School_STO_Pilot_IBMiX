@@ -302,7 +302,7 @@ class DashBoard extends Component {
                                                             src={srcImg}
                                                         />
                                                     }
-                                                    type="inner" title="Рейс"
+                                                    title="Рейс"
                                                 >
                                                     <div>
                                                         <h3 style={{ float: "left" }}>
