@@ -58,14 +58,14 @@ const faker = require('faker');
 //   useUnifiedTopology: true
 // });
 
-mongoose.connect(
-  `mongodb+srv://igorg:ibmix4@cluster0.aev79.azure.mongodb.net/IBMiX4?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  },
-);
+// mongoose.connect(
+//   `mongodb+srv://igorg:ibmix4@cluster0.aev79.azure.mongodb.net/IBMiX4?retryWrites=true&w=majority`,
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//   },
+// );
 
 // const User = mongoose.model('User', {
 //   firstName: { type: String },
@@ -98,7 +98,7 @@ seedFlights = async () => {
 
     const flights = new Flights({
       where_to: faker.address.city(),
-      where_from: faker.address.city(),
+      where_from: "Moscow",
       flight_time: faker.random.number({ min: 1, max: 48 }),
       time_of_departure: departureDate,
       time_of_arrival: arrivalDate,

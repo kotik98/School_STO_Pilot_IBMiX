@@ -137,7 +137,7 @@ class Profile extends Component {
                   <div>
                     <h3 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
-                        <Icon type="bell" /> &nbsp; Индекс поощрений и наказаний:  с {`${this.props.user.rewardsAndPunishments}`}
+                        <Icon type="bell" /> &nbsp; Индекс поощрений и наказаний: {`${this.props.user.rewardsAndPunishments}`}
                       </span>
                     </h3>
                   </div>

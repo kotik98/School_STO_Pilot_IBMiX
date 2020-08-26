@@ -1,6 +1,7 @@
 import React, { Suspense, Component } from "react";
 // import avatar from "../images/avatar.png";
 import plane from "../images/plane.jpg";
+import logo from '../images/logo.png';
 
 
 import { Tabs } from 'antd';
@@ -69,6 +70,14 @@ class DashBoard extends Component {
             modalUser: {
                 // id: user.id,
                 // about: user.plane.about,
+                where_to: user.where_to,
+                where_from: user.where_from,
+                flight_time: user.flight_time,
+                time_of_departure: user.time_of_departure,
+                time_of_arrival: user.time_of_arrival,
+                level_flights: user.level_flights,
+                city_photo: user.city_photo,
+                airport_name: user.airport_name,
             },
             visible: true
         });
@@ -106,23 +115,23 @@ class DashBoard extends Component {
 
         console.log('есть', this.props.user)
 
-        // const reqComparison = await fetch("/api/getAllFly", {
+        const reqComparison = await fetch("/api/getAllFly", {
 
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //         id: this.props.user.id
-        //     })
-        // });
-        // let users = await reqComparison.json();
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                id: this.props.user.id
+            })
+        });
+        let users = await reqComparison.json();
 
 
         this.setState({ loading: false });
 
-        // this.props.AddUsersDashBoard(users);
-        // console.log("есть", this.props.users, this.props.users.response);
+        this.props.AddUsersDashBoard(users);
+        console.log("есть ", users, this.props.users, this.props.users.response);
 
     }
 
@@ -152,6 +161,12 @@ class DashBoard extends Component {
         });
 
     }
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    };
 
     handleCancel2 = e => {
         console.log(e);
@@ -261,20 +276,23 @@ class DashBoard extends Component {
 
                                 this.props.users.response.map((user, i) => {
 
-                                    if (this.filterPrise(user.time)) {
+                                    // if (this.filterPrise(user.time)) {
+                                    if (user.city_photo) {
+
                                         console.log(user)
 
 
                                         let srcImg;
-                                        if (user.photoOfFlyTown[0]) {
-                                            srcImg = user.photoOfFlyTown[0].thumbUrl;
+                                        if (!user.city_photo) {
+                                            srcImg = user.city_photo;
                                         } else {
                                             srcImg = plane;
                                         }
                                         return (
 
                                             <div key={i}>
-                                                <Card
+
+                                                <Card width='100%'
                                                     onClick={() => this.showModal(user)}
                                                     className="userCard hoverCard"
                                                     cover={
@@ -284,10 +302,11 @@ class DashBoard extends Component {
                                                             src={srcImg}
                                                         />
                                                     }
+                                                    type="inner" title="Рейс"
                                                 >
                                                     <div>
                                                         <h3 style={{ float: "left" }}>
-                                                            {user.FlyTownName}
+                                                            {user.where_from} - {user.where_to}
                                                         </h3>
                                                     </div>
                                                 </Card>
@@ -320,7 +339,7 @@ class DashBoard extends Component {
                     {this.state.modalUser && (
                         <Modal
                             width='550px'
-                            title="Детальная информация"
+                            title="Детальная информация по полету"
 
                             visible={this.state.visible}
                             onCancel={this.handleCancel}
@@ -331,6 +350,7 @@ class DashBoard extends Component {
                                         style={{ fontSize: "62px", float: "left" }}
                                         onClick={this.handleCancel}
                                     />
+                                    <img style={{ width: '130px' }} src={logo} alt="" />
                                     <Icon
                                         type="heart"
                                         theme="twoTone"
@@ -342,13 +362,13 @@ class DashBoard extends Component {
                             ]}
                         >
                             <div style={{ textAlign: 'center' }} onClick={() => this.tryam()} >
-                                <Carousel autoplay>
+                                {/* <Carousel autoplay>
                                     {this.state.modalUser.foto.map((f, i) =>
                                         <div key={i}>
-                                            <Avatar size={180} src={f.thumbUrl} />
+                                            <Avatar size={180} src={f} />
                                         </div>
                                     )}
-                                </Carousel>
+                                </Carousel> */}
                             </div>
 
                             <p>
@@ -356,8 +376,8 @@ class DashBoard extends Component {
                                     <div className="card-container">
                                         <br />
                                         <Tag color="green">
-                                            <div style={{ color: 'black', fontSize: '21px' }}>
-                                                <i><u>Название города</u></i>
+                                            <div style={{ color: 'black', fontSize: '32px' }}>
+                                                Маршрут: {this.state.modalUser.where_from} - {this.state.modalUser.where_to}
                                             </div>
                                         </Tag>
                                         <br />
@@ -440,9 +460,25 @@ class DashBoard extends Component {
                         </Modal>
 
                     )}
+
+                    <div className="site-card-border-less-wrapper">
+                        <div className="site-calendar-demo-card" style={{ backgroundColor: 'lightblue' }}>
+                            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                        </div>
+                        <Card title="Хотелки на ноябрь" bordered={false} style={{ width: 300 }}>
+                            <p>Короткие полеты</p>
+                            <p>Утром</p>
+                            <p>В Рио-де-Жанейро</p>
+                        </Card>
+                        <Card title="Хотелки на октябрь" bordered={false} style={{ width: 300 }}>
+                            <p>Длительные полеты</p>
+                            <p>Вечером</p>
+                            <p>В Хабаровск</p>
+                        </Card>
+                    </div>
                 </div>
 
-                <div className="dashBoardContainer">
+                {/* <div className="dashBoardContainer">
 
                     <div className="dashBoardContent">
 
@@ -531,7 +567,7 @@ class DashBoard extends Component {
                             <p>В Хабаровск</p>
                         </Card>
                     </div>
-                </div>
+                </div> */}
 
 
 
