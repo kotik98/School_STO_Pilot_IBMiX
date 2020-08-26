@@ -292,7 +292,7 @@ class DashBoard extends Component {
                 <div className="dashBoardContainer">
 
                     <div className="dashBoardContent">
-                        <div className='yourTrip'> <p  >Ваши Рейсы:</p> </div>
+                        <div className='yourTrip'> <p  >Ваши Рейсы</p> </div>
                         <div className='sortString' > <p onClick={() => this.showSort()}>Сортировка</p></div>
 
                         <div className="flightsCard">
