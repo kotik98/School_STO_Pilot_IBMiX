@@ -8,9 +8,9 @@
   "scripts": {
     "start": "nodemon --ignore './sessions' server.js",
     "server": "nodemon --ignore './sessions' server.js",
-    "client": "npm start --prefix public/frontend",
+    "client": "npm start --prefix client/frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd public/frontend && npm install && npm run build"
+    "heroku-postbuild": "cd client/frontend && npm install && npm run build"
   },
   "dependencies": {
     "aws-sdk": "^2.685.0",

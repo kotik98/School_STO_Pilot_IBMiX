@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.use(express.static(path.join(__dirname, 'public/frontend/build')));
+app.use(express.static(path.join(__dirname, 'client/frontend/build')));
 
 
 app.use("/", indexRouter);
