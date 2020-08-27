@@ -4,8 +4,8 @@ import {
   EDIT_PROFILE,
   ADD_USER,
   ADD_USERS_DASHBOARD,
-  CLEAN_REDUX
-} from "./type";
+  CLEAN_REDUX,
+} from './type';
 
 const initialState = {
   photos: [],
@@ -14,12 +14,12 @@ const initialState = {
   usersDashBoard: [],
 };
 
-export default function (oldState = initialState, action) {
+export default function(oldState = initialState, action) {
   switch (action.type) {
     case ADD_PHOTO:
       return {
         ...oldState,
-        photos: action.photo
+        photos: action.photo,
       };
 
     case ADD_ISLOGIN:
@@ -42,7 +42,7 @@ export default function (oldState = initialState, action) {
     case ADD_USERS_DASHBOARD:
       return {
         ...oldState,
-        usersDashBoard: action.users
+        usersDashBoard: action.users,
       };
     case CLEAN_REDUX:
       return {

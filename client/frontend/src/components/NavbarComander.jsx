@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { Menu, Icon, Avatar } from 'antd';
-import { withCookies } from 'react-cookie';
-import { connect } from "react-redux";
-import { AddUserAC, AddPhotoAC } from "../redux/action";
-
+import React, {Component} from 'react';
+import {Link, Redirect} from 'react-router-dom';
+import {Menu, Icon, Avatar} from 'antd';
+import {withCookies} from 'react-cookie';
+import {connect} from 'react-redux';
+import {AddUserAC, AddPhotoAC} from '../redux/action';
 
 class Navigation extends Component {
   constructor() {
     super();
-    this.state = {
-    };
+    this.state = {};
   }
 
   async componentDidMount() {
@@ -19,38 +17,44 @@ class Navigation extends Component {
 
   render() {
     return (
-      <div>
-        <Menu mode="horizontal" theme='dark' style={{ backgroundColor: '#4A76A8', color: '#ffffff' }}>
-          <Menu.Item key='profiles'>
-            <Link to={'/profile'}>
-              {/* <div style={{ paddingBottom: '10px' }}> */}
-              <Avatar size="large" shape="square" icon="user" src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png" />
-              &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className='navbarUserName'>{this.props.user && this.props.user.firstName} {this.props.user && this.props.user.lastName}</span>
-              {/* <span className='navbarUserName'>Имя Фамилия</span> */}
-              {/* </div> */}
-            </Link>
-          </Menu.Item>
-          <Menu.Item key='search' className='navbarText'>
-            <Link to={'/dashboard3'}>
-              <Icon type="home" />
-              Главная
-            </Link>
-          </Menu.Item>
-          <Menu.Item key='logout' className='navbarText' style={{ float: 'right' }}>
-            <Link to={'/logout'}>
-              <Icon type="logout" />
-              ВЫЙТИ
-            </Link>
-          </Menu.Item>
-          <Menu.Item key='IBMiX' className='navbarText' style={{ float: 'right' }}>
-            <Link to={'/IBMiX'}>
-              <Icon type="global" />
-              IBM iX®
-            </Link>
-          </Menu.Item>
-        </Menu>
-      </div>
+        <div>
+          <Menu mode="horizontal" theme='dark'
+                style={{backgroundColor: '#4A76A8', color: '#ffffff'}}>
+            <Menu.Item key='profiles'>
+              <Link to={'/profile'}>
+                {/* <div style={{ paddingBottom: '10px' }}> */}
+                <Avatar size="large" shape="square" icon="user"
+                        src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span className='navbarUserName'>{this.props.user &&
+                this.props.user.firstName} {this.props.user &&
+                this.props.user.lastName}</span>
+                {/* <span className='navbarUserName'>Имя Фамилия</span> */}
+                {/* </div> */}
+              </Link>
+            </Menu.Item>
+            <Menu.Item key='search' className='navbarText'>
+              <Link to={'/dashboard3'}>
+                <Icon type="home"/>
+                Главная
+              </Link>
+            </Menu.Item>
+            <Menu.Item key='logout' className='navbarText'
+                       style={{float: 'right'}}>
+              <Link to={'/logout'}>
+                <Icon type="logout"/>
+                ВЫЙТИ
+              </Link>
+            </Menu.Item>
+            <Menu.Item key='IBMiX' className='navbarText'
+                       style={{float: 'right'}}>
+              <Link to={'/IBMiX'}>
+                <Icon type="global"/>
+                IBM iX®
+              </Link>
+            </Menu.Item>
+          </Menu>
+        </div>
     );
   }
 }
@@ -58,7 +62,7 @@ class Navigation extends Component {
 function mapStateToProps(store) {
   return {
     photos: store.photos,
-    user: store.user
+    user: store.user,
   };
 }
 
@@ -68,9 +72,10 @@ function mapDispatchToProps(dispatch) {
       dispatch(AddUserAC(user));
     },
     addPhotos: photos => {
-      dispatch(AddPhotoAC(photos))
-    }
+      dispatch(AddPhotoAC(photos));
+    },
   };
 }
 
-export default withCookies(connect(mapStateToProps, mapDispatchToProps)(Navigation));
+export default withCookies(
+    connect(mapStateToProps, mapDispatchToProps)(Navigation));
