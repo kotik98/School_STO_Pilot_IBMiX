@@ -31,7 +31,7 @@ app.use('/', getForDashboard);
 
 app.get('*', (req, res) => {
   let path;
-  res.sendFile(`${__dirname}/public/frontend/build/index.html`);
+  res.sendFile(`${__dirname}/client/frontend/build/index.html`);
 });
 useErrorHandlers(app);
 
