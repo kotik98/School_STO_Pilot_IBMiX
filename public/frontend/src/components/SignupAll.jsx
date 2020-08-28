@@ -254,7 +254,7 @@ class Signup extends Component {
 
                         < Form.Item>
                             <Button style={{ backgroundColor: '#4A76A8', width: '100%', align: "center" }} htmlType="submit" loading={this.state.iconLoading} icon='solution'>
-                                Зарегитрировать
+                                Зарегистрировать
                             </Button>
                         </Form.Item>
                     </Form>
