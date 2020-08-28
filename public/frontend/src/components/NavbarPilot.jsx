@@ -19,7 +19,7 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        <Menu mode="horizontal" theme='dark' style={{ backgroundColor: '#4A76A8', color: '#ffffff' }}>
+        <Menu mode="horizontal" theme='dark' style={{ backgroundColor: '#ffffff', color: '#4A76A8' }}>
           <Menu.Item key='profiles'>
             <Link to={'/profile'}>
               <Avatar size="large" shape="square" icon="user" src={this.props.photos.length !== 0 && this.props.photos[0].thumbUrl} />

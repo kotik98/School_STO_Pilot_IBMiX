@@ -20,8 +20,8 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        <Menu mode="horizontal" theme='dark' style={{ backgroundColor: '#4A76A8', color: '#ffffff' }}>
-          <Menu.Item key='profiles'>
+        <Menu mode="horizontal" theme='dark' style={{ backgroundColor: '#ffffff', color: 'black' }}>
+          <Menu.Item key='profiles' className='navbarText'>
             <Link to={'/profile'}>
               {/* <div style={{ paddingBottom: '10px' }}> */}
               <Avatar size="large" shape="square" icon="user" src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png" />
@@ -34,21 +34,22 @@ class Navigation extends Component {
           <Menu.Item key='search' className='navbarText'>
             <Link to={'/dashboard3'}>
               <Icon type="home" />
-              Главная
+              <span className='navbarUserName'>Главная</span>
             </Link>
           </Menu.Item>
           <Menu.Item key='logout' className='navbarText' style={{ float: 'right' }}>
             <Link to={'/logout'}>
               <Icon type="logout" />
-              ВЫЙТИ
+              <span className='navbarUserName'>ВЫЙТИ</span>
             </Link>
           </Menu.Item>
           <Menu.Item key='IBMiX' className='navbarText' style={{ float: 'right' }}>
             <Link to={'/IBMiX'}>
               <Icon type="global" />
-              IBM iX®
+              <span className='navbarUserName'>IBM iX®</span>
             </Link>
           </Menu.Item>
+
         </Menu>
       </div>
     );
