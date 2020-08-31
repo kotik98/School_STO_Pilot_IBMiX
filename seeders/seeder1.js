@@ -105,6 +105,7 @@ seedFlights = async () => {
       level_flights: faker.random.number({ min: 1, max: 10 }),
       city_photo: faker.image.city(),
       airport_name: faker.name.firstName(),
+      id: faker.random.number({ min: 1, max: 10000 }),
     });
     flights.save().then(() => console.log(`+ flight ${i}`));
     console.log(i)

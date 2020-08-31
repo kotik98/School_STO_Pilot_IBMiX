@@ -9,7 +9,8 @@ const flights = Schema({
   time_of_arrival: { type: String },
   level_flights: { type: String },
   city_photo: { type: String },
-  airport_name: { type: String }
+  airport_name: { type: String },
+  id: { type: Number }
 });
 
 module.exports = mongoose.model("Flights", flights);

@@ -4,6 +4,9 @@ import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import { Link } from 'react-router-dom';
 
+import StepD1 from './stepsPreference/StepD1'
+import StepD2 from './stepsPreference/StepD2'
+
 import { Tabs } from 'antd';
 
 import {
@@ -65,7 +68,9 @@ class DashBoard extends Component {
             visible2: false,
             // isRedirect: false,
             usersLength: null,
-            visibleWant: false
+            visibleWant: false,
+
+            stepD: <StepD1 qwe={this.state} />
         };
     }
 
@@ -118,7 +123,6 @@ class DashBoard extends Component {
         if (this.props.users.length === 0) {
             this.setState({ loading: true });
         }
-
 
         const response = await fetch('/api/profilePilot', {
             headers: { 'Content-Type': 'application/json' }
@@ -236,7 +240,6 @@ class DashBoard extends Component {
         });
 
     }
-
     handleCancel = e => {
         this.setState({
             visible: false,
@@ -290,6 +293,8 @@ class DashBoard extends Component {
 
 
                 )}
+
+                {this.state.stepD}
 
                 <Collapse>
                     <Panel header="Фильтры по моему расписанию" key="1">
