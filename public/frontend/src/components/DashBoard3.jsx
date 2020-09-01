@@ -2,6 +2,8 @@ import React, { Suspense, Component } from "react";
 // import avatar from "../images/avatar.png";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
+import ItemList from '../components/DnD/itemList';
+
 
 
 import { Tabs } from 'antd';
@@ -290,9 +292,11 @@ class DashBoard extends Component {
 
                 {/* </Collapse> */}
 
-
+                {/* Будем пастить сюда! */}
+                <ItemList />
+                {/* Будем пастить сюда! */}
                 <div className="dashBoardContainer">
-
+                            
                     <div className="dashBoardContent">
                         <div className='yourTrip'> <p  >Ваши Рейсы</p> </div>
                         <div className='sortString' > <p onClick={() => this.showSort()}>Сортировка</p></div>
