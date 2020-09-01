@@ -75,9 +75,20 @@ a {
   color: black !important;
 }
 
+.TitleText {
+  font-family: Gotham Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 17px;
+
+  color: #000000;
+}
+
 .rightBar{
+  width: 400px;
   padding: 30px;
-background: #F6F9FE;
+background: #f6f9fe;
 box-shadow: 0px 0px 9.53192px -0.953192px #F6F9FE;
 border-radius: 14.3px 14.2979px 14.2979px 14.2979px;
 }
@@ -149,13 +160,22 @@ text-align: right;
 }
 
 .dashBoardContent {
-  
+
   width: 1050px;
   padding: 30px;
   margin-right: 30px;
   background: #F3F3FF;
 box-shadow: 0px 0px 6px #F3F3FF;
 border-radius: 15px;
+
+}
+
+.accordion {
+
+  padding: 30px;
+  margin-right: 30px;
+  background: #F6F9FE;
+  border-radius: 15px;
 
 }
 
@@ -166,12 +186,40 @@ border-radius: 15px;
   margin: 10px !important;
 }
 
-.userCard{
+.collapseCard{
+  border-radius: 30px !important;
+  background-color: #f6f9fe !important;
+}
+
+.userCardW{
   width: 1000px !important;
-  border-radius: 10px !important;
+  border-radius: 30px !important;
   /* padding: 8px 8px 0 8px !important; */
   margin: 5px !important;
-  background-color: #7D58FF !important;
+  background-color: #ffffff !important;
+}
+
+.sUserCard{
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #ffdc82 !important;
+}
+
+.userCard{
+  width: 1000px !important;
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #7d58ff !important;
+}
+
+.userCard1{
+  width: 1000px !important;
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #5459cd !important;
 }
 
 .tagFlights{
