@@ -1,0 +1,57 @@
+.block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 1520px;
+    height: 200px;
+    margin: 0 10px;
+    border-radius: 25px;
+    box-shadow: inset 1px 1px 5px 5px rgba(100,100,100,0.15);
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(246, 249, 254);
+}
+
+.sub_block {
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 150px;
+    width: 280px;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+}
+
+.rating_star {
+    display: inline;
+    color: white;
+    font-size: 1rem;
+}
+
+.flight_direction {
+    background-color: rgb(108, 135, 237);
+}
+.duration {
+    background-color: rgb(242, 166, 137);
+}
+.wish_to_work {
+    background-color: rgb(249, 220, 141);
+}
+.weekends {
+    background-color: rgb(119, 93, 246);
+}
+.time_of_fly {
+    background-color: rgb(194, 213, 251);
+}
+.category_title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+}
