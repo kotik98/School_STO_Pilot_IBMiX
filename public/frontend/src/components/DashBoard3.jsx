@@ -277,7 +277,9 @@ class DashBoard extends Component {
                                             <div style={{ textAlign: "left" }}>
                                                 <Switch defaultChecked onChange={this.onChangeNight} /> Ночь
                                     </div>
+                                            <div>
 
+                                            </div>
                                         </Card>
                                     </div>
                                 </div>
