@@ -289,6 +289,9 @@ class DashBoard extends Component {
 
                 )}
 
+
+
+
                 <Collapse>
                     <Panel header="Фильтры по моему расписанию" key="1">
                         <div className="dashBoardContainerMoreFiltres">
