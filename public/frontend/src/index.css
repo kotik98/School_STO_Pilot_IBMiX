@@ -137,11 +137,12 @@ color: #282828;
 
 .yourTrip{
   font-family: Gotham Pro;
-font-style: normal;
-font-weight: bold;
-font-size: 30px;
-line-height: 17px;
-margin-top: 30px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 17px;
+  margin-top: 30px;
+  height: 25px;
 }
 
 .mediumText{
@@ -150,6 +151,15 @@ margin-top: 30px;
   font-weight: normal;
   font-size: 18px;
   line-height: 17px;
+}
+
+.greyMediumText{
+  font-family: Gotham Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 17px;
+  color: #bfbfbf;
 }
 
 .sortString{

@@ -292,55 +292,65 @@ class DashBoard extends Component {
                     <div className="dashBoardContent">
                         <div className='yourTrip'> <font face="Arial Black" >Заявка на текущий период:</font> </div>
 
+                        <Card showArrow={false} className="userCardW hoverCard" bordered={false} >
+
+                            <div className='mediumText'> <font face="Arial" >Октябрь</font> </div>
+
+                            {this.props.user.wishForm &&
+                                //глянуть как будет выглядеть
+                            <div className='greyMediumText'> <font face="Arial Black" >Не заполнена</font> </div> }
+
+                            {this.props.user.wishForm &&
+
+
+                            this.props.user.wishForm.map((user, key) =>
+                                <h3 style={{ float: "left" }}>
+
+                                    <div>
+                                        <h5 style={{ float: "left" }}>
+                                            Направление
+                                        </h5>
+                                        <h3 style={{ float: "left", color: 'blue' }}>
+                                            {user.longFly}
+                                        </h3>
+
+                                        <h5 style={{ float: "left" }}>
+                                            Продолжительность рабочей смены
+                                        </h5>
+                                        <h3 style={{ float: "left", color: 'blue' }}>
+                                            {user.timeFly}
+                                        </h3>
+
+                                        <h5 style={{ float: "left" }}>
+                                            Желание дополнительной подработки
+                                        </h5>
+
+                                        <h3 style={{ float: "left", color: 'blue' }}>
+                                            {user.otherTime}
+                                        </h3>
+
+                                        <h5 style={{ float: "left" }}>
+                                            Предпочтительное время вылета
+                                        </h5>
+                                        <h3 style={{ float: "left", color: 'blue' }}>
+                                            {user.preferenceTimeFly}
+                                        </h3>
+                                    </div>
+                                </h3>
+                            )}
+
+                        </Card>
+
                         <Collapse className="collapseCard" style={{ border: 'none'}}>
-                            <Panel showArrow={false} className="userCardW hoverCard" header="Заявка на Октябрь" key="1" bordered={false} >
-                                {this.props.user.wishForm &&
 
-
-                                this.props.user.wishForm.map((user, key) =>
-                                    <h3 style={{ float: "left" }}>
-
-                                        <div>
-                                            <h5 style={{ float: "left" }}>
-                                                Направление
-                                            </h5>
-                                            <h3 style={{ float: "left", color: 'blue' }}>
-                                                {user.longFly}
-                                            </h3>
-
-                                            <h5 style={{ float: "left" }}>
-                                                Продолжительность рабочей смены
-                                            </h5>
-                                            <h3 style={{ float: "left", color: 'blue' }}>
-                                                {user.timeFly}
-                                            </h3>
-
-                                            <h5 style={{ float: "left" }}>
-                                                Желание дополнительной подработки
-                                            </h5>
-
-                                            <h3 style={{ float: "left", color: 'blue' }}>
-                                                {user.otherTime}
-                                            </h3>
-
-                                            <h5 style={{ float: "left" }}>
-                                                Предпочтительное время вылета
-                                            </h5>
-                                            <h3 style={{ float: "left", color: 'blue' }}>
-                                                {user.preferenceTimeFly}
-                                            </h3>
-                                        </div>
-                                    </h3>
-                                )}
-                            </Panel>
                             <div className='mediumText'> <font face="Arial Black" >История заявок:</font> </div>
-                            <Panel showArrow={false} className="userCardW hoverCard" header="Заявка на Сентябрь" key="2" bordered={false} >
+                            <Panel showArrow={false} className="userCardW hoverCard" header="Сентябрь" key="1" bordered={false} >
                                 <p>Короткие разворотные рейсы</p>
                                 <p>Длительная смена</p>
                                 <p>Хочу работать с переработками</p>
                                 <p>Ночь</p>
                             </Panel>
-                            <Panel showArrow={false} className="userCardW hoverCard" header="Заявка на Август" key="3" bordered={false} >
+                            <Panel showArrow={false} className="userCardW hoverCard" header="Август" key="2" bordered={false} >
                                 <p>Короткие разворотные рейсы</p>
                                 <p>Длительная смена</p>
                                 <p>Хочу работать с переработками</p>
