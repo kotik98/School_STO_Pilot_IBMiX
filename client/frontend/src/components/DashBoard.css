@@ -1,0 +1,162 @@
+.container {
+    padding: 164px 164px 54px 164px;
+}
+
+.head-panel {
+    display: flex;
+    padding: 16px 16px 16px 0;
+    align-items: center;
+    max-height: 72px;
+    min-width: 1024px;
+    margin-bottom: 28px;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
+    border-radius: 15px;
+}
+
+.user-avatar {
+    margin-right: 14px;
+    margin-left: 64px;
+}
+
+.user-info {
+    flex: 0 1 auto;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-style: normal;
+    font-size: 12px;
+    color: #282828;
+}
+
+.user-info--name {
+    display: block;
+    margin: 0;
+}
+
+.bidding-info {
+    flex: 0 1 auto;
+    margin-left: 156px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.bidding-date {
+    flex: 0 1 auto;
+    margin-left: 12px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.bidding-info--start {
+    display: block;
+    margin: 0;
+    color: #9FF7CF;
+}
+
+.bidding-info--finish {
+    display: block;
+    margin: 0;
+    color: #FEA283;
+}
+
+.bidding-date--digit {
+    display: block;
+    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    color: #686CD7;
+}
+
+.date-arrow {
+    width: 23px;
+    height: 23px;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
+    border-radius: 7px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.date-clock {
+    margin-left: 14px;
+    margin-right: 16px;
+}
+
+.date-arrow > svg {
+    transform: rotate(-180deg);
+}
+
+.bidding-btn
+{
+    margin-left: 92px;
+    margin-right: 26px;
+    background: #5459CD;
+    border-color: #5459CD;
+    width: 146px;
+    box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.settings-icon {
+
+}
+
+.bidding-stats {
+    margin-left: 52px;
+    margin-right: 14px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.bidding-stats--first {
+    color: #7D58FF;
+}
+
+.bidding-stats--second {
+    color: #FFDC82;
+}
+
+.dots {
+    position: relative;
+    width: 4px;
+    height: 4px;
+    background-color: #686CD7;
+    border-radius: 50%;
+}
+
+.dots:before, .dots:after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    left: 0;
+    background-color: inherit;
+    border-radius: inherit;
+}
+
+.dots:before {
+    top: 8px;
+}
+
+
+.dots:after {
+    top: 16px;
+}
+
+.bid-card {
+    min-width: 1024px;
+    height: 262px;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
+    border-radius: 15px;
+}
