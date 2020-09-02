@@ -86,8 +86,9 @@
 
 /* Стиль для руны */
 .runa {
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-weight: bold;
     color: rgb(99,99,99);
     text-align: center;
+    margin-bottom: 30px;
 }

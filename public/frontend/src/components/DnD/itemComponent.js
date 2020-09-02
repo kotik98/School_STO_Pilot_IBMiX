@@ -24,7 +24,7 @@ function Item({item, index}) {
             ref={provided.innerRef}
             >
               <div className={'sub_block unselectable ' + item.style}>
-                <pre className={'category_title'}>{item.name}</pre>
+                <pre className={'category_title'} style={item.font ? {color: item.font} : {color: 'black'}}>{item.name}</pre>
                 <br />
                 <div>
                   {counting_stars()}  

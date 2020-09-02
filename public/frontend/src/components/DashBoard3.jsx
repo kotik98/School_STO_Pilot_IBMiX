@@ -3,6 +3,7 @@ import React, { Suspense, Component } from "react";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
+import RadioButtonList from '../components/BeautyRadioButton/RadioButtonList';
 
 
 
@@ -294,6 +295,7 @@ class DashBoard extends Component {
 
                 {/* Будем пастить сюда! */}
                 <ItemList />
+                <RadioButtonList />
                 {/* Будем пастить сюда! */}
                 <div className="dashBoardContainer">
                             

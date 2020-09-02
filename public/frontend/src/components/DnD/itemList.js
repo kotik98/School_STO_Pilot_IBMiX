@@ -1,5 +1,4 @@
-import React, {useState, useDebugValue} from 'react';
-import { data }  from './data';
+import React, {useState} from 'react';
 import Item from './itemComponent';
 import './dnd_style.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
