@@ -30,18 +30,24 @@ function ItemList() {
 
     return (
         <DragDropContext onDragEnd={handleDragEnd}>
-            <Droppable droppableId={'droppable-1'} direction={'horizontal'}>
-                {provided => (
-                    <div
-                        className='block'
-                        ref={provided.innerRef}
-                        {...provided.droppableProps}
-                    >
-                        {wishes.map((item, index) => <Item item={item} index={index} key={item.name + '_sprestay'}/>)}
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>   
+            <div className='block'>
+                <div className={'prioritet_header_block'}>
+                    <p className={'prioritet_text'}>Приоритетно</p>
+                    <p className={'prioritet_text'}>Не приоритетно</p>
+                </div>
+                <Droppable droppableId={'droppable-1'} direction={'horizontal'}>
+                    {provided => (
+                        <div
+                            className='droppable_box'
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                        >
+                            {wishes.map((item, index) => <Item item={item} index={index} key={item.name + '_sprestay'}/>)}
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable> 
+            </div>
         </DragDropContext>);
 }
 

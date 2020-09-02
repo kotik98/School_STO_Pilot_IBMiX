@@ -1,16 +1,22 @@
 .block {
+    width: 1520px;
+    height: 250px;
+    border-radius: 25px;
+    box-shadow: inset 1px 1px 5px 5px rgba(100,100,100,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(246, 249, 254);
+    padding-top: 30px
+}
+.droppable_box {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 1520px;
-    height: 200px;
-    margin: 0 10px;
-    border-radius: 25px;
-    box-shadow: inset 1px 1px 5px 5px rgba(100,100,100,0.15);
     padding-left: 10px;
     padding-right: 10px;
-    background-color: rgb(246, 249, 254);
+    margin: 0 10px;
 }
 
 .sub_block {
@@ -26,6 +32,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
     
 }
 
@@ -34,7 +41,7 @@
     color: white;
     font-size: 1rem;
 }
-
+/* Отдельные цвета для каждой карточки. Почему то инлайновый стиль работает некорректо */
 .flight_direction {
     background-color: rgb(108, 135, 237);
 }
@@ -63,3 +70,24 @@
     -webkit-user-select: none;
     user-select: none;
   }
+
+  /* Стили для блока заголовка (Приоритетно - Не приоритетно) */
+.prioritet_header_block {
+    display: flex;
+    justify-content: space-between;
+}
+.prioritet_text {
+    display: inline;
+    font-size: 1.2rem;
+    color: rgb(116, 142, 247);
+    margin-left: 50px;
+    margin-right: 50px;
+}   
+
+/* Стиль для руны */
+.runa {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(99,99,99);
+    text-align: center;
+}

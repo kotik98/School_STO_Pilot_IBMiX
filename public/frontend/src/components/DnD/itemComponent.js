@@ -19,16 +19,18 @@ function Item({item, index}) {
         >
           {provided => (
             <div
-              className={'sub_block unselectable ' + item.style}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
             >
-              <pre className={'category_title'}>{item.name}</pre>
-              <br />
-              <div>
-                {counting_stars()}  
+              <div className={'sub_block unselectable ' + item.style}>
+                <pre className={'category_title'}>{item.name}</pre>
+                <br />
+                <div>
+                  {counting_stars()}  
+                </div>
               </div>
+              <p className={'runa'}>&#x16E2;</p>
             </div>
           )}
         </Draggable>
