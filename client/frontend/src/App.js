@@ -10,6 +10,7 @@ import Login from './components/Login';
 import SignupAll from './components/SignupAll';
 import Logout from './components/Logout';
 import DashBoard3 from './components/DashBoard3';
+import DashBoard from './components/DashBoard';
 import IBMiX from './components/IBMiX';
 import Password from './components/newPassword/Password';
 import InstructionsNewPassword
@@ -34,12 +35,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path={'/'} component={Logout}/>
             <Route exact path={'/dashboard3'} component={DashBoard3}/>
-
+            <Route exact path={'/dashboard'} component={DashBoard}/>
             <Route exact path={'/IBMiX'} component={IBMiX}/>
-
-
             <Route exact path={'/profile'} component={Profile}/>
-
             <Route exact path={'/login'} component={Login}/>
             <Route exact path={'/password'} component={Password}/>
             <Route exact path={'/instructions_new_password'}
@@ -48,8 +46,6 @@ class App extends React.Component {
                    component={SetNewPassword}/>
             <Route exact path={'/signupAll'} component={SignupAll}/>
             <Route exact path={'/logout'} component={Logout}/>
-
-
           </Switch>
         </Router>
     );

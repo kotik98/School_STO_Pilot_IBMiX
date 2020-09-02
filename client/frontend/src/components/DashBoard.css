@@ -91,7 +91,8 @@
     transform: rotate(-180deg);
 }
 
-.bidding-btn {
+.bidding-btn
+{
     margin-left: 92px;
     margin-right: 26px;
     background: #5459CD;
