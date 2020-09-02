@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useDebugValue} from 'react';
 import { data }  from './data';
 import Item from './itemComponent';
 import './dnd_style.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
+//Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { SetPriority } from "../../redux/action";
+// END OF REDUX BlOCK
+
 function ItemList() {
-    const [wishes, setWishes] = useState(data);
+    const [wishes, setWishes] = useState(useSelector(state => state.priority[0]));
+    const dispatch = useDispatch();
 
     const handleDragEnd = (result) => {
         const { destination, source } = result;
@@ -18,6 +24,7 @@ function ItemList() {
 
         new_wishes.splice(source.index, 1);
         new_wishes.splice(destination.index, 0, element);
+        dispatch(SetPriority(new_wishes)); // Работает ли redux? В хранилище пишется, но при обновлении страницы все сбрасывается.
         setWishes(new_wishes);
     }
 
@@ -39,3 +46,5 @@ function ItemList() {
 }
 
 export default ItemList;
+
+

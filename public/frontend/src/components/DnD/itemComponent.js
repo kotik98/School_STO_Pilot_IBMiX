@@ -19,7 +19,7 @@ function Item({item, index}) {
         >
           {provided => (
             <div
-              className={'sub_block ' + item.style}
+              className={'sub_block unselectable ' + item.style}
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}

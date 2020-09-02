@@ -4,14 +4,18 @@ import {
   EDIT_PROFILE,
   ADD_USER,
   ADD_USERS_DASHBOARD,
-  CLEAN_REDUX
+  CLEAN_REDUX,
+  SET_PRIORITY,
 } from "./type";
+
+import { data }  from '../components/DnD/data';
 
 const initialState = {
   photos: [],
   isLogin: false,
   user: {},
   usersDashBoard: [],
+  priority: [data],
 };
 
 export default function (oldState = initialState, action) {
@@ -50,6 +54,11 @@ export default function (oldState = initialState, action) {
         isLogin: false,
         user: {},
         usersDashBoard: [],
+      };
+    case SET_PRIORITY: 
+      return {
+        ...oldState,
+        priority: action.priority_list,
       };
 
     default:
