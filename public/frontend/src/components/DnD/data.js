@@ -14,6 +14,7 @@ export const data = [
     {
         name: "Выбор выходных\nдней",
         style: 'weekends',
+        font: 'white',
     },
     {
         name: "Время вылета",

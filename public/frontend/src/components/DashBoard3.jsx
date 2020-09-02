@@ -3,6 +3,7 @@ import React, { Suspense, Component } from "react";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
+import RadioButtonList from '../components/BeautyRadioButton/RadioButtonList';
 
 
 
@@ -116,7 +117,7 @@ class DashBoard extends Component {
             headers: { 'Content-Type': 'application/json' }
         })
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         if (result.response !== 'fail') {
 
             await this.props.addUser(result.response);
@@ -124,7 +125,7 @@ class DashBoard extends Component {
 
         }
 
-        console.log('есть', this.props.user)
+        // console.log('есть', this.props.user)
 
         const reqComparison = await fetch("/api/getAllFly", {
 
@@ -142,7 +143,7 @@ class DashBoard extends Component {
         this.setState({ loading: false });
 
         this.props.AddUsersDashBoard(users);
-        console.log("есть ", users, this.props.users, this.props.users.response);
+        // console.log("есть ", users, this.props.users, this.props.users.response);
 
     }
 
@@ -173,14 +174,14 @@ class DashBoard extends Component {
 
     }
     handleCancel = e => {
-        console.log(e);
+        // console.log(e);
         this.setState({
             visible: false,
         });
     };
 
     handleCancel2 = e => {
-        console.log(e);
+        // console.log(e);
         this.setState({
             visible2: false,
         });
@@ -294,6 +295,7 @@ class DashBoard extends Component {
 
                 {/* Будем пастить сюда! */}
                 <ItemList />
+                <RadioButtonList />
                 {/* Будем пастить сюда! */}
                 <div className="dashBoardContainer">
                             
@@ -310,7 +312,7 @@ class DashBoard extends Component {
                                         // if (this.filterPrise(user.time)) {
                                         if (user.city_photo) {
 
-                                            console.log(user)
+                                            // console.log(user)
 
                                             let srcImg;
                                             if (!user.city_photo) {

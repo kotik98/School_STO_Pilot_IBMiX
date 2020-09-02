@@ -4,7 +4,8 @@ import {
   EDIT_PROFILE,
   ADD_USER,
   ADD_USERS_DASHBOARD,
-  CLEAN_REDUX
+  CLEAN_REDUX,
+  SET_PRIORITY
 } from "./type";
 
 export const AddPhotoAC = photo => {
@@ -51,3 +52,11 @@ export const CleanReduxAC = () => {
     type: CLEAN_REDUX
   };
 };
+
+export const SetPriority = priority_list => {
+  // console.log("IN SET PRIORITY", priority_list);
+  return {
+    type: SET_PRIORITY,
+    priority_list: priority_list,
+  }
+}
