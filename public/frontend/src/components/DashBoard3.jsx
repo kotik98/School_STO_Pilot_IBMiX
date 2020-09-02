@@ -3,6 +3,9 @@ import React, { Suspense, Component } from "react";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import { Link } from 'react-router-dom';
+import StepD1 from './stepsPreference/StepD1'
+import StepD2 from './stepsPreference/StepD2'
+import ItemList from './DnD/itemList';
 
 import { Tabs } from 'antd';
 
@@ -247,6 +250,12 @@ class DashBoard extends Component {
         });
     };
 
+    onNewWishList = () => {
+        this.setState({
+            newWish: true,
+        });
+    };
+
     ym = () => {
         return (
             "<script src='https://mc.yandex.ru/metrika/watch.js' type='text/javascript'></script>\
@@ -291,7 +300,29 @@ class DashBoard extends Component {
 
 
 
+                <button onClick={this.onNewWishList}>Новая заявка</button>
+                {this.state.newWish && (
+                    < div className="dashBoardContainer">
 
+                        <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+
+
+                            <Card size="small"
+                                className="userCardSlider"
+                            >
+                                <div style={{ textAlign: "left", height: '300px' }}>
+                                    <ItemList />
+                                </div>
+                                {/* <div className='buttonCardSlider'>Кнопка</div> */}
+
+                                <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button>
+                                {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
+
+                            </Card>
+                        </div>
+                    </div >
+                )
+                }
                 <Collapse>
                     <Panel header="Фильтры по моему расписанию" key="1">
                         <div className="dashBoardContainerMoreFiltres">

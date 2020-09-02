@@ -113,6 +113,40 @@ a {
   width: 1000px;
 }
 
+.dashBoardContentDrag {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 1500px;
+}
+
+.borderDesign{
+  border-color: 4px double black !important;
+ }
+
+ 
+.userCardSlider{
+  width: 100% !important;
+  border-radius: 10px !important;
+  padding: 8px 8px 0 8px !important;
+  margin: 10px !important;
+}
+
+ .buttonCardSlider{
+  background-color: #5459CD;
+  box-shadow: 0px 12px 12px -8px rgba(84, 89, 205, 0.5);
+  border-radius: 10px;
+  color: white;
+  width: 145px;
+  height: 28px;
+  }
+  
+  .buttonCardSlider,
+  .buttonCardSlider:active,
+  .buttonCardSlider:focus {
+  outline: none !important;
+  }
+
 .userCardFilter{
   width: 300px !important;
   border-radius: 10px !important;
