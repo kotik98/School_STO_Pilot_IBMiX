@@ -4,9 +4,8 @@
 // // const dbconnection = require("../middleware/db-connect");
 // // const User = require("../models/user");
 
-
 // // Способ 2
-// const bcrypt = require("bcrypt");
+// const bcrypt = require("bcryptjs");
 
 // const mongoose = require("mongoose");
 
