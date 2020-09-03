@@ -1,8 +1,8 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import {connect} from 'react-redux';
-import {withCookies} from 'react-cookie';
+import { connect } from 'react-redux';
+import { withCookies } from 'react-cookie';
 import NavbarPilot from './components/NavbarPilot';
 import NavbarComander from './components/NavbarComander';
 import Profile from './components/Profile';
@@ -15,14 +15,27 @@ import IBMiX from './components/IBMiX';
 import Password from './components/newPassword/Password';
 import InstructionsNewPassword
   from './components/newPassword/InstructionsNewPassword';
+
+import {
+  Layout,
+  Icon,
+  notification, Avatar, Button,
+} from 'antd';
+// import { connect } from 'react-redux';
+// import { AddPhotoAC, AddUserAC, AddUsersDashBoard } from '../redux/action';
+import './components/DashBoard.css';
+import {
+  MoreOutlined,
+} from '@ant-design/icons';
+
 import SetNewPassword from './components/newPassword/SetNewPassword';
 
 class App extends React.Component {
   render() {
     const isLogin = this.props.cookies.get('isLogin');
     return (
-        <Router>
-          {(this.props.isLogin && this.props.cookies.get('Role') ===
+      <Router>
+        {/* {(this.props.isLogin && this.props.cookies.get('Role') ===
               'командир на будущее') ||
           (isLogin && this.props.cookies.get('Role') === 'командир на будущее')
               ? <NavbarPilot/>
@@ -30,24 +43,26 @@ class App extends React.Component {
           {(this.props.isLogin && this.props.cookies.get('Role') !==
               'командир') ||
           (isLogin && this.props.cookies.get('Role') !== 'командир') ?
-              <NavbarComander/> : ''}
+              <NavbarComander/> : ''} */}
 
-          <Switch>
-            <Route exact path={'/'} component={Logout}/>
-            <Route exact path={'/dashboard3'} component={DashBoard3}/>
-            <Route exact path={'/dashboard'} component={DashBoard}/>
-            <Route exact path={'/IBMiX'} component={IBMiX}/>
-            <Route exact path={'/profile'} component={Profile}/>
-            <Route exact path={'/login'} component={Login}/>
-            <Route exact path={'/password'} component={Password}/>
-            <Route exact path={'/instructions_new_password'}
-                   component={InstructionsNewPassword}/>
-            <Route exact path={'/set_new_password/:id'}
-                   component={SetNewPassword}/>
-            <Route exact path={'/signupAll'} component={SignupAll}/>
-            <Route exact path={'/logout'} component={Logout}/>
-          </Switch>
-        </Router>
+
+
+        <Switch>
+          <Route exact path={'/'} component={Logout} />
+          <Route exact path={'/dashboard3'} component={DashBoard3} />
+          <Route exact path={'/dashboard'} component={DashBoard} />
+          <Route exact path={'/IBMiX'} component={IBMiX} />
+          <Route exact path={'/profile'} component={Profile} />
+          <Route exact path={'/login'} component={Login} />
+          <Route exact path={'/password'} component={Password} />
+          <Route exact path={'/instructions_new_password'}
+            component={InstructionsNewPassword} />
+          <Route exact path={'/set_new_password/:id'}
+            component={SetNewPassword} />
+          <Route exact path={'/signupAll'} component={SignupAll} />
+          <Route exact path={'/logout'} component={Logout} />
+        </Switch>
+      </Router>
     );
   }
 }
