@@ -3,6 +3,7 @@ import React, { Suspense, Component } from "react";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
+import RadioButtonList from '../components/BeautyRadioButton/RadioButtonList';
 
 
 
@@ -74,7 +75,7 @@ class DashBoard extends Component {
             usersLength: null,
             newWish: false,
             preference: true,
-            preference1: true,
+            preference1: false,
         };
     }
 
@@ -225,6 +226,14 @@ class DashBoard extends Component {
         this.setState({
             newWish: !this.state.newWish,
         });
+    };
+
+    step = () => {
+        this.setState({
+            preference: false,
+            preference1: true
+        });
+        console.log(this.state)
     };
 
     render() {
@@ -465,8 +474,8 @@ class DashBoard extends Component {
                 {/* </Collapse> */}
 
 
-                {this.state.newWish && (
-                    this.state.preference && (
+                {(this.state.newWish && this.state.preference)
+                    && (
                         < div className="dashBoardContainer">
 
                             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
@@ -482,49 +491,26 @@ class DashBoard extends Component {
 
                                     {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
 
-                                    <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+                                    <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
 
                                     {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
 
                                 </Card>
                             </div>
                         </div >
-                    ),
+                    )}
+
+                {(this.state.newWish && this.state.preference1) &&
                     this.state.preference1 && (
                         < div className="dashBoardContainer">
 
                             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
-
-
                                 <Card size="small"
                                     className="userCardSlider"
                                 >
-                                    <div style={{ textAlign: "left", height: '300px' }}>
-                                        <ItemList />
-                                    </div>
-                                    {/* <div className='buttonCardSlider'>Кнопка</div> */}
 
-                                    {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
-
-                                    <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее!!!</span> </Button>
-
-                                    {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
-
-                                </Card>
-                            </div>
-                        </div >
-                    ),
-                    this.state.preference1 && (
-                        < div className="dashBoardContainer">
-
-                            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
-
-
-                                <Card size="small"
-                                    className="userCardSlider"
-                                >
-                                    <div style={{ textAlign: "left", height: '300px' }}>
-                                        <ItemList />
+                                    <div style={{ textAlign: "center", height: '300px' }}>
+                                        <RadioButtonList />
                                     </div>
                                     {/* <div className='buttonCardSlider'>Кнопка</div> */}
 
@@ -538,7 +524,7 @@ class DashBoard extends Component {
                             </div>
                         </div >
                     )
-                )
+
                 }
 
                 <div className="dashBoardContainer">
