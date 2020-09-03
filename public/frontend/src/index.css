@@ -87,7 +87,6 @@ a {
 }
 
 .rightBar{
-  width: 550px;
   padding: 30px;
 background: #f6f9fe;
 box-shadow: 0px 0px 9.53192px -0.953192px #F6F9FE;
@@ -217,12 +216,12 @@ border-radius: 15px;
   background-color: #ffffff !important;
 }
 
-.userCardWide{
-  width: 100%;
+.userCardG{
+  border: false;
   border-radius: 30px !important;
   /* padding: 8px 8px 0 8px !important; */
   margin: 5px !important;
-  background-color: #ffffff !important;
+  background-color: #dcdcdc !important;
 }
 
 .textRight{
@@ -415,4 +414,3 @@ li {
 .placeHolderForEditForAntDesigne:hover{
   border-color: #1990FF;
 }
-
