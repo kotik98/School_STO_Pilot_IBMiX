@@ -13,6 +13,6 @@ export const radio_data = [
     {
         name: "Другое",
         checked: false,
-        style:'rgb(194,231,251)',
+        style:'rgb(231,169,142)',
     }
 ]

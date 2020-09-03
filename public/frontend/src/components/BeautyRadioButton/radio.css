@@ -41,12 +41,11 @@
     align-items: center;
 }
 
-/* .transatlantic {
-    background-color: rgb(119,93,246);
+/* Невыделяемый текст */
+
+.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
-.continental {
-    background-color: rgb(249,221,142);
-}
-.another {
-    background-color: rgb(194,231,251);
-} */

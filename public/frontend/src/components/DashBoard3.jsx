@@ -25,9 +25,9 @@ import {
     Alert,
 } from "antd";
 
-import { connect } from "react-redux";
 
-import { AddPhotoAC, AddUserAC, AddUsersDashBoard } from "../redux/action";
+import { connect } from "react-redux";
+import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from "../redux/action";
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -294,8 +294,9 @@ class DashBoard extends Component {
                 {/* </Collapse> */}
 
                 {/* Будем пастить сюда! */}
-                <ItemList />
-                <RadioButtonList />
+                <ItemList dispatcher_func={SetPriority} data={this.props.priority_list_for_application}/>
+                <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction}/>
+                <ItemList dispatcher_func={SetDayTime} data={this.props.daytime}/>
                 {/* Будем пастить сюда! */}
                 <div className="dashBoardContainer">
                             
@@ -660,7 +661,10 @@ class DashBoard extends Component {
 function mapStateToProps(store) {
     return {
         users: store.usersDashBoard,
-        user: store.user
+        user: store.user,
+        priority_list_for_application: store.priority,
+        flight_direction: store.flight_direction,
+        daytime: store.daytime,
     };
 }
 
