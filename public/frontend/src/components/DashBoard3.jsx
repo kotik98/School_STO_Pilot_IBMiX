@@ -7,6 +7,8 @@ import StepD1 from './stepsPreference/StepD1'
 import StepD2 from './stepsPreference/StepD2'
 import ItemList from './DnD/itemList';
 
+import CalendarWithButtons from './CalendarWithButtons';
+
 import { Tabs } from 'antd';
 
 import {
@@ -577,7 +579,7 @@ class DashBoard extends Component {
 
                     <div className="site-card-border-less-wrapper" style={{ backgroundColor: '#EDEEF0', padding: '21px' }}>
                         <div className="site-calendar-demo-card" style={{ backgroundColor: 'lightblue' }}>
-                            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                            <CalendarWithButtons onPanelChange={onPanelChange} />
                         </div>
 
                         <Card className="userCard hoverCard" onClick={() => this.showWant()} bordered={false} style={{ width: 200, backgroundColor: '#4975A7', color: 'white' }}   >
