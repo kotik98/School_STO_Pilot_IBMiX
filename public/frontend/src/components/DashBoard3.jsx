@@ -4,7 +4,7 @@ import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
 import RadioButtonList from '../components/BeautyRadioButton/RadioButtonList';
-
+import CalendarWithButtons from './CalendarWithButtons';
 
 
 import { Tabs } from 'antd';
@@ -565,9 +565,15 @@ class DashBoard extends Component {
                                 className="userCardSlider"
                             >
 
-                                <div style={{ textAlign: "center", height: '300px' }}>
+                                {/* <div style={{ textAlign: "center", height: '300px' }}>
                                     <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                                </div> */}
+
+                                <div className="site-calendar-demo-card" style={{ backgroundColor: 'purple', width: '300px' }}>
+                                    <CalendarWithButtons onPanelChange={onPanelChange} />
                                 </div>
+
+
                                 {/* <div className='buttonCardSlider'>Кнопка</div> */}
 
                                 {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
