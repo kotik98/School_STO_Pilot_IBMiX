@@ -5,7 +5,8 @@ import {
   ADD_USER,
   ADD_USERS_DASHBOARD,
   CLEAN_REDUX,
-  SET_PRIORITY
+  SET_PRIORITY,
+  SET_FLIGHT_DIRECTION,
 } from "./type";
 
 export const AddPhotoAC = photo => {
@@ -54,9 +55,15 @@ export const CleanReduxAC = () => {
 };
 
 export const SetPriority = priority_list => {
-  // console.log("IN SET PRIORITY", priority_list);
   return {
     type: SET_PRIORITY,
     priority_list: priority_list,
+  }
+}
+
+export const SetFlightDirection = flight_direction => {
+  return {
+    type: SET_FLIGHT_DIRECTION,
+    flight_direction: flight_direction,
   }
 }

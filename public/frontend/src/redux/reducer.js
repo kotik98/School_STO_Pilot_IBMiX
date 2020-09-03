@@ -6,9 +6,11 @@ import {
   ADD_USERS_DASHBOARD,
   CLEAN_REDUX,
   SET_PRIORITY,
+  SET_FLIGHT_DIRECTION,
 } from "./type";
 
 import { data }  from '../components/DnD/data';
+import { radio_data } from '../components/BeautyRadioButton/radio_data';
 
 const initialState = {
   photos: [],
@@ -16,6 +18,7 @@ const initialState = {
   user: {},
   usersDashBoard: [],
   priority: [data],
+  flight_direction: [radio_data],
 };
 
 export default function (oldState = initialState, action) {
@@ -60,6 +63,11 @@ export default function (oldState = initialState, action) {
         ...oldState,
         priority: action.priority_list,
       };
+    case SET_FLIGHT_DIRECTION:
+      return {
+        ...oldState,
+        flight_direction: action.flight_direction,
+      }
 
     default:
       return oldState;
