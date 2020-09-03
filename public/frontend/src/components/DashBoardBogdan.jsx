@@ -15,7 +15,6 @@ import {
     message,
     Spin,
     Switch,
-    Button,
     Carousel, Slider, Select, Badge, Form, Collapse,
     Tag,
     Alert,
@@ -312,8 +311,8 @@ class DashBoard extends Component {
                                         {this.props.user.wishForm &&
                                         this.props.user.wishForm.map((user, key) =>
                                             <div>
-                                                <Buttonr color="primary" id="form1_toggler1" className="userCardG hoverCard">
-                                                    <font color={"#5a5a5a"}>Направление</font>
+                                                <Buttonr color="none" id="form1_toggler1" className="userCardWP hoverCard shadow-lg">
+                                                    <font color={"#5a5a5a"}>Направление: {user.longFly}</font>
                                                 </Buttonr>
                                                 <UncontrolledCollapse toggler="#form1_toggler1">
                                                     <Cardr className="userCardW">
@@ -323,8 +322,8 @@ class DashBoard extends Component {
                                                     </Cardr>
                                                 </UncontrolledCollapse>
 
-                                                <Buttonr color="primary" id="form1_toggler2" className="userCardG hoverCard">
-                                                    <font color={"#5a5a5a"}>Продолжительность рабочей смены</font>
+                                                <Buttonr color="none" id="form1_toggler2" className="userCardWP hoverCard shadow-lg">
+                                                    <font color={"#5a5a5a"}>Продолжительность рабочей смены: {user.timeFly}</font>
                                                 </Buttonr>
                                                 <UncontrolledCollapse toggler="#form1_toggler2">
                                                     <Cardr className="userCardW">
@@ -334,8 +333,8 @@ class DashBoard extends Component {
                                                     </Cardr>
                                                 </UncontrolledCollapse>
 
-                                                <Buttonr color="primary" id="form1_toggler3" className="userCardG hoverCard">
-                                                    <font color={"#5a5a5a"}>Желание дополнительной подработки</font>
+                                                <Buttonr color="none" id="form1_toggler3" className="userCardWP hoverCard shadow-lg">
+                                                    <font color={"#5a5a5a"}>Желание дополнительной подработки: {user.otherTime}</font>
                                                 </Buttonr>
                                                 <UncontrolledCollapse toggler="#form1_toggler3">
                                                     <Cardr className="userCardW">
@@ -345,8 +344,8 @@ class DashBoard extends Component {
                                                     </Cardr>
                                                 </UncontrolledCollapse>
 
-                                                <Buttonr color="primary" id="form1_toggler4" className="userCardG hoverCard">
-                                                    <font color={"#5a5a5a"}>Предпочтительное время вылета</font>
+                                                <Buttonr color="none" id="form1_toggler4" className="userCardWP hoverCard shadow-lg">
+                                                    <font color={"#5a5a5a"}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
                                                 </Buttonr>
                                                 <UncontrolledCollapse toggler="#form1_toggler4">
                                                     <Cardr className="userCardW">
@@ -399,8 +398,8 @@ class DashBoard extends Component {
                                 {this.props.user.wishForm &&
                                 this.props.user.wishForm.map((user, key) =>
                                     <div>
-                                        <Buttonr color="primary" id="form2_toggler1" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Направление</font>
+                                        <Buttonr color="none" id="form2_toggler1" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Направление: Короткие разворотные рейсы</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form2_toggler1">
                                             <Cardr className="userCardW">
@@ -410,8 +409,8 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="form2_toggler2" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Продолжительность рабочей смены</font>
+                                        <Buttonr color="none" id="form2_toggler2" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Продолжительность рабочей смены: Длительная смена</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form2_toggler2">
                                             <Cardr className="userCardW">
@@ -421,8 +420,8 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="form2_toggler3" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Желание дополнительной подработки</font>
+                                        <Buttonr color="none" id="form2_toggler3" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Желание дополнительной подработки: Хочу работать с переработками</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form2_toggler3">
                                             <Cardr className="userCardW">
@@ -432,8 +431,8 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="form2_toggler4" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Предпочтительное время вылета</font>
+                                        <Buttonr color="none" id="form2_toggler4" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Предпочтительное время вылета: Ночь</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form2_toggler4">
                                             <Cardr className="userCardW">
@@ -464,8 +463,8 @@ class DashBoard extends Component {
                                 {this.props.user.wishForm &&
                                 this.props.user.wishForm.map((user, key) =>
                                     <div>
-                                        <Buttonr color="primary" id="form3_toggler1" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Направление</font>
+                                        <Buttonr color="none" id="form3_toggler1" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Направление: Короткие разворотные рейсы</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form3_toggler1">
                                             <Cardr className="userCardW">
@@ -475,8 +474,8 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="form3_toggler2" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Продолжительность рабочей смены</font>
+                                        <Buttonr color="none" id="form3_toggler2" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Продолжительность рабочей смены: Длительная смена</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form3_toggler2">
                                             <Cardr className="userCardW">
@@ -486,8 +485,8 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="form3_toggler3" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Желание дополнительной подработки</font>
+                                        <Buttonr color="none" id="form3_toggler3" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Желание дополнительной подработки: Хочу работать с переработками</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form3_toggler3">
                                             <Cardr className="userCardW">
@@ -497,8 +496,8 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="form3_toggler4" className="userCardG hoverCard">
-                                            <font color={"#5a5a5a"}>Предпочтительное время вылета</font>
+                                        <Buttonr color="none" id="form3_toggler4" className="userCardWP hoverCard shadow-lg">
+                                            <font color={"#5a5a5a"}>Предпочтительное время вылета: Ночь</font>
                                         </Buttonr>
                                         <UncontrolledCollapse toggler="#form3_toggler4">
                                             <Cardr className="userCardW">
