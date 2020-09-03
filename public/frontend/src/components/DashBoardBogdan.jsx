@@ -312,10 +312,10 @@ class DashBoard extends Component {
                                         {this.props.user.wishForm &&
                                         this.props.user.wishForm.map((user, key) =>
                                             <div>
-                                                <Buttonr color="primary" id="toggler1" className="userCardG hoverCard">
+                                                <Buttonr color="primary" id="form1_toggler1" className="userCardG hoverCard">
                                                     <font color={"#5a5a5a"}>Направление</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#toggler1">
+                                                <UncontrolledCollapse toggler="#form1_toggler1">
                                                     <Cardr className="userCardW">
                                                         <CardBody>
                                                             {user.longFly}
@@ -323,10 +323,10 @@ class DashBoard extends Component {
                                                     </Cardr>
                                                 </UncontrolledCollapse>
 
-                                                <Buttonr color="primary" id="toggler2" className="userCardG hoverCard">
+                                                <Buttonr color="primary" id="form1_toggler2" className="userCardG hoverCard">
                                                     <font color={"#5a5a5a"}>Продолжительность рабочей смены</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#toggler2">
+                                                <UncontrolledCollapse toggler="#form1_toggler2">
                                                     <Cardr className="userCardW">
                                                         <CardBody>
                                                             {user.timeFly}
@@ -334,10 +334,10 @@ class DashBoard extends Component {
                                                     </Cardr>
                                                 </UncontrolledCollapse>
 
-                                                <Buttonr color="primary" id="toggler3" className="userCardG hoverCard">
+                                                <Buttonr color="primary" id="form1_toggler3" className="userCardG hoverCard">
                                                     <font color={"#5a5a5a"}>Желание дополнительной подработки</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#toggler3">
+                                                <UncontrolledCollapse toggler="#form1_toggler3">
                                                     <Cardr className="userCardW">
                                                         <CardBody>
                                                             {user.otherTime}
@@ -345,10 +345,10 @@ class DashBoard extends Component {
                                                     </Cardr>
                                                 </UncontrolledCollapse>
 
-                                                <Buttonr color="primary" id="toggler4" className="userCardG hoverCard">
+                                                <Buttonr color="primary" id="form1_toggler4" className="userCardG hoverCard">
                                                     <font color={"#5a5a5a"}>Предпочтительное время вылета</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#toggler4">
+                                                <UncontrolledCollapse toggler="#form1_toggler4">
                                                     <Cardr className="userCardW">
                                                         <CardBody>
                                                             {user.preferenceTimeFly}
@@ -398,10 +398,10 @@ class DashBoard extends Component {
                                 {this.props.user.wishForm &&
                                 this.props.user.wishForm.map((user, key) =>
                                     <div>
-                                        <Buttonr color="primary" id="toggler1" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form2_toggler1" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Направление</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler1">
+                                        <UncontrolledCollapse toggler="#form2_toggler1">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Короткие разворотные рейсы
@@ -409,10 +409,10 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="toggler2" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form2_toggler2" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Продолжительность рабочей смены</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler2">
+                                        <UncontrolledCollapse toggler="#form2_toggler2">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Длительная смена
@@ -420,10 +420,10 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="toggler3" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form2_toggler3" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Желание дополнительной подработки</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler3">
+                                        <UncontrolledCollapse toggler="#form2_toggler3">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Хочу работать с переработками
@@ -431,10 +431,10 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="toggler4" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form2_toggler4" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Предпочтительное время вылета</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler4">
+                                        <UncontrolledCollapse toggler="#form2_toggler4">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Ночь
@@ -482,10 +482,10 @@ class DashBoard extends Component {
                                 {this.props.user.wishForm &&
                                 this.props.user.wishForm.map((user, key) =>
                                     <div>
-                                        <Buttonr color="primary" id="toggler1" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form3_toggler1" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Направление</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler1">
+                                        <UncontrolledCollapse toggler="#form3_toggler1">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Короткие разворотные рейсы
@@ -493,10 +493,10 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="toggler2" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form3_toggler2" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Продолжительность рабочей смены</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler2">
+                                        <UncontrolledCollapse toggler="#form3_toggler2">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Длительная смена
@@ -504,10 +504,10 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="toggler3" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form3_toggler3" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Желание дополнительной подработки</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler3">
+                                        <UncontrolledCollapse toggler="#form3_toggler3">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Хочу работать с переработками
@@ -515,10 +515,10 @@ class DashBoard extends Component {
                                             </Cardr>
                                         </UncontrolledCollapse>
 
-                                        <Buttonr color="primary" id="toggler4" className="userCardG hoverCard">
+                                        <Buttonr color="primary" id="form3_toggler4" className="userCardG hoverCard">
                                             <font color={"#5a5a5a"}>Предпочтительное время вылета</font>
                                         </Buttonr>
-                                        <UncontrolledCollapse toggler="#toggler4">
+                                        <UncontrolledCollapse toggler="#form3_toggler4">
                                             <Cardr className="userCardW">
                                                 <CardBody>
                                                     Ночь
