@@ -28,6 +28,14 @@ a {
   display: flex;
   justify-content: center;
 }
+
+
+.wantForm{
+  display: flex;
+  justify-content: center;
+}
+
+
 .login-form-button {
   width: 100%;
 }
@@ -67,9 +75,20 @@ a {
   color: black !important;
 }
 
+.TitleText {
+  font-family: Gotham Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 17px;
+
+  color: #000000;
+}
+
 .rightBar{
+  width: 28%;
   padding: 30px;
-background: #F6F9FE;
+background: #f6f9fe;
 box-shadow: 0px 0px 9.53192px -0.953192px #F6F9FE;
 border-radius: 14.3px 14.2979px 14.2979px 14.2979px;
 }
@@ -111,6 +130,41 @@ color: #282828;
   justify-content: center;
 }
 
+
+.dashBoardContentDrag {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 90%;
+}
+
+.borderDesign{
+  border-color: 4px double black !important;
+ }
+
+ 
+.userCardSlider{
+  width: 100% !important;
+  border-radius: 10px !important;
+  padding: 8px 8px 0 8px !important;
+  margin: 10px !important;
+}
+
+ .buttonCardSlider{
+  background-color: #5459CD;
+  box-shadow: 0px 12px 12px -8px rgba(84, 89, 205, 0.5);
+  border-radius: 10px;
+  color: white;
+  width: 145px;
+  height: 28px;
+  }
+  
+  .buttonCardSlider,
+  .buttonCardSlider:active,
+  .buttonCardSlider:focus {
+  outline: none !important;
+  }
+
 .dashBoardCard {
   width: 1000px !important;
   border-radius: 20px !important;
@@ -123,6 +177,14 @@ font-weight: bold;
 font-size: 30px;
 line-height: 17px;
 margin-top: 30px;
+}
+
+.mediumText{
+  font-family: Gotham Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 17px;
 }
 
 .sortString{
@@ -141,13 +203,22 @@ text-align: right;
 }
 
 .dashBoardContent {
-  
-  width: 1050px;
+
+  width: 60%;
   padding: 30px;
   margin-right: 30px;
   background: #F3F3FF;
 box-shadow: 0px 0px 6px #F3F3FF;
 border-radius: 15px;
+
+}
+
+.accordion {
+
+  padding: 30px;
+  margin-right: 30px;
+  background: #F6F9FE;
+  border-radius: 15px;
 
 }
 
@@ -158,12 +229,39 @@ border-radius: 15px;
   margin: 10px !important;
 }
 
-.userCard{
-  width: 1000px !important;
-  border-radius: 10px !important;
+.collapseCard{
+  border-radius: 30px !important;
+  background-color: #F3F3FF !important;
+}
+
+.userCardW{
+  border-radius: 30px !important;
   /* padding: 8px 8px 0 8px !important; */
   margin: 5px !important;
-  background-color: #7D58FF !important;
+  background-color: #ffffff !important;
+}
+
+.sUserCard{
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #ffdc82 !important;
+}
+
+.userCard{
+  width: 100% !important;
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #7d58ff !important;
+}
+
+.userCard1{
+  width: 100% !important;
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #5459cd !important;
 }
 
 .tagFlights{
