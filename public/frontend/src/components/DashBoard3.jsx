@@ -72,7 +72,9 @@ class DashBoard extends Component {
             visible2: false,
             // isRedirect: false,
             usersLength: null,
-            newWish: false
+            newWish: false,
+            preference: true,
+            preference1: true,
         };
     }
 
@@ -464,28 +466,78 @@ class DashBoard extends Component {
 
 
                 {this.state.newWish && (
-                    < div className="dashBoardContainer">
+                    this.state.preference && (
+                        < div className="dashBoardContainer">
 
-                        <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+                            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
 
 
-                            <Card size="small"
-                                className="userCardSlider"
-                            >
-                                <div style={{ textAlign: "left", height: '300px' }}>
-                                    <ItemList />
-                                </div>
-                                {/* <div className='buttonCardSlider'>Кнопка</div> */}
+                                <Card size="small"
+                                    className="userCardSlider"
+                                >
+                                    <div style={{ textAlign: "left", height: '300px' }}>
+                                        <ItemList />
+                                    </div>
+                                    {/* <div className='buttonCardSlider'>Кнопка</div> */}
 
-                                {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
+                                    {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
 
-                                <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }}><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+                                    <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
 
-                                {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
+                                    {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
 
-                            </Card>
-                        </div>
-                    </div >
+                                </Card>
+                            </div>
+                        </div >
+                    ),
+                    this.state.preference1 && (
+                        < div className="dashBoardContainer">
+
+                            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+
+
+                                <Card size="small"
+                                    className="userCardSlider"
+                                >
+                                    <div style={{ textAlign: "left", height: '300px' }}>
+                                        <ItemList />
+                                    </div>
+                                    {/* <div className='buttonCardSlider'>Кнопка</div> */}
+
+                                    {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
+
+                                    <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее!!!</span> </Button>
+
+                                    {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
+
+                                </Card>
+                            </div>
+                        </div >
+                    ),
+                    this.state.preference1 && (
+                        < div className="dashBoardContainer">
+
+                            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+
+
+                                <Card size="small"
+                                    className="userCardSlider"
+                                >
+                                    <div style={{ textAlign: "left", height: '300px' }}>
+                                        <ItemList />
+                                    </div>
+                                    {/* <div className='buttonCardSlider'>Кнопка</div> */}
+
+                                    {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
+
+                                    <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее!!!</span> </Button>
+
+                                    {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
+
+                                </Card>
+                            </div>
+                        </div >
+                    )
                 )
                 }
 
