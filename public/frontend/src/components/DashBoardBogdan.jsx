@@ -296,7 +296,7 @@ class DashBoard extends Component {
 
                         <div className='yourTrip'> <font face="Arial Black" >Заявка на текущий период:</font> </div>
 
-                            <Card color="primary" className="userCardW" bordered={true}>
+                        <Card color="primary" className="userCardW shadow-sm" bordered={true}>
                                 <img src={blueCircle} style={{width:"30px", position: "absolute", top: "15px", left: "15px"}}></img>
                                 <div className='TitleText' style={{position: "absolute", top: "25px", left: "50px"}}>
                                     <font face="Arial" color={"#0a0a0a"}>Октябрь</font>
@@ -380,9 +380,10 @@ class DashBoard extends Component {
                                     </div>
 
                             </Card>
+
                         <div className='mediumText'> <font face="Arial Black" >История заявок:</font> </div>
 
-                        <Card color="primary" className="userCardW" bordered={true}>
+                        <Card color="primary" className="userCardW shadow-sm" bordered={true}>
                             <img src={redCircle} style={{width:"30px", position: "absolute", top: "15px", left: "15px"}}></img>
                             <div className='TitleText' style={{position: "absolute", top: "25px", left: "50px"}}>
                                 <font face="Arial" color={"#0a0a0a"}>Сентябрь</font>
@@ -466,7 +467,8 @@ class DashBoard extends Component {
                             </div>
 
                         </Card>
-                        <Card color="primary" className="userCardW" bordered={true}>
+
+                        <Card color="primary" className="userCardW shadow-sm" bordered={true}>
                             <img src={greenCircle} style={{width:"30px", position: "absolute", top: "15px", left: "15px"}}></img>
                             <div className='TitleText' style={{position: "absolute", top: "25px", left: "50px"}}>
                                 <font face="Arial" color={"#0a0a0a"}>Август</font>
@@ -778,11 +780,11 @@ class DashBoard extends Component {
                                             let depart_blue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAABmJLR0QA/wD/AP+gvaeTAAACUUlEQVQ4jc2UXW/SYBTHzwNF3UbpoGsoLw60cxqmqJkhW7KNGS92N7f5Fj+Bt+5r+AH8BBovvFiyi10Yo0uEjLgxsDI3KWVhoYAB9wJDysuoFyULlm7owoXnqj3Pv7/nPP+n56CHT4PQidB0hPJfgrAzf2nExZsDOX1XNbvfFYmTSpARF6fH4m4mF+YoH2vbThtaERayODPOT9wSMG1dzghZvRI0ej0z5UnosHq/uTA9Fheyen/E6metqVwPADjo/OwEPzqU0vxpiZDrUYKWVpxhjno2w7ocuwBAk0WKKEkSXLHvz3ljw1d/IKQs8PM3+uWCG6n+RwjBveEdB51f9DFm469Zb8zN5BQaSYJg1LywPBBN9sJJZksSvF/rdzO5549Dgxf3WlbRepR6+3GQF4jjJPZgknPShcAGvf7dXKpoAQAhacSVmZvknfSB6jav3l1b9F1WJDEuaXx0lxsZSldrmi88xe30em8nrX1FVYRcjp+1tOa1pG1eyOo9rgymlax9xRvMT7y72qwoV7WJjMFkKMuvmwlyKXCpFYQBwMqGpfYGzT8J6bB6084QTxHLIfsn1jblSTC2xjF9rFW10obZq1v0i9d37o/zlZpGyOq30wTLUweH5+RV0iDKD7UjTSCici5ovrVwjArHKFURSZSONYWSTlXzV01LEg2DVG3+B5AJLwFAuaJd2zKfHaTD6nh3BQBWN81i5cRp0R5kwkW5v3xfbafI2s8jEyHWjjQfgvYwp34Vcqg3bXMY8TJC0m7+wumy9hXtFc631UAHZ/ZvaYTXa4YHSp4AAAAASUVORK5CYII=";
                                             let depart_purple = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAABmJLR0QA/wD/AP+gvaeTAAACO0lEQVQ4jc2UQW/SYBjHn5e+WzJmYZMaimyRUBxCWUaiwahQyHZWb84v44fwOxhv6sWTHiQDZIdNhQ46ug7cgAGWTQdkc4xaD53LhApKOPic3v777+/5p0+foiePVRhFGUZC+S9BeOgnSbLJuPLGie/fDs35bUc3iCSb90JJhilsiQyf9lUqdC/CYjkIcYkFP08QiqbUZaobxPqEQGAd447V+iUYStZliudZnmfrsgUArHSN4xKsL2sw/DZruW7pBq0mA5LEPHj42uHYBYBpy8GU+VD9gWZmylwk7naLCHUHFLI3Xr28j3S/I4Tg5q0PVrqWiN2dvvyV4+KMq9DlUVUQxbmVaLBYtAOAPkgrxlVYXIrOzpZ6EEjMuaLvwuWy7VzE4UiMttWyGY+Yu35yMg4ACKleVghHEjRd1W3w9s1SPHanS8Slkj2yuMKyQqeDt7edxV2735+mruz/KaaqonSK7dWJ+atP6zLl8eYwoVDUvpP5bJw8vuhon45Vq1aTqaVd7uxcW00GekEYADIbXkUhHi2/wFi50Bn29myfPi6kU/OB22t2e0XT+ZRPN+nZ+DcF9/Nny0HufaeDZZmqVOi85Gy1JrW7JlNDOygKkdnw9AMBgCQxksToms5BksQcHU/oev5qac1TTe2g+5r/AUSSDQA4bY/lNueGB2GsGI1HACAI7nZ7fHgQSTa0/eJ5/Xmd9RsIMpmbikKsr/m3RP1RaNVv134laiGkNhpkf9vgRM3mpYEeGOE/+yep49ifb88TZgAAAABJRU5ErkJggg==";
                                             if (i % 2 == 0) {
-                                                styl = "userCard hoverCard";
+                                                styl = "userCard hoverCard shadow-sm";
                                                 depart = depart_purple;
                                                 land = landing_purple;
                                             } else {
-                                                styl = "userCard1 hoverCard";
+                                                styl = "userCard1 hoverCard shadow-sm";
                                                 depart = depart_blue;
                                                 land = landing_blue;
                                             }
