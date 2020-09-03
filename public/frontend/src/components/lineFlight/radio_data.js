@@ -6,13 +6,8 @@ export const radio_data = [
         font: 'white'
     },
     {
-        name: "Континентальные",
+        name: "Короткие разворотные рейсы",
         checked: false,
         style: 'rgb(249,221,142)',
-    },
-    {
-        name: "Другое",
-        checked: false,
-        style:'rgb(194,231,251)',
     }
 ]

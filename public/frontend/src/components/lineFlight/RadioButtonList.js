@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { radio_data } from './radio_data';
 import RadioButtonItem from './RadioButtonItem';
-import './radio.css'; 
+import './radio.css';
 
 export default function RadioButtonList() {
     const [checked, setChecked] = useState(null);

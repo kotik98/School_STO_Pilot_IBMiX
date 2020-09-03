@@ -3,7 +3,7 @@ import React, { Suspense, Component } from "react";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
-import RadioButtonList from '../components/BeautyRadioButton/RadioButtonList';
+import RadioButtonList from './lineFlight/RadioButtonList';
 import CalendarWithButtons from './CalendarWithButtons';
 
 
@@ -435,7 +435,7 @@ class DashBoard extends Component {
                         <div className='modalWidth'>
                             <Modal
                                 width='700px'
-                                title="Фильтрация полетов"
+                                title="Фильтрация расписания рейсов"
                                 visible={this.state.visibleSort}
                                 onCancel={this.handleCancel3}
 
@@ -494,8 +494,6 @@ class DashBoard extends Component {
                         </div>
                     )}
                 </div>
-                {/* </Collapse> */}
-
 
                 {(this.state.newWish && this.state.preference)
                     && (
@@ -510,14 +508,8 @@ class DashBoard extends Component {
                                     <div style={{ textAlign: "left", height: '300px' }}>
                                         <ItemList />
                                     </div>
-                                    {/* <div className='buttonCardSlider'>Кнопка</div> */}
-
-                                    {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
 
                                     <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
-
-
-                                    {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
 
                                 </Card>
                             </div>
@@ -532,20 +524,12 @@ class DashBoard extends Component {
                             <Card size="small"
                                 className="userCardSlider"
                             >
-
                                 <div style={{ textAlign: "center", height: '300px' }}>
                                     <RadioButtonList />
                                 </div>
-                                {/* <div className='buttonCardSlider'>Кнопка</div> */}
 
-                                {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
-
-
-
-                                <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '0px' }} onClick={this.step3}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
-                                <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '0px' }} onClick={this.stepBack}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
-
-                                {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step3}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.stepBack}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
 
                             </Card>
                         </div>
@@ -564,25 +548,26 @@ class DashBoard extends Component {
                             <Card size="small"
                                 className="userCardSlider"
                             >
+                                <div className={'calendar_block'}>
+                                    <div style={{
+                                        display: 'flex', flexDirection: 'row',
+                                        justifyContent: 'center'
+                                    }}>
 
-                                {/* <div style={{ textAlign: "center", height: '300px' }}>
-                                    <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-                                </div> */}
-
-                                <div className="site-calendar-demo-card" style={{ backgroundColor: 'purple', width: '300px' }}>
-                                    <CalendarWithButtons onPanelChange={onPanelChange} />
+                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
+                                            <CalendarWithButtons onPanelChange={onPanelChange} />
+                                        </div>
+                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
+                                            <CalendarWithButtons onPanelChange={onPanelChange} />
+                                        </div>
+                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px' }}>
+                                            <CalendarWithButtons onPanelChange={onPanelChange} />
+                                        </div>
+                                    </div>
                                 </div>
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
 
-
-                                {/* <div className='buttonCardSlider'>Кнопка</div> */}
-
-                                {/* <button className='buttonCardSlider' style={{ float: 'right', marginRight: '10px' }} onClick={this.stepWishD2} ><span style={{ marginLeft: '10px' }}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </button> */}
-
-                                <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '0px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
-
-                                <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '0px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
-
-                                {/* <Button className='buttonCardSlider'>Кнопка</Button> */}
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
 
                             </Card>
                         </div>
@@ -606,7 +591,6 @@ class DashBoard extends Component {
 
                                     this.props.users.response.map((user, i) => {
 
-                                        // if (this.filterPrise(user.time)) {
                                         if (user.city_photo) {
 
                                             console.log(user)
