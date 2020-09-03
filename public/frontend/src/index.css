@@ -220,7 +220,21 @@ border-radius: 15px;
   border-radius: 30px !important;
   /* padding: 8px 8px 0 8px !important; */
   margin: 5px !important;
-  background-color: #f6f9fe !important;
+  background-color: #f3f3ff !important;
+}
+
+.userCardGreen{
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #9ff7cf !important;
+}
+
+.userCardRed{
+  border-radius: 30px !important;
+  /* padding: 8px 8px 0 8px !important; */
+  margin: 5px !important;
+  background-color: #fea283 !important;
 }
 
 .userCardG{
