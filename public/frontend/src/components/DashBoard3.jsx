@@ -504,7 +504,9 @@ class DashBoard extends Component {
 
                                 <Card size="small"
                                     className="userCardSlider"
-                                >
+                                > <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 1. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Переместите бокс по приоритету</span></div>
+
+
                                     <div style={{ textAlign: "left", height: '300px' }}>
                                         <ItemList />
                                     </div>
@@ -524,6 +526,8 @@ class DashBoard extends Component {
                             <Card size="small"
                                 className="userCardSlider"
                             >
+                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
+
                                 <div style={{ textAlign: "center", height: '300px' }}>
                                     <RadioButtonList />
                                 </div>
@@ -548,6 +552,8 @@ class DashBoard extends Component {
                             <Card size="small"
                                 className="userCardSlider"
                             >
+                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 3. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
+
                                 <div className={'calendar_block'}>
                                     <div style={{
                                         display: 'flex', flexDirection: 'row',

@@ -430,3 +430,42 @@ li {
   border-color: #1990FF;
 }
 
+.newForm{
+
+/* width: 130px;
+height: 17px; */
+
+
+margin: 10px 0px 25px 35px;
+
+font-family: Gotham Pro;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 17px;
+
+color: #000000;
+}
+
+.newForm2{
+
+  font-family: Gotham Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 17px;
+  color: #000000;
+  }
+
+  .newForm3{
+
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 17px;
+    opacity: 0.5;
+    color: #000000;
+    }
+  
+
