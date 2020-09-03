@@ -3,12 +3,11 @@ import RadioButtonItem from './RadioButtonItem';
 import './radio.css'; 
 
 // Redux Block
-import { useSelector, useDispatch } from 'react-redux';
-import { SetFlightDirection } from "../../redux/action";
+import { useDispatch } from 'react-redux';
 // End of redux
 
-export default function RadioButtonList() {
-    const [radio_data, setRadioData] = useState(useSelector(state => state.flight_direction[0]));
+export default function RadioButtonList({data, dispatcher_func}) {
+    const [radio_data, setRadioData] = useState(data);
     const dispatch = useDispatch();
 
     const changeState = (selected) => {
@@ -19,7 +18,7 @@ export default function RadioButtonList() {
                 item.checked = false;
             return item;
         });
-        dispatch(SetFlightDirection(new_data));
+        dispatch(dispatcher_func(new_data));
         setRadioData(new_data);
     }
 

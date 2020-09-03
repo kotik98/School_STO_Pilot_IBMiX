@@ -42,21 +42,7 @@
     font-size: 1rem;
 }
 /* Отдельные цвета для каждой карточки. Почему то инлайновый стиль работает некорректо */
-.flight_direction {
-    background-color: rgb(108, 135, 237);
-}
-.duration {
-    background-color: rgb(242, 166, 137);
-}
-.wish_to_work {
-    background-color: rgb(249, 220, 141);
-}
-.weekends {
-    background-color: rgb(119, 93, 246);
-}
-.time_of_fly {
-    background-color: rgb(194, 213, 251);
-}
+
 .category_title {
     font-size: 1.2rem;
     font-weight: bold;

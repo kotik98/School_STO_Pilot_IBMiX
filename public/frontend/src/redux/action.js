@@ -7,6 +7,7 @@ import {
   CLEAN_REDUX,
   SET_PRIORITY,
   SET_FLIGHT_DIRECTION,
+  SET_DAY_TIME,
 } from "./type";
 
 export const AddPhotoAC = photo => {
@@ -65,5 +66,12 @@ export const SetFlightDirection = flight_direction => {
   return {
     type: SET_FLIGHT_DIRECTION,
     flight_direction: flight_direction,
+  }
+}
+
+export const SetDayTime = daytime => {
+  return {
+    type: SET_DAY_TIME,
+    daytime: daytime,
   }
 }
