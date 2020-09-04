@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Avatar, Tabs, Icon, Button, Card, Form, DatePicker } from "antd";
-
+import pilotAvatar from "../images/pilotAvatarHalf.jpg";
 
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -60,13 +60,13 @@ class Profile extends Component {
           >
             <div style={{ display: "flex" }}>
               <div>
-                {this.props.photos.length !== 0 && (
-                  <Avatar
-                    size={150}
-                    icon="user"
-                    src={this.props.photos[0].thumbUrl}
-                  />
-                )}
+
+                <Avatar
+                  size={150}
+                  icon="user"
+                  src={pilotAvatar}
+                />
+
               </div>
 
               <div>
@@ -80,89 +80,89 @@ class Profile extends Component {
             <div>
               {this.props.user && (
                 <div>
-                  <h1
+                  <h3
                     style={{ color: "#ffffff" }}
-                  >{`${this.props.user.firstName} ${this.props.user.lastName}`}</h1>
+                  >{`${this.props.user.firstName} ${this.props.user.lastName}`}</h3>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="user" /> &nbsp; Должность: {`${this.props.user.crewRole}`}
                       </span>{" "}
                       <span style={{ fontWeight: "normal" }}>
                         {this.props.user.username}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="calendar" /> &nbsp; Стаж работы в должности:  с {`${this.props.user.standingFromDateInRole}`}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="phone" /> &nbsp; Номер телефона:{" "}
                       </span>{" "}
                       <span style={{ fontWeight: "normal" }}>
                         {this.props.user.phone}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="mail" /> &nbsp; E-mail:{" "}
                       </span>{" "}
                       <span style={{ fontWeight: "normal" }}>
                         {this.props.user.email}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="calendar" /> &nbsp; Стаж работы в авиакомпании:  с {`${this.props.user.standingFromDate}`}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="global" /> &nbsp; Индекс сеньорити: {`${this.props.user.reliabilityIndex}`}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   <div>
-                    <h3 style={{ color: "#ffffff" }}>
+                    <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="bell" /> &nbsp; Индекс поощрений и наказаний: {`${this.props.user.rewardsAndPunishments}`}
                       </span>
-                    </h3>
+                    </h5>
                   </div>
                   {this.props.user.vk && (
                     <div>
-                      <h3 style={{ color: "#ffffff" }}>
+                      <h5 style={{ color: "#ffffff" }}>
                         <span style={{ fontWeight: "bold" }}>
                           <Icon type="global" /> &nbsp; VK:{" "}
                         </span>{" "}
                         <span style={{ fontWeight: "normal" }}>
                           {this.props.user.vk}
                         </span>
-                      </h3>
+                      </h5>
                     </div>
                   )}
                   {this.props.user.nativeLocation && (
                     <div>
-                      <h3 style={{ color: "#ffffff" }}>
+                      <h5 style={{ color: "#ffffff" }}>
                         <span style={{ fontWeight: "bold" }}>
                           <Icon type="compass" /> &nbsp; Приоритетный город для полетов:{" "}
                         </span>{" "}
                         <span style={{ fontWeight: "normal" }}>
                           {this.props.user.nativeLocation}
                         </span>
-                      </h3>
+                      </h5>
                     </div>
                   )}
                 </div>
