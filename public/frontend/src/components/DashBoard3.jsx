@@ -16,6 +16,9 @@ import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
 
 
 import CalendarWithButtons from './CalendarWithButtons';
+import CalendarWithButtonsPlusOneMonth from './CalendarWithButtonsPlusOneMonth'
+import CalendarWithButtonsPlusTwoMonth from './CalendarWithButtonsPlusTwoMonth'
+
 
 //sprestay push
 import { Tabs } from 'antd';
@@ -487,6 +490,10 @@ class DashBoard extends Component {
                                 </svg>
                             </Link>
                         </div>
+                        <Link to={'/logout'}>
+                            <Buttonr close />
+
+                        </Link>
 
                     </div>
 
@@ -707,14 +714,14 @@ class DashBoard extends Component {
                                         justifyContent: 'center'
                                     }}>
 
-                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
+                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#FFDE84', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
                                             <CalendarWithButtons onPanelChange={onPanelChange} />
                                         </div>
                                         <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
-                                            <CalendarWithButtons onPanelChange={onPanelChange} />
+                                            <CalendarWithButtonsPlusOneMonth onPanelChange={onPanelChange} />
                                         </div>
-                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px' }}>
-                                            <CalendarWithButtons onPanelChange={onPanelChange} />
+                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C7F8CF', width: '300px', borderRadius: '10px' }}>
+                                            <CalendarWithButtonsPlusTwoMonth onPanelChange={onPanelChange} />
                                         </div>
                                     </div>
                                 </div>
@@ -774,8 +781,8 @@ class DashBoard extends Component {
                                         </div>
                                     )}
                             </div>
-                            <Buttonr close style={{ position: "absolute", top: "15px", right: "15px" }} />
-                            <div className='settings-icon' style={{ position: "absolute", bottom: "15px", right: "15px" }}>
+
+                            <div className='settings-icon' onClick={this.onNewWishList} style={{ position: "absolute", bottom: "15px", right: "15px" }}>
                                 <svg width="19" height="20" viewBox="0 0 19 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0)">
@@ -1007,7 +1014,7 @@ class DashBoard extends Component {
                             onCancel={this.handleCancel}
                             footer={[
                                 <div style={{ height: 60 }}>
-                                    <Icon
+                                    {/* <Icon
                                         type="close-circle"
                                         style={{ fontSize: "62px", float: "left" }}
                                         onClick={this.handleCancel}
@@ -1019,7 +1026,7 @@ class DashBoard extends Component {
                                         twoToneColor="#eb2f96"
                                         style={{ fontSize: "62px", float: "right" }}
                                         onClick={this.isLike}
-                                    />
+                                    /> */}
                                 </div>
                             ]}
                         >
@@ -1038,7 +1045,7 @@ class DashBoard extends Component {
                                     <div className="card-container">
                                         <br />
                                         <Tag color="green">
-                                            <div style={{ color: 'black', fontSize: '32px' }}>
+                                            <div style={{ color: 'black', fontSize: '16px' }}>
                                                 Маршрут: {this.state.modalUser.where_from} - {this.state.modalUser.where_to}
                                             </div>
                                         </Tag>

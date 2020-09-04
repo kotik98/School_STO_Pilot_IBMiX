@@ -33,8 +33,8 @@ class CalendarMenu extends Component {
     }
 }
 
-const lastDate = moment(new Date().setMonth(new Date().getMonth() + 0))
-class CalendarWithButtons extends Component {
+const lastDate = moment(new Date().setMonth(new Date().getMonth() + 1))
+class CalendarWithButtonsPlusOneMonth extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,4 +54,5 @@ class CalendarWithButtons extends Component {
     }
 }
 
-export default CalendarWithButtons;
+export default CalendarWithButtonsPlusOneMonth;
+
