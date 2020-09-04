@@ -19,8 +19,8 @@
 }
 
 .user-avatar {
-    margin-right: 14px;
-    margin-left: 64px;
+    margin-right: 2%;
+    margin-left: 5%;
 }
 
 .user-info {
@@ -39,7 +39,7 @@
 
 .bidding-info {
     flex: 0 1 auto;
-    margin-left: 156px;
+    margin-left: 25%;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -129,8 +129,8 @@
 }
 
 .bidding-stats {
-    margin-left: 52px;
-    margin-right: 14px;
+    margin-left: 7%;
+    margin-right: 2%;
     font-weight: bold;
     font-size: 14px;
     line-height: 14px;
