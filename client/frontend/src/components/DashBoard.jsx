@@ -171,6 +171,7 @@ class DashBoard extends Component {
           <Layout>
             {/* START HEAD PANEL */}
             <div className="head-panel">
+              <Button type="primary" className='bidding-btn'>Новая заявка</Button>
               {/*<span className="dots" />*/}
               {/*<MoreOutlined />*/}
               <Avatar
@@ -212,37 +213,6 @@ class DashBoard extends Component {
                   <path
                       d="M13.0003 16.0953C14.7097 16.0953 16.0955 14.7095 16.0955 13C16.0955 11.2906 14.7097 9.90477 13.0003 9.90477C11.2908 9.90477 9.90503 11.2906 9.90503 13C9.90503 14.7095 11.2908 16.0953 13.0003 16.0953Z"
                       fill="#5459CD"/>
-                </svg>
-              </div>
-              <div>
-                <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <g filter="url(#filter0_d)">
-                    <rect width="23" height="23" rx="7"
-                          transform="matrix(-1 0 0 1 32 9)" fill="white"/>
-                  </g>
-                  <path
-                      d="M25 20.5L18.9429 26.6518C18.4857 27.1161 17.7714 27.1161 17.3143 26.6518C16.8571 26.1875 16.8571 25.4621 17.3143 24.9978L21.7714 20.471L17.3429 16.0022C16.8857 15.5379 16.8857 14.8125 17.3429 14.3482C17.8 13.8839 18.5143 13.8839 18.9714 14.3482L25 20.5Z"
-                      fill="#282828"/>
-                  <defs>
-                    <filter id="filter0_d" x="0" y="0" width="41" height="41"
-                            filterUnits="userSpaceOnUse"
-                            color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                      <feColorMatrix in="SourceAlpha" type="matrix"
-                                     values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                      <feMorphology radius="1" operator="erode" in="SourceAlpha"
-                                    result="effect1_dropShadow"/>
-                      <feOffset/>
-                      <feGaussianBlur stdDeviation="5"/>
-                      <feColorMatrix type="matrix"
-                                     values="0 0 0 0 0.620833 0 0 0 0 0.620833 0 0 0 0 0.620833 0 0 0 0.25 0"/>
-                      <feBlend mode="normal" in2="BackgroundImageFix"
-                               result="effect1_dropShadow"/>
-                      <feBlend mode="normal" in="SourceGraphic"
-                               in2="effect1_dropShadow" result="shape"/>
-                    </filter>
-                  </defs>
                 </svg>
               </div>
               <div className='bidding-stats'>
@@ -301,8 +271,7 @@ class DashBoard extends Component {
                   </defs>
                 </svg>
               </div>
-              <Button type="primary" className='bidding-btn'>Новая заявка</Button>
-              <div className='settings-icon'>
+              {/*<div className='settings-icon'>
                 <svg width="19" height="20" viewBox="0 0 19 20" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0)">
@@ -320,7 +289,7 @@ class DashBoard extends Component {
                     </clipPath>
                   </defs>
                 </svg>
-              </div>
+              </div>*/}
             </div>
             {/* END HEAD PANEL */}
 
