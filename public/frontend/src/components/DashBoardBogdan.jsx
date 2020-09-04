@@ -168,6 +168,23 @@ class DashBoard extends Component {
         });
 
     }
+
+    changeDirection = (s) => {
+        message.info("Направление: " + s, 4)
+    }
+
+    changeDuration = (s) => {
+        message.info("Продолжительность рабочей смены: " + s, 4)
+    }
+
+    changeWork = (s) => {
+        message.info("Желание дополнительной подработки: " + s, 4)
+    }
+
+    changeDepartTime = (s) => {
+        message.info("Предпочтительное время вылета: " + s, 4)
+    }
+
     handleCancel = e => {
         console.log(e);
         this.setState({
@@ -311,49 +328,21 @@ class DashBoard extends Component {
                                         {this.props.user.wishForm &&
                                         this.props.user.wishForm.map((user, key) =>
                                             <div>
-                                                <Buttonr color="none" id="form1_toggler1" className="userCardWP hoverCard shadow-lg">
+                                                <Buttonr onClick={() => this.changeDirection(user.longFly)} color="none" className="userCardWP hoverCard shadow-lg">
                                                     <font color={"#5a5a5a"}>Направление: {user.longFly}</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#form1_toggler1">
-                                                    <Cardr className="userCardW">
-                                                        <CardBody>
-                                                            {user.longFly}
-                                                        </CardBody>
-                                                    </Cardr>
-                                                </UncontrolledCollapse>
 
-                                                <Buttonr color="none" id="form1_toggler2" className="userCardWP hoverCard shadow-lg">
+                                                <Buttonr onClick={() => this.changeDuration(user.timeFly)} color="none" className="userCardWP hoverCard shadow-lg">
                                                     <font color={"#5a5a5a"}>Продолжительность рабочей смены: {user.timeFly}</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#form1_toggler2">
-                                                    <Cardr className="userCardW">
-                                                        <CardBody>
-                                                            {user.timeFly}
-                                                        </CardBody>
-                                                    </Cardr>
-                                                </UncontrolledCollapse>
 
-                                                <Buttonr color="none" id="form1_toggler3" className="userCardWP hoverCard shadow-lg">
+                                                <Buttonr onClick={() => this.changeWork(user.otherTime)} color="none" className="userCardWP hoverCard shadow-lg">
                                                     <font color={"#5a5a5a"}>Желание дополнительной подработки: {user.otherTime}</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#form1_toggler3">
-                                                    <Cardr className="userCardW">
-                                                        <CardBody>
-                                                            {user.otherTime}
-                                                        </CardBody>
-                                                    </Cardr>
-                                                </UncontrolledCollapse>
 
-                                                <Buttonr color="none" id="form1_toggler4" className="userCardWP hoverCard shadow-lg">
+                                                <Buttonr onClick={() => this.changeDepartTime(user.preferenceTimeFly)} color="none" className="userCardWP hoverCard shadow-lg">
                                                     <font color={"#5a5a5a"}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
                                                 </Buttonr>
-                                                <UncontrolledCollapse toggler="#form1_toggler4">
-                                                    <Cardr className="userCardW">
-                                                        <CardBody>
-                                                            {user.preferenceTimeFly}
-                                                        </CardBody>
-                                                    </Cardr>
-                                                </UncontrolledCollapse>
                                             </div>
                                         )}
                                 </div>
