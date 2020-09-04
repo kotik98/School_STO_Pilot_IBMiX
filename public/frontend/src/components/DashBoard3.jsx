@@ -3,7 +3,17 @@ import React, { Suspense, Component } from "react";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
+import ItemList_day from '../components/DnD_day/itemList';
+
 import RadioButtonList from './lineFlight/RadioButtonList';
+
+import RadioButtonList_WorkDay from './WorkTime/RadioButtonList';
+import { data_work_time } from './WorkTime/radio_data'
+import { data_work_day } from './WorkDay/radio_data'
+
+import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
+
+
 import CalendarWithButtons from './CalendarWithButtons';
 
 
@@ -27,14 +37,12 @@ import {
 
 import { connect } from "react-redux";
 
-import { AddPhotoAC, AddUserAC, AddUsersDashBoard } from "../redux/action";
+import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from "../redux/action";
 
 import './DashBoard.css';
 import {
     MoreOutlined,
 } from '@ant-design/icons';
-
-
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -77,6 +85,9 @@ class DashBoard extends Component {
             preference: true,
             preference1: false,
             preference2: false,
+            preference3: false,
+            preference4: false,
+            preference5: false,
         };
     }
 
@@ -107,6 +118,7 @@ class DashBoard extends Component {
     };
 
     async componentDidMount() {
+        this.dispatcher_func = { SetPriority }
 
         const reqUsersLength = await fetch("/api/usersLength", {
             headers: {
@@ -234,6 +246,9 @@ class DashBoard extends Component {
             preference: false,
             preference1: true,
             preference2: false,
+            preference3: false,
+            preference4: false,
+            preference5: false,
         });
         console.log(this.state)
     };
@@ -243,6 +258,9 @@ class DashBoard extends Component {
             preference: true,
             preference1: false,
             preference2: false,
+            preference3: false,
+            preference4: false,
+            preference5: false,
         });
         console.log(this.state)
     };
@@ -253,8 +271,45 @@ class DashBoard extends Component {
             preference: false,
             preference1: false,
             preference2: true,
+            preference3: false,
+            preference4: false,
+            preference5: false,
         });
+    };
 
+    step4 = () => {
+
+        this.setState({
+            preference: false,
+            preference1: false,
+            preference2: false,
+            preference3: true,
+            preference4: false,
+            preference5: false,
+        });
+    };
+
+    step5 = () => {
+
+        this.setState({
+            preference: false,
+            preference1: false,
+            preference2: false,
+            preference3: false,
+            preference4: true,
+            preference5: false,
+        });
+    };
+    step6 = () => {
+
+        this.setState({
+            preference: false,
+            preference1: false,
+            preference2: false,
+            preference3: false,
+            preference4: false,
+            preference5: true,
+        });
     };
 
 
@@ -508,6 +563,8 @@ class DashBoard extends Component {
 
 
                                     <div style={{ textAlign: "left", height: '300px' }}>
+                                        {/* <ItemList />
+                                         */}
                                         <ItemList />
                                     </div>
 
@@ -529,7 +586,12 @@ class DashBoard extends Component {
                                 <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
 
                                 <div style={{ textAlign: "center", height: '300px' }}>
-                                    <RadioButtonList />
+                                    {this.props.flight_direction && (
+                                        <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
+
+                                    )}
+                                    {/* <RadioButtonList /> */}
+
                                 </div>
 
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step3}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
@@ -538,10 +600,6 @@ class DashBoard extends Component {
                             </Card>
                         </div>
                     </div >
-
-
-
-
                 }
 
                 {(this.state.newWish && this.state.preference2) &&
@@ -552,7 +610,86 @@ class DashBoard extends Component {
                             <Card size="small"
                                 className="userCardSlider"
                             >
-                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 3. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
+                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 3. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
+
+                                <ItemList_day />
+
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step4}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
+
+                            </Card>
+                        </div>
+                    </div >
+                }
+
+
+
+                {(this.state.newWish && this.state.preference3) &&
+
+                    < div className="dashBoardContainer">
+
+                        <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+                            <Card size="small"
+                                className="userCardSlider"
+                            >
+                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 4. Преференции переработок</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
+
+                                <div style={{ textAlign: "center", height: '300px' }}>
+                                    {this.props.flight_direction && (
+                                        <RadioButtonList_WorkDay dispatcher_func={SetFlightDirection} data={data_work_time} />
+
+                                    )}
+                                    {/* <RadioButtonList /> */}
+
+                                </div>
+
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step5}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step3}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
+
+                            </Card>
+                        </div>
+                    </div >
+                }
+
+
+                {(this.state.newWish && this.state.preference4) &&
+
+                    < div className="dashBoardContainer">
+
+                        <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+                            <Card size="small"
+                                className="userCardSlider"
+                            >
+                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 5. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
+
+                                <div style={{ textAlign: "center", height: '300px' }}>
+                                    {this.props.flight_direction && (
+                                        <RadioButtonList_WorkTime dispatcher_func={SetFlightDirection} data={data_work_day} />
+
+                                    )}
+                                    {/* <RadioButtonList /> */}
+
+                                </div>
+
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step6}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step4}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
+
+                            </Card>
+                        </div>
+                    </div >
+                }
+
+
+                {(this.state.newWish && this.state.preference5) &&
+
+                    < div className="dashBoardContainer">
+
+                        <div className="dashBoardContentDrag borderDesign" style={{ borderColor: "4px double black;" }}>
+                            <Card size="small"
+                                className="userCardSlider"
+                            >
+                                <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 6. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
 
                                 <div className={'calendar_block'}>
                                     <div style={{
@@ -571,18 +708,20 @@ class DashBoard extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }}><span style={{ marginLeft: '10px' }} onClick={() => this.step()}>🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }}><span style={{ marginLeft: '10px' }} >&#10004;</span><span style={{ marginLeft: '35px' }}>Сохранить</span> </Button>
 
-                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
+                                <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step5}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
 
                             </Card>
                         </div>
                     </div >
-
-
-
-
                 }
+
+
+
+                {/* <ItemList dispatcher_func={SetPriority} data={this.props.priority_list_for_application}/>
+                <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction}/>
+                <ItemList dispatcher_func={SetDayTime} data={this.props.daytime}/> */}
 
                 <div className="dashBoardContainer">
 
@@ -1037,7 +1176,10 @@ class DashBoard extends Component {
 function mapStateToProps(store) {
     return {
         users: store.usersDashBoard,
-        user: store.user
+        user: store.user,
+        priority_list_for_application: store.priority,
+        flight_direction: store.flight_direction,
+        daytime: store.daytime,
     };
 }
 

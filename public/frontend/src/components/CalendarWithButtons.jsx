@@ -19,10 +19,10 @@ class CalendarMenu extends Component {
     }
     render() {
         return (
-            <div>            
+            <div>
                 <div className='calendar' ref={this.fillerRef}></div>
                 <Card style={{ position: "relative" }}>
-                    <Button style={{position: 'absolute', width:'30px',height: '30px', top: '20px', right:'20px', cursor: 'pointer'}} onClick={this.props.onExit}>X</Button>
+                    <Button style={{ position: 'absolute', width: '30px', height: '30px', top: '20px', right: '20px', cursor: 'pointer' }} onClick={this.props.onExit}>X</Button>
                     <p>Здесь будут предпочтения</p>
                     <p>на этот день</p>
                     <Button>Создать предпочтение</Button>

@@ -1,12 +1,12 @@
-export const radio_data = [
+export const data_work_day = [
     {
-        name: "Трансатлантические",
+        name: "Короткая смена",
         checked: true,
         style: 'rgb(119,93,246)',
         font: 'white'
     },
     {
-        name: "Континентальные",
+        name: "Длительная смена",
         checked: false,
         style: 'rgb(249,221,142)',
     }
