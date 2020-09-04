@@ -6,7 +6,7 @@ function Item({ item, index }) {
 
   const counting_stars = () => {
     let arr = [];
-    for (let i = 0; i < (-1) * index + 5; i++)
+    for (let i = 0; i < (-1) * index + 4; i++)
       arr.push(<p className='rating_star'>&#9733;</p>);
 
     return arr;
@@ -24,7 +24,7 @@ function Item({ item, index }) {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
-          <pre className={'category_title'}>{item.name}</pre>
+          <pre className={'category_title'}>{item.name}<br />{item.subtitle}</pre>
           <br />
           <div>
             {counting_stars()}

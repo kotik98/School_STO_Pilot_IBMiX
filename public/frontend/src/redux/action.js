@@ -4,7 +4,10 @@ import {
   EDIT_PROFILE,
   ADD_USER,
   ADD_USERS_DASHBOARD,
-  CLEAN_REDUX
+  CLEAN_REDUX,
+  SET_PRIORITY,
+  SET_FLIGHT_DIRECTION,
+  SET_DAY_TIME,
 } from "./type";
 
 export const AddPhotoAC = photo => {
@@ -51,3 +54,24 @@ export const CleanReduxAC = () => {
     type: CLEAN_REDUX
   };
 };
+
+export const SetPriority = priority_list => {
+  return {
+    type: SET_PRIORITY,
+    priority_list: priority_list,
+  }
+}
+
+export const SetFlightDirection = flight_direction => {
+  return {
+    type: SET_FLIGHT_DIRECTION,
+    flight_direction: flight_direction,
+  }
+}
+
+export const SetDayTime = daytime => {
+  return {
+    type: SET_DAY_TIME,
+    daytime: daytime,
+  }
+}
