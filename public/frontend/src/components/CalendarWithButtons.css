@@ -1,0 +1,9 @@
+.workDay{
+    border: 2px solid rgba(156, 136, 255, 0.7) !important;
+}
+
+.responsive-calendar {
+    /* by setting font-size, all the elements will correspond */
+    font-size: 10px !important; /* default to 10px */
+    margin: auto;
+}
