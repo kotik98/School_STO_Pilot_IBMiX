@@ -8,20 +8,29 @@ import {
   SET_PRIORITY,
   SET_FLIGHT_DIRECTION,
   SET_DAY_TIME,
+  SET_WORK_TIME,
+  SET_WORK_DAY,
 } from "./type";
 
-import { data } from '../components/DnD/data';
-import { radio_data } from '../components/lineFlight/radio_data';
-import { day_time } from "../components/DnD/day_time";
+
+// Импорты данных для компонентов заявки (ДнД и радоикнопки)
+import { dayTime } from '../components/data_for_all_components/for_dnd_blocks/dayTime';
+import { preferences } from '../components/data_for_all_components/for_dnd_blocks/preferences';
+import { flightDirection } from '../components/data_for_all_components/for_radio_blocks/flightDirection';
+import { workDay } from '../components/data_for_all_components/for_radio_blocks/workDay';
+import { workTime } from '../components/data_for_all_components/for_radio_blocks/workTime';
+// Закончили импорты данных для заявки
 
 const initialState = {
   photos: [],
   isLogin: false,
   user: {},
   usersDashBoard: [],
-  priority: data,
-  flight_direction: radio_data,
-  daytime: day_time,
+  dayTime: dayTime,
+  preferences: preferences,
+  flightDirection: flightDirection,
+  workDay: workDay,
+  workTime: workTime,
 };
 
 export default function (oldState = initialState, action) {
@@ -61,21 +70,52 @@ export default function (oldState = initialState, action) {
         user: {},
         usersDashBoard: [],
       };
-    case SET_PRIORITY:
+      // Пприоритет полей
+    case SET_PRIORITY: {
+      console.log("In priority")
+      console.log(oldState);
       return {
         ...oldState,
-        priority: action.priority_list,
+        preferences: action.priority_list,
       };
-    case SET_FLIGHT_DIRECTION:
+    }
+      // Желаемое направления полета
+    case SET_FLIGHT_DIRECTION: {
+      console.log("In flightDirection");
+      console.log(oldState);
       return {
         ...oldState,
-        flight_direction: action.flight_direction,
+        flightDirection: action.flight_direction,
       }
-    case SET_DAY_TIME:
+    }
+      // Желаемое время вылета
+    case SET_DAY_TIME: {
+      console.log("In day time");
+      console.log(oldState);
       return {
         ...oldState,
-        daytime: action.daytime,
+        dayTime: action.daytime,
       }
+    }
+      // Длина смены
+    case SET_WORK_DAY: {
+      console.log('In work day');
+      console.log(oldState);
+      return {
+        ...oldState,
+        workDay: action.workDay,
+      }
+    }
+      // Про переработки
+    case SET_WORK_TIME: {
+      console.log('In work time');
+      console.log(oldState);
+
+      return {
+        ...oldState,
+        workTime: action.workTime,
+      }
+    }
 
     default:
       return oldState;

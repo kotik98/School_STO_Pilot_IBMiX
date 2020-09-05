@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { data } from './data';
 import Item from './itemComponent';
 import './dnd_style.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-function ItemList() {
+function ItemList({data, dispatcher_func}) {
     const [wishes, setWishes] = useState(data);
 
     const handleDragEnd = (result) => {
@@ -19,8 +18,7 @@ function ItemList() {
         new_wishes.splice(source.index, 1);
         new_wishes.splice(destination.index, 0, element);
         setWishes(new_wishes);
-        console.log(new_wishes)
-
+        dispatcher_func(new_wishes);
     }
 
     return (
@@ -39,7 +37,7 @@ function ItemList() {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                         >
-                            {wishes.map((item, index) => <Item item={item} index={index} key={item.name + '_sprestay'} />)}
+                            {wishes.map((item, index) => <Item item={item} index={index} key={item.name + '_sprestay'} amount_of_stars={wishes.length}/>)}
                             {provided.placeholder}
                         </div>
                     )}

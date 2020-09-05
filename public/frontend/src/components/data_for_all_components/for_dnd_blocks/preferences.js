@@ -1,23 +1,22 @@
-export const data = [
+export const preferences = [
     {
         name: 'Направление\nполета',
-        style: 'rgb(108, 135, 237)',
+        style: 'flight_direction',
     },
     {
         name: "Продолжительнсоть\nсмены",
-        style: 'rgb(242, 166, 137)',
+        style: 'duration',
     },
     {
         name: "Желание работать\nс переработками",
-        style: 'rgb(249, 220, 141)',
+        style: 'wish_to_work',
     },
     {
         name: "Выбор выходных\nдней",
-        style: 'rgb(119, 93, 246)',
-        font: 'white',
+        style: 'weekends',
     },
     {
         name: "Время вылета",
-        style: 'rgb(194, 213, 251)',
+        style: 'time_of_fly'
     },
 ]

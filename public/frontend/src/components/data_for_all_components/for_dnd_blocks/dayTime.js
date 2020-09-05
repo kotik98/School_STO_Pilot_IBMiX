@@ -1,22 +1,22 @@
-export const day_time = [
+export const dayTime = [
     {
         name: 'Утро', 
         subtitle: '(6:00-12:00)',
-        style: 'rgb(108, 135, 237)',
+        style: 'flight_direction',
     },
     {
         name: 'День',
         subtitle: '(12:00-17:00)',
-        style: 'rgb(242, 166, 137)',
+        style: 'duration',
     },
     {
         name: 'Вечер',
         subtitle: '(17:00-22:00)',
-        style: 'rgb(249, 220, 141)',
+        style: 'wish_to_work',
     },
     {
         name: 'Ночь',
         subtitle: '(22:00-6:00)',
-        style: 'rgb(194, 213, 251)',
+        style: 'time_of_fly',
     }
 ]

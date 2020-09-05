@@ -2,17 +2,17 @@ import React, { Suspense, Component } from "react";
 // import avatar from "../images/avatar.png";
 import plane from "../images/plane.jpg";
 import logo from '../images/logo.png';
-import ItemList from '../components/DnD/itemList';
-import ItemList_day from '../components/DnD_day/itemList';
 import { UncontrolledCollapse, Button as Buttonr, CardBody, Card as Cardr, Collapse as Collapser } from 'reactstrap';
 
-import RadioButtonList from './lineFlight/RadioButtonList';
+// Компоненты для заявки
+import ItemList from '../components/DnD/itemList';
+import RadioButtonList from '../components/RadioButtonComponent/RadioButtonList';
 
-import RadioButtonList_WorkDay from './WorkTime/RadioButtonList';
-import { data_work_time } from './WorkTime/radio_data'
-import { data_work_day } from './WorkDay/radio_data'
+// import RadioButtonList_WorkDay from './WorkTime/RadioButtonList';
+// import { data_work_time } from './data_for_all_components/for_radio_blocks/workTime'
+// import { data_work_day } from './data_for_all_components/for_radio_blocks/workDay'
 
-import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
+// import RadioButtonList_WorkTime from './RadioButtonComponent/RadioButtonList';
 
 
 import CalendarWithButtons from './CalendarWithButtons';
@@ -41,9 +41,10 @@ import {
 
 import { Link, Redirect } from "react-router-dom";
 
+// Redux блок
 import { connect } from "react-redux";
-
-import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from "../redux/action";
+import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime, SetWorkDay, SetWorkTime } from "../redux/action";
+// Конец Redux block
 
 import './DashBoard.css';
 import {
@@ -94,6 +95,15 @@ class DashBoard extends Component {
             preference3: false,
             preference4: false,
             preference5: false,
+
+            application: {
+                flight_direction: null,
+                work_day: null,
+                work_time: null,
+                day_time: null,
+                preferences: null,
+            },
+
         };
     }
 
@@ -580,9 +590,7 @@ class DashBoard extends Component {
 
 
                                     <div style={{ textAlign: "left", height: '300px' }}>
-                                        {/* <ItemList />
-                                         */}
-                                        <ItemList />
+                                        <ItemList data={this.props.preferences_for_application} dispatcher_func={this.props.SetPriority}/> {/* Приоритет заявок */}
                                     </div>
 
                                     <Button type="primary" className='bidding-btn' style={{ float: 'right', marginRight: '10px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
@@ -603,12 +611,7 @@ class DashBoard extends Component {
                                 <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
 
                                 <div style={{ textAlign: "center", height: '300px' }}>
-                                    {this.props.flight_direction && (
-                                        <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
-
-                                    )}
-                                    {/* <RadioButtonList /> */}
-
+                                        <RadioButtonList dispatcher_func={this.props.SetFlightDirection} data={this.props.flightDirection_for_application} /> {/* Направление полета */}
                                 </div>
 
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step3}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
@@ -629,10 +632,11 @@ class DashBoard extends Component {
                             >
                                 <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 3. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Переместите бокс по приоритету</span></div>
 
-                                <ItemList_day />
+                                <div style={{ textAlign: "left", height: '300px' }}>
+                                    <ItemList data={this.props.dayTime_for_application} dispatcher_func={this.props.SetDayTime}/>  {/* Желаемое время вылета */}
+                                </div>
 
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step4}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
-
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step}><span style={{ marginLeft: '10px' }} >🡸</span><span style={{ marginLeft: '35px' }}>Назад</span> </Button>
 
                             </Card>
@@ -653,12 +657,7 @@ class DashBoard extends Component {
                                 <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 4. Преференции переработок</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
 
                                 <div style={{ textAlign: "center", height: '300px' }}>
-                                    {this.props.flight_direction && (
-                                        <RadioButtonList_WorkDay dispatcher_func={SetFlightDirection} data={data_work_time} />
-
-                                    )}
-                                    {/* <RadioButtonList /> */}
-
+                                        <RadioButtonList dispatcher_func={this.props.SetWorkTime} data={this.props.workTime_for_application} /> {/* Про переработки */}
                                 </div>
 
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step5}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
@@ -681,12 +680,7 @@ class DashBoard extends Component {
                                 <div className='newForm'>Новая Заявка &nbsp;<span className='newForm2'>🡲 &nbsp;&nbsp;&nbsp; 5. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;<span className='newForm3'>Выберите одни из вариантов</span></div>
 
                                 <div style={{ textAlign: "center", height: '300px' }}>
-                                    {this.props.flight_direction && (
-                                        <RadioButtonList_WorkTime dispatcher_func={SetFlightDirection} data={data_work_day} />
-
-                                    )}
-                                    {/* <RadioButtonList /> */}
-
+                                    <RadioButtonList dispatcher_func={this.props.SetWorkDay} data={this.props.workDay_for_application} />
                                 </div>
 
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }} onClick={this.step6}><span style={{ marginLeft: '10px' }} >🡲</span><span style={{ marginLeft: '35px' }}>Далее</span> </Button>
@@ -733,12 +727,6 @@ class DashBoard extends Component {
                         </div>
                     </div >
                 }
-
-
-
-                {/* <ItemList dispatcher_func={SetPriority} data={this.props.priority_list_for_application}/>
-                <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction}/>
-                <ItemList dispatcher_func={SetDayTime} data={this.props.daytime}/> */}
 
 
                 <div className="dashBoardContainer">
@@ -1332,9 +1320,11 @@ function mapStateToProps(store) {
     return {
         users: store.usersDashBoard,
         user: store.user,
-        priority_list_for_application: store.priority,
-        flight_direction: store.flight_direction,
-        daytime: store.daytime,
+        preferences_for_application: store.preferences,
+        flightDirection_for_application: store.flightDirection,
+        dayTime_for_application: store.dayTime,
+        workDay_for_application: store.workDay,
+        workTime_for_application: store.workTime,
     };
 }
 
@@ -1348,6 +1338,21 @@ function mapDispatchToProps(dispatch) {
         },
         AddUsersDashBoard: users => {
             dispatch(AddUsersDashBoard(users));
+        },
+        SetPriority: priority_list => {
+            dispatch(SetPriority(priority_list));
+        },
+        SetFlightDirection: flight_direction => {
+            dispatch(SetFlightDirection(flight_direction));
+        },
+        SetDayTime: daytime => {
+            dispatch(SetDayTime(daytime));
+        },
+        SetWorkDay: workDay => {
+            dispatch(SetWorkDay(workDay));
+        },
+        SetWorkTime: workTime => {
+            dispatch(SetWorkTime(workTime));
         }
     };
 }

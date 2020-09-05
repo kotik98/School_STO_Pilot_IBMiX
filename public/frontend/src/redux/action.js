@@ -8,6 +8,8 @@ import {
   SET_PRIORITY,
   SET_FLIGHT_DIRECTION,
   SET_DAY_TIME,
+  SET_WORK_DAY,
+  SET_WORK_TIME,
 } from "./type";
 
 export const AddPhotoAC = photo => {
@@ -73,5 +75,19 @@ export const SetDayTime = daytime => {
   return {
     type: SET_DAY_TIME,
     daytime: daytime,
+  }
+}
+
+export const SetWorkDay = workDay => {
+  return {
+    type: SET_WORK_DAY,
+    workDay: workDay,
+  }
+}
+
+export const SetWorkTime = workTime => {
+  return {
+    type: SET_WORK_TIME,
+    workTime: workTime,
   }
 }
