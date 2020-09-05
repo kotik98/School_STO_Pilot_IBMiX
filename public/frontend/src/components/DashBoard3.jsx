@@ -49,7 +49,6 @@ import './DashBoard.css';
 import {
     MoreOutlined,
 } from '@ant-design/icons';
-import { internet } from "faker";
 
 const { Option } = Select;
 const { Panel } = Collapse;
