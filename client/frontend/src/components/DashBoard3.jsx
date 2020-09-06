@@ -337,7 +337,7 @@ class DashBoard extends Component {
             {/* START HEAD PANEL */}
             <div className="head-panel">
               <div className='head-part'>
-                <Button type="primary" className='bidding-btn'>Новая заявка</Button>
+                <Button type="primary" className='bidding-btn' onClick={this.onNewWishList}>Новая заявка</Button>
                 {/*<span className="dots" />*/}
 
                 <div className='bidding-info'>
@@ -426,7 +426,7 @@ class DashBoard extends Component {
                     </defs>
                   </svg>
                 </div>
-                <Popover className="popover" content={content}>
+                <Popover content={content}>
                   <Avatar
                       className="user-avatar"
                       size="large"
@@ -435,7 +435,7 @@ class DashBoard extends Component {
                       src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png"
                   />
                 </Popover>
-                <Popover className="popover" content={content}>
+                <Popover content={content}>
                   <div className='user-info'>
                 <span className='user-info--name'>{this.props.user &&
                 this.props.user.firstName}</span>
@@ -443,7 +443,7 @@ class DashBoard extends Component {
                     this.props.user.lastName}</span>
                   </div>
                 </Popover>
-                <Popover className="popover" content={content}>
+                <Popover content={content}>
                   <div className="user-more">
                     <svg width="4" height="14" viewBox="0 0 4 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="2" cy="2" r="2" fill="#686CD7"/>

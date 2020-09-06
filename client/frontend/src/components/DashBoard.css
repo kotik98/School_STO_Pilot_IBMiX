@@ -140,3 +140,16 @@
     /*box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);*/
     box-shadow: 0 0 10px -4px rgba(84, 89, 205, 0.5);
 }
+
+.bidding-btn-step {
+    margin-left: 10px;
+    background: #5459CD;
+    border-color: #5459CD;
+    width: 146px;
+    box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+}
