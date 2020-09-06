@@ -3,24 +3,35 @@
 }
 
 .head-panel {
-    text-align: center;
-    margin: 30px auto;
-    /* margin-top: 30px; */
-    width: 90%;
     display: flex;
+    justify-content: space-between;
     padding: 16px 16px 16px 0;
-    align-items: center;
     max-height: 72px;
-    min-width: 1024px;
-    margin-bottom: 28px;
+    /*min-width: 1024px;*/
+    width: 90%;
+    margin: 84px auto 32px auto;
     background: #FFFFFF;
     box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
     border-radius: 15px;
 }
 
+.head-part {
+    align-items: center;
+    display: inline-flex;
+}
+
 .user-avatar {
-    margin-right: 2%;
-    margin-left: 5%;
+    margin-right: 14px;
+    cursor: pointer;
+}
+
+.user-more {
+    margin-left: 28px;
+    margin-right: 24px;
+}
+
+.user-more:hover {
+    cursor: pointer;
 }
 
 .user-info {
@@ -29,7 +40,9 @@
     text-transform: capitalize;
     font-style: normal;
     font-size: 12px;
+    line-height: 14px;
     color: #282828;
+    cursor: pointer;
 }
 
 .user-info--name {
@@ -39,11 +52,11 @@
 
 .bidding-info {
     flex: 0 1 auto;
-    margin-left: 25%;
+    margin-left: 56px;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 12px;
+    line-height: 14px;
 }
 
 .bidding-date {
@@ -52,7 +65,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 12px;
+    line-height: 14px;
 }
 
 .bidding-info--start {
@@ -70,20 +83,7 @@
 .bidding-date--digit {
     display: block;
     margin: 0;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
     color: #686CD7;
-}
-
-.date-arrow {
-    width: 23px;
-    height: 23px;
-    background: #FFFFFF;
-    box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
-    border-radius: 7px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 .date-clock {
@@ -91,12 +91,7 @@
     margin-right: 16px;
 }
 
-.date-arrow > svg {
-    transform: rotate(-180deg);
-}
-
-.bidding-btn
-{
+.bidding-btn {
     margin-left: 92px;
     margin-right: 26px;
     background: #5459CD;
@@ -110,30 +105,24 @@
     line-height: 12px;
 }
 
-.bidding-btn-step
-{
-    margin-left: 10px;
-    background: #5459CD;
-    border-color: #5459CD;
-    width: 146px;
-    box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);
-    border-radius: 10px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
+.bidding-btn:hover {
+    background: #7D58FF;
+    border-color: #7D58FF;
 }
 
-.settings-icon {
-
+.bidding-btn:focus {
+    background: #7D58FF;
+    border-color: #7D58FF;
 }
 
 .bidding-stats {
-    margin-left: 7%;
-    margin-right: 2%;
     font-weight: bold;
     font-size: 14px;
     line-height: 14px;
+}
+
+.stats-icon {
+    margin-right: 82px;
 }
 
 .bidding-stats--first {
@@ -144,37 +133,29 @@
     color: #FFDC82;
 }
 
-.dots {
-    position: relative;
-    width: 4px;
-    height: 4px;
-    background-color: #686CD7;
-    border-radius: 50%;
-}
-
-.dots:before, .dots:after {
-    content: "";
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    left: 0;
-    background-color: inherit;
-    border-radius: inherit;
-}
-
-.dots:before {
-    top: 8px;
-}
-
-
-.dots:after {
-    top: 16px;
-}
-
 .bid-card {
     min-width: 1024px;
     height: 262px;
     background: #FFFFFF;
     box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
     border-radius: 15px;
+}
+
+.ant-popover-inner {
+    border-radius: 8px;
+    /*box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);*/
+    box-shadow: 0 0 10px -4px rgba(84, 89, 205, 0.5);
+}
+
+.bidding-btn-step {
+    margin-left: 10px;
+    background: #5459CD;
+    border-color: #5459CD;
+    width: 146px;
+    box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
 }

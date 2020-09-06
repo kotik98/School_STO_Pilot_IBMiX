@@ -24,12 +24,12 @@ const initialState = {
   daytime: day_time,
 };
 
-export default function (oldState = initialState, action) {
+export default function(oldState = initialState, action) {
   switch (action.type) {
     case ADD_PHOTO:
       return {
         ...oldState,
-        photos: action.photo
+        photos: action.photo,
       };
 
     case ADD_ISLOGIN:
@@ -52,7 +52,7 @@ export default function (oldState = initialState, action) {
     case ADD_USERS_DASHBOARD:
       return {
         ...oldState,
-        usersDashBoard: action.users
+        usersDashBoard: action.users,
       };
     case CLEAN_REDUX:
       return {

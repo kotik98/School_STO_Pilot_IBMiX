@@ -46,147 +46,147 @@ class Profile extends Component {
 
 
     return (
-      <div style={{ padding: "10px" }}>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Card
-            style={{
-              borderRadius: "20px",
-              display: "flex",
-              width: "800px",
-              marginTop: "20px",
-              background:
-                "linear-gradient(6deg, rgba(132,100,250,1) 0%, rgba(74,118,168,1) 100%)"
-            }}
-          >
-            <div style={{ display: "flex" }}>
-              <div>
-
-                <Avatar
-                  size={150}
-                  icon="user"
-                  src={pilotAvatar}
-                />
-
-              </div>
-
-              <div>
-                <Link to={linkEdite}>
-                  <Button ghost="default" icon="edit">
-                    Редактировать
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div>
-              {this.props.user && (
+        <div style={{ padding: "10px" }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Card
+                style={{
+                  borderRadius: "20px",
+                  display: "flex",
+                  width: "800px",
+                  marginTop: "20px",
+                  background:
+                      "linear-gradient(6deg, rgba(132,100,250,1) 0%, rgba(74,118,168,1) 100%)"
+                }}
+            >
+              <div style={{ display: "flex" }}>
                 <div>
-                  <h3
-                    style={{ color: "#ffffff" }}
-                  >{`${this.props.user.firstName} ${this.props.user.lastName}`}</h3>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+
+                  <Avatar
+                      size={150}
+                      icon="user"
+                      src={pilotAvatar}
+                  />
+
+                </div>
+
+                <div>
+                  <Link to={linkEdite}>
+                    <Button ghost="default" icon="edit">
+                      Редактировать
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div>
+                {this.props.user && (
+                    <div>
+                      <h3
+                          style={{ color: "#ffffff" }}
+                      >{`${this.props.user.firstName} ${this.props.user.lastName}`}</h3>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="user" /> &nbsp; Должность: {`${this.props.user.crewRole}`}
                       </span>{" "}
-                      <span style={{ fontWeight: "normal" }}>
+                          <span style={{ fontWeight: "normal" }}>
                         {this.props.user.username}
                       </span>
-                    </h5>
-                  </div>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="calendar" /> &nbsp; Стаж работы в должности:  с {`${this.props.user.standingFromDateInRole}`}
                       </span>
-                    </h5>
-                  </div>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="phone" /> &nbsp; Номер телефона:{" "}
                       </span>{" "}
-                      <span style={{ fontWeight: "normal" }}>
+                          <span style={{ fontWeight: "normal" }}>
                         {this.props.user.phone}
                       </span>
-                    </h5>
-                  </div>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="mail" /> &nbsp; E-mail:{" "}
                       </span>{" "}
-                      <span style={{ fontWeight: "normal" }}>
+                          <span style={{ fontWeight: "normal" }}>
                         {this.props.user.email}
                       </span>
-                    </h5>
-                  </div>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="calendar" /> &nbsp; Стаж работы в авиакомпании:  с {`${this.props.user.standingFromDate}`}
                       </span>
-                    </h5>
-                  </div>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="global" /> &nbsp; Индекс сеньорити: {`${this.props.user.reliabilityIndex}`}
                       </span>
-                    </h5>
-                  </div>
-                  <div>
-                    <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      <div>
+                        <h5 style={{ color: "#ffffff" }}>
                       <span style={{ fontWeight: "bold" }}>
                         <Icon type="bell" /> &nbsp; Индекс поощрений и наказаний: {`${this.props.user.rewardsAndPunishments}`}
                       </span>
-                    </h5>
-                  </div>
-                  {this.props.user.vk && (
-                    <div>
-                      <h5 style={{ color: "#ffffff" }}>
+                        </h5>
+                      </div>
+                      {this.props.user.vk && (
+                          <div>
+                            <h5 style={{ color: "#ffffff" }}>
                         <span style={{ fontWeight: "bold" }}>
                           <Icon type="global" /> &nbsp; VK:{" "}
                         </span>{" "}
-                        <span style={{ fontWeight: "normal" }}>
+                              <span style={{ fontWeight: "normal" }}>
                           {this.props.user.vk}
                         </span>
-                      </h5>
-                    </div>
-                  )}
-                  {this.props.user.nativeLocation && (
-                    <div>
-                      <h5 style={{ color: "#ffffff" }}>
+                            </h5>
+                          </div>
+                      )}
+                      {this.props.user.nativeLocation && (
+                          <div>
+                            <h5 style={{ color: "#ffffff" }}>
                         <span style={{ fontWeight: "bold" }}>
                           <Icon type="compass" /> &nbsp; Приоритетный город для полетов:{" "}
                         </span>{" "}
-                        <span style={{ fontWeight: "normal" }}>
+                              <span style={{ fontWeight: "normal" }}>
                           {this.props.user.nativeLocation}
                         </span>
-                      </h5>
+                            </h5>
+                          </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              )}
+                )}
 
 
-              <br />
-            </div>
-          </Card>
-        </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Card className="newCard">
-            <Tabs defaultActiveKey="1">
-              <TabPane
-                tab={
-                  <span>
+                <br />
+              </div>
+            </Card>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Card className="newCard">
+              <Tabs defaultActiveKey="1">
+                <TabPane
+                    tab={
+                      <span>
                     <Icon type="picture" />
                     Все заявки
                   </span>
-                }
-                key="1"
-              >
-                <div style={{ display: "block", textAlign: "center" }}>
-                  {/* {this.props.photos &&
+                    }
+                    key="1"
+                >
+                  <div style={{ display: "block", textAlign: "center" }}>
+                    {/* {this.props.photos &&
                     this.props.photos.map((url, i) => {
                       return (
                         <Avatar
@@ -200,26 +200,26 @@ class Profile extends Component {
                         />
                       );
                     })} */}
-                      Какая то информация
-                </div>
-              </TabPane>
-              <TabPane
-                tab={
-                  <span>
+                    Какая то информация
+                  </div>
+                </TabPane>
+                <TabPane
+                    tab={
+                      <span>
                     <Icon type="picture" theme="twoTone" twoToneColor="#eb2f96" />
 Удовлетворенные заявки
                   </span>
-                }
-                key="2"
-              >
-                <div>
-                  Какая то информация
-                </div>
-              </TabPane>
-            </Tabs>
-          </Card>
+                    }
+                    key="2"
+                >
+                  <div>
+                    Какая то информация
+                  </div>
+                </TabPane>
+              </Tabs>
+            </Card>
+          </div>
         </div>
-      </div>
     );
   }
 }
