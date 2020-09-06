@@ -7,8 +7,9 @@
     justify-content: space-between;
     padding: 16px 16px 16px 0;
     max-height: 72px;
-    min-width: 1024px;
-    margin-bottom: 28px;
+    /*min-width: 1024px;*/
+    width: 90%;
+    margin: 84px auto 32px auto;
     background: #FFFFFF;
     box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
     border-radius: 15px;
@@ -105,6 +106,11 @@
 }
 
 .bidding-btn:hover {
+    background: #7D58FF;
+    border-color: #7D58FF;
+}
+
+.bidding-btn:focus {
     background: #7D58FF;
     border-color: #7D58FF;
 }

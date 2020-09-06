@@ -19,7 +19,7 @@ a {
 #root {
     /* height: 100%;
     width: 100%; */
-    background-color:#E5E5E5;
+    background-color:#FFF
 }
 
 
@@ -139,15 +139,19 @@ a {
 }
 
 .borderDesign{
-    border-color: 4px double black !important;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px -1px rgba(158, 158, 158, 0.25);
+    border-radius: 15px;
+    border: 0;
 }
 
+.ant-card-bordered {
+    border: 0;
+}
 
 .userCardSlider{
+    border: 0;
     width: 100% !important;
-    /* height: 400px; */
-    border-radius: 10px !important;
-    padding: 8px 8px 0 8px !important;
     margin: 10px !important;
 }
 
