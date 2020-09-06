@@ -13,7 +13,8 @@ import { data_work_time } from './WorkTime/radio_data'
 import { data_work_day } from './WorkDay/radio_data'
 
 import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
-
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar } from "react-modern-calendar-datepicker";
 
 import CalendarWithButtons from './CalendarWithButtons';
 import CalendarWithButtonsPlusOneMonth from './CalendarWithButtonsPlusOneMonth'
@@ -29,7 +30,6 @@ import {
     Avatar,
     Icon,
     notification,
-    Calendar,
     message,
     Spin,
     Switch,
@@ -94,6 +94,7 @@ class DashBoard extends Component {
             preference3: false,
             preference4: false,
             preference5: false,
+            selectedDates: [],
         };
     }
 
@@ -173,6 +174,7 @@ class DashBoard extends Component {
 
         this.props.AddUsersDashBoard(users);
         console.log("есть ", users, this.props.users, this.props.users.response);
+        this.setState({workingDays: this.getWorkingDays()})
 
     }
 
@@ -222,6 +224,21 @@ class DashBoard extends Component {
             visibleSort: false,
         });
     };
+
+    getWorkingDays = () => {
+        if (this.props.users.response) {
+            let days = []
+            this.props.users.response.map((user, i) => {
+                let year_month_day = user.time_of_departure.split('-',3);
+                days.push({ year: parseInt(year_month_day[0]),
+                            month: parseInt(year_month_day[1]),
+                            day: parseInt(year_month_day[2])})
+            })
+            console.log(days)
+            return days;
+        }
+    }
+
 
     ym = () => {
         return (
@@ -715,14 +732,14 @@ class DashBoard extends Component {
                                     }}>
 
                                         <div className="site-calendar-demo-card" style={{ backgroundColor: '#FFDE84', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
-                                            <CalendarWithButtons onPanelChange={onPanelChange} />
+                                            <Calendar value={this.state.selectedDates} onChange={(dates) => this.setState({selectedDates: dates})} />
                                         </div>
-                                        <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
+                                        {/* <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
                                             <CalendarWithButtonsPlusOneMonth onPanelChange={onPanelChange} />
                                         </div>
                                         <div className="site-calendar-demo-card" style={{ backgroundColor: '#C7F8CF', width: '300px', borderRadius: '10px' }}>
                                             <CalendarWithButtonsPlusTwoMonth onPanelChange={onPanelChange} />
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <Button type="primary" className='bidding-btn-step' style={{ float: 'right', marginRight: '0px' }}><span style={{ marginLeft: '10px' }} >&#10004;</span><span style={{ marginLeft: '35px' }}>Сохранить</span> </Button>
@@ -1135,7 +1152,9 @@ class DashBoard extends Component {
                         <div className="site-card-border-less-wrapper">
 
                             <div className="site-calendar-demo-card" style={{ backgroundColor: '#F6F9FE' }}>
-                                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                                
+                            
+                                <CalendarWithButtons highlighted={this.state.workingDays}/>
                             </div>
                             <div className='yourTrip1'> <font face="Arial Black" >Ваши Рейсы</font> </div>
                             <div className="userCardW">
