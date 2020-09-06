@@ -9,10 +9,5 @@ export const radio_data = [
         name: "Континентальные",
         checked: false,
         style: 'rgb(249,221,142)',
-    },
-    {
-        name: "Другое",
-        checked: false,
-        style:'rgb(194,231,251)',
     }
 ]

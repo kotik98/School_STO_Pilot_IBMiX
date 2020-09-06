@@ -19,8 +19,8 @@
 }
 
 .user-avatar {
-    margin-right: 14px;
-    margin-left: 64px;
+    margin-right: 2%;
+    margin-left: 5%;
 }
 
 .user-info {
@@ -39,7 +39,7 @@
 
 .bidding-info {
     flex: 0 1 auto;
-    margin-left: 156px;
+    margin-left: 25%;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -110,13 +110,27 @@
     line-height: 12px;
 }
 
+.bidding-btn-step
+{
+    margin-left: 10px;
+    background: #5459CD;
+    border-color: #5459CD;
+    width: 146px;
+    box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+}
+
 .settings-icon {
 
 }
 
 .bidding-stats {
-    margin-left: 52px;
-    margin-right: 14px;
+    margin-left: 7%;
+    margin-right: 2%;
     font-weight: bold;
     font-size: 14px;
     line-height: 14px;
