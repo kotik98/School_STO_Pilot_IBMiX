@@ -481,25 +481,15 @@ li {
 }
 
 .newForm{
-
-    /* width: 130px;
-    height: 17px; */
-
-
     margin: 10px 0px 25px 35px;
-
-    font-family: Gotham Pro;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
-    line-height: 17px;
-
+    line-height: 18px;
     color: #000000;
 }
 
 .newForm2{
-
-    font-family: Gotham Pro;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -508,13 +498,10 @@ li {
 }
 
 .newForm3{
-
-    font-family: Gotham Pro;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 300;
     font-size: 12px;
     line-height: 17px;
     opacity: 0.5;
     color: #000000;
 }
-

@@ -30,8 +30,6 @@ function ItemList() {
                 <p className={'prioritet_text'}>Не приоритетно</p>
             </div>
             <DragDropContext onDragEnd={handleDragEnd}>
-
-
                 <Droppable droppableId={'droppable-1'} direction={'horizontal'}>
                     {provided => (
                         <div
