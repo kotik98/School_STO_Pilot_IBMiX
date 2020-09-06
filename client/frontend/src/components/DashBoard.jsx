@@ -1,15 +1,15 @@
-import React, {Suspense, Component} from 'react';
+import React, {Component} from 'react';
 import {
   Layout,
   Icon,
-  notification, Avatar, Button,
+  notification,
+  Avatar,
+  Button,
+  Popover,
 } from 'antd';
 import {connect} from 'react-redux';
 import {AddPhotoAC, AddUserAC, AddUsersDashBoard} from '../redux/action';
 import './DashBoard.css';
-import {
-  MoreOutlined,
-} from '@ant-design/icons';
 
 const {Header, Footer, Sider, Content} = Layout;
 const openNotification = (placement, icon, title, message) => {
@@ -22,6 +22,14 @@ const openNotification = (placement, icon, title, message) => {
     duration: 3,
   });
 };
+
+
+const content = (
+    <div>
+      <p><a href="/profile">Профиль</a></p>
+      <p><a href="/logout">Выйти</a></p>
+    </div>
+);
 
 function onPanelChange(value, mode) {
   console.log(value, mode);
@@ -260,26 +268,32 @@ class DashBoard extends Component {
                     </defs>
                   </svg>
                 </div>
-                <Avatar
-                    className="user-avatar"
-                    size="large"
-                    shape="square"
-                    icon="user"
-                    src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png"
-                />
-                <div className='user-info'>
+                <Popover className="popover" content={content}>
+                  <Avatar
+                      className="user-avatar"
+                      size="large"
+                      shape="square"
+                      icon="user"
+                      src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png"
+                  />
+                </Popover>
+                <Popover className="popover" content={content}>
+                  <div className='user-info'>
                 <span className='user-info--name'>{this.props.user &&
                 this.props.user.firstName}</span>
-                  <span className='user-info--name'>{this.props.user &&
-                  this.props.user.lastName}</span>
-                </div>
-                <div className="user-more">
-                  <svg width="4" height="14" viewBox="0 0 4 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="2" cy="2" r="2" fill="#686CD7"/>
-                    <circle cx="2" cy="7" r="2" fill="#686CD7"/>
-                    <circle cx="2" cy="12" r="2" fill="#686CD7"/>
-                  </svg>
-                </div>
+                    <span className='user-info--name'>{this.props.user &&
+                    this.props.user.lastName}</span>
+                  </div>
+                </Popover>
+                <Popover className="popover" content={content}>
+                  <div className="user-more">
+                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="2" r="2" fill="#686CD7"/>
+                      <circle cx="2" cy="7" r="2" fill="#686CD7"/>
+                      <circle cx="2" cy="12" r="2" fill="#686CD7"/>
+                    </svg>
+                  </div>
+                </Popover>
 
                 {/*<div className='settings-icon'>
                 <svg width="19" height="20" viewBox="0 0 19 20" fill="none"

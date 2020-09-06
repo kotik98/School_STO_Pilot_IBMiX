@@ -146,3 +146,9 @@
     box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
     border-radius: 15px;
 }
+
+.ant-popover-inner {
+    border-radius: 8px;
+    /*box-shadow: 0 12px 12px -8px rgba(84, 89, 205, 0.5);*/
+    box-shadow: 0 0 10px -4px rgba(84, 89, 205, 0.5);
+}
