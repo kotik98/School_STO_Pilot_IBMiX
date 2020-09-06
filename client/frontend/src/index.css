@@ -17,27 +17,35 @@ a {
 }
 
 #root {
-    height: 100%;
-    width: 100%;
-    background-color: #EDEEF0;
+    /* height: 100%;
+    width: 100%; */
+    background-color:#E5E5E5;
 }
 
-.loginForm {
+
+
+.loginForm{
     display: flex;
     justify-content: center;
 }
 
+
+.wantForm{
+    display: flex;
+    justify-content: center;
+}
+
+
 .login-form-button {
     width: 100%;
 }
-
 .registerFormMain {
     display: flex;
     justify-content: center;
     padding: 10px;
 }
 
-.registerForm {
+.registerForm{
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -60,7 +68,29 @@ a {
 }
 
 .navbarText {
+    font-family: Gotham Pro;
+    font-style: normal;
     font-weight: bold;
+    font-size: 21px;
+    color: black !important;
+}
+
+.TitleText {
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 15px;
+
+    color: #000000;
+}
+
+.rightBar{
+    width: 28%;
+    padding: 30px;
+    background: #f6f9fe;
+    box-shadow: 0px 0px 9.53192px -0.953192px #F6F9FE;
+    border-radius: 14.3px 14.2979px 14.2979px 14.2979px;
 }
 
 .newCard {
@@ -70,12 +100,16 @@ a {
 }
 
 .navbarUserName {
+    font-family: Gotham Pro;
+    font-style: normal;
     font-weight: bold;
-    text-transform: uppercase;
-    color: #ffffff;
+    font-size: 21px;
+    line-height: 32px;
+
+    color: #282828;
 }
 
-.dashBoardContainerMoreFiltres {
+.dashBoardContainerMoreFiltres{
     padding: 0px;
     background: #ececec;
     display: flex;
@@ -89,10 +123,47 @@ a {
     width: 100%;
 }
 
-.dashBoardContainer {
+.dashBoardContainer{
     padding: 10px;
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
+}
+
+
+.dashBoardContentDrag {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 90%;
+}
+
+.borderDesign{
+    border-color: 4px double black !important;
+}
+
+
+.userCardSlider{
+    width: 100% !important;
+    /* height: 400px; */
+    border-radius: 10px !important;
+    padding: 8px 8px 0 8px !important;
+    margin: 10px !important;
+}
+
+.buttonCardSlider{
+    background-color: #5459CD;
+    box-shadow: 0px 12px 12px -8px rgba(84, 89, 205, 0.5);
+    border-radius: 10px;
+    color: white;
+    width: 145px;
+    height: 28px;
+}
+
+.buttonCardSlider,
+.buttonCardSlider:active,
+.buttonCardSlider:focus {
+    outline: none !important;
 }
 
 .dashBoardCard {
@@ -100,25 +171,147 @@ a {
     border-radius: 20px !important;
 }
 
-.dashBoardContent {
+.yourTrip{
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 17px;
+    margin-top: 30px;
+}
+
+.yourTrip1{
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 17px;
+    margin-top: 30px;
+}
+
+
+.mediumText{
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 13px;
+}
+
+.sortString{
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 17px;
+    text-align: right;
+}
+
+.flightsCard{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    width: 1000px;
 }
 
-.userCardFilter {
+.dashBoardContent {
+
+    width: 60%;
+    padding: 30px;
+    margin-right: 30px;
+    background: #F3F3FF;
+    box-shadow: 0px 0px 6px #F3F3FF;
+    border-radius: 15px;
+
+}
+
+.accordion {
+
+    padding: 30px;
+    margin-right: 30px;
+    background: #F6F9FE;
+    border-radius: 15px;
+
+}
+
+.userCardFilter{
     width: 300px !important;
     border-radius: 10px !important;
     padding: 8px 8px 0 8px !important;
     margin: 10px !important;
 }
 
-.userCard {
-    width: 300px !important;
-    border-radius: 10px !important;
-    padding: 8px 8px 0 8px !important;
-    margin: 10px !important;
+.collapseCard{
+    border-radius: 30px !important;
+    background-color: #F3F3FF !important;
+}
+
+.userCardW{
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #ffffff !important;
+}
+
+
+.userCardWP{
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #f3f3ff !important;
+}
+
+.userCardGreen{
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #9ff7cf !important;
+}
+
+.userCardRed{
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #fea283 !important;
+}
+
+.userCardG{
+    border: false;
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #dcdcdc !important;
+}
+
+.textRight{
+    text-align: right;
+}
+
+
+.sUserCard{
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #ffdc82 !important;
+}
+
+.userCard{
+    width: 100% !important;
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #7d58ff !important;
+}
+
+.userCard1{
+    width: 100% !important;
+    border-radius: 30px !important;
+    /* padding: 8px 8px 0 8px !important; */
+    margin: 5px !important;
+    background-color: #5459cd !important;
+}
+
+.tagFlights{
+    margin-right: 20px;
 }
 
 .anketaCard {
@@ -127,12 +320,12 @@ a {
     margin-top: 50px !important;
 }
 
-.choice_question {
+.choice_question{
     text-align: center;
     margin-top: 300px;
 }
 
-.have_btn {
+.have_btn{
     font-size: 17px;
     height: 50px;
     background-color: lightblue;
@@ -148,7 +341,7 @@ hr.vertical {
     /* or height in PX */
 }
 
-.need_btn {
+.need_btn{
     font-size: 17px;
     height: 50px;
     background-color: lightgreen;
@@ -157,7 +350,6 @@ hr.vertical {
     cursor: pointer;
     border: none;
 }
-
 .question {
     font-family: "Source Sans Pro", "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
@@ -194,7 +386,7 @@ li {
 }
 
 .signUpForm {
-    border-radius: 5px;
+    border-radius: 5px ;
     width: 1000px !important;
     margin: auto !important;
 }
@@ -237,7 +429,6 @@ li {
     width: 90%;
     height: 90%;
 }
-
 /* @media screen and (max-width: 900px){
   .modalWidth {
       width: 90%;
@@ -250,7 +441,7 @@ li {
   }
 } */
 
-.inputRegistration {
+.inputRegistration{
     width: 95px;
     height: 30px;
     border-radius: 5px;
@@ -258,8 +449,7 @@ li {
     font-weight: bold;
     font-size: 14px;
 }
-
-.placeHolderForEdit {
+.placeHolderForEdit{
     width: 95px;
     height: 30px;
     border-radius: 5px;
@@ -268,22 +458,60 @@ li {
     font-size: 14px;
     opacity: 1;
 }
-
-.placeHolderForEditForAntDesigne {
+.placeHolderForEditForAntDesigne{
     font-style: italic;
     font-weight: bold;
     font-size: 14px;
     opacity: 1;
 }
 
-.placeHolderForEditForAntDesigneCalendar {
+.placeHolderForEditForAntDesigneCalendar{
     font-style: italic;
     font-weight: bold;
     font-size: 14px;
     opacity: 1;
 }
 
-.placeHolderForEditForAntDesigne:hover {
+.placeHolderForEditForAntDesigne:hover{
     border-color: #1990FF;
 }
+
+.newForm{
+
+    /* width: 130px;
+    height: 17px; */
+
+
+    margin: 10px 0px 25px 35px;
+
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 17px;
+
+    color: #000000;
+}
+
+.newForm2{
+
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.newForm3{
+
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 17px;
+    opacity: 0.5;
+    color: #000000;
+}
+
 
