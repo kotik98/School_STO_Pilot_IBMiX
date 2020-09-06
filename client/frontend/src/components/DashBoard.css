@@ -4,8 +4,8 @@
 
 .head-panel {
     display: flex;
+    justify-content: space-between;
     padding: 16px 16px 16px 0;
-    align-items: center;
     max-height: 72px;
     min-width: 1024px;
     margin-bottom: 28px;
@@ -14,9 +14,23 @@
     border-radius: 15px;
 }
 
+.head-part {
+    align-items: center;
+    display: inline-flex;
+}
+
 .user-avatar {
     margin-right: 14px;
-    margin-left: 64px;
+    cursor: pointer;
+}
+
+.user-more {
+    margin-left: 28px;
+    margin-right: 24px;
+}
+
+.user-more:hover {
+    cursor: pointer;
 }
 
 .user-info {
@@ -25,7 +39,9 @@
     text-transform: capitalize;
     font-style: normal;
     font-size: 12px;
+    line-height: 14px;
     color: #282828;
+    cursor: pointer;
 }
 
 .user-info--name {
@@ -35,11 +51,11 @@
 
 .bidding-info {
     flex: 0 1 auto;
-    margin-left: 156px;
+    margin-left: 56px;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 12px;
+    line-height: 14px;
 }
 
 .bidding-date {
@@ -48,7 +64,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 12px;
+    line-height: 14px;
 }
 
 .bidding-info--start {
@@ -66,10 +82,6 @@
 .bidding-date--digit {
     display: block;
     margin: 0;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
     color: #686CD7;
 }
 
@@ -84,15 +96,13 @@
 
 .date-clock {
     margin-left: 14px;
-    margin-right: 16px;
 }
 
 .date-arrow > svg {
     transform: rotate(-180deg);
 }
 
-.bidding-btn
-{
+.bidding-btn {
     margin-left: 92px;
     margin-right: 26px;
     background: #5459CD;
@@ -106,16 +116,19 @@
     line-height: 12px;
 }
 
-.settings-icon {
-
+.bidding-btn:hover {
+    background: #7D58FF;
+    border-color: #7D58FF;
 }
 
 .bidding-stats {
-    margin-left: 52px;
-    margin-right: 14px;
     font-weight: bold;
     font-size: 14px;
     line-height: 14px;
+}
+
+.stats-icon {
+    margin-right: 82px;
 }
 
 .bidding-stats--first {
@@ -124,33 +137,6 @@
 
 .bidding-stats--second {
     color: #FFDC82;
-}
-
-.dots {
-    position: relative;
-    width: 4px;
-    height: 4px;
-    background-color: #686CD7;
-    border-radius: 50%;
-}
-
-.dots:before, .dots:after {
-    content: "";
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    left: 0;
-    background-color: inherit;
-    border-radius: inherit;
-}
-
-.dots:before {
-    top: 8px;
-}
-
-
-.dots:after {
-    top: 16px;
 }
 
 .bid-card {
