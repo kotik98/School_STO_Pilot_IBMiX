@@ -48,6 +48,18 @@ router.post("/api/usersLength", async (req, res) => {
     }
 });
 
+router.get("/api/users", async (req, res) => {
+    try {
+        const commanders = await Comander;
+        const pilots = await Pilot;
+        const users = commanders + pilots;
+        console.log("запрос пришел")
+        res.json({ users: users})
+    } catch (e) {
+        res.status(400).json({ response: "fail" });
+    }
+});
+
 
 router.post("/newWishForm", async (req, res) => {
     try {

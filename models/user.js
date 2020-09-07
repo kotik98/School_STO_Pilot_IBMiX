@@ -9,7 +9,7 @@ const user = Schema({
   photo: { type: String },
   username: { type: String },
   password: { type: String },
-
+  forms: { type: Array },
 });
 
 module.exports = mongoose.model("user", user);

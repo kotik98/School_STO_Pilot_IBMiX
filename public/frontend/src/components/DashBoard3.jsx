@@ -986,7 +986,7 @@ class DashBoard extends Component {
                             >
                                 <div style={{ textAlign: 'center' }} >
                                     Детальная информация по полету
-            </div>
+                                </div>
                             </Modal>
                         </div>
                     )}
@@ -999,21 +999,7 @@ class DashBoard extends Component {
                             visible={this.state.visible}
                             onCancel={this.handleCancel}
                             footer={[
-                                <div style={{ height: 60 }}>
-                                    <Icon
-                                        type="close-circle"
-                                        style={{ fontSize: "62px", float: "left" }}
-                                        onClick={this.handleCancel}
-                                    />
-                                    <img style={{ width: '130px' }} src={logo} alt="" />
-                                    <Icon
-                                        type="heart"
-                                        theme="twoTone"
-                                        twoToneColor="#eb2f96"
-                                        style={{ fontSize: "62px", float: "right" }}
-                                        onClick={this.isLike}
-                                    />
-                                </div>
+
                             ]}
                         >
                             <div style={{ textAlign: 'center' }} onClick={() => this.tryam()} >
@@ -1031,7 +1017,7 @@ class DashBoard extends Component {
                                     <div className="card-container">
                                         <br />
                                         <Tag color="green">
-                                            <div style={{ color: 'black', fontSize: '32px' }}>
+                                            <div style={{ color: 'black', fontSize: '26px' }}>
                                                 Маршрут: {this.state.modalUser.where_from} - {this.state.modalUser.where_to}
                                             </div>
                                         </Tag>
