@@ -80,12 +80,8 @@ class Login extends Component {
     }
     const {getFieldDecorator} = this.props.form;
     return (
-        <div className="loginForm">
-          <Card style={{
-            borderRadius: '20px',
-            marginTop: '5%',
-            marginBottom: '11%',
-          }}>
+        <div className="login-page">
+          <Card className='login-form'>
             <div style={{textAlign: 'center'}}>
               <img style={{width: '130px'}} src={logo} alt=""/>
               <h3 style={{color: '#4a76a8'}}>Добро пожаловать в Happy pilot</h3>
@@ -101,8 +97,6 @@ class Login extends Component {
                     }],
                 })(
                     <Input
-                        prefix={<Icon type="mail"
-                                      style={{color: 'rgba(0,0,0,.25)'}}/>}
                         type='mail'
                         placeholder="E-mail"
                     />,
@@ -117,21 +111,22 @@ class Login extends Component {
                     }],
                 })(
                     <Input
-                        prefix={<Icon type="lock"
-                                      style={{color: 'rgba(0,0,0,.25)'}}/>}
                         type="password"
                         placeholder="Пароль"
                     />,
                 )}
               </Form.Item>
-              <Form.Item>
-                <Button style={{backgroundColor: '#4A76A8', color: '#ffffff'}}
-                        htmlType="submit" className="login-form-button"
-                        loading={this.state.iconLoading} icon='login'>
+              <Form.Item className='flex-form'>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="primary-btn"
+                  loading={this.state.iconLoading}
+                >
                   Войти
                 </Button>
                 <div style={{textAlign: 'center'}}>
-                  Или <Link to={'/signupAll'}>зарегистрируйтесь</Link><br/>
+                  <Link to={'/signupAll'}>Регистрация</Link><br/>
                   <Link to={'/password'}>Не помню пароль</Link><br/>
                   <Link to={'/our_company'}>О нас</Link><br/>
                 </div>
