@@ -1,18 +1,18 @@
-import React, {Suspense, Component} from 'react';
+import React, { Suspense, Component } from 'react';
 import plane from '../images/plane.jpg';
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
 import ItemList_day from '../components/DnD_day/itemList';
-import {UncontrolledCollapse, Button as Buttonr, CardBody, Card as Cardr, Collapse as Collapser} from 'reactstrap';
+import { UncontrolledCollapse, Button as Buttonr, CardBody, Card as Cardr, Collapse as Collapser } from 'reactstrap';
 import RadioButtonList from './lineFlight/RadioButtonList';
 import RadioButtonList_WorkDay from './WorkTime/RadioButtonList';
-import {data_work_time} from './WorkTime/radio_data';
-import {data_work_day} from './WorkDay/radio_data';
+import { data_work_time } from './WorkTime/radio_data';
+import { data_work_day } from './WorkDay/radio_data';
 import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import {Calendar} from 'react-modern-calendar-datepicker';
+import { Calendar } from 'react-modern-calendar-datepicker';
 import CalendarWithButtons from './CalendarWithButtons';
-import {Popover, Tabs} from 'antd';
+import { Popover, Tabs } from 'antd';
 import {
   Card,
   Modal,
@@ -27,28 +27,28 @@ import {
   Tag,
   Alert,
 } from 'antd';
-import {connect} from 'react-redux';
-import {AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime} from '../redux/action';
+import { connect } from 'react-redux';
+import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from '../redux/action';
 import './DashBoard.css';
 
-const {Option} = Select;
-const {Panel} = Collapse;
+const { Option } = Select;
+const { Panel } = Collapse;
 const openNotification = (placement, icon, title, message) => {
   notification.open({
     message: title,
     description:
-    message,
+      message,
     placement,
-    icon: <Icon type={icon} style={{color: '#108ee9'}}/>,
+    icon: <Icon type={icon} style={{ color: '#108ee9' }} />,
     duration: 3,
   });
 };
 
 const content = (
-    <div>
-      <p><a href="/profile">Профиль</a></p>
-      <p><a href="/logout">Выйти</a></p>
-    </div>
+  <div>
+    <p><a href="/profile">Профиль</a></p>
+    <p><a href="/logout">Выйти</a></p>
+  </div>
 );
 
 class DashBoard extends Component {
@@ -108,7 +108,7 @@ class DashBoard extends Component {
   };
 
   async componentDidMount() {
-    this.dispatcher_func = {SetPriority};
+    this.dispatcher_func = { SetPriority };
 
     const reqUsersLength = await fetch('/api/usersLength', {
       headers: {
@@ -119,15 +119,15 @@ class DashBoard extends Component {
     let usersLength = await reqUsersLength.json();
 
 
-    this.setState({usersLength: usersLength.usersLength});
+    this.setState({ usersLength: usersLength.usersLength });
 
 
     if (this.props.users.length === 0) {
-      this.setState({loading: true});
+      this.setState({ loading: true });
     }
 
     const response = await fetch('/api/profilePilot', {
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
     });
     const result = await response.json();
     console.log(result);
@@ -153,20 +153,20 @@ class DashBoard extends Component {
     let users = await reqComparison.json();
 
 
-    this.setState({loading: false});
+    this.setState({ loading: false });
 
     this.props.AddUsersDashBoard(users);
     console.log('есть ', users, this.props.users, this.props.users.response);
-    this.setState({workingDays: this.getWorkingDays()});
+    this.setState({ workingDays: this.getWorkingDays() });
 
   }
 
   onChangeLongWork = (checked) => {
-    this.setState({showLongWork: checked});
+    this.setState({ showLongWork: checked });
   };
 
   onChangeShortWork = (checked) => {
-    this.setState({showShortWork: checked});
+    this.setState({ showShortWork: checked });
   };
 
   onChangeTime = value => {
@@ -227,7 +227,7 @@ class DashBoard extends Component {
 
   ym = () => {
     return (
-        '<script src=\'https://mc.yandex.ru/metrika/watch.js\' type=\'text/javascript\'></script>\
+      '<script src=\'https://mc.yandex.ru/metrika/watch.js\' type=\'text/javascript\'></script>\
         <script type=\'text/javascript\'>\
               try {\
                     var yaCounter57428827 = new Ya.Metrika({\
@@ -322,8 +322,8 @@ class DashBoard extends Component {
 
 
   render() {
-    const {TabPane} = Tabs;
-    const {cities} = this.state;
+    const { TabPane } = Tabs;
+    const { cities } = this.state;
     const userMainInfo = JSON.parse(localStorage.getItem('userMainInfo'));
     let searchFlag;
     let blueCircle = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAE/ElEQVRoge2ZTWhcVRTH/+dmMklLI5KmaJp0IdokGjRgBrtucROlYBZDQ6PiQiIlKahbEabg10ZF7IQ2anGRgG1cKPixkdClhpkUlagJ1EUbU7VNEDMkZua9e1zM15v37n33vpnEjbkw5OUe3tzf/5xzz7nvDbA39sb/e9BOfEkyeaUJsQceY+LjDAxKoA9AJxMdYAAM5BhYBbAkibKS5dyxo4/Op1IkG127IQEjI/NHHIhxJnoahK4SLJgI1WvfX1D5eoVB000upb+eGVj5TwUkkwuHZBO/RoTnmBCPCO6bR56ILjlx59WrU4k7uy4gOZI5zSTeZ+L2RsBRuS7baQ2MiasfD3yyKwLGxjLN6xtikomfDwUPgFXnYLAzAGZc3Gp2zmanEoUdE3DyZGZ/vI0+ZWAoKjgshPkdIglfFUQhmZ1KbDYsYGws07yWo88lMLTb4DUpRvgm91fsycXZ/nwYnzAJuJ0Tky7RkCSCBCCp9KlcU+njAdDYg/eXbN756v2P77vbec/EFxqB4dPXRiXxdJjHgZCIeOfNHlfaQTSycPHhy5EFDD/73UHXbf6FCR1+sGB61AcOC2FMWI/JfG9WU2K1KeTI+BuS0FEOr9fr2lQC1aSCKlXKKcYWqVS0U/u2aDkXKQJDo993C3Kvo9KkSONRO4/DYLcoCnlyxdHFqf4bVhEQTe4EE+JFj5LCo2aPV+D89+k87v1ez6YvRSvuxviMktU/kUqxkEyj9YAXF6vU8mDlsQTXVLNnkLzSZBTw7a/XjklCtxG8NF9dTG23BfemmFoYd913b/+gUYALOm4Cr92I9YOzBzzUYaU5Ypzw88b8E5KQgGJzwnOt3Lw1dv3mBBooCgKBCAQEMFGP+vBVP3i1bzRYzQi9FgLQqWgm4eAasB0Dr853GgVI4ICyVluCw2C3BQ9Ev3jdZhbgTwcL8OBiEcC94i1S1EIA5RhoN4Grz0PRwWGw+/bWhk0EbjHQrgIDNAvozvoaMBjsuqIggVtGAQxalsT9ZTClp+sAh8FuU82YaMnPG2hkDjhT+ZJAY6qcENUPKb4GFOiu/gblvx/qxldtnJwxRkACc+TfwBE8ro9Y49VMspgzRmCh+5F5SbgZxeMVgIBHLT1e+j94Hqqx3/i7rSdrFIAUSUmYCQX3elUJVnu6DANnD7hOmCTAZcxA8SpS+TzADqclUd6/cCXENg/qIeA1h0EdOGru35auSKtYlQJ++HBgRQKXgmGtH5w94KGppEhRCfHB1ru9v1kLAADKi1cYuON/2IgCrqxmkcAJkrAWc3FOx6kVsPhR/7okOmv9TkcBHvKgbgNejtaZjbd7tS99SWcoj/vHf7zAgl4IHO5Qm14w2Ospw1JwuvDmgxNhfMY3c9f//Hlcgj9TPV3VVpD6Pa4qw0z8ZaHl9xdNfMYIAMDhscz+WOu+WUl4Agi09+geL62st9MXTmvbKaQOG1/uGiMAAKtTic1D/2w9xcAF7R6w8LhlGU47ravDNvAlP0Qb97z80ykwzjPQoTwy++ZgsHsieRvM4+5bfbNReKwi4B1/vPPQ5Vie+lhgUgLbqjIb7K6hHt+WROfdFqcvKjzQ4I98B19a6nKEnADRKMBHbCLi8fhNJkxLQhqvq5vUrguojBSLuzaXE8zyhEsYBKiXi79aFn9mFcgxY4UZy5KQkaA5tPZkVWebvbE39ka08S8oPLE2P4bQtwAAAABJRU5ErkJggg==';
@@ -332,474 +332,474 @@ class DashBoard extends Component {
     return (
 
 
-        <div>
+      <div>
 
-          <div className="dashBoardContainer">
+        <div className="dashBoardContainer">
 
-            {/* START HEAD PANEL */}
-            <div className="head-panel">
-              <div className='head-part'>
-                <Button type="primary" className='bidding-btn' onClick={this.onNewWishList}>Новая заявка</Button>
-                {/*<span className="dots" />*/}
+          {/* START HEAD PANEL */}
+          <div className="head-panel">
+            <div className='head-part'>
+              <Button type="primary" className='bidding-btn' onClick={this.onNewWishList}>Новая заявка</Button>
+              {/*<span className="dots" />*/}
 
-                <div className='bidding-info'>
-                  <span className='bidding-info--start'>Старт подачи</span>
-                  <span className='bidding-info--finish'>Финиш подачи</span>
-                </div>
-                <div className='bidding-date'>
-                  <span className='bidding-date--digit'>23.08.2020</span>
-                  <span className='bidding-date--digit'>23.08.2020</span>
-                </div>
-                <div className='date-clock'>
-                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.0001 4.8148C8.48154 4.82996 4.81494 8.48298 4.81494 13C4.81494 17.517 8.48154 21.17 13.0001 21.1852V4.8148Z"
-                        fill="#FFDE84"/>
-                    <path
-                        d="M13.0001 25.6905C6.00481 25.6905 0.30957 19.9953 0.30957 13C0.30957 6.00477 6.00481 0.309525 13.0001 0.309525C19.0667 0.309525 24.2977 4.62739 25.4584 10.5702C25.6132 11.3595 25.6905 12.1798 25.6905 13C25.6905 19.9953 19.9953 25.6905 13.0001 25.6905ZM13.0001 1.74881C6.7941 1.74881 1.74886 6.79405 1.74886 13C1.74886 19.206 6.7941 24.2512 13.0001 24.2512C19.206 24.2512 24.2512 19.206 24.2512 13C24.2512 12.2726 24.1893 11.5452 24.0501 10.8488C23.0132 5.57143 18.3703 1.74881 13.0001 1.74881Z"
-                        fill="#5459CD"/>
-                    <path
-                        d="M13 26C5.83453 26 0 20.1655 0 13C0 5.83453 5.83453 0 13 0C19.206 0 24.5762 4.42619 25.7679 10.5083C25.9226 11.3286 26 12.1643 26 13C26 20.1655 20.1655 26 13 26ZM13 0.619048C6.175 0.619048 0.619048 6.175 0.619048 13C0.619048 19.825 6.175 25.381 13 25.381C19.825 25.381 25.381 19.825 25.381 13C25.381 12.1952 25.3036 11.406 25.1488 10.6321C24.0345 4.82857 18.9119 0.619048 13 0.619048ZM13 24.5607C6.62381 24.5607 1.43929 19.3762 1.43929 13C1.43929 6.62381 6.62381 1.43929 13 1.43929C18.525 1.43929 23.2917 5.37024 24.3441 10.7714C24.4833 11.4988 24.5607 12.2417 24.5607 12.9845C24.5607 19.3762 19.3762 24.5607 13 24.5607ZM13 2.05833C6.96429 2.05833 2.05833 6.96429 2.05833 13C2.05833 19.0357 6.96429 23.9417 13 23.9417C19.0357 23.9417 23.9417 19.0357 23.9417 13C23.9417 12.2881 23.8798 11.5917 23.7405 10.9107C22.7345 5.7881 18.231 2.05833 13 2.05833Z"
-                        fill="#5459CD"/>
-                    <path
-                        d="M19.8874 15.4762H12.9231C11.9326 15.4762 11.1433 14.6869 11.1433 13.6964V4.56547C11.1433 3.93095 11.6695 3.40475 12.304 3.40475C12.9385 3.40475 13.4647 3.93095 13.4647 4.56547V13.1548H19.8874C20.5219 13.1548 21.0481 13.681 21.0481 14.3155C21.0481 14.95 20.5219 15.4762 19.8874 15.4762Z"
-                        fill="#5459CD"/>
-                    <path
-                        d="M13.0003 16.0953C14.7097 16.0953 16.0955 14.7095 16.0955 13C16.0955 11.2906 14.7097 9.90477 13.0003 9.90477C11.2908 9.90477 9.90503 11.2906 9.90503 13C9.90503 14.7095 11.2908 16.0953 13.0003 16.0953Z"
-                        fill="#5459CD"/>
-                  </svg>
-                </div>
+              <div className='bidding-info'>
+                <span className='bidding-info--start'>Старт подачи</span>
+                <span className='bidding-info--finish'>Финиш подачи</span>
               </div>
-              <div className='head-part'>
-                <div className='bidding-stats'>
-                  <span className='bidding-stats--first'>
-                    70
+              <div className='bidding-date'>
+                <span className='bidding-date--digit'>23.08.2020</span>
+                <span className='bidding-date--digit'>23.08.2020</span>
+              </div>
+              <div className='date-clock'>
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13.0001 4.8148C8.48154 4.82996 4.81494 8.48298 4.81494 13C4.81494 17.517 8.48154 21.17 13.0001 21.1852V4.8148Z"
+                    fill="#FFDE84" />
+                  <path
+                    d="M13.0001 25.6905C6.00481 25.6905 0.30957 19.9953 0.30957 13C0.30957 6.00477 6.00481 0.309525 13.0001 0.309525C19.0667 0.309525 24.2977 4.62739 25.4584 10.5702C25.6132 11.3595 25.6905 12.1798 25.6905 13C25.6905 19.9953 19.9953 25.6905 13.0001 25.6905ZM13.0001 1.74881C6.7941 1.74881 1.74886 6.79405 1.74886 13C1.74886 19.206 6.7941 24.2512 13.0001 24.2512C19.206 24.2512 24.2512 19.206 24.2512 13C24.2512 12.2726 24.1893 11.5452 24.0501 10.8488C23.0132 5.57143 18.3703 1.74881 13.0001 1.74881Z"
+                    fill="#5459CD" />
+                  <path
+                    d="M13 26C5.83453 26 0 20.1655 0 13C0 5.83453 5.83453 0 13 0C19.206 0 24.5762 4.42619 25.7679 10.5083C25.9226 11.3286 26 12.1643 26 13C26 20.1655 20.1655 26 13 26ZM13 0.619048C6.175 0.619048 0.619048 6.175 0.619048 13C0.619048 19.825 6.175 25.381 13 25.381C19.825 25.381 25.381 19.825 25.381 13C25.381 12.1952 25.3036 11.406 25.1488 10.6321C24.0345 4.82857 18.9119 0.619048 13 0.619048ZM13 24.5607C6.62381 24.5607 1.43929 19.3762 1.43929 13C1.43929 6.62381 6.62381 1.43929 13 1.43929C18.525 1.43929 23.2917 5.37024 24.3441 10.7714C24.4833 11.4988 24.5607 12.2417 24.5607 12.9845C24.5607 19.3762 19.3762 24.5607 13 24.5607ZM13 2.05833C6.96429 2.05833 2.05833 6.96429 2.05833 13C2.05833 19.0357 6.96429 23.9417 13 23.9417C19.0357 23.9417 23.9417 19.0357 23.9417 13C23.9417 12.2881 23.8798 11.5917 23.7405 10.9107C22.7345 5.7881 18.231 2.05833 13 2.05833Z"
+                    fill="#5459CD" />
+                  <path
+                    d="M19.8874 15.4762H12.9231C11.9326 15.4762 11.1433 14.6869 11.1433 13.6964V4.56547C11.1433 3.93095 11.6695 3.40475 12.304 3.40475C12.9385 3.40475 13.4647 3.93095 13.4647 4.56547V13.1548H19.8874C20.5219 13.1548 21.0481 13.681 21.0481 14.3155C21.0481 14.95 20.5219 15.4762 19.8874 15.4762Z"
+                    fill="#5459CD" />
+                  <path
+                    d="M13.0003 16.0953C14.7097 16.0953 16.0955 14.7095 16.0955 13C16.0955 11.2906 14.7097 9.90477 13.0003 9.90477C11.2908 9.90477 9.90503 11.2906 9.90503 13C9.90503 14.7095 11.2908 16.0953 13.0003 16.0953Z"
+                    fill="#5459CD" />
+                </svg>
+              </div>
+            </div>
+            <div className='head-part'>
+              <div className='bidding-stats'>
+                <span className='bidding-stats--first'>
+                  70
                   </span>
                   /
                   <span className='bidding-stats--second'>
-                    30
+                  30
                   </span>%
                 </div>
-                <div className='stats-icon'>
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_d)">
-                      <path
-                          d="M33 20C33 27.1792 27.1792 33 20 33C12.8208 33 7 27.1792 7 20C7 12.8208 12.8208 7 20 7C26.3247 7 31.5978 11.5208 32.759 17.5096C32.9197 18.3129 33 19.1455 33 20Z"
-                          fill="#5459CD"/>
-                    </g>
-                    <g filter="url(#filter1_d)">
-                      <path
-                          d="M33 18.0087C26.593 19.5005 20 21 20 21V7C26.4442 7 31.8168 11.7355 33 18.0087Z"
-                          fill="#FFDE84"/>
-                    </g>
-                    <defs>
-                      <filter id="filter0_d" x="0" y="0" width="40" height="40"
-                              filterUnits="userSpaceOnUse"
-                              color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                        <feColorMatrix in="SourceAlpha" type="matrix"
-                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                        <feOffset/>
-                        <feGaussianBlur stdDeviation="3.5"/>
-                        <feColorMatrix type="matrix"
-                                       values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0"/>
-                        <feBlend mode="normal" in2="BackgroundImageFix"
-                                 result="effect1_dropShadow"/>
-                        <feBlend mode="normal" in="SourceGraphic"
-                                 in2="effect1_dropShadow" result="shape"/>
-                      </filter>
-                      <filter id="filter1_d" x="13" y="0" width="27" height="28"
-                              filterUnits="userSpaceOnUse"
-                              color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                        <feColorMatrix in="SourceAlpha" type="matrix"
-                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                        <feOffset/>
-                        <feGaussianBlur stdDeviation="3.5"/>
-                        <feColorMatrix type="matrix"
-                                       values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0"/>
-                        <feBlend mode="normal" in2="BackgroundImageFix"
-                                 result="effect1_dropShadow"/>
-                        <feBlend mode="normal" in="SourceGraphic"
-                                 in2="effect1_dropShadow" result="shape"/>
-                      </filter>
-                    </defs>
+              <div className='stats-icon'>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g filter="url(#filter0_d)">
+                    <path
+                      d="M33 20C33 27.1792 27.1792 33 20 33C12.8208 33 7 27.1792 7 20C7 12.8208 12.8208 7 20 7C26.3247 7 31.5978 11.5208 32.759 17.5096C32.9197 18.3129 33 19.1455 33 20Z"
+                      fill="#5459CD" />
+                  </g>
+                  <g filter="url(#filter1_d)">
+                    <path
+                      d="M33 18.0087C26.593 19.5005 20 21 20 21V7C26.4442 7 31.8168 11.7355 33 18.0087Z"
+                      fill="#FFDE84" />
+                  </g>
+                  <defs>
+                    <filter id="filter0_d" x="0" y="0" width="40" height="40"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB">
+                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset />
+                      <feGaussianBlur stdDeviation="3.5" />
+                      <feColorMatrix type="matrix"
+                        values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0" />
+                      <feBlend mode="normal" in2="BackgroundImageFix"
+                        result="effect1_dropShadow" />
+                      <feBlend mode="normal" in="SourceGraphic"
+                        in2="effect1_dropShadow" result="shape" />
+                    </filter>
+                    <filter id="filter1_d" x="13" y="0" width="27" height="28"
+                      filterUnits="userSpaceOnUse"
+                      color-interpolation-filters="sRGB">
+                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" type="matrix"
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset />
+                      <feGaussianBlur stdDeviation="3.5" />
+                      <feColorMatrix type="matrix"
+                        values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0" />
+                      <feBlend mode="normal" in2="BackgroundImageFix"
+                        result="effect1_dropShadow" />
+                      <feBlend mode="normal" in="SourceGraphic"
+                        in2="effect1_dropShadow" result="shape" />
+                    </filter>
+                  </defs>
+                </svg>
+              </div>
+              {/* <Popover content={content} placement="bottom"> */}
+              <Avatar
+                className="user-avatar"
+                size="large"
+                shape="square"
+                icon="user"
+                src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png"
+              />
+              {/* </Popover> */}
+              {/* <Popover content={content} placement="bottom"> */}
+              <div className='user-info'>
+                <span className='user-info--name'>{this.props.user &&
+                  this.props.user.firstName}</span>
+                <span className='user-info--name'>{this.props.user &&
+                  this.props.user.lastName}</span>
+              </div>
+              {/* </Popover> */}
+              <Popover content={content} placement="bottom">
+                <div className="user-more">
+                  <svg width="4" height="14" viewBox="0 0 4 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="2" cy="2" r="2" fill="#686CD7" />
+                    <circle cx="2" cy="7" r="2" fill="#686CD7" />
+                    <circle cx="2" cy="12" r="2" fill="#686CD7" />
                   </svg>
                 </div>
-                <Popover content={content} placement="bottom">
-                  <Avatar
-                      className="user-avatar"
-                      size="large"
-                      shape="square"
-                      icon="user"
-                      src="https://img.icons8.com/bubbles/50/000000/short-curly-hair-lady-with-red-glasses.png"
-                  />
-                </Popover>
-                <Popover content={content} placement="bottom">
-                  <div className='user-info'>
-                <span className='user-info--name'>{this.props.user &&
-                this.props.user.firstName}</span>
-                    <span className='user-info--name'>{this.props.user &&
-                    this.props.user.lastName}</span>
-                  </div>
-                </Popover>
-                <Popover content={content} placement="bottom">
-                  <div className="user-more">
-                    <svg width="4" height="14" viewBox="0 0 4 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="2" cy="2" r="2" fill="#686CD7"/>
-                      <circle cx="2" cy="7" r="2" fill="#686CD7"/>
-                      <circle cx="2" cy="12" r="2" fill="#686CD7"/>
-                    </svg>
-                  </div>
-                </Popover>
-              </div>
+              </Popover>
             </div>
-            {/* END HEAD PANEL */}
-
-            {(this.state.loading || !this.props.users) && (
-                <div style={{textAlign: 'center', marginTop: '10px'}}>
-                  <Spin size="small" tip="Загрузка..."/>
-                </div>
-            )}
-
-            {this.state.visibleSort === true && (
-                <div className='modalWidth'>
-                  <Modal
-                      width='700px'
-                      title="Фильтрация расписания рейсов"
-                      visible={this.state.visibleSort}
-                      onCancel={this.handleCancel3}
-                      footer={[]}
-                  >
-                    <div style={{textAlign: 'center'}}>
-                      <div className="dashBoardContainerMoreFiltres">
-                        <div className="dashBoardContentMoreFiltres">
-                          <Card size="small" title="Длительность смены"
-                                className="userCardFilter"
-                          >
-                            <div style={{textAlign: 'left'}}>
-                              <Switch defaultChecked onChange={this.onChangeLongWork}/> Трансатлантические рейсы
-                            </div>
-                            <div style={{textAlign: 'left'}}>
-                              <Switch defaultChecked onChange={this.onChangeShortWork}/> Короткие разворотные рейсы
-                            </div>
-
-                          </Card>
-                          <Card size="small" title="Время полета" className="userCardFilter">
-                            <div style={{marginLeft: 'auto', marginRight: 'auto', width: 'auto'}}>
-                              <Slider range value={[this.state.minPrice, this.state.maxPrice]} max={24}
-                                      onChange={this.onChangeTime}
-                                      defaultValue={[this.state.minTime, this.state.maxTime]}
-                                      marks={{0: 'ч', 24: 'ч.'}}/>
-                            </div>
-                          </Card>
-
-                          <Card size="small" title="Время полета" className="userCardFilter">
-                            <div style={{textAlign: 'left'}}>
-                              <Switch defaultChecked onChange={this.onChangeMorning}/> Утро
-                            </div>
-                            <div style={{textAlign: 'left'}}>
-                              <Switch defaultChecked onChange={this.onChangeDay}/> День
-                            </div>
-
-                          </Card>
-
-                          <Card size="small" title="Время полета" className="userCardFilter">
-                            <div style={{textAlign: 'left'}}>
-                              <Switch defaultChecked onChange={this.onChangeEvening}/> Вечер
-                            </div>
-                            <div style={{textAlign: 'left'}}>
-                              <Switch defaultChecked onChange={this.onChangeNight}/> Ночь
-                            </div>
-                            <div>
-
-                            </div>
-                          </Card>
-                        </div>
-                      </div>
-                    </div>
-                  </Modal>
-                </div>
-            )}
           </div>
+          {/* END HEAD PANEL */}
 
-          {(this.state.newWish && this.state.preference)
-          && (
-              <div className="dashBoardContainer">
-                <div className="dashBoardContentDrag borderDesign">
-                  <Card
-                      size="small"
-                      bordered={false}
-                      className="userCardSlider"
-                  >
-                    <div className='newForm'>Новая Заявка &nbsp;
-                      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
-                            fill="#282828"
-                        />
-                        <path
-                            d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
-                            fill="#282828"
-                        />
-                      </svg>
-                      <span className='newForm2'>
-                        &nbsp;&nbsp;&nbsp; 1. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;
-                      <span className='newForm3'>Переместите бокс по приоритету</span>
-                    </div>
-                    <div style={{textAlign: 'left', height: '300px'}}>
-                      {/* <ItemList />
-                                         */}
-                      <ItemList/>
-                    </div>
-                    <Button
-                        type="primary"
-                        className='bidding-btn'
-                        style={{float: 'right', marginRight: '10px'}}
-                        onClick={this.step}
-                    >
-                      <span style={{marginLeft: '10px'}}>🡲</span>
-                      <span style={{marginLeft: '35px'}}>Далее</span>
-                    </Button>
-                  </Card>
-                </div>
-              </div>
+          {(this.state.loading || !this.props.users) && (
+            <div style={{ textAlign: 'center', marginTop: '10px' }}>
+              <Spin size="small" tip="Загрузка..." />
+            </div>
           )}
 
-          {(this.state.newWish && this.state.preference1) &&
+          {this.state.visibleSort === true && (
+            <div className='modalWidth'>
+              <Modal
+                width='700px'
+                title="Фильтрация расписания рейсов"
+                visible={this.state.visibleSort}
+                onCancel={this.handleCancel3}
+                footer={[]}
+              >
+                <div style={{ textAlign: 'center' }}>
+                  <div className="dashBoardContainerMoreFiltres">
+                    <div className="dashBoardContentMoreFiltres">
+                      <Card size="small" title="Длительность смены"
+                        className="userCardFilter"
+                      >
+                        <div style={{ textAlign: 'left' }}>
+                          <Switch defaultChecked onChange={this.onChangeLongWork} /> Трансатлантические рейсы
+                            </div>
+                        <div style={{ textAlign: 'left' }}>
+                          <Switch defaultChecked onChange={this.onChangeShortWork} /> Короткие разворотные рейсы
+                            </div>
+
+                      </Card>
+                      <Card size="small" title="Время полета" className="userCardFilter">
+                        <div style={{ marginLeft: 'auto', marginRight: 'auto', width: 'auto' }}>
+                          <Slider range value={[this.state.minPrice, this.state.maxPrice]} max={24}
+                            onChange={this.onChangeTime}
+                            defaultValue={[this.state.minTime, this.state.maxTime]}
+                            marks={{ 0: 'ч', 24: 'ч.' }} />
+                        </div>
+                      </Card>
+
+                      <Card size="small" title="Время полета" className="userCardFilter">
+                        <div style={{ textAlign: 'left' }}>
+                          <Switch defaultChecked onChange={this.onChangeMorning} /> Утро
+                            </div>
+                        <div style={{ textAlign: 'left' }}>
+                          <Switch defaultChecked onChange={this.onChangeDay} /> День
+                            </div>
+
+                      </Card>
+
+                      <Card size="small" title="Время полета" className="userCardFilter">
+                        <div style={{ textAlign: 'left' }}>
+                          <Switch defaultChecked onChange={this.onChangeEvening} /> Вечер
+                            </div>
+                        <div style={{ textAlign: 'left' }}>
+                          <Switch defaultChecked onChange={this.onChangeNight} /> Ночь
+                            </div>
+                        <div>
+
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            </div>
+          )}
+        </div>
+
+        {(this.state.newWish && this.state.preference)
+          && (
+            <div className="dashBoardContainer">
+              <div className="dashBoardContentDrag borderDesign">
+                <Card
+                  size="small"
+                  bordered={false}
+                  className="userCardSlider"
+                >
+                  <div className='newForm'>Новая Заявка &nbsp;
+                      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                        fill="#282828"
+                      />
+                      <path
+                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                        fill="#282828"
+                      />
+                    </svg>
+                    <span className='newForm2'>
+                      &nbsp;&nbsp;&nbsp; 1. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;
+                      <span className='newForm3'>Переместите бокс по приоритету</span>
+                  </div>
+                  <div style={{ textAlign: 'left', height: '300px' }}>
+                    {/* <ItemList />
+                                         */}
+                    <ItemList />
+                  </div>
+                  <Button
+                    type="primary"
+                    className='bidding-btn'
+                    style={{ float: 'right', marginRight: '10px' }}
+                    onClick={this.step}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '35px' }}>Далее</span>
+                  </Button>
+                </Card>
+              </div>
+            </div>
+          )}
+
+        {(this.state.newWish && this.state.preference1) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign">
               <Card
-                  size="small"
-                  bordered={false}
-                  className="userCardSlider"
+                size="small"
+                bordered={false}
+                className="userCardSlider"
               >
                 <div className='newForm'>Новая Заявка &nbsp;
                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
-                        fill="#282828"
+                      d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                      fill="#282828"
                     />
                     <path
-                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
-                        fill="#282828"
+                      d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                      fill="#282828"
                     />
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
-                <div style={{textAlign: 'center', height: '300px'}}>
+                <div style={{ textAlign: 'center', height: '300px' }}>
                   {this.props.flight_direction && (
-                      <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction}/>
+                    <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
                   )}
                   {/* <RadioButtonList /> */}
                 </div>
 
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step3}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step3}
                 >
-                  <span style={{marginLeft: '10px'}}>🡲</span>
-                  <span style={{marginLeft: '35px'}}>Далее</span>
+                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                  <span style={{ marginLeft: '35px' }}>Далее</span>
                 </Button>
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.stepBack}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.stepBack}
                 >
-                  <span style={{marginLeft: '10px'}}>🡸</span>
-                  <span style={{marginLeft: '35px'}}>Назад</span>
+                  <span style={{ marginLeft: '10px' }}>🡸</span>
+                  <span style={{ marginLeft: '35px' }}>Назад</span>
                 </Button>
               </Card>
             </div>
           </div>
-          }
+        }
 
-          {(this.state.newWish && this.state.preference2) &&
+        {(this.state.newWish && this.state.preference2) &&
 
           <div className="dashBoardContainer">
-            <div className="dashBoardContentDrag borderDesign" style={{borderColor: '4px double black;'}}>
+            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
               <Card
-                  size="small"
-                  bordered={false}
-                  className="userCardSlider"
+                size="small"
+                bordered={false}
+                className="userCardSlider"
               >
                 <div className='newForm'>Новая Заявка &nbsp;
                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
-                        fill="#282828"
+                      d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                      fill="#282828"
                     />
                     <path
-                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
-                        fill="#282828"
+                      d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                      fill="#282828"
                     />
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 3. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Переместите бокс по приоритету</span>
                 </div>
 
-                <ItemList_day/>
+                <ItemList_day />
 
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step4}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step4}
                 >
-                  <span style={{marginLeft: '10px'}}>🡲</span>
-                  <span style={{marginLeft: '35px'}}>Далее</span>
+                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                  <span style={{ marginLeft: '35px' }}>Далее</span>
                 </Button>
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step}
                 >
-                  <span style={{marginLeft: '10px'}}>🡸</span>
-                  <span style={{marginLeft: '35px'}}>Назад</span>
+                  <span style={{ marginLeft: '10px' }}>🡸</span>
+                  <span style={{ marginLeft: '35px' }}>Назад</span>
                 </Button>
               </Card>
             </div>
           </div>
-          }
+        }
 
 
-          {(this.state.newWish && this.state.preference3) &&
+        {(this.state.newWish && this.state.preference3) &&
 
           < div className="dashBoardContainer">
-            <div className="dashBoardContentDrag borderDesign" style={{borderColor: '4px double black;'}}>
+            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
               <Card
-                  size="small"
-                  bordered={false}
-                  className="userCardSlider"
+                size="small"
+                bordered={false}
+                className="userCardSlider"
               >
                 <div className='newForm'>Новая Заявка &nbsp;
                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
-                        fill="#282828"
+                      d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                      fill="#282828"
                     />
                     <path
-                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
-                        fill="#282828"
+                      d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                      fill="#282828"
                     />
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 4. Преференции переработок</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
-                <div style={{textAlign: 'center', height: '300px'}}>
+                <div style={{ textAlign: 'center', height: '300px' }}>
                   {this.props.flight_direction && (
-                      <RadioButtonList_WorkDay dispatcher_func={SetFlightDirection} data={data_work_time}/>
+                    <RadioButtonList_WorkDay dispatcher_func={SetFlightDirection} data={data_work_time} />
                   )}
                   {/* <RadioButtonList /> */}
                 </div>
 
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step5}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step5}
                 >
-                  <span style={{marginLeft: '10px'}}>🡲</span>
-                  <span style={{marginLeft: '35px'}}>Далее</span>
+                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                  <span style={{ marginLeft: '35px' }}>Далее</span>
                 </Button>
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step3}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step3}
                 >
-                  <span style={{marginLeft: '10px'}}>🡸</span>
-                  <span style={{marginLeft: '35px'}}>Назад</span>
+                  <span style={{ marginLeft: '10px' }}>🡸</span>
+                  <span style={{ marginLeft: '35px' }}>Назад</span>
                 </Button>
               </Card>
             </div>
           </div>
-          }
+        }
 
 
-          {(this.state.newWish && this.state.preference4) &&
+        {(this.state.newWish && this.state.preference4) &&
 
           < div className="dashBoardContainer">
-            <div className="dashBoardContentDrag borderDesign" style={{borderColor: '4px double black;'}}>
+            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
               <Card
-                  size="small"
-                  bordered={false}
-                  className="userCardSlider"
+                size="small"
+                bordered={false}
+                className="userCardSlider"
               >
                 <div className='newForm'>Новая Заявка &nbsp;
                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
-                        fill="#282828"
+                      d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                      fill="#282828"
                     />
                     <path
-                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
-                        fill="#282828"
+                      d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                      fill="#282828"
                     />
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 5. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
-                <div style={{textAlign: 'center', height: '300px'}}>
+                <div style={{ textAlign: 'center', height: '300px' }}>
                   {this.props.flight_direction && (
-                      <RadioButtonList_WorkTime dispatcher_func={SetFlightDirection} data={data_work_day}/>
+                    <RadioButtonList_WorkTime dispatcher_func={SetFlightDirection} data={data_work_day} />
                   )}
                   {/* <RadioButtonList /> */}
                 </div>
 
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step6}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step6}
                 >
-                  <span style={{marginLeft: '10px'}}>🡲</span>
-                  <span style={{marginLeft: '35px'}}>Далее</span>
+                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                  <span style={{ marginLeft: '35px' }}>Далее</span>
                 </Button>
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step4}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step4}
                 >
-                  <span style={{marginLeft: '10px'}}>🡸</span>
-                  <span style={{marginLeft: '35px'}}>Назад</span>
+                  <span style={{ marginLeft: '10px' }}>🡸</span>
+                  <span style={{ marginLeft: '35px' }}>Назад</span>
                 </Button>
               </Card>
             </div>
           </div>
-          }
+        }
 
 
-          {(this.state.newWish && this.state.preference5) &&
+        {(this.state.newWish && this.state.preference5) &&
 
           < div className="dashBoardContainer">
-            <div className="dashBoardContentDrag borderDesign" style={{borderColor: '4px double black;'}}>
+            <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
               <Card
-                  size="small"
-                  bordered={false}
-                  className="userCardSlider"
+                size="small"
+                bordered={false}
+                className="userCardSlider"
               >
                 <div className='newForm'>Новая Заявка &nbsp;
                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
-                        fill="#282828"
+                      d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                      fill="#282828"
                     />
                     <path
-                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
-                        fill="#282828"
+                      d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                      fill="#282828"
                     />
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 6. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;
@@ -819,8 +819,8 @@ class DashBoard extends Component {
                       marginRight: '21px',
                     }}>
                       <Calendar
-                          value={this.state.selectedDates}
-                          onChange={(dates) => this.setState({selectedDates: dates})}
+                        value={this.state.selectedDates}
+                        onChange={(dates) => this.setState({ selectedDates: dates })}
                       />
                     </div>
                     {/* <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
@@ -832,269 +832,269 @@ class DashBoard extends Component {
                   </div>
                 </div>
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}>
-                  <span style={{marginLeft: '10px'}}>&#10004;</span>
-                  <span style={{marginLeft: '35px'}}>Сохранить</span>
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}>
+                  <span style={{ marginLeft: '10px' }}>&#10004;</span>
+                  <span style={{ marginLeft: '35px' }}>Сохранить</span>
                 </Button>
 
                 <Button
-                    type="primary"
-                    className='bidding-btn-step'
-                    style={{float: 'right', marginRight: '0px'}}
-                    onClick={this.step5}
+                  type="primary"
+                  className='bidding-btn-step'
+                  style={{ float: 'right', marginRight: '0px' }}
+                  onClick={this.step5}
                 >
-                  <span style={{marginLeft: '10px'}}>🡸</span>
-                  <span style={{marginLeft: '35px'}}>Назад</span>
+                  <span style={{ marginLeft: '10px' }}>🡸</span>
+                  <span style={{ marginLeft: '35px' }}>Назад</span>
                 </Button>
 
               </Card>
             </div>
           </div>
-          }
+        }
 
 
-          {/* <ItemList dispatcher_func={SetPriority} data={this.props.priority_list_for_application}/>
+        {/* <ItemList dispatcher_func={SetPriority} data={this.props.priority_list_for_application}/>
                 <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction}/>
                 <ItemList dispatcher_func={SetDayTime} data={this.props.daytime}/> */}
 
 
-          <div className="dashBoardContainer">
-            <div className="dashBoardContent">
-              <div className='yourTrip'><font face="Arial Black">Заявка на текущий период:</font></div>
-              <Card
-                  color="primary"
-                  className="userCardW shadow-sm"
-                  bordered={false}
+        <div className="dashBoardContainer">
+          <div className="dashBoardContent">
+            <div className='yourTrip'><font face="Arial Black">Заявка на текущий период:</font></div>
+            <Card
+              color="primary"
+              className="userCardW shadow-sm"
+              bordered={false}
+            >
+              <img src={blueCircle} style={{ width: '30px', position: 'absolute', top: '15px', left: '15px' }}></img>
+              <div className='TitleText' style={{ position: 'absolute', top: '25px', left: '50px' }}>
+                <font face="Arial" color={'#0a0a0a'}>Октябрь</font>
+              </div>
+              <div
+                className="mediumText"
+                color={'#989191'}
+                style={{ position: 'absolute', bottom: '15px', left: '20px' }}
               >
-                <img src={blueCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>
-                <div className='TitleText' style={{position: 'absolute', top: '25px', left: '50px'}}>
-                  <font face="Arial" color={'#0a0a0a'}>Октябрь</font>
+                Статус заявки
                 </div>
-                <div
-                    className="mediumText"
-                    color={'#989191'}
-                    style={{position: 'absolute', bottom: '15px', left: '20px'}}
-                >
-                  Статус заявки
-                </div>
-                <div style={{width: '80%', float: 'right', marginRight: '50px'}}>
-                  <div className="userCard1" style={{width: '70%'}}>
-                    {(!this.props.user.wishForm &&
-                        <div className='greyMediumText' style={{marginLeft: '100px'}}>
-                          <font face="Arial Black">
-                            Не заполнена
+              <div style={{ width: '80%', float: 'right', marginRight: '50px' }}>
+                <div className="userCard1" style={{ width: '70%' }}>
+                  {(!this.props.user.wishForm &&
+                    <div className='greyMediumText' style={{ marginLeft: '100px' }}>
+                      <font face="Arial Black">
+                        Не заполнена
                           </font>
-                        </div>) ||
+                    </div>) ||
                     (this.props.user.wishForm &&
-                        <div style={{marginLeft: '10px'}}>
-                          <font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
-                        </div>)}
-                  </div>
-                  {this.props.user.wishForm &&
+                      <div style={{ marginLeft: '10px' }}>
+                        <font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
+                      </div>)}
+                </div>
+                {this.props.user.wishForm &&
                   this.props.user.wishForm.map((user, key) =>
-                      <div>
-                        <Buttonr
-                            onClick={() => this.changeDirection(user.longFly)}
-                            color="none"
-                            className="userCardWP hoverCard shadow-lg"
-                        >
-                          <font color={'#5a5a5a'}>Направление: {user.longFly}</font>
-                        </Buttonr>
-                        <Buttonr
-                            onClick={() => this.changeDuration(user.timeFly)}
-                            color="none"
-                            className="userCardWP hoverCard shadow-lg"
-                            ç>
-                          <font color={'#5a5a5a'}>Продолжительность рабочей смены: {user.timeFly}</font>
-                        </Buttonr>
-                        <Buttonr
-                            onClick={() => this.changeWork(user.otherTime)}
-                            color="none"
-                            className="userCardWP hoverCard shadow-lg"
-                        >
-                          <font color={'#5a5a5a'}>Желание дополнительной подработки: {user.otherTime}</font>
-                        </Buttonr>
+                    <div>
+                      <Buttonr
+                        onClick={() => this.changeDirection(user.longFly)}
+                        color="none"
+                        className="userCardWP hoverCard shadow-lg"
+                      >
+                        <font color={'#5a5a5a'}>Направление: {user.longFly}</font>
+                      </Buttonr>
+                      <Buttonr
+                        onClick={() => this.changeDuration(user.timeFly)}
+                        color="none"
+                        className="userCardWP hoverCard shadow-lg"
+                        ç>
+                        <font color={'#5a5a5a'}>Продолжительность рабочей смены: {user.timeFly}</font>
+                      </Buttonr>
+                      <Buttonr
+                        onClick={() => this.changeWork(user.otherTime)}
+                        color="none"
+                        className="userCardWP hoverCard shadow-lg"
+                      >
+                        <font color={'#5a5a5a'}>Желание дополнительной подработки: {user.otherTime}</font>
+                      </Buttonr>
 
-                        <Buttonr
-                            onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
-                            color="none"
-                            className="userCardWP hoverCard shadow-lg"
-                        >
-                          <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
-                        </Buttonr>
-                      </div>,
+                      <Buttonr
+                        onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
+                        color="none"
+                        className="userCardWP hoverCard shadow-lg"
+                      >
+                        <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
+                      </Buttonr>
+                    </div>,
                   )}
-                </div>
+              </div>
 
-                <div className='settings-icon' onClick={this.onNewWishList}
-                     style={{position: 'absolute', bottom: '15px', right: '15px'}}>
-                  <svg width="19" height="20" viewBox="0 0 19 20" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0)">
-                      <path
-                          d="M10.0608 0H8.93802C7.59503 0 6.50523 1.01931 6.4612 2.32833V2.36052C6.45019 2.55365 6.34011 2.71459 6.15297 2.80043C5.66861 3.01502 5.20627 3.27253 4.77696 3.57296C4.61183 3.69099 4.40268 3.70172 4.23756 3.61588L4.21554 3.60515C3.02667 2.99356 1.5736 3.39056 0.902101 4.5279L0.329679 5.4721C-0.341816 6.60944 0.0214521 8.03648 1.1663 8.72318C1.33142 8.81974 1.41948 9.00215 1.39747 9.20601C1.37545 9.46352 1.35343 9.73176 1.35343 9.98927C1.35343 10.2468 1.36444 10.515 1.39747 10.7725C1.41948 10.9657 1.33142 11.1588 1.1663 11.2554C0.0324601 11.9635 -0.341816 13.3906 0.329679 14.5279L0.891093 15.4828C1.56259 16.6202 3.01566 17.0172 4.20453 16.4056L4.22655 16.3948C4.39167 16.309 4.60083 16.3197 4.76595 16.4378C5.19526 16.7382 5.6576 16.9957 6.14196 17.2103C6.3291 17.2961 6.45019 17.4571 6.45019 17.6502V17.6824C6.50523 18.9807 7.59503 20 8.93802 20H10.0608C11.4038 20 12.4936 18.9807 12.5377 17.6717V17.5966C12.5487 17.4142 12.6588 17.2425 12.8459 17.1567C13.3082 16.9528 13.7486 16.6953 14.1669 16.4056C14.332 16.2876 14.5411 16.2768 14.7173 16.3627L14.7943 16.4056C15.9832 17.0172 17.4363 16.6202 18.1078 15.4828L18.6692 14.5279C19.3407 13.3906 18.9774 11.9635 17.8326 11.2768L17.7335 11.2232C17.5684 11.1266 17.4803 10.9442 17.5023 10.7511C17.5243 10.5043 17.5354 10.2575 17.5354 10.0215C17.5354 9.78541 17.5243 9.5279 17.5023 9.29185C17.4803 9.09871 17.5684 8.91631 17.7335 8.81974L17.8326 8.76609C18.9664 8.06867 19.3407 6.64163 18.6692 5.51502L18.1078 4.56009C17.4363 3.42275 15.9832 3.02575 14.7943 3.63734L14.7173 3.68026C14.5411 3.76609 14.332 3.75537 14.1669 3.63734C13.7486 3.34764 13.3082 3.09013 12.8459 2.88627C12.6588 2.80043 12.5487 2.63948 12.5377 2.44635V2.37124C12.4936 1.01931 11.4038 0 10.0608 0ZM4.45772 4.84979C4.80998 4.84979 5.16224 4.74249 5.47047 4.5279C5.83373 4.27039 6.23003 4.05579 6.64833 3.87339C7.25378 3.60515 7.65007 3.03648 7.67209 2.40343V2.37124C7.6941 1.70601 8.25552 1.18026 8.93802 1.18026H10.0608C10.7434 1.18026 11.3048 1.70601 11.3268 2.37124V2.44635C11.3488 3.0794 11.7341 3.63734 12.3285 3.91631C12.7248 4.09871 13.0991 4.3133 13.4513 4.56009C13.9907 4.94635 14.6953 4.98927 15.2787 4.68884L15.3557 4.64592C15.9612 4.33476 16.6987 4.53863 17.051 5.11803L17.6124 6.07296C17.9537 6.65236 17.7665 7.38197 17.1831 7.73605L17.084 7.7897C16.5336 8.12232 16.2254 8.73391 16.2914 9.37768C16.3135 9.58154 16.3245 9.79614 16.3245 10C16.3245 10.2039 16.3135 10.4185 16.2914 10.6223C16.2254 11.2661 16.5336 11.8777 17.084 12.2103L17.1831 12.2639C17.7665 12.618 17.9537 13.3476 17.6124 13.927L17.051 14.882C16.7097 15.4614 15.9612 15.6652 15.3557 15.3541L15.2787 15.3112C14.6953 15.0107 14.0018 15.0536 13.4513 15.4399C13.0991 15.6867 12.7248 15.9013 12.3285 16.0837C11.7341 16.3519 11.3488 16.9206 11.3268 17.5536V17.6288C11.3048 18.294 10.7544 18.8197 10.0608 18.8197H8.93802C8.25552 18.8197 7.6941 18.294 7.67209 17.6288V17.5966C7.65007 16.9528 7.25378 16.3841 6.64833 16.1266C6.24103 15.9442 5.84474 15.7296 5.47047 15.4721C4.93107 15.0966 4.23756 15.0536 3.65413 15.3541L3.63211 15.3648C3.02667 15.676 2.28912 15.4721 1.93686 14.8927L1.37545 13.9378C1.0342 13.3584 1.22134 12.6288 1.80477 12.2747C2.36618 11.9313 2.67441 11.3197 2.59735 10.676C2.57533 10.4506 2.56433 10.2253 2.56433 10.0107C2.56433 9.79614 2.57533 9.56009 2.59735 9.34549C2.6634 8.70172 2.35517 8.0794 1.80477 7.74678C1.22134 7.3927 1.0342 6.66309 1.37545 6.08369L1.93686 5.12875C2.27811 4.54936 3.02667 4.34549 3.63211 4.65665L3.65413 4.66738C3.90732 4.78541 4.18252 4.84979 4.45772 4.84979Z"
-                          fill="#282828"/>
-                      <path
-                          d="M9.45595 5.60085C11.9486 5.60085 13.9693 7.57042 13.9693 10C13.9693 12.4296 11.9486 14.3991 9.45595 14.3991C6.96331 14.3991 4.94263 12.4296 4.94263 10C4.94263 7.57042 6.96331 5.60085 9.45595 5.60085Z"
-                          fill="#5459CD"/>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0">
-                        <rect width="19" height="20" fill="white"
-                              transform="matrix(1 0 0 -1 0 20)"/>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
+              <div className='settings-icon' onClick={this.onNewWishList}
+                style={{ position: 'absolute', bottom: '15px', right: '15px' }}>
+                <svg width="19" height="20" viewBox="0 0 19 20" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0)">
+                    <path
+                      d="M10.0608 0H8.93802C7.59503 0 6.50523 1.01931 6.4612 2.32833V2.36052C6.45019 2.55365 6.34011 2.71459 6.15297 2.80043C5.66861 3.01502 5.20627 3.27253 4.77696 3.57296C4.61183 3.69099 4.40268 3.70172 4.23756 3.61588L4.21554 3.60515C3.02667 2.99356 1.5736 3.39056 0.902101 4.5279L0.329679 5.4721C-0.341816 6.60944 0.0214521 8.03648 1.1663 8.72318C1.33142 8.81974 1.41948 9.00215 1.39747 9.20601C1.37545 9.46352 1.35343 9.73176 1.35343 9.98927C1.35343 10.2468 1.36444 10.515 1.39747 10.7725C1.41948 10.9657 1.33142 11.1588 1.1663 11.2554C0.0324601 11.9635 -0.341816 13.3906 0.329679 14.5279L0.891093 15.4828C1.56259 16.6202 3.01566 17.0172 4.20453 16.4056L4.22655 16.3948C4.39167 16.309 4.60083 16.3197 4.76595 16.4378C5.19526 16.7382 5.6576 16.9957 6.14196 17.2103C6.3291 17.2961 6.45019 17.4571 6.45019 17.6502V17.6824C6.50523 18.9807 7.59503 20 8.93802 20H10.0608C11.4038 20 12.4936 18.9807 12.5377 17.6717V17.5966C12.5487 17.4142 12.6588 17.2425 12.8459 17.1567C13.3082 16.9528 13.7486 16.6953 14.1669 16.4056C14.332 16.2876 14.5411 16.2768 14.7173 16.3627L14.7943 16.4056C15.9832 17.0172 17.4363 16.6202 18.1078 15.4828L18.6692 14.5279C19.3407 13.3906 18.9774 11.9635 17.8326 11.2768L17.7335 11.2232C17.5684 11.1266 17.4803 10.9442 17.5023 10.7511C17.5243 10.5043 17.5354 10.2575 17.5354 10.0215C17.5354 9.78541 17.5243 9.5279 17.5023 9.29185C17.4803 9.09871 17.5684 8.91631 17.7335 8.81974L17.8326 8.76609C18.9664 8.06867 19.3407 6.64163 18.6692 5.51502L18.1078 4.56009C17.4363 3.42275 15.9832 3.02575 14.7943 3.63734L14.7173 3.68026C14.5411 3.76609 14.332 3.75537 14.1669 3.63734C13.7486 3.34764 13.3082 3.09013 12.8459 2.88627C12.6588 2.80043 12.5487 2.63948 12.5377 2.44635V2.37124C12.4936 1.01931 11.4038 0 10.0608 0ZM4.45772 4.84979C4.80998 4.84979 5.16224 4.74249 5.47047 4.5279C5.83373 4.27039 6.23003 4.05579 6.64833 3.87339C7.25378 3.60515 7.65007 3.03648 7.67209 2.40343V2.37124C7.6941 1.70601 8.25552 1.18026 8.93802 1.18026H10.0608C10.7434 1.18026 11.3048 1.70601 11.3268 2.37124V2.44635C11.3488 3.0794 11.7341 3.63734 12.3285 3.91631C12.7248 4.09871 13.0991 4.3133 13.4513 4.56009C13.9907 4.94635 14.6953 4.98927 15.2787 4.68884L15.3557 4.64592C15.9612 4.33476 16.6987 4.53863 17.051 5.11803L17.6124 6.07296C17.9537 6.65236 17.7665 7.38197 17.1831 7.73605L17.084 7.7897C16.5336 8.12232 16.2254 8.73391 16.2914 9.37768C16.3135 9.58154 16.3245 9.79614 16.3245 10C16.3245 10.2039 16.3135 10.4185 16.2914 10.6223C16.2254 11.2661 16.5336 11.8777 17.084 12.2103L17.1831 12.2639C17.7665 12.618 17.9537 13.3476 17.6124 13.927L17.051 14.882C16.7097 15.4614 15.9612 15.6652 15.3557 15.3541L15.2787 15.3112C14.6953 15.0107 14.0018 15.0536 13.4513 15.4399C13.0991 15.6867 12.7248 15.9013 12.3285 16.0837C11.7341 16.3519 11.3488 16.9206 11.3268 17.5536V17.6288C11.3048 18.294 10.7544 18.8197 10.0608 18.8197H8.93802C8.25552 18.8197 7.6941 18.294 7.67209 17.6288V17.5966C7.65007 16.9528 7.25378 16.3841 6.64833 16.1266C6.24103 15.9442 5.84474 15.7296 5.47047 15.4721C4.93107 15.0966 4.23756 15.0536 3.65413 15.3541L3.63211 15.3648C3.02667 15.676 2.28912 15.4721 1.93686 14.8927L1.37545 13.9378C1.0342 13.3584 1.22134 12.6288 1.80477 12.2747C2.36618 11.9313 2.67441 11.3197 2.59735 10.676C2.57533 10.4506 2.56433 10.2253 2.56433 10.0107C2.56433 9.79614 2.57533 9.56009 2.59735 9.34549C2.6634 8.70172 2.35517 8.0794 1.80477 7.74678C1.22134 7.3927 1.0342 6.66309 1.37545 6.08369L1.93686 5.12875C2.27811 4.54936 3.02667 4.34549 3.63211 4.65665L3.65413 4.66738C3.90732 4.78541 4.18252 4.84979 4.45772 4.84979Z"
+                      fill="#282828" />
+                    <path
+                      d="M9.45595 5.60085C11.9486 5.60085 13.9693 7.57042 13.9693 10C13.9693 12.4296 11.9486 14.3991 9.45595 14.3991C6.96331 14.3991 4.94263 12.4296 4.94263 10C4.94263 7.57042 6.96331 5.60085 9.45595 5.60085Z"
+                      fill="#5459CD" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0">
+                      <rect width="19" height="20" fill="white"
+                        transform="matrix(1 0 0 -1 0 20)" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
 
-              </Card>
+            </Card>
 
-              <div className='mediumText'><font face="Arial Black">История заявок:</font></div>
+            <div className='mediumText'><font face="Arial Black">История заявок:</font></div>
 
-              <Card color="primary" className="userCardW shadow-sm" bordered={true}>
-                <img src={redCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>
-                <div className='TitleText' style={{position: 'absolute', top: '25px', left: '50px'}}>
-                  <font face="Arial" color={'#0a0a0a'}>Сентябрь</font>
+            <Card color="primary" className="userCardW shadow-sm" bordered={true}>
+              <img src={redCircle} style={{ width: '30px', position: 'absolute', top: '15px', left: '15px' }}></img>
+              <div className='TitleText' style={{ position: 'absolute', top: '25px', left: '50px' }}>
+                <font face="Arial" color={'#0a0a0a'}>Сентябрь</font>
+              </div>
+              <div className="mediumText" color={'#989191'}
+                style={{ position: 'absolute', bottom: '15px', left: '20px' }}>Статус заявки
                 </div>
-                <div className="mediumText" color={'#989191'}
-                     style={{position: 'absolute', bottom: '15px', left: '20px'}}>Статус заявки
-                </div>
-                <div style={{width: '80%', float: 'right', marginRight: '50px'}}>
-                  <div className="userCard1" style={{width: '70%'}}>
-                    {(!this.props.user.wishForm &&
-                        <div className='greyMediumText' style={{marginLeft: '100px'}}><font face="Arial Black">Не
+              <div style={{ width: '80%', float: 'right', marginRight: '50px' }}>
+                <div className="userCard1" style={{ width: '70%' }}>
+                  {(!this.props.user.wishForm &&
+                    <div className='greyMediumText' style={{ marginLeft: '100px' }}><font face="Arial Black">Не
                           заполнена</font></div>) ||
                     (this.props.user.wishForm &&
-                        <div style={{marginLeft: '10px'}}><font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
-                        </div>)}
-                  </div>
-                  {this.props.user.wishForm &&
+                      <div style={{ marginLeft: '10px' }}><font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
+                      </div>)}
+                </div>
+                {this.props.user.wishForm &&
                   this.props.user.wishForm.map((user, key) =>
-                      <div>
-                        <Buttonr color="none" id="form2_toggler1" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Направление: Короткие разворотные рейсы</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler1">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Короткие разворотные рейсы
+                    <div>
+                      <Buttonr color="none" id="form2_toggler1" className="userCardRed hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Направление: Короткие разворотные рейсы</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form2_toggler1">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Короткие разворотные рейсы
                             </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
+                        </Cardr>
+                      </UncontrolledCollapse>
 
-                        <Buttonr color="none" id="form2_toggler2" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Продолжительность рабочей смены: Длительная смена</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler2">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Длительная смена
+                      <Buttonr color="none" id="form2_toggler2" className="userCardRed hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Продолжительность рабочей смены: Длительная смена</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form2_toggler2">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Длительная смена
                             </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
+                        </Cardr>
+                      </UncontrolledCollapse>
 
-                        <Buttonr color="none" id="form2_toggler3" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Желание дополнительной подработки: Хочу работать с
+                      <Buttonr color="none" id="form2_toggler3" className="userCardRed hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Желание дополнительной подработки: Хочу работать с
                             переработками</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler3">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Хочу работать с переработками
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form2_toggler3">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Хочу работать с переработками
                             </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
+                        </Cardr>
+                      </UncontrolledCollapse>
 
-                        <Buttonr color="none" id="form2_toggler4" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Предпочтительное время вылета: Ночь</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler4">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Ночь
+                      <Buttonr color="none" id="form2_toggler4" className="userCardGreen hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Предпочтительное время вылета: Ночь</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form2_toggler4">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Ночь
                             </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-                      </div>,
+                        </Cardr>
+                      </UncontrolledCollapse>
+                    </div>,
                   )}
-                </div>
+              </div>
 
-              </Card>
+            </Card>
 
-              <Card color="primary" className="userCardW shadow-sm" bordered={true}>
-                <img src={greenCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>
-                <div className='TitleText' style={{position: 'absolute', top: '25px', left: '50px'}}>
-                  <font face="Arial" color={'#0a0a0a'}>Август</font>
+            <Card color="primary" className="userCardW shadow-sm" bordered={true}>
+              <img src={greenCircle} style={{ width: '30px', position: 'absolute', top: '15px', left: '15px' }}></img>
+              <div className='TitleText' style={{ position: 'absolute', top: '25px', left: '50px' }}>
+                <font face="Arial" color={'#0a0a0a'}>Август</font>
+              </div>
+              <div className="mediumText" color={'#989191'}
+                style={{ position: 'absolute', bottom: '15px', left: '20px' }}>Статус заявки
                 </div>
-                <div className="mediumText" color={'#989191'}
-                     style={{position: 'absolute', bottom: '15px', left: '20px'}}>Статус заявки
-                </div>
-                <div style={{width: '80%', float: 'right', marginRight: '50px'}}>
-                  <div className="userCard1" style={{width: '70%'}}>
-                    {(!this.props.user.wishForm &&
-                        <div className='greyMediumText' style={{marginLeft: '100px'}}><font face="Arial Black">Не
+              <div style={{ width: '80%', float: 'right', marginRight: '50px' }}>
+                <div className="userCard1" style={{ width: '70%' }}>
+                  {(!this.props.user.wishForm &&
+                    <div className='greyMediumText' style={{ marginLeft: '100px' }}><font face="Arial Black">Не
                           заполнена</font></div>) ||
                     (this.props.user.wishForm &&
-                        <div style={{marginLeft: '10px'}}><font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
-                        </div>)}
-                  </div>
-                  {this.props.user.wishForm &&
-                  this.props.user.wishForm.map((user, key) =>
-                      <div>
-                        <Buttonr color="none" id="form3_toggler1" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Направление: Короткие разворотные рейсы</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler1">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Короткие разворотные рейсы
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-
-                        <Buttonr color="none" id="form3_toggler2" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Продолжительность рабочей смены: Длительная смена</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler2">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Длительная смена
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-
-                        <Buttonr color="none" id="form3_toggler3" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Желание дополнительной подработки: Хочу работать с
-                            переработками</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler3">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Хочу работать с переработками
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-
-                        <Buttonr color="none" id="form3_toggler4" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Предпочтительное время вылета: Ночь</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler4">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Ночь
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-                      </div>,
-                  )}
+                      <div style={{ marginLeft: '10px' }}><font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
+                      </div>)}
                 </div>
+                {this.props.user.wishForm &&
+                  this.props.user.wishForm.map((user, key) =>
+                    <div>
+                      <Buttonr color="none" id="form3_toggler1" className="userCardGreen hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Направление: Короткие разворотные рейсы</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form3_toggler1">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Короткие разворотные рейсы
+                            </CardBody>
+                        </Cardr>
+                      </UncontrolledCollapse>
 
-              </Card>
+                      <Buttonr color="none" id="form3_toggler2" className="userCardGreen hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Продолжительность рабочей смены: Длительная смена</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form3_toggler2">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Длительная смена
+                            </CardBody>
+                        </Cardr>
+                      </UncontrolledCollapse>
 
-              {/*логика отрисовки текущей заявки пользователя*/}
-              {/*<Card width='100%'
+                      <Buttonr color="none" id="form3_toggler3" className="userCardGreen hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Желание дополнительной подработки: Хочу работать с
+                            переработками</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form3_toggler3">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Хочу работать с переработками
+                            </CardBody>
+                        </Cardr>
+                      </UncontrolledCollapse>
+
+                      <Buttonr color="none" id="form3_toggler4" className="userCardRed hoverCard shadow-lg">
+                        <font color={'#5a5a5a'}>Предпочтительное время вылета: Ночь</font>
+                      </Buttonr>
+                      <UncontrolledCollapse toggler="#form3_toggler4">
+                        <Cardr className="userCardW">
+                          <CardBody>
+                            Ночь
+                            </CardBody>
+                        </Cardr>
+                      </UncontrolledCollapse>
+                    </div>,
+                  )}
+              </div>
+
+            </Card>
+
+            {/*логика отрисовки текущей заявки пользователя*/}
+            {/*<Card width='100%'
           className="userCardW hoverCard"
           title="Заявка на октябрь 2020 г."
           bordered={false} style={{ width: 300 }}
@@ -1141,35 +1141,35 @@ class DashBoard extends Component {
         )}
     </Card>*/}
 
-            </div>
+          </div>
 
-            {this.state.modalUser && (
-                <div className='modalWidth'>
-                  <Modal
+          {this.state.modalUser && (
+            <div className='modalWidth'>
+              <Modal
 
-                      title="Детали полета"
-                      visible={this.state.visible2}
-                      onCancel={this.handleCancel2}
+                title="Детали полета"
+                visible={this.state.visible2}
+                onCancel={this.handleCancel2}
 
-                      footer={[]}
-                  >
-                    <div style={{textAlign: 'center'}}>
-                      Детальная информация по полету
+                footer={[]}
+              >
+                <div style={{ textAlign: 'center' }}>
+                  Детальная информация по полету
                     </div>
-                  </Modal>
-                </div>
-            )}
+              </Modal>
+            </div>
+          )}
 
-            {this.state.modalUser && (
-                <Modal
-                    width='550px'
-                    title="Детальная информация по полету"
+          {this.state.modalUser && (
+            <Modal
+              width='550px'
+              title="Детальная информация по полету"
 
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    footer={[
-                      <div style={{height: 60}}>
-                        {/* <Icon
+              visible={this.state.visible}
+              onCancel={this.handleCancel}
+              footer={[
+                <div style={{ height: 60 }}>
+                  {/* <Icon
                                         type="close-circle"
                                         style={{ fontSize: "62px", float: "left" }}
                                         onClick={this.handleCancel}
@@ -1182,127 +1182,127 @@ class DashBoard extends Component {
                                         style={{ fontSize: "62px", float: "right" }}
                                         onClick={this.isLike}
                                     /> */}
-                      </div>,
-                    ]}
-                >
-                  <div style={{textAlign: 'center'}} onClick={() => this.tryam()}>
-                    {/* <Carousel autoplay>
+                </div>,
+              ]}
+            >
+              <div style={{ textAlign: 'center' }} onClick={() => this.tryam()}>
+                {/* <Carousel autoplay>
                 {this.state.modalUser.foto.map((f, i) =>
                     <div key={i}>
                         <Avatar size={180} src={f} />
                     </div>
                 )}
             </Carousel> */}
-                  </div>
+              </div>
 
-                  <p>
-                    <div style={{height: '40%'}}>
-                      <div className="card-container">
-                        <br/>
-                        <Tag color="green">
-                          <div style={{color: 'black', fontSize: '16px'}}>
-                            Маршрут: {this.state.modalUser.where_from} - {this.state.modalUser.where_to}
-                          </div>
-                        </Tag>
-                        <br/>
-                        <Tabs type="card">
-                          <TabPane tab="Общая информация" key="1">
-                            <p>
-                            </p>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Информация
-                                </div>
-
-                              </p>
-                            } type="info"/>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Заголовок</div>
-                                <div className={'fontModal'}>Информация
-                                </div>
-
-                              </p>
-                            } type="info"/>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Заголовок</div>
-                                <div
-                                    className={'fontModal'}>Информация
-                                </div>
-                              </p>
-                            } type="info"/>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Заголовок</div>
-                                <div
-                                    className={'fontModal'}>Информация
-                                </div>
-                              </p>
-                            } type="info"/>
-                          </TabPane>
-                          <TabPane tab="Детали" key="2">
-                            <p>
-                            </p>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Информация
-                                </div>
-
-                              </p>
-                            } type="info"/>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Заголовок</div>
-                                <div className={'fontModal'}>Информация
-                                </div>
-
-                              </p>
-                            } type="info"/>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Заголовок</div>
-                                <div
-                                    className={'fontModal'}>Информация
-                                </div>
-                              </p>
-                            } type="info"/>
-                            <Alert message={
-                              <p>
-                                <div style={{color: 'black'}}>Заголовок</div>
-                                <div
-                                    className={'fontModal'}>Информация
-                                </div>
-                              </p>
-                            } type="info"/>
-                          </TabPane>
-
-                        </Tabs>
+              <p>
+                <div style={{ height: '40%' }}>
+                  <div className="card-container">
+                    <br />
+                    <Tag color="green">
+                      <div style={{ color: 'black', fontSize: '16px' }}>
+                        Маршрут: {this.state.modalUser.where_from} - {this.state.modalUser.where_to}
                       </div>
-                      {document.getElementById('container')}
-                    </div>
+                    </Tag>
+                    <br />
+                    <Tabs type="card">
+                      <TabPane tab="Общая информация" key="1">
+                        <p>
+                        </p>
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Информация
+                                </div>
 
-                  </p>
-                </Modal>
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div className={'fontModal'}>Информация
+                                </div>
 
-            )}
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                      </TabPane>
+                      <TabPane tab="Детали" key="2">
+                        <p>
+                        </p>
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Информация
+                                </div>
 
-            <div className='rightBar'>
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div className={'fontModal'}>Информация
+                                </div>
 
-              <div className="site-card-border-less-wrapper">
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                      </TabPane>
 
-                <div className="site-calendar-demo-card" style={{backgroundColor: '#F6F9FE'}}>
-
-
-                  <CalendarWithButtons highlighted={this.state.workingDays}/>
+                    </Tabs>
+                  </div>
+                  {document.getElementById('container')}
                 </div>
-                <div className='yourTrip1'><font face="Arial Black">Ваши Рейсы</font></div>
-                <div className="userCardW">
-                  <Card className='sUserCard hoverCard' onClick={() => this.showSort()}> <font className="sortString"
-                                                                                               face="Arial Black"><font
-                      face="Arial Black" color={'#615d73'}>Сортировка</font></font></Card>
-                  <Suspense fallback={<h1>Loading posts...</h1>}>
-                    {this.props.users.response &&
+
+              </p>
+            </Modal>
+
+          )}
+
+          <div className='rightBar'>
+
+            <div className="site-card-border-less-wrapper">
+
+              <div className="site-calendar-demo-card" style={{ backgroundColor: '#F6F9FE' }}>
+
+
+                <CalendarWithButtons highlighted={this.state.workingDays} />
+              </div>
+              <div className='yourTrip1'><font face="Arial Black">Ваши Рейсы</font></div>
+              <div className="userCardW">
+                <Card className='sUserCard hoverCard' onClick={() => this.showSort()}> <font className="sortString"
+                  face="Arial Black"><font
+                    face="Arial Black" color={'#615d73'}>Сортировка</font></font></Card>
+                <Suspense fallback={<h1>Loading posts...</h1>}>
+                  {this.props.users.response &&
 
                     this.props.users.response.map((user, i) => {
 
@@ -1334,56 +1334,56 @@ class DashBoard extends Component {
                         }
 
                         return (
-                            <Card key={i}
-                                  onClick={() => this.showModal(user)}
-                                  className={styl}
-                                // cover={
-                                //     <img
-                                //         style={{ borderRadius: "10px 10px 0px 0px" }}
-                                //         alt="example"
-                                //         src={srcImg}
-                                //     />
-                                // }
+                          <Card key={i}
+                            onClick={() => this.showModal(user)}
+                            className={styl}
+                          // cover={
+                          //     <img
+                          //         style={{ borderRadius: "10px 10px 0px 0px" }}
+                          //         alt="example"
+                          //         src={srcImg}
+                          //     />
+                          // }
 
-                            >
+                          >
 
 
-                              {/* <Alert style={{ background: 'white !important', width: '10%', height: '10%' }} message={
+                            {/* <Alert style={{ background: 'white !important', width: '10%', height: '10%' }} message={
                                         <p>
                                             <div
                                                 className={'fontModal'}>Информация
                                     </div>
                                         </p>
                                     } type="info" /> */}
-                              <div style={{float: 'left'}}>
-                                <Tag className="userCardW"><font size={2} color={'#5459cd'}><b>123456</b></font></Tag>
-                              </div>
-                              <div style={{float: 'left'}}>
-                                <font size={2} color={'#ffffff'}>Отбытие</font> <br/>
-                                <img src={depart}></img>
-                                <font size={2} color={'#ffffff'} className="textRight">{user.time_of_departure}</font>
-                              </div>
-                              <div color={'#ffffff'} style={{width: '2px', height: '55px', float: 'left'}}
-                                   className="userCardW">
-                              </div>
-                              <div style={{float: 'left'}}>
-                                <font size={2} color={'#ffffff'}>Прибытие</font> <br/>
-                                <img src={land}></img>
-                                <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
+                            <div style={{ float: 'left' }}>
+                              <Tag className="userCardW"><font size={2} color={'#5459cd'}><b>123456</b></font></Tag>
+                            </div>
+                            <div style={{ float: 'left' }}>
+                              <font size={2} color={'#ffffff'}>Отбытие</font> <br />
+                              <img src={depart}></img>
+                              <font size={2} color={'#ffffff'} className="textRight">{user.time_of_departure}</font>
+                            </div>
+                            <div color={'#ffffff'} style={{ width: '2px', height: '55px', float: 'left' }}
+                              className="userCardW">
+                            </div>
+                            <div style={{ float: 'left' }}>
+                              <font size={2} color={'#ffffff'}>Прибытие</font> <br />
+                              <img src={land}></img>
+                              <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
 
-                              </div>
-                            </Card>
+                            </div>
+                          </Card>
                         );
                       }
                     })}
-                  </Suspense>
-                </div>
+                </Suspense>
               </div>
-
             </div>
 
           </div>
-          {/* <div className="dashBoardContainer">
+
+        </div>
+        {/* <div className="dashBoardContainer">
 
                     <div className="dashBoardContent">
 
@@ -1475,13 +1475,13 @@ class DashBoard extends Component {
                 </div> */}
 
 
-          <footer style={{backgroundColor: '#4A76A8', color: '#ffffff', margin: '0 auto', width: '80%'}}
-                  align={'center'}>
-            <p>Зарегистрировано пользователей IBMiX : {this.state.usersLength}</p>
+        <footer style={{ backgroundColor: '#4A76A8', color: '#ffffff', margin: '0 auto', width: '80%' }}
+          align={'center'}>
+          <p>Зарегистрировано пользователей IBMiX : {this.state.usersLength}</p>
 
-            <div dangerouslySetInnerHTML={{__html: this.ym()}}/>
-          </footer>
-        </div>
+          <div dangerouslySetInnerHTML={{ __html: this.ym() }} />
+        </footer>
+      </div>
 
 
     );
