@@ -1,5 +1,6 @@
 import React, { Suspense, Component } from 'react';
 import plane from '../images/plane.jpg';
+import moment from 'moment';
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
 import ItemList_day from '../components/DnD_day/itemList';
@@ -9,8 +10,9 @@ import RadioButtonList_WorkDay from './WorkTime/RadioButtonList';
 import { data_work_time } from './WorkTime/radio_data';
 import { data_work_day } from './WorkDay/radio_data';
 import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { Calendar } from 'react-modern-calendar-datepicker';
+
+import Calendar from './Calendar'
+
 import CalendarWithButtons from './CalendarWithButtons';
 import { Popover, Tabs } from 'antd';
 import {
@@ -248,6 +250,16 @@ class DashBoard extends Component {
       newWish: !this.state.newWish,
     });
   };
+
+  setSelectedDates = dates => {
+    if (dates.length <= 3) {
+      this.setState({ selectedDates: dates })
+    }
+    else {
+      dates.shift();
+      this.setState({ selectedDates: dates })
+    }
+  }
 
   step = () => {
     this.setState({
@@ -819,8 +831,12 @@ class DashBoard extends Component {
                       marginRight: '21px',
                     }}>
                       <Calendar
+
                         value={this.state.selectedDates}
-                        onChange={(dates) => this.setState({ selectedDates: dates })}
+                        onChange={(dates) => this.setSelectedDates(dates)}
+                        minimumDate={{ year: 2020, month: 9, day: 7 }}
+                        maximumDate={{ year: 2020, month: 9, day: 27 }}
+
                       />
                     </div>
                     {/* <div className="site-calendar-demo-card" style={{ backgroundColor: '#C2D5FB', width: '300px', borderRadius: '10px', marginRight: '21px' }}>
