@@ -573,9 +573,21 @@ class DashBoard extends Component {
                     onClick={this.step}
                   >
                     <span style={{ marginLeft: '10px' }}>🡲</span>
-                    <span style={{ marginLeft: '35px' }}>Далее</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                   </Button>
+
                 </Card>
+
+                <Button
+                  type="primary"
+                  className='bidding-btn'
+                  style={{ float: 'right', marginRight: '30px' }}
+                  onClick={this.step}
+                >
+                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                  <span style={{ marginLeft: '15px' }}>Пропустить</span>
+                </Button>
+
               </div>
             </div>
           )}
@@ -618,7 +630,7 @@ class DashBoard extends Component {
                   onClick={this.step3}
                 >
                   <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '35px' }}>Далее</span>
+                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                 </Button>
                 <Button
                   type="primary"
@@ -627,9 +639,18 @@ class DashBoard extends Component {
                   onClick={this.stepBack}
                 >
                   <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '35px' }}>Назад</span>
+                  <span style={{ marginLeft: '15px' }}>Назад</span>
                 </Button>
               </Card>
+              <Button
+                type="primary"
+                className='bidding-btn'
+                style={{ float: 'right', marginRight: '20px' }}
+                onClick={this.step3}
+              >
+                <span style={{ marginLeft: '10px' }}>🡲</span>
+                <span style={{ marginLeft: '15px' }}>Пропустить</span>
+              </Button>
             </div>
           </div>
         }
@@ -667,7 +688,7 @@ class DashBoard extends Component {
                   onClick={this.step4}
                 >
                   <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '35px' }}>Далее</span>
+                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                 </Button>
                 <Button
                   type="primary"
@@ -676,9 +697,18 @@ class DashBoard extends Component {
                   onClick={this.step}
                 >
                   <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '35px' }}>Назад</span>
+                  <span style={{ marginLeft: '15px' }}>Назад</span>
                 </Button>
               </Card>
+              <Button
+                type="primary"
+                className='bidding-btn'
+                style={{ float: 'right', marginRight: '20px' }}
+                onClick={this.step4}
+              >
+                <span style={{ marginLeft: '10px' }}>🡲</span>
+                <span style={{ marginLeft: '15px' }}>Пропустить</span>
+              </Button>
             </div>
           </div>
         }
@@ -722,7 +752,7 @@ class DashBoard extends Component {
                   onClick={this.step5}
                 >
                   <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '35px' }}>Далее</span>
+                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                 </Button>
                 <Button
                   type="primary"
@@ -731,9 +761,18 @@ class DashBoard extends Component {
                   onClick={this.step3}
                 >
                   <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '35px' }}>Назад</span>
+                  <span style={{ marginLeft: '15px' }}>Назад</span>
                 </Button>
               </Card>
+              <Button
+                type="primary"
+                className='bidding-btn'
+                style={{ float: 'right', marginRight: '20px' }}
+                onClick={this.step5}
+              >
+                <span style={{ marginLeft: '10px' }}>🡲</span>
+                <span style={{ marginLeft: '15px' }}>Пропустить</span>
+              </Button>
             </div>
           </div>
         }
@@ -777,7 +816,7 @@ class DashBoard extends Component {
                   onClick={this.step6}
                 >
                   <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '35px' }}>Далее</span>
+                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                 </Button>
                 <Button
                   type="primary"
@@ -786,9 +825,18 @@ class DashBoard extends Component {
                   onClick={this.step4}
                 >
                   <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '35px' }}>Назад</span>
+                  <span style={{ marginLeft: '15px' }}>Назад</span>
                 </Button>
               </Card>
+              <Button
+                type="primary"
+                className='bidding-btn'
+                style={{ float: 'right', marginRight: '20px' }}
+                onClick={this.step6}
+              >
+                <span style={{ marginLeft: '10px' }}>🡲</span>
+                <span style={{ marginLeft: '15px' }}>Пропустить</span>
+              </Button>
             </div>
           </div>
         }
