@@ -337,6 +337,16 @@ class DashBoard extends Component {
   };
 
 
+
+  onTryam = (e) => {
+    console.log('да, передается', e)
+  };
+
+  checkbox = (e) => {
+    alert('!!!tsgsdfrt')
+  };
+
+
   render() {
     const { TabPane } = Tabs;
     const { cities } = this.state;
