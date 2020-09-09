@@ -13,6 +13,9 @@ import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
 
 import Calendar from './Calendar'
 
+//SkipButton
+import SkipButtonComponent from './StepButtonComponent/StepButtonComponent';
+
 import CalendarWithButtons from './CalendarWithButtons';
 import { Popover, Tabs } from 'antd';
 import {
@@ -32,6 +35,7 @@ import {
 import { connect } from 'react-redux';
 import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from '../redux/action';
 import './DashBoard.css';
+import StepButtonComponent from './StepButtonComponent/StepButtonComponent';
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -570,31 +574,12 @@ class DashBoard extends Component {
                       <span className='newForm3'>Переместите бокс по приоритету</span>
                   </div>
                   <div style={{ textAlign: 'left', height: '300px' }}>
-                    {/* <ItemList />
-                                         */}
                     <ItemList func={this.onTryam} />
                   </div>
-                  <Button
-                    type="primary"
-                    className='bidding-btn'
-                    style={{ float: 'right', marginRight: '10px' }}
-                    onClick={this.step}
-                  >
-                    <span style={{ marginLeft: '10px' }}>🡲</span>
-                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                  </Button>
+
+                  <SkipButtonComponent skipClick={this.step} nextClick={this.step}/>
 
                 </Card>
-
-                <Button
-                  type="primary"
-                  className='bidding-btn'
-                  style={{ float: 'right', marginRight: '30px' }}
-                  onClick={this.step}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Пропустить</span>
-                </Button>
 
               </div>
             </div>
@@ -647,34 +632,8 @@ class DashBoard extends Component {
                   {/* <RadioButtonList /> */}
                 </div>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step3}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.stepBack}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                <SkipButtonComponent backClick={this.step} nextClick={this.step3}/>
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step3}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
@@ -705,35 +664,8 @@ class DashBoard extends Component {
                 </div>
 
                 <ItemList_day />
-
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step4}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                <SkipButtonComponent skipClick={this.step4} nextClick={this.step4} backClick={this.step}/>
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step4}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
@@ -770,35 +702,9 @@ class DashBoard extends Component {
                   )}
                   {/* <RadioButtonList /> */}
                 </div>
+                <SkipButtonComponent skipClick={this.step5} nextClick={this.step5} backStep={this.step3} />
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step5}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step3}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
-              </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step5}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
+                </Card>
             </div>
           </div>
         }
@@ -836,34 +742,8 @@ class DashBoard extends Component {
                   {/* <RadioButtonList /> */}
                 </div>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step6}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step4}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                <StepButtonComponent skipClick={this.step6} nextClick={this.step6} backClick={this.step4} />
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step6}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
@@ -923,24 +803,8 @@ class DashBoard extends Component {
                                         </div> */}
                   </div>
                 </div>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}>
-                  <span style={{ marginLeft: '10px' }}>&#10004;</span>
-                  <span style={{ marginLeft: '35px' }}>Сохранить</span>
-                </Button>
-
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step5}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '35px' }}>Назад</span>
-                </Button>
-
+                
+                <StepButtonComponent backClick={this.step5} skipClick={null} nextClick={null} lastStep={true} />
               </Card>
             </div>
           </div>
