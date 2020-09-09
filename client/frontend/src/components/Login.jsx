@@ -84,11 +84,11 @@ class Login extends Component {
           <Card className='login-form'>
             <div style={{textAlign: 'center'}}>
               <img style={{width: '130px'}} src={logo} alt=""/>
-              <h3 style={{color: '#4a76a8'}}>Добро пожаловать в Happy pilot</h3>
+              <h3 style={{color: '#4a76a8'}}></h3>
             </div>
             <br/>
             <Form onSubmit={this.handleSubmit}>
-              <Form.Item>
+              <Form.Item className='flex-form'>
                 {getFieldDecorator('email', {
                   rules: [
                     {
@@ -97,12 +97,13 @@ class Login extends Component {
                     }],
                 })(
                     <Input
+                        className='login-form--input'
                         type='mail'
                         placeholder="E-mail"
                     />,
                 )}
               </Form.Item>
-              <Form.Item>
+              <Form.Item className='flex-form'>
                 {getFieldDecorator('password', {
                   rules: [
                     {
@@ -111,6 +112,7 @@ class Login extends Component {
                     }],
                 })(
                     <Input
+                        className='login-form--input'
                         type="password"
                         placeholder="Пароль"
                     />,

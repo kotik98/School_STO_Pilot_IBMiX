@@ -17,6 +17,22 @@
   border-radius: 15px;
 }
 
+.login-form--input {
+  width: 248px;
+  border: 0;
+  border-radius: unset;
+  border-color: unset;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #6B6B6B;
+}
+
+.login-form--input:focus {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #7D58FF;
+}
+
 .wantForm {
   background-image: url(../images/air.gif);
   background-attachment: fixed;
@@ -33,6 +49,7 @@
 }
 
 .primary-btn {
+  /*margin-top: 28px;*/
   background: #5459CD;
   border-color: #5459CD;
   width: 146px;
