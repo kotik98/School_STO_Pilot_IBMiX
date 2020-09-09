@@ -5,11 +5,13 @@ import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
 import ItemList_day from '../components/DnD_day/itemList';
 import { UncontrolledCollapse, Button as Buttonr, CardBody, Card as Cardr, Collapse as Collapser } from 'reactstrap';
-import RadioButtonList from './lineFlight/RadioButtonList';
-import RadioButtonList_WorkDay from './WorkTime/RadioButtonList';
-import { data_work_time } from './WorkTime/radio_data';
-import { data_work_day } from './WorkDay/radio_data';
-import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
+
+// Все для RadioButton
+import RadioButtonList from './RadioButtonComponent/RadioButtonList';
+import { flight_direction_data } from './RadioButtonComponent/data/flight_direction_data';
+import { work_time } from './RadioButtonComponent/data/work_time';
+import { work_day } from './RadioButtonComponent/data/work_day';
+// Конец блок импортов для RadioButton
 
 import Calendar from './Calendar'
 
@@ -84,7 +86,12 @@ class DashBoard extends Component {
       preference4: false,
       preference5: false,
       selectedDates: [],
-      colorTransAir: 'white'
+      colorTransAir: 'white',
+
+      // Блоки для RadioButton
+      flight_direction: flight_direction_data,
+      work_day: work_day,
+      work_time: work_time,
     };
   }
 
@@ -610,26 +617,7 @@ class DashBoard extends Component {
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
-                  {/* {this.props.flight_direction && (
-                    <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
-                  )} */}
-                  <div className={'main_radio_block'}>
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
-                      <div className={'radio_text_wrapper'}>
-                        <p className={'radio_text'} style={{ color: 'black' }}>Трансатлантические</p>
-                      </div>
-                    </div>
-
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
-                      <div className={'radio_text_wrapper'}>
-                        <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* <RadioButtonList /> */}
+                  <RadioButtonList dispatcher_func={(new_array) => this.setState({flight_direction: new_array})} data={this.state.flight_direction} />
                 </div>
 
                 <SkipButtonComponent backClick={this.step} nextClick={this.step3}/>
@@ -697,10 +685,7 @@ class DashBoard extends Component {
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
-                  {this.props.flight_direction && (
-                    <RadioButtonList_WorkDay dispatcher_func={SetFlightDirection} data={data_work_time} />
-                  )}
-                  {/* <RadioButtonList /> */}
+                    <RadioButtonList dispatcher_func={(new_array) => this.setState({work_time: new_array})} data={this.state.work_time} />
                 </div>
                 <SkipButtonComponent skipClick={this.step5} nextClick={this.step5} backStep={this.step3} />
 
@@ -736,10 +721,7 @@ class DashBoard extends Component {
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
-                  {this.props.flight_direction && (
-                    <RadioButtonList_WorkTime dispatcher_func={SetFlightDirection} data={data_work_day} />
-                  )}
-                  {/* <RadioButtonList /> */}
+                    <RadioButtonList dispatcher_func={(new_array) => this.setState({work_day: new_array})} data={this.state.work_day} />
                 </div>
 
                 <StepButtonComponent skipClick={this.step6} nextClick={this.step6} backClick={this.step4} />

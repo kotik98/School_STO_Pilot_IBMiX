@@ -1,4 +1,4 @@
-export const radio_data = [
+export const flight_direction_data = [
     {
         name: "Трансатлантические",
         checked: true,

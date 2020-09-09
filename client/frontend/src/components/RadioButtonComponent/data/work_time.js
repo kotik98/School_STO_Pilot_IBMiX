@@ -1,12 +1,12 @@
-export const data_work_day = [
+export const work_time = [
     {
-        name: "Короткая смена",
+        name: "Хочу работать с переработками",
         checked: true,
         style: 'rgb(119,93,246)',
         font: 'white'
     },
     {
-        name: "Длительная смена",
+        name: "Переработки неприемлимы",
         checked: false,
         style: 'rgb(249,221,142)',
     }
