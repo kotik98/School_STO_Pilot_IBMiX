@@ -333,7 +333,7 @@ class DashBoard extends Component {
     });
   };
 
-  // пробная функция
+  // пробная функция;
 
   onTryam = (e) => {
     console.log('да, передается', e)
