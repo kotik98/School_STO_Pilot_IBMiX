@@ -80,6 +80,7 @@ class DashBoard extends Component {
       preference4: false,
       preference5: false,
       selectedDates: [],
+      colorTransAir: 'white'
     };
   }
 
@@ -332,6 +333,13 @@ class DashBoard extends Component {
     });
   };
 
+  onTryam = (e) => {
+    console.log('да, передается', e)
+  };
+
+  checkbox = (e) => {
+    alert('!!!tsgsdfrt')
+  };
 
   render() {
     const { TabPane } = Tabs;
@@ -564,7 +572,7 @@ class DashBoard extends Component {
                   <div style={{ textAlign: 'left', height: '300px' }}>
                     {/* <ItemList />
                                          */}
-                    <ItemList />
+                    <ItemList func={this.onTryam} />
                   </div>
                   <Button
                     type="primary"
@@ -617,9 +625,25 @@ class DashBoard extends Component {
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
-                  {this.props.flight_direction && (
+                  {/* {this.props.flight_direction && (
                     <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
-                  )}
+                  )} */}
+                  <div className={'main_radio_block'}>
+                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
+                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                      <div className={'radio_text_wrapper'}>
+                        <p className={'radio_text'} style={{ color: 'black' }}>Трансатлантические</p>
+                      </div>
+                    </div>
+
+                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
+                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                      <div className={'radio_text_wrapper'}>
+                        <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* <RadioButtonList /> */}
                 </div>
 
@@ -655,7 +679,8 @@ class DashBoard extends Component {
           </div>
         }
 
-        {(this.state.newWish && this.state.preference2) &&
+        {
+          (this.state.newWish && this.state.preference2) &&
 
           <div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -714,7 +739,8 @@ class DashBoard extends Component {
         }
 
 
-        {(this.state.newWish && this.state.preference3) &&
+        {
+          (this.state.newWish && this.state.preference3) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -778,7 +804,8 @@ class DashBoard extends Component {
         }
 
 
-        {(this.state.newWish && this.state.preference4) &&
+        {
+          (this.state.newWish && this.state.preference4) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -842,7 +869,8 @@ class DashBoard extends Component {
         }
 
 
-        {(this.state.newWish && this.state.preference5) &&
+        {
+          (this.state.newWish && this.state.preference5) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -1545,7 +1573,7 @@ class DashBoard extends Component {
 
           <div dangerouslySetInnerHTML={{ __html: this.ym() }} />
         </footer>
-      </div>
+      </div >
 
 
     );
