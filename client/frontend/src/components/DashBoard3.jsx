@@ -13,6 +13,9 @@ import RadioButtonList_WorkTime from './WorkDay/RadioButtonList';
 
 import Calendar from './Calendar'
 
+//SkipButton
+import SkipButtonComponent from './StepButtonComponent/StepButtonComponent';
+
 import CalendarWithButtons from './CalendarWithButtons';
 import { Popover, Tabs } from 'antd';
 import {
@@ -32,6 +35,7 @@ import {
 import { connect } from 'react-redux';
 import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from '../redux/action';
 import './DashBoard.css';
+import StepButtonComponent from './StepButtonComponent/StepButtonComponent';
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -80,7 +84,6 @@ class DashBoard extends Component {
       preference4: false,
       preference5: false,
       selectedDates: [],
-      colorTransAir: 'white'
     };
   }
 
@@ -333,7 +336,7 @@ class DashBoard extends Component {
     });
   };
 
-  // пробная функция;
+
 
   onTryam = (e) => {
     console.log('да, передается', e)
@@ -342,6 +345,7 @@ class DashBoard extends Component {
   checkbox = (e) => {
     alert('!!!tsgsdfrt')
   };
+
 
   render() {
     const { TabPane } = Tabs;
@@ -572,31 +576,17 @@ class DashBoard extends Component {
                       <span className='newForm3'>Переместите бокс по приоритету</span>
                   </div>
                   <div style={{ textAlign: 'left', height: '300px' }}>
+
+                    <ItemList func={this.onTryam} />
+
                     {/* <ItemList />
                                          */}
-                    <ItemList func={this.onTryam} />
+
                   </div>
-                  <Button
-                    type="primary"
-                    className='bidding-btn'
-                    style={{ float: 'right', marginRight: '10px' }}
-                    onClick={this.step}
-                  >
-                    <span style={{ marginLeft: '10px' }}>🡲</span>
-                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                  </Button>
+
+                  <SkipButtonComponent skipClick={this.step} nextClick={this.step} />
 
                 </Card>
-
-                <Button
-                  type="primary"
-                  className='bidding-btn'
-                  style={{ float: 'right', marginRight: '30px' }}
-                  onClick={this.step}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Пропустить</span>
-                </Button>
 
               </div>
             </div>
@@ -627,62 +617,19 @@ class DashBoard extends Component {
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
-                  {/* {this.props.flight_direction && (
+                  {this.props.flight_direction && (
                     <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
-                  )} */}
-                  <div className={'main_radio_block'}>
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
-                      <div className={'radio_text_wrapper'}>
-                        <p className={'radio_text'} style={{ color: 'black' }}>Трансатлантические</p>
-                      </div>
-                    </div>
-
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
-                      <div className={'radio_text_wrapper'}>
-                        <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
-                      </div>
-                    </div>
-                  </div>
-
+                  )}
                   {/* <RadioButtonList /> */}
                 </div>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step3}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.stepBack}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                <SkipButtonComponent backClick={this.step} nextClick={this.step3} />
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step3}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
 
-        {
-          (this.state.newWish && this.state.preference2) &&
+        {(this.state.newWish && this.state.preference2) &&
 
           <div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -707,42 +654,14 @@ class DashBoard extends Component {
                 </div>
 
                 <ItemList_day />
-
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step4}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                <SkipButtonComponent skipClick={this.step4} nextClick={this.step4} backClick={this.step} />
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step4}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
 
 
-        {
-          (this.state.newWish && this.state.preference3) &&
+        {(this.state.newWish && this.state.preference3) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -772,42 +691,15 @@ class DashBoard extends Component {
                   )}
                   {/* <RadioButtonList /> */}
                 </div>
+                <SkipButtonComponent skipClick={this.step5} nextClick={this.step5} backStep={this.step3} />
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step5}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step3}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step5}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
 
 
-        {
-          (this.state.newWish && this.state.preference4) &&
+        {(this.state.newWish && this.state.preference4) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -838,41 +730,14 @@ class DashBoard extends Component {
                   {/* <RadioButtonList /> */}
                 </div>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step6}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step4}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                <StepButtonComponent skipClick={this.step6} nextClick={this.step6} backClick={this.step4} />
               </Card>
-              <Button
-                type="primary"
-                className='bidding-btn'
-                style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step6}
-              >
-                <span style={{ marginLeft: '10px' }}>🡲</span>
-                <span style={{ marginLeft: '15px' }}>Пропустить</span>
-              </Button>
             </div>
           </div>
         }
 
 
-        {
-          (this.state.newWish && this.state.preference5) &&
+        {(this.state.newWish && this.state.preference5) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -925,24 +790,8 @@ class DashBoard extends Component {
                                         </div> */}
                   </div>
                 </div>
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}>
-                  <span style={{ marginLeft: '10px' }}>&#10004;</span>
-                  <span style={{ marginLeft: '35px' }}>Сохранить</span>
-                </Button>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step5}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡸</span>
-                  <span style={{ marginLeft: '35px' }}>Назад</span>
-                </Button>
-
+                <StepButtonComponent backClick={this.step5} skipClick={null} nextClick={null} lastStep={true} />
               </Card>
             </div>
           </div>
@@ -1575,7 +1424,7 @@ class DashBoard extends Component {
 
           <div dangerouslySetInnerHTML={{ __html: this.ym() }} />
         </footer>
-      </div >
+      </div>
 
 
     );

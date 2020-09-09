@@ -45,69 +45,29 @@ async function foo() {
                 let obj = {}
 
                 if (k === 1) {
-                    obj.month = {
-                        description: 'Август',
-                        date: 8
-                    }
+                    obj.month = 'Август'
                 } else if (k === 2) {
-                    obj.month = {
-                        description: 'Июль',
-                        date: 7
-                    }
+                    obj.month = 'Июль'
                 } else if (k === 3) {
-                    obj.month = {
-                        description: 'Июнь',
-                        date: 6
-                    }
+                    obj.month = 'Июнь'
                 } else if (k === 4) {
-                    obj.month = {
-                        description: 'Май',
-                        date: 5
-                    }
+                    obj.month = 'Май'
                 } else if (k === 5) {
-                    obj.month = {
-                        description: 'Апрель',
-                        date: 4
-                    }
+                    obj.month = 'Апрель'
                 } else if (k === 6) {
-                    obj.month = {
-                        description: 'Март',
-                        date: 3
-                    }
+                    obj.month = 'Март'
                 } else if (k === 7) {
-
-                    obj.month = {
-                        description: 'Февраль',
-                        date: 2
-                    }
+                    obj.month = 'Февраль'
                 } else if (k === 8) {
-
-                    obj.month = {
-                        description: 'Январь',
-                        date: 1
-                    }
+                    obj.month = 'Январь'
                 } else if (k === 9) {
-                    obj.month = {
-                        description: 'Декабрь',
-                        date: 12
-                    }
-
+                    obj.month = 'Декабрь'
                 } else if (k === 10) {
-
-                    obj.month = {
-                        description: 'Ноябрь',
-                        date: 11
-                    }
+                    obj.month = 'Ноябрь'
                 } else if (k === 11) {
-                    obj.month = {
-                        description: 'Октябрь',
-                        date: 10
-                    }
+                    obj.month = 'Октябрь'
                 } else if (k === 12) {
-                    obj.month = {
-                        description: 'Сентябрь',
-                        date: 9
-                    }
+                    obj.month = 'Сентябрь'
                 }
 
 
