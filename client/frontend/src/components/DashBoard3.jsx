@@ -84,7 +84,6 @@ class DashBoard extends Component {
       preference4: false,
       preference5: false,
       selectedDates: [],
-      colorTransAir: 'white'
     };
   }
 
@@ -337,13 +336,6 @@ class DashBoard extends Component {
     });
   };
 
-  onTryam = (e) => {
-    console.log('да, передается', e)
-  };
-
-  checkbox = (e) => {
-    alert('!!!tsgsdfrt')
-  };
 
   render() {
     const { TabPane } = Tabs;
@@ -574,10 +566,15 @@ class DashBoard extends Component {
                       <span className='newForm3'>Переместите бокс по приоритету</span>
                   </div>
                   <div style={{ textAlign: 'left', height: '300px' }}>
+
                     <ItemList func={this.onTryam} />
+
+                    {/* <ItemList />
+                                         */}
+
                   </div>
 
-                  <SkipButtonComponent skipClick={this.step} nextClick={this.step}/>
+                  <SkipButtonComponent skipClick={this.step} nextClick={this.step} />
 
                 </Card>
 
@@ -610,36 +607,19 @@ class DashBoard extends Component {
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
-                  {/* {this.props.flight_direction && (
+                  {this.props.flight_direction && (
                     <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
-                  )} */}
-                  <div className={'main_radio_block'}>
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
-                      <div className={'radio_text_wrapper'}>
-                        <p className={'radio_text'} style={{ color: 'black' }}>Трансатлантические</p>
-                      </div>
-                    </div>
-
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
-                      <div className={'radio_text_wrapper'}>
-                        <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
-                      </div>
-                    </div>
-                  </div>
-
+                  )}
                   {/* <RadioButtonList /> */}
                 </div>
 
-                <SkipButtonComponent backClick={this.step} nextClick={this.step3}/>
+                <SkipButtonComponent backClick={this.step} nextClick={this.step3} />
               </Card>
             </div>
           </div>
         }
 
-        {
-          (this.state.newWish && this.state.preference2) &&
+        {(this.state.newWish && this.state.preference2) &&
 
           <div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -664,15 +644,14 @@ class DashBoard extends Component {
                 </div>
 
                 <ItemList_day />
-                <SkipButtonComponent skipClick={this.step4} nextClick={this.step4} backClick={this.step}/>
+                <SkipButtonComponent skipClick={this.step4} nextClick={this.step4} backClick={this.step} />
               </Card>
             </div>
           </div>
         }
 
 
-        {
-          (this.state.newWish && this.state.preference3) &&
+        {(this.state.newWish && this.state.preference3) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -704,14 +683,13 @@ class DashBoard extends Component {
                 </div>
                 <SkipButtonComponent skipClick={this.step5} nextClick={this.step5} backStep={this.step3} />
 
-                </Card>
+              </Card>
             </div>
           </div>
         }
 
 
-        {
-          (this.state.newWish && this.state.preference4) &&
+        {(this.state.newWish && this.state.preference4) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -749,8 +727,7 @@ class DashBoard extends Component {
         }
 
 
-        {
-          (this.state.newWish && this.state.preference5) &&
+        {(this.state.newWish && this.state.preference5) &&
 
           < div className="dashBoardContainer">
             <div className="dashBoardContentDrag borderDesign" style={{ borderColor: '4px double black;' }}>
@@ -803,7 +780,7 @@ class DashBoard extends Component {
                                         </div> */}
                   </div>
                 </div>
-                
+
                 <StepButtonComponent backClick={this.step5} skipClick={null} nextClick={null} lastStep={true} />
               </Card>
             </div>
@@ -1437,7 +1414,7 @@ class DashBoard extends Component {
 
           <div dangerouslySetInnerHTML={{ __html: this.ym() }} />
         </footer>
-      </div >
+      </div>
 
 
     );
