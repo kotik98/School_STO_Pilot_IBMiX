@@ -80,7 +80,10 @@ class DashBoard extends Component {
       preference4: false,
       preference5: false,
       selectedDates: [],
-      colorTransAir: 'white'
+      checkboxTransAir: false,
+      colorTransAir: 'white',
+      checkboxContinent: false,
+      colorContinent: 'white'
     };
   }
 
@@ -337,8 +340,22 @@ class DashBoard extends Component {
     console.log('да, передается', e)
   };
 
-  checkbox = (e) => {
-    alert('!!!tsgsdfrt')
+  checkboxTransAir = (e) => {
+    this.setState({
+      checkboxTransAir: true,
+      checkboxContinent: false,
+      colorTransAir: 'rgb(180,244,209)',
+      colorContinent: 'white'
+    });
+  };
+
+  checkboxContinent = (e) => {
+    this.setState({
+      checkboxTransAir: false,
+      checkboxContinent: true,
+      colorContinent: 'rgb(180,244,209)',
+      colorTransAir: 'white'
+    });
   };
 
   render() {
@@ -629,15 +646,15 @@ class DashBoard extends Component {
                     <RadioButtonList dispatcher_func={SetFlightDirection} data={this.props.flight_direction} />
                   )} */}
                   <div className={'main_radio_block'}>
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
+                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkboxTransAir}>
                       <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
                       <div className={'radio_text_wrapper'}>
                         <p className={'radio_text'} style={{ color: 'black' }}>Трансатлантические</p>
                       </div>
                     </div>
 
-                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
-                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                    <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkboxContinent}>
+                      <div className={'radio_circle'} style={{ backgroundColor: this.state.colorContinent }}></div>
                       <div className={'radio_text_wrapper'}>
                         <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
                       </div>
@@ -764,12 +781,28 @@ class DashBoard extends Component {
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
-                <div style={{ textAlign: 'center', height: '300px' }}>
+                {/* <div style={{ textAlign: 'center', height: '300px' }}>
                   {this.props.flight_direction && (
                     <RadioButtonList_WorkDay dispatcher_func={SetFlightDirection} data={data_work_time} />
                   )}
-                  {/* <RadioButtonList /> */}
+                 
+                </div> */}
+                <div className={'main_radio_block'}>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                    <div className={'radio_text_wrapper'}>
+                      <p className={'radio_text'} style={{ color: 'black' }}>Хочу работать с переработками</p>
+                    </div>
+                  </div>
+
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                    <div className={'radio_text_wrapper'}>
+                      <p className={'radio_text'} style={{ color: 'black' }}>Переработки неприемлимы</p>
+                    </div>
+                  </div>
                 </div>
+
 
                 <Button
                   type="primary"
@@ -829,11 +862,27 @@ class DashBoard extends Component {
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
-                <div style={{ textAlign: 'center', height: '300px' }}>
+                {/* <div style={{ textAlign: 'center', height: '300px' }}>
                   {this.props.flight_direction && (
                     <RadioButtonList_WorkTime dispatcher_func={SetFlightDirection} data={data_work_day} />
                   )}
-                  {/* <RadioButtonList /> */}
+                  
+                </div> */}
+
+                <div className={'main_radio_block'}>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                    <div className={'radio_text_wrapper'}>
+                      <p className={'radio_text'} style={{ color: 'black' }}>Длительная смена</p>
+                    </div>
+                  </div>
+
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                    <div className={'radio_text_wrapper'}>
+                      <p className={'radio_text'} style={{ color: 'black' }}>Короткая смена</p>
+                    </div>
+                  </div>
                 </div>
 
                 <Button
