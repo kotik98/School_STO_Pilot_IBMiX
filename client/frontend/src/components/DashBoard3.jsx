@@ -1073,7 +1073,7 @@ class DashBoard extends Component {
                     onClick={this.step5}
                   >
                     <span style={{ marginLeft: '10px' }}>🡲</span>
-                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее!</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                   </Button>
                 }
 
@@ -1135,14 +1135,14 @@ class DashBoard extends Component {
                 </div> */}
 
                 <div className={'main_radio_block'}>
-                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkboxLongDay}>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkboxLongDay}>
                     <div className={'radio_circle'} style={{ backgroundColor: this.state.colorLongDay }}></div>
                     <div className={'radio_text_wrapper'}>
                       <p className={'radio_text'} style={{ color: 'black' }}>Длительная смена</p>
                     </div>
                   </div>
 
-                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkboxEasyDay}>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(242, 166, 137)' }} onClick={this.checkboxEasyDay}>
                     <div className={'radio_circle'} style={{ backgroundColor: this.state.colorEasyDay }}></div>
                     <div className={'radio_text_wrapper'}>
                       <p className={'radio_text'} style={{ color: 'black' }}>Короткая смена</p>
