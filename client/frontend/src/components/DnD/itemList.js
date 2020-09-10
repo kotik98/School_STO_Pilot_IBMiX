@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { data } from './data';
+// import { data } from './data';
 import Item from './itemComponent';
 import './dnd_style.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 function ItemList(props) {
-    const [wishes, setWishes] = useState(data);
+    const [wishes, setWishes] = useState(props.data);
 
     const handleDragEnd = (result) => {
         const { destination, source } = result;
