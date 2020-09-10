@@ -126,7 +126,7 @@ a {
 .dashBoardContentDrag {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: flex-end;
     width: 90%;
 }
 
