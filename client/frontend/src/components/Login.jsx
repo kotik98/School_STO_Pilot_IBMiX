@@ -4,7 +4,8 @@ import {Link, Redirect} from 'react-router-dom';
 import {withCookies} from 'react-cookie';
 import {connect} from 'react-redux';
 import {AddIsLogin} from '../redux/action';
-import logo from '../images/logo.png';
+// import logo from '../images/logo.png';
+import loginHeadMask from '../images/login-head-mask.png';
 import './login.css';
 
 const openNotification = (placement, icon, title, message) => {
@@ -82,9 +83,11 @@ class Login extends Component {
     return (
         <div className="login-page">
           <Card className='login-form'>
-            <div style={{textAlign: 'center'}}>
-              <img style={{width: '130px'}} src={logo} alt=""/>
-              <h3 style={{color: '#4a76a8'}}></h3>
+            <div className='login-head'>
+
+              <h3>Введите<br/>
+                свои данные</h3>
+              <img src={loginHeadMask} alt=""/>
             </div>
             <br/>
             <Form onSubmit={this.handleSubmit}>
@@ -129,8 +132,8 @@ class Login extends Component {
                 </Button>
                 <div style={{textAlign: 'center'}}>
                   <Link to={'/signupAll'}>Регистрация</Link><br/>
-                  <Link to={'/password'}>Не помню пароль</Link><br/>
-                  <Link to={'/our_company'}>О нас</Link><br/>
+                  {/*<Link to={'/password'}>Не помню пароль</Link><br/>
+                  <Link to={'/our_company'}>О нас</Link><br/>*/}
                 </div>
               </Form.Item>
             </Form>
