@@ -537,6 +537,12 @@ class DashBoard extends Component {
 
         <div className="dashBoardContainer">
 
+          {(this.state.loading || !this.props.users) && (
+              <div className='progress-page'>
+                <Spin size="small" tip="Загрузка..." />
+              </div>
+          )}
+
           {/* START HEAD PANEL */}
           <div className="head-panel">
             <div className='head-part'>
@@ -658,12 +664,6 @@ class DashBoard extends Component {
             </div>
           </div>
           {/* END HEAD PANEL */}
-
-          {(this.state.loading || !this.props.users) && (
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
-              <Spin size="small" tip="Загрузка..." />
-            </div>
-          )}
 
           {this.state.visibleSort === true && (
             <div className='modalWidth'>
@@ -871,7 +871,7 @@ class DashBoard extends Component {
                     />
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;
-                  <span className='newForm3'>Выберите одни из вариантов</span>
+                  <span className='newForm3'>Выберите нужные варианты</span>
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
@@ -1728,7 +1728,6 @@ class DashBoard extends Component {
 
                     this.props.users.response.map((user, i) => {
 
-                      // if (this.filterPrise(user.time)) {
                       if (user.city_photo) {
 
                         console.log(user);
