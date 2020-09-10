@@ -8,7 +8,6 @@ function Item({ item, index }) {
     let arr = [];
     for (let i = 0; i < (-1) * index + 5; i++)
       arr.push(<p className='rating_star'>&#9733;</p>);
-
     return arr;
   }
 
