@@ -238,8 +238,15 @@ class DashBoard extends Component {
       allPreference = ['Не заполнено']
     }
 
+
+    let selectedDates = this.state.selectedDates
+    if (selectedDates.length !== 0) {
+      selectedDates = this.state.selectedDates
+    } else {
+      selectedDates = ['Не заполнено']
+    }
     // console.log(longFly, otherTime, timeFly, preferenceTimeFly)
-    const wishForm = [{ longFly: longFly, otherTime: otherTime, timeFly, preferenceTimeFly, allPreference }]
+    const wishForm = [{ longFly: longFly, otherTime: otherTime, timeFly, preferenceTimeFly, allPreference, selectedDates }]
     const response = await fetch('/newWishForm', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1525,6 +1532,20 @@ class DashBoard extends Component {
                         className="userCardWP hoverCard shadow-lg"
                       >
                         <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly[0].name}, {user.preferenceTimeFly[1].name}, {user.preferenceTimeFly[2].name}, {user.preferenceTimeFly[3].name}</font>
+                      </Buttonr>
+
+                      <Buttonr
+                        onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
+                        color="none"
+                        className="userCardWP hoverCard shadow-lg"
+                      >
+                        <font color={'#5a5a5a'}>Выходные дни: {user.selectedDates.map((user, key) =>
+
+                          <span>{user.day}.{user.month}.{user.year} / </span>
+
+
+                        )}
+                        </font>
                       </Buttonr>
                     </div>,
                   )}
