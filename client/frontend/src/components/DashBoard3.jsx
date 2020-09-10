@@ -98,7 +98,8 @@ class DashBoard extends Component {
       checkboxWorkLaziness: false,
       checkboxLongDayEasyDay: false,
       data: [],
-      timeDay: []
+      timeDay: [],
+      newWishForm: []
     };
   }
 
@@ -180,7 +181,111 @@ class DashBoard extends Component {
     console.log('есть ', users, this.props.users, this.props.users.response);
     this.setState({ workingDays: this.getWorkingDays() });
 
+    this.setState({
+      newWishForm: this.props.user.wishForm,
+    })
+
   }
+
+
+  handleSubmit = async event => {
+    event.preventDefault();
+    // this.props.form.validateFields(async (err, values) => {
+    // if (!err) {
+
+
+
+    let longFly;
+    if (this.state.checkboxTransAir) {
+      longFly = 'Трансатлантические'
+    } else if (this.state.checkboxContinent) {
+      longFly = 'Континентальные'
+    } else if (!this.state.checkboxTransAir && !this.state.checkboxContinent) {
+      longFly = 'Не заполнено'
+    }
+
+    let otherTime;
+    if (this.state.checkboxWork) {
+      otherTime = 'Хочу работать с переработками'
+    } else if (this.state.checkboxLaziness) {
+      otherTime = 'Переработки неприемлимы'
+    } else if (!this.state.checkboxWork && !this.state.checkboxLaziness) {
+      otherTime = 'Не заполнено'
+    }
+
+    let timeFly;
+    if (this.state.checkboxLongDay) {
+      timeFly = 'Длительная смена'
+    } else if (this.state.checkboxEasyDay) {
+      timeFly = 'Короткая смена'
+    } else if (!this.state.checkboxLongDay && !this.state.checkboxEasyDay) {
+      timeFly = 'Не заполнено'
+    }
+
+    let preferenceTimeFly;
+    console.log('время вылета', this.state.timeDay)
+    if (this.state.timeDay.length !== 0) {
+      preferenceTimeFly = this.state.timeDay
+    } else {
+      preferenceTimeFly = ['Не заполнено']
+    }
+    console.log('приоритетность всего', this.state.data)
+
+    let allPreference = this.state.data
+    if (allPreference.length !== 0) {
+      allPreference = this.state.allPreference
+    } else {
+      allPreference = ['Не заполнено']
+    }
+
+    // console.log(longFly, otherTime, timeFly, preferenceTimeFly)
+    const wishForm = [{ longFly: longFly, otherTime: otherTime, timeFly, preferenceTimeFly, allPreference }]
+    const response = await fetch('/newWishForm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.props.user.email,
+        wishForm: wishForm
+      })
+    })
+
+    const result = await response.json();
+    console.log(result)
+    if (result.response === 'success') {
+      message.success(`Ваша заявка на полет успешно сохранена`, 5)
+      this.setState({
+        newWishForm: result.wishForm,
+      })
+      this.props.user.wishForm = result.wishForm
+    }
+
+    //     this.props.cookies.set('isLogin', true, { path: "/" });
+    //     this.props.cookies.set('Role', result.crewRole, { path: "/" });
+    //     this.props.addIsLogin(true);
+    //     if (result.crewRole === 'командир отдельно на будещее') {
+
+    //         this.setState({
+    //             isRedirect: true,
+    //             iconLoading: false,
+    //             dashboard: "/dashboard3"
+    //         })
+
+    //     } else if (result.crewRole || result.crewRole !== 'командир отдельно на будещее') {
+    //         this.setState({
+    //             isRedirect: true,
+    //             iconLoading: false,
+    //             dashboard: "/dashboard3"
+    //         })
+    //     }
+
+    // } else {
+    //     openNotification('topRight', 'warning', 'Warning', 'Неверный email и пароль, пожалуйста попробуйте еще раз!')
+    //     this.setState({ iconLoading: false })
+    // }
+    // }
+    // })
+  };
+
 
   onChangeLongWork = (checked) => {
     this.setState({ showLongWork: checked });
@@ -343,6 +448,18 @@ class DashBoard extends Component {
       preference3: true,
       preference4: false,
       preference5: false,
+    });
+  };
+
+  step4Clear = () => {
+
+    this.setState({
+      preference: false,
+      preference1: false,
+      preference2: false,
+      preference3: true,
+      preference4: false,
+      preference5: false,
       timeDay: []
     });
   };
@@ -418,6 +535,7 @@ class DashBoard extends Component {
     this.setState({
       timeDay: e
     });
+
   };
 
   checkboxTransAir = (e) => {
@@ -852,7 +970,8 @@ class DashBoard extends Component {
                     type="primary"
                     className='bidding-btn-step'
                     style={{ float: 'right', marginRight: '10px' }}
-                    onClick={this.step}
+                    onClick={this.handleSubmit}
+
                   >
                     <span style={{ marginLeft: '10px' }}>&#10004;</span>
                     <span style={{ marginLeft: '35px' }}>Сохранить</span>
@@ -1034,7 +1153,7 @@ class DashBoard extends Component {
                 type="primary"
                 className='bidding-btn'
                 style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step4}
+                onClick={this.step4Clear}
               >
                 <span style={{ marginLeft: '10px' }}>🡲</span>
                 <span style={{ marginLeft: '15px' }}>Пропустить</span>
@@ -1379,8 +1498,8 @@ class DashBoard extends Component {
                         <font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
                       </div>)}
                 </div>
-                {this.props.user.wishForm &&
-                  this.props.user.wishForm.map((user, key) =>
+                {this.state.newWishForm &&
+                  this.state.newWishForm.map((user, key) =>
                     <div>
                       <Buttonr
                         onClick={() => this.changeDirection(user.longFly)}
@@ -1409,7 +1528,7 @@ class DashBoard extends Component {
                         color="none"
                         className="userCardWP hoverCard shadow-lg"
                       >
-                        <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
+                        <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly[0].name}, {user.preferenceTimeFly[1].name}, {user.preferenceTimeFly[2].name}, {user.preferenceTimeFly[3].name}</font>
                       </Buttonr>
                     </div>,
                   )}
@@ -1796,7 +1915,7 @@ class DashBoard extends Component {
                       // if (this.filterPrise(user.time)) {
                       if (user.city_photo) {
 
-                        console.log(user);
+                        // console.log(user);
 
                         let srcImg;
                         if (!user.city_photo) {
