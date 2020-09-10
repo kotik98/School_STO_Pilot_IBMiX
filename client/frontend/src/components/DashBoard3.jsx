@@ -79,6 +79,7 @@ class DashBoard extends Component {
       preference3: false,
       preference4: false,
       preference5: false,
+      preference6: false,
       selectedDates: [],
       checkboxTransAir: false,
       colorTransAir: 'white',
@@ -96,9 +97,7 @@ class DashBoard extends Component {
       checkboxWorkLaziness: false,
       checkboxLongDayEasyDay: false,
       data: [],
-      preference6: false,
-
-
+      timeDay: []
     };
   }
 
@@ -408,8 +407,15 @@ class DashBoard extends Component {
     });
   };
 
-  onTryam = (e) => {
+  mainPreference = (e) => {
     console.log('да, передается', e)
+  };
+
+  timeDayPreference = (e) => {
+
+    this.setState({
+      timeDay: e
+    });
   };
 
   checkboxTransAir = (e) => {
@@ -480,25 +486,36 @@ class DashBoard extends Component {
 
     let checkboxTransAirCoontinent = this.state.checkboxTransAirCoontinent
 
+    let timeDay = this.state.timeDay
+
     let checkboxWorkLaziness = this.state.checkboxWorkLaziness
 
     let checkboxLongDayEasyDay = this.state.checkboxLongDayEasyDay
 
-    let arrPreference = [checkboxTransAirCoontinent, checkboxWorkLaziness, checkboxLongDayEasyDay]
+    let selectedDates = this.state.selectedDates
+
+    let arrPreference = [checkboxTransAirCoontinent, timeDay, checkboxWorkLaziness, checkboxLongDayEasyDay, selectedDates]
 
     let arrData = []
     for (let i = 0; i < arrPreference.length; i++) {
-      if (arrPreference[i]) {
+      if (arrPreference[i] === true || (typeof arrPreference[i] === 'object' && arrPreference[i].length
+        !== 0)) {
         if (i === 0) {
-          arrData.push({ name: 'Направление\nполета', style: 'flight_direction', })
+          arrData.push({ name: 'Направление\nполета', style: 'flight_direction' })
         }
         if (i === 1) {
-          arrData.push({ name: "Продолжительнсоть\nсмены", style: 'duration', })
+          arrData.push({ name: "Время вылета", style: 'time_of_fly' })
         }
         if (i === 2) {
+          arrData.push({ name: "Продолжительнсоть\nсмены", style: 'duration' })
+        }
+        if (i === 3) {
           arrData.push({
-            name: "Желание работать\nс переработками", style: 'wish_to_work',
+            name: "Желание работать\nс переработками", style: 'wish_to_work'
           })
+        }
+        if (i === 4) {
+          arrData.push({ name: "Выбор выходных\nдней", style: 'weekends' })
         }
 
       }
@@ -818,7 +835,7 @@ class DashBoard extends Component {
                       <div><h1>Вы не выбрали ни одной преференции для сохранения заявки</h1></div>
                     }
                     {this.state.data.length !== 0 &&
-                      <ItemList func={this.onTryam} data={this.state.data} />
+                      <ItemList func={this.mainPreference} data={this.state.data} />
                     }
 
                   </div>
@@ -920,7 +937,7 @@ class DashBoard extends Component {
                   </Button>
                 }
 
-
+                {/* 
                 <Button
                   type="primary"
                   className='bidding-btn-step'
@@ -929,7 +946,7 @@ class DashBoard extends Component {
                 >
                   <span style={{ marginLeft: '10px' }}>🡸</span>
                   <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                </Button> */}
               </Card>
               <Button
                 type="primary"
@@ -968,8 +985,7 @@ class DashBoard extends Component {
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Переместите бокс по приоритету</span>
                 </div>
-
-                <ItemList_day />
+                <ItemList_day func={this.timeDayPreference} />
 
                 <Button
                   type="primary"
@@ -1272,13 +1288,15 @@ class DashBoard extends Component {
                 </Button>
 
               </Card>
+
+
               <Button
                 type="primary"
                 className='bidding-btn'
-                style={{ float: 'right', marginRight: '30px' }}
-                onClick={this.dataComponent}>
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                style={{ float: 'right', marginRight: '20px' }}
+                onClick={this.dataComponent}
+              >
+                <span style={{ marginLeft: '10px' }}>🡲</span>
                 <span style={{ marginLeft: '15px' }}>Пропустить</span>
               </Button>
 
