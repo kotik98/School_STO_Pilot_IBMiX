@@ -73,8 +73,8 @@ class DashBoard extends Component {
       // isRedirect: false,
       usersLength: null,
       newWish: false,
-      preference: true,
-      preference1: false,
+      preference: false,
+      preference1: true,
       preference2: false,
       preference3: false,
       preference4: false,
@@ -805,18 +805,27 @@ class DashBoard extends Component {
                       />
                     </svg>
                     <span className='newForm2'>
-                      &nbsp;&nbsp;&nbsp; 1. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp; 6. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;
                       <span className='newForm3'>Переместите бокс по приоритету</span>
                   </div>
                   <div style={{ textAlign: 'left', height: '300px' }}>
                     {/* <ItemList />
                                          */}
-                    <ItemList func={this.onTryam} data={this.state.data} />
+
+
+
+                    {this.state.data.length === 0 &&
+                      <div><h1>Вы не выбрали ни одной преференции для сохранения заявки</h1></div>
+                    }
+                    {this.state.data.length !== 0 &&
+                      <ItemList func={this.onTryam} data={this.state.data} />
+                    }
+
                   </div>
 
                   <Button
                     type="primary"
-                    className='bidding-btn'
+                    className='bidding-btn-step'
                     style={{ float: 'right', marginRight: '10px' }}
                     onClick={this.step}
                   >
@@ -836,15 +845,6 @@ class DashBoard extends Component {
 
                 </Card>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn'
-                  style={{ float: 'right', marginRight: '30px' }}
-                  onClick={this.step}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Пропустить</span>
-                </Button>
 
               </div>
             </div>
@@ -870,7 +870,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 1. Направление полета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -965,7 +965,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 3. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Переместите бокс по приоритету</span>
                 </div>
 
@@ -1025,7 +1025,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 4. Преференции переработок</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 3. Преференции переработок</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -1123,7 +1123,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 5. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 4. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -1220,7 +1220,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 6. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 5. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -1272,6 +1272,16 @@ class DashBoard extends Component {
                 </Button>
 
               </Card>
+              <Button
+                type="primary"
+                className='bidding-btn'
+                style={{ float: 'right', marginRight: '30px' }}
+                onClick={this.dataComponent}>
+                >
+                  <span style={{ marginLeft: '10px' }}>🡲</span>
+                <span style={{ marginLeft: '15px' }}>Пропустить</span>
+              </Button>
+
             </div>
           </div>
         }
