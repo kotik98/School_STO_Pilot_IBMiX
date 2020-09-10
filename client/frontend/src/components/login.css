@@ -24,6 +24,10 @@
   line-height: 8px;
 }
 
+.login-form > div {
+  padding: unset;
+}
+
 
 .login-head {
   border-top-left-radius: 15px;
@@ -35,9 +39,9 @@
   margin-bottom:  12px;
 }
 
-.ant-card-body {
+/*.ant-card-body {
   padding: unset;
-}
+}*/
 
 .login-head h3 {
 
