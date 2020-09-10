@@ -863,23 +863,18 @@ class DashBoard extends Component {
           <div className="dashBoardContainer">
             <div className="dashBoardContent">
               <div className='yourTrip'><font face="Arial Black">Заявка на текущий период:</font></div>
+
               <Card
                   color="primary"
                   className="userCardW shadow-sm"
                   bordered={false}
               >
-                <img src={blueCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>
-                <div className='TitleText' style={{position: 'absolute', top: '25px', left: '50px'}}>
-                  <font face="Arial" color={'#0a0a0a'}>Октябрь</font>
-                </div>
-                <div
-                    className="mediumText"
-                    color={'#989191'}
-                    style={{position: 'absolute', bottom: '15px', left: '20px'}}
-                >
-                  Статус заявки
-                </div>
-                <div style={{width: '80%', float: 'right', marginRight: '50px'}}>
+                {(!this.props.user.wishForm &&
+                    <img src={redCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>)
+                     ||
+                (this.props.user.wishForm &&
+                    <img src={greenCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>)}
+                <div style={{width: '60%', marginLeft: '40px'}}>
                   <div className="userCard1" style={{width: '70%'}}>
                     {(!this.props.user.wishForm &&
                         <div className='greyMediumText' style={{marginLeft: '100px'}}>
@@ -889,7 +884,7 @@ class DashBoard extends Component {
                         </div>) ||
                     (this.props.user.wishForm &&
                         <div style={{marginLeft: '10px'}}>
-                          <font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
+                          <font face="Arial" color={'#ffffff'} size={4}>Октябрь</font>
                         </div>)}
                   </div>
                   {this.props.user.wishForm &&
@@ -906,7 +901,7 @@ class DashBoard extends Component {
                             onClick={() => this.changeDuration(user.timeFly)}
                             color="none"
                             className="userCardWP hoverCard shadow-lg"
-                            ç>
+                        >
                           <font color={'#5a5a5a'}>Продолжительность рабочей смены: {user.timeFly}</font>
                         </Buttonr>
                         <Buttonr
@@ -953,145 +948,62 @@ class DashBoard extends Component {
 
               <div className='mediumText'><font face="Arial Black">История заявок:</font></div>
 
-              <Card color="primary" className="userCardW shadow-sm" bordered={true}>
-                <img src={redCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>
-                <div className='TitleText' style={{position: 'absolute', top: '25px', left: '50px'}}>
-                  <font face="Arial" color={'#0a0a0a'}>Сентябрь</font>
-                </div>
-                <div className="mediumText" color={'#989191'}
-                     style={{position: 'absolute', bottom: '15px', left: '20px'}}>Статус заявки
-                </div>
-                <div style={{width: '80%', float: 'right', marginRight: '50px'}}>
-                  <div className="userCard1" style={{width: '70%'}}>
-                    {(!this.props.user.wishForm &&
-                        <div className='greyMediumText' style={{marginLeft: '100px'}}><font face="Arial Black">Не
-                          заполнена</font></div>) ||
-                    (this.props.user.wishForm &&
-                        <div style={{marginLeft: '10px'}}><font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
-                        </div>)}
-                  </div>
-                  {this.props.user.wishForm &&
-                  this.props.user.wishForm.map((user, key) =>
-                      <div>
-                        <Buttonr color="none" id="form2_toggler1" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Направление: Короткие разворотные рейсы</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler1">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Короткие разворотные рейсы
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
+              {this.props.user.arrWish &&
+              this.props.user.arrWish.map((user, key) =>
+                  <Card key={key} color="primary" className="userCardW shadow-sm" bordered={true}>
+                    <div style={{width: '60%', float: 'inherit'}}>
+                      <div className="userCard1" style={{width: '70%'}}>
+                            <div style={{marginLeft: '10px'}}><font face="Arial" color={'#ffffff'} size={4}>{user.month.description}</font>
+                            </div>
+                      </div>
+                          <div>
+                            <Buttonr color="none" id={"form" + key + "toggler1"} className="userCardRed hoverCard shadow-lg">
+                              <font color={'#5a5a5a'}>Направление: {user.longFly}</font>
+                            </Buttonr>
+                            <UncontrolledCollapse toggler={"#form" + key + "toggler1"}>
+                              <Cardr className="userCardW">
+                                <CardBody>
+                                  {user.longFly}
+                                </CardBody>
+                              </Cardr>
+                            </UncontrolledCollapse>
 
-                        <Buttonr color="none" id="form2_toggler2" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Продолжительность рабочей смены: Длительная смена</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler2">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Длительная смена
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
+                            <Buttonr color="none" id={"form" + key + "toggler2"} className="userCardRed hoverCard shadow-lg">
+                              <font color={'#5a5a5a'}>Продолжительность рабочей смены: {user.timeFly}</font>
+                            </Buttonr>
+                            <UncontrolledCollapse toggler={"#form" + key + "toggler2"}>
+                              <Cardr className="userCardW">
+                                <CardBody>
+                                  {user.timeFly}
+                                </CardBody>
+                              </Cardr>
+                            </UncontrolledCollapse>
 
-                        <Buttonr color="none" id="form2_toggler3" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Желание дополнительной подработки: Хочу работать с
-                            переработками</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler3">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Хочу работать с переработками
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
+                            <Buttonr color="none" id={"form" + key + "toggler3"} className="userCardRed hoverCard shadow-lg">
+                              <font color={'#5a5a5a'}>Желание дополнительной подработки: {user.otherTime}</font>
+                            </Buttonr>
+                            <UncontrolledCollapse toggler={"#form" + key + "toggler3"}>
+                              <Cardr className="userCardW">
+                                <CardBody>
+                                  {user.otherTime}
+                                </CardBody>
+                              </Cardr>
+                            </UncontrolledCollapse>
 
-                        <Buttonr color="none" id="form2_toggler4" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Предпочтительное время вылета: Ночь</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form2_toggler4">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Ночь
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-                      </div>,
-                  )}
-                </div>
+                            <Buttonr color="none" id={"form" + key + "toggler4"} className="userCardGreen hoverCard shadow-lg">
+                              <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
+                            </Buttonr>
+                            <UncontrolledCollapse toggler={"#form" + key + "toggler4"}>
+                              <Cardr className="userCardW">
+                                <CardBody>
+                                  {user.preferenceTimeFly}
+                                </CardBody>
+                              </Cardr>
+                            </UncontrolledCollapse>
+                          </div>
+                    </div>
 
-              </Card>
-
-              <Card color="primary" className="userCardW shadow-sm" bordered={true}>
-                <img src={greenCircle} style={{width: '30px', position: 'absolute', top: '15px', left: '15px'}}></img>
-                <div className='TitleText' style={{position: 'absolute', top: '25px', left: '50px'}}>
-                  <font face="Arial" color={'#0a0a0a'}>Август</font>
-                </div>
-                <div className="mediumText" color={'#989191'}
-                     style={{position: 'absolute', bottom: '15px', left: '20px'}}>Статус заявки
-                </div>
-                <div style={{width: '80%', float: 'right', marginRight: '50px'}}>
-                  <div className="userCard1" style={{width: '70%'}}>
-                    {(!this.props.user.wishForm &&
-                        <div className='greyMediumText' style={{marginLeft: '100px'}}><font face="Arial Black">Не
-                          заполнена</font></div>) ||
-                    (this.props.user.wishForm &&
-                        <div style={{marginLeft: '10px'}}><font face="Arial" color={'#ffffff'} size={4}>IBMiX4</font>
-                        </div>)}
-                  </div>
-                  {this.props.user.wishForm &&
-                  this.props.user.wishForm.map((user, key) =>
-                      <div>
-                        <Buttonr color="none" id="form3_toggler1" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Направление: Короткие разворотные рейсы</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler1">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Короткие разворотные рейсы
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-
-                        <Buttonr color="none" id="form3_toggler2" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Продолжительность рабочей смены: Длительная смена</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler2">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Длительная смена
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-
-                        <Buttonr color="none" id="form3_toggler3" className="userCardGreen hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Желание дополнительной подработки: Хочу работать с
-                            переработками</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler3">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Хочу работать с переработками
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-
-                        <Buttonr color="none" id="form3_toggler4" className="userCardRed hoverCard shadow-lg">
-                          <font color={'#5a5a5a'}>Предпочтительное время вылета: Ночь</font>
-                        </Buttonr>
-                        <UncontrolledCollapse toggler="#form3_toggler4">
-                          <Cardr className="userCardW">
-                            <CardBody>
-                              Ночь
-                            </CardBody>
-                          </Cardr>
-                        </UncontrolledCollapse>
-                      </div>,
-                  )}
-                </div>
-
-              </Card>
+                  </Card>,)}
 
               {/*логика отрисовки текущей заявки пользователя*/}
               {/*<Card width='100%'
