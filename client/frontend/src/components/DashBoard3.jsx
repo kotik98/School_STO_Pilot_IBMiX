@@ -28,6 +28,7 @@ import {
   Carousel, Slider, Select, Badge, Form, Collapse,
   Tag,
   Alert,
+  Checkbox,
 } from 'antd';
 import { connect } from 'react-redux';
 import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from '../redux/action';
@@ -73,17 +74,31 @@ class DashBoard extends Component {
       // isRedirect: false,
       usersLength: null,
       newWish: false,
-      preference: true,
-      preference1: false,
+      preference: false,
+      preference1: true,
       preference2: false,
       preference3: false,
       preference4: false,
       preference5: false,
+      preference6: false,
       selectedDates: [],
       checkboxTransAir: false,
       colorTransAir: 'white',
       checkboxContinent: false,
-      colorContinent: 'white'
+      colorContinent: 'white',
+      checkboxWork: false,
+      colorWork: 'white',
+      checkboxLaziness: false,
+      colorLaziness: 'white',
+      checkboxLongDay: false,
+      colorLongDay: 'white',
+      checkboxEasyDay: false,
+      colorEasyDay: 'white',
+      checkboxTransAirCoontinent: false,
+      checkboxWorkLaziness: false,
+      checkboxLongDayEasyDay: false,
+      data: [],
+      timeDay: []
     };
   }
 
@@ -301,6 +316,24 @@ class DashBoard extends Component {
     });
   };
 
+  step3Clear = () => {
+
+    this.setState({
+      preference: false,
+      preference1: false,
+      preference2: true,
+      preference3: false,
+      preference4: false,
+      preference5: false,
+      checkboxTransAir: false,
+      colorTransAir: 'white',
+      checkboxContinent: false,
+      colorContinent: 'white',
+      checkboxTransAirCoontinent: false,
+
+    });
+  };
+
   step4 = () => {
 
     this.setState({
@@ -310,8 +343,10 @@ class DashBoard extends Component {
       preference3: true,
       preference4: false,
       preference5: false,
+      timeDay: []
     });
   };
+
 
   step5 = () => {
 
@@ -324,6 +359,24 @@ class DashBoard extends Component {
       preference5: false,
     });
   };
+
+  step5Clear = () => {
+
+    this.setState({
+      preference: false,
+      preference1: false,
+      preference2: false,
+      preference3: false,
+      preference4: true,
+      preference5: false,
+      checkboxWork: false,
+      colorWork: 'white',
+      checkboxLaziness: false,
+      colorLaziness: 'white',
+      checkboxWorkLaziness: false
+    });
+  };
+
   step6 = () => {
 
     this.setState({
@@ -333,11 +386,38 @@ class DashBoard extends Component {
       preference3: false,
       preference4: false,
       preference5: true,
+      preference6: false,
+
     });
   };
 
-  onTryam = (e) => {
+  step6Clear = () => {
+
+    this.setState({
+      preference: false,
+      preference1: false,
+      preference2: false,
+      preference3: false,
+      preference4: false,
+      preference5: true,
+      checkboxLongDay: false,
+      colorLongDay: 'white',
+      checkboxEasyDay: false,
+      colorEasyDay: 'white',
+      checkboxLongDayEasyDay: false,
+
+    });
+  };
+
+  mainPreference = (e) => {
     console.log('да, передается', e)
+  };
+
+  timeDayPreference = (e) => {
+
+    this.setState({
+      timeDay: e
+    });
   };
 
   checkboxTransAir = (e) => {
@@ -345,7 +425,9 @@ class DashBoard extends Component {
       checkboxTransAir: true,
       checkboxContinent: false,
       colorTransAir: 'rgb(180,244,209)',
-      colorContinent: 'white'
+      colorContinent: 'white',
+      checkboxTransAirCoontinent: true
+
     });
   };
 
@@ -354,18 +436,125 @@ class DashBoard extends Component {
       checkboxTransAir: false,
       checkboxContinent: true,
       colorContinent: 'rgb(180,244,209)',
-      colorTransAir: 'white'
+      colorTransAir: 'white',
+      checkboxTransAirCoontinent: true
+
     });
   };
+
+  checkboxWork = (e) => {
+    this.setState({
+      checkboxWork: true,
+      checkboxLaziness: false,
+      colorWork: 'rgb(180,244,209)',
+      colorLaziness: 'white',
+      checkboxWorkLaziness: true
+    });
+  };
+
+  checkboxLaziness = (e) => {
+    this.setState({
+      checkboxWork: false,
+      checkboxLaziness: true,
+      colorWork: 'white',
+      colorLaziness: 'rgb(180,244,209)',
+      checkboxWorkLaziness: true
+    });
+  };
+
+  checkboxLongDay = (e) => {
+    this.setState({
+      checkboxLongDay: true,
+      checkboxEasyDay: false,
+      colorLongDay: 'rgb(180,244,209)',
+      colorEasyDay: 'white',
+      checkboxLongDayEasyDay: true
+
+    });
+  };
+
+  checkboxEasyDay = (e) => {
+    this.setState({
+      checkboxLongDay: false,
+      checkboxEasyDay: true,
+      colorLongDay: 'white',
+      colorEasyDay: 'rgb(180,244,209)',
+      checkboxLongDayEasyDay: true
+
+    });
+  };
+
+  dataComponent = (flag) => {
+
+    if (flag.target.value === 'clear') {
+      this.setState({
+        selectedDates: []
+      });
+    }
+
+    let checkboxTransAirCoontinent = this.state.checkboxTransAirCoontinent
+
+    let timeDay = this.state.timeDay
+
+    let checkboxWorkLaziness = this.state.checkboxWorkLaziness
+
+    let checkboxLongDayEasyDay = this.state.checkboxLongDayEasyDay
+
+    let selectedDates = this.state.selectedDates
+
+    let arrPreference = [checkboxTransAirCoontinent, timeDay, checkboxWorkLaziness, checkboxLongDayEasyDay, selectedDates]
+
+    let arrData = []
+    for (let i = 0; i < arrPreference.length; i++) {
+      if (arrPreference[i] === true || (typeof arrPreference[i] === 'object' && arrPreference[i].length
+        !== 0)) {
+        if (i === 0) {
+          arrData.push({ name: 'Направление\nполета', style: 'flight_direction' })
+        }
+        if (i === 1) {
+          arrData.push({ name: "Время вылета", style: 'time_of_fly' })
+        }
+        if (i === 2) {
+          arrData.push({ name: "Продолжительнсоть\nсмены", style: 'duration' })
+        }
+        if (i === 3) {
+          arrData.push({
+            name: "Желание работать\nс переработками", style: 'wish_to_work'
+          })
+        }
+        if (i === 4 && flag.target.value !== 'clear') {
+          arrData.push({ name: "Выбор выходных\nдней", style: 'weekends' })
+        }
+      }
+    }
+
+    this.setState({
+      data: arrData,
+      preference: false,
+      preference1: false,
+      preference2: false,
+      preference3: false,
+      preference4: false,
+      preference5: false,
+      preference6: true,
+
+    });
+  };
+
+
 
   render() {
     const { TabPane } = Tabs;
     const { cities } = this.state;
     const userMainInfo = JSON.parse(localStorage.getItem('userMainInfo'));
     let searchFlag;
+    const { getFieldDecorator } = this.props.form;
     let blueCircle = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAE/ElEQVRoge2ZTWhcVRTH/+dmMklLI5KmaJp0IdokGjRgBrtucROlYBZDQ6PiQiIlKahbEabg10ZF7IQ2anGRgG1cKPixkdClhpkUlagJ1EUbU7VNEDMkZua9e1zM15v37n33vpnEjbkw5OUe3tzf/5xzz7nvDbA39sb/e9BOfEkyeaUJsQceY+LjDAxKoA9AJxMdYAAM5BhYBbAkibKS5dyxo4/Op1IkG127IQEjI/NHHIhxJnoahK4SLJgI1WvfX1D5eoVB000upb+eGVj5TwUkkwuHZBO/RoTnmBCPCO6bR56ILjlx59WrU4k7uy4gOZI5zSTeZ+L2RsBRuS7baQ2MiasfD3yyKwLGxjLN6xtikomfDwUPgFXnYLAzAGZc3Gp2zmanEoUdE3DyZGZ/vI0+ZWAoKjgshPkdIglfFUQhmZ1KbDYsYGws07yWo88lMLTb4DUpRvgm91fsycXZ/nwYnzAJuJ0Tky7RkCSCBCCp9KlcU+njAdDYg/eXbN756v2P77vbec/EFxqB4dPXRiXxdJjHgZCIeOfNHlfaQTSycPHhy5EFDD/73UHXbf6FCR1+sGB61AcOC2FMWI/JfG9WU2K1KeTI+BuS0FEOr9fr2lQC1aSCKlXKKcYWqVS0U/u2aDkXKQJDo993C3Kvo9KkSONRO4/DYLcoCnlyxdHFqf4bVhEQTe4EE+JFj5LCo2aPV+D89+k87v1ez6YvRSvuxviMktU/kUqxkEyj9YAXF6vU8mDlsQTXVLNnkLzSZBTw7a/XjklCtxG8NF9dTG23BfemmFoYd913b/+gUYALOm4Cr92I9YOzBzzUYaU5Ypzw88b8E5KQgGJzwnOt3Lw1dv3mBBooCgKBCAQEMFGP+vBVP3i1bzRYzQi9FgLQqWgm4eAasB0Dr853GgVI4ICyVluCw2C3BQ9Ev3jdZhbgTwcL8OBiEcC94i1S1EIA5RhoN4Grz0PRwWGw+/bWhk0EbjHQrgIDNAvozvoaMBjsuqIggVtGAQxalsT9ZTClp+sAh8FuU82YaMnPG2hkDjhT+ZJAY6qcENUPKb4GFOiu/gblvx/qxldtnJwxRkACc+TfwBE8ro9Y49VMspgzRmCh+5F5SbgZxeMVgIBHLT1e+j94Hqqx3/i7rSdrFIAUSUmYCQX3elUJVnu6DANnD7hOmCTAZcxA8SpS+TzADqclUd6/cCXENg/qIeA1h0EdOGru35auSKtYlQJ++HBgRQKXgmGtH5w94KGppEhRCfHB1ru9v1kLAADKi1cYuON/2IgCrqxmkcAJkrAWc3FOx6kVsPhR/7okOmv9TkcBHvKgbgNejtaZjbd7tS99SWcoj/vHf7zAgl4IHO5Qm14w2Ospw1JwuvDmgxNhfMY3c9f//Hlcgj9TPV3VVpD6Pa4qw0z8ZaHl9xdNfMYIAMDhscz+WOu+WUl4Agi09+geL62st9MXTmvbKaQOG1/uGiMAAKtTic1D/2w9xcAF7R6w8LhlGU47ravDNvAlP0Qb97z80ykwzjPQoTwy++ZgsHsieRvM4+5bfbNReKwi4B1/vPPQ5Vie+lhgUgLbqjIb7K6hHt+WROfdFqcvKjzQ4I98B19a6nKEnADRKMBHbCLi8fhNJkxLQhqvq5vUrguojBSLuzaXE8zyhEsYBKiXi79aFn9mFcgxY4UZy5KQkaA5tPZkVWebvbE39ka08S8oPLE2P4bQtwAAAABJRU5ErkJggg==';
     let redCircle = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADXElEQVRoge2Zz2scZRzGn+edLWxQCV6sFVupihuvdv+CeBdiy0JrkpKLaCx6KD2IDb7QioJS2qIN1UNpFwUXTcS78Q8w7dXUQ0qrqDnVHxUHdud9PDQ9OPPuzryT3Wmg+Ry/7/fd+TzMzM7M+wI77PBgw2H8iKw12F9rgpgUXBPgcwCeBPDQZss/AH4BcZ3iVQgruNFbpbVuq8feUgC139vj5N4gMAtgb+D0WwLahuYTzrzzW1mHUgH0+fuPuqRrCb4KoF724JvEgj41iXuXc/aP0MnBAXTl1MsCFgE8Fjo3hw0C85xdWAqZVDiAOp3IxWtnCL4Z7lYcCefMWOM4W62kSH+hALpk66qZLyBObU2vINQye+4I52yc12ryGtTpRKpF7crkAUCckom+1Pe2lteaG8DFa2cgHBqOWQDES+5n82F+2wA2b9ivh2cVjCge5NGTy/0a+gZQ54Nxxd0fAewZiVpxNhjVnucrb9/2Dfa9hFzcPYX7Lw8Au13Stf0GvWdAl+zjiqJ1AGOjsgok5q7kGR62v6YHvGfARdExbB95AKi7bjTvG8gEkLWGwMzoncIgMC1rM77ZM7C/1gSwrwqpQJ7C07UX0sVsAOrFSnTKMZkuZC8h6EA1LuEIaqZrnpuYjSpkSjKRLvj+hZ6oQKQsmeeSL8DDFYiU5ZF0IfdlbrvjC3Cncovi/J0u+AJkHtfbiMzHvyeArldhUpK1dCETgODValzCIbiarmXPgPhdJTblWEkXsgFu9FYB3KrCJpCbWO9dSxezl5C1TkC7GqfiCGr7liK9zwGTJB8D+HfkVsWJzS636BvwBuCc/V3QZ6N1Ko6Ei76vMWDAk9gYtwDP/+59YMO4xPYb7BuA0/YvAscAaBRWBRGJ1wYt+g58F+LswpKE88P3KoaAs5xZ+GZQT+7LnBlrHAfx1fC0CiJ8a+qNE3ltuQHYaiW8PT4Nqu/q2AhY4p/jrSIr1KHL6x8RfCtkXiAScNbUGyeGurz+vyNcPj0lahHA7mC9wWxQfH3QOqiP4A8aHj25zCSZEHQeQO76fQFiCeeYJBOh8sBQNvmSeYKzCF9LuimobRhdqHyTL42sNXjWHIA4KaAJ4d42673v6zu4u836E8UfAKxgvXdtGNusO+zwoPMfinkPENdCPQgAAAAASUVORK5CYII=';
     let greenCircle = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADlUlEQVRoge2ZTWwbRRiG33e3sWM7Fe6FUtQSVaghXGjSWogr4Y4UfnIo/ZGFhCBUuVQcEStxRCptBFSFQ4QsQESQIO6kd3BLygWKEVV/BOTUiLrxrirPy4FISLtr745jL5Ga5/jNN97nkz3emW+AHXZ4sGE/PsSTnIOtqxVDMwU6FciMgdwPobT5lHuQbpO8JumyI2fleuFw3SPNVp+9pQJq9+r77jvum4ROAjxgOf2mgNqQaX94olT5s1eHngr4bP2nPUHOeCReAzTc68M3FXwJHzPQO9U9k+vWs20nLGysvgDqAoCHbecmsAZxtlqcWLKZlLqARS26zdbYWVJz9m4WCOdLhcaZGc6006SnKmBBl4YVlD+nML01u3SIWGZ+/ViVz/pJuU5SwqIWXQblWlbyAEBhWq3yl54u7UrKTSyg2Ro7K+Gl/qilh8Tzo0H5vcS8boObC/br/mlZI0d88VRxYrlTQscCLqr+UM53fwawbyBq6VnLBe6Tr5SfuhM32PEnlGvtehf/vzwA7A1yxus0GPsNLDS/fwTu0O8ACoOysoO+MebxV0tH/giPxH4DcodOY9vIA4CG6XA2biRSgCc5BE4MXsoOAsc9KeIbCRxsXa0AeCwTKztGD2z8eCQcjBTQpp7Lxscel5wKxyIFkDyajY49clAJx6IFSE9ko9MD0ng4FClAwKPZ2NhDMPJeivsbHcnApScE7A7HEjdz2524ApqZW6SEwN1wLLqIgcjrersgKHL4jy5i8lo2Oj1A/hIORQuQLmdjYw8N6uFYpABX/C4bHXva0ko4FingeuFwHcDNTIzsuHGrOHklHIzuRkkjoJaNU3oI1eJakbHvAbbvfwCgNXCr1NBvG1yIG4ktoDry9F8SPxmslAXSxbjTGNDtTFzw3wbQc9O1j6whgNdpsGMBx/nM3xBPA9AgrFIiGLzerenbdS9ULU4sQZjvv1c6SJyrlia/6ZaTuJkrFRpnSHzVP610SPi2mG+8lZSXqrk7r0Z+JGh+kVl/lFq6m999bI6HgqTUVNvpOR4KRvKNl0Gcw2DXhEi8X8r/NpNGHujhguPTjdVp8+8Fx15rve6sOeIb3fqgcVgfaE4VJ5bhY1ziPMDE/n0y9CGch49xW3mgD5d8bceZFXgS9r2kG4RqrjEfZX7JF8aTnNGN1aMgp+ioIoMxEPvx3/m6CeE2HfwKgx/a0sqt4uSVflyz7rDDg84/KB4mhRttl6cAAAAASUVORK5CYII=';
+
+
+
     return (
 
 
@@ -589,8 +778,9 @@ class DashBoard extends Component {
                   <div style={{ textAlign: 'left', height: '300px' }}>
                     {/* <ItemList />
                                          */}
-                    <ItemList func={this.onTryam} />
+                  Здесь можно указать основную информацию о правилах заведения новой заявки для новых пользователей
                   </div>
+
                   <Button
                     type="primary"
                     className='bidding-btn'
@@ -600,6 +790,7 @@ class DashBoard extends Component {
                     <span style={{ marginLeft: '10px' }}>🡲</span>
                     <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
                   </Button>
+
 
                 </Card>
 
@@ -612,6 +803,73 @@ class DashBoard extends Component {
                   <span style={{ marginLeft: '10px' }}>🡲</span>
                   <span style={{ marginLeft: '15px' }}>Пропустить</span>
                 </Button>
+
+              </div>
+            </div>
+          )}
+
+
+        {(this.state.newWish && this.state.preference6)
+          && (
+            <div className="dashBoardContainer">
+              <div className="dashBoardContentDrag borderDesign">
+                <Card
+                  size="small"
+                  bordered={false}
+                  className="userCardSlider"
+                >
+                  <div className='newForm'>Новая Заявка &nbsp;
+                      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M14 5.00004L9.63529 9.73219C9.30588 10.0893 8.79118 10.0893 8.46176 9.73219C8.13235 9.37504 8.13235 8.81701 8.46176 8.45987L11.6735 5.00004L8.46176 1.5179C8.13235 1.16076 8.13235 0.602722 8.46176 0.245579C8.79118 -0.111564 9.30588 -0.111564 9.63529 0.245579L14 5.00004Z"
+                        fill="#282828"
+                      />
+                      <path
+                        d="M-0.000100175 5.00003C-0.000100153 4.50896 0.370488 4.10718 0.82343 4.10718L12.7646 4.10718C13.2175 4.10718 13.5881 4.50896 13.5881 5.00003C13.5881 5.49111 13.2175 5.89289 12.7646 5.89289L0.82343 5.89289C0.370488 5.89289 -0.000100196 5.49111 -0.000100175 5.00003Z"
+                        fill="#282828"
+                      />
+                    </svg>
+                    <span className='newForm2'>
+                      &nbsp;&nbsp;&nbsp; 6. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;
+                      <span className='newForm3'>Переместите бокс по приоритету</span>
+                  </div>
+                  <div style={{ textAlign: 'left', height: '300px' }}>
+                    {/* <ItemList />
+                                         */}
+
+
+
+                    {this.state.data.length === 0 &&
+                      <div><h1>Вы не выбрали ни одной преференции для сохранения заявки</h1></div>
+                    }
+                    {this.state.data.length !== 0 &&
+                      <ItemList func={this.mainPreference} data={this.state.data} />
+                    }
+
+                  </div>
+
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '10px' }}
+                    onClick={this.step}
+                  >
+                    <span style={{ marginLeft: '10px' }}>&#10004;</span>
+                    <span style={{ marginLeft: '35px' }}>Сохранить</span>
+                  </Button>
+
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step6}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡸</span>
+                    <span style={{ marginLeft: '15px' }}>Назад</span>
+                  </Button>
+
+                </Card>
+
 
               </div>
             </div>
@@ -637,7 +895,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Направление полета</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 1. Направление полета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -663,16 +921,31 @@ class DashBoard extends Component {
 
                   {/* <RadioButtonList /> */}
                 </div>
+                {!this.state.checkboxTransAirCoontinent &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step3}
+                    disabled
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
+                {this.state.checkboxTransAirCoontinent &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step3}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step3}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
+                {/* 
                 <Button
                   type="primary"
                   className='bidding-btn-step'
@@ -681,13 +954,13 @@ class DashBoard extends Component {
                 >
                   <span style={{ marginLeft: '10px' }}>🡸</span>
                   <span style={{ marginLeft: '15px' }}>Назад</span>
-                </Button>
+                </Button> */}
               </Card>
               <Button
                 type="primary"
                 className='bidding-btn'
                 style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step3}
+                onClick={this.step3Clear}
               >
                 <span style={{ marginLeft: '10px' }}>🡲</span>
                 <span style={{ marginLeft: '15px' }}>Пропустить</span>
@@ -717,21 +990,36 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 3. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Переместите бокс по приоритету</span>
                 </div>
+                <ItemList_day func={this.timeDayPreference} />
+                {this.state.timeDay.length === 0 &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    disabled
+                    onClick={this.step4}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
 
-                <ItemList_day />
+                {this.state.timeDay.length !== 0 &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step4}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
+                    onClick={this.step4}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
+
                 <Button
                   type="primary"
                   className='bidding-btn-step'
@@ -777,7 +1065,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 4. Преференции переработок</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 3. Преференции переработок</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -788,15 +1076,15 @@ class DashBoard extends Component {
                  
                 </div> */}
                 <div className={'main_radio_block'}>
-                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
-                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkboxWork}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorWork }}></div>
                     <div className={'radio_text_wrapper'}>
                       <p className={'radio_text'} style={{ color: 'black' }}>Хочу работать с переработками</p>
                     </div>
                   </div>
 
-                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
-                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkboxLaziness}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorLaziness }}></div>
                     <div className={'radio_text_wrapper'}>
                       <p className={'radio_text'} style={{ color: 'black' }}>Переработки неприемлимы</p>
                     </div>
@@ -804,15 +1092,32 @@ class DashBoard extends Component {
                 </div>
 
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step5}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
+
+                {!this.state.checkboxWorkLaziness &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step5}
+                    disabled
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
+                {this.state.checkboxWorkLaziness &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step5}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
+
+
                 <Button
                   type="primary"
                   className='bidding-btn-step'
@@ -827,7 +1132,7 @@ class DashBoard extends Component {
                 type="primary"
                 className='bidding-btn'
                 style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step5}
+                onClick={this.step5Clear}
               >
                 <span style={{ marginLeft: '10px' }}>🡲</span>
                 <span style={{ marginLeft: '15px' }}>Пропустить</span>
@@ -858,7 +1163,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 5. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 4. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -870,30 +1175,46 @@ class DashBoard extends Component {
                 </div> */}
 
                 <div className={'main_radio_block'}>
-                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(249,221,142)' }} onClick={this.checkbox}>
-                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkboxLongDay}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorLongDay }}></div>
                     <div className={'radio_text_wrapper'}>
                       <p className={'radio_text'} style={{ color: 'black' }}>Длительная смена</p>
                     </div>
                   </div>
 
-                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(119,93,246)' }} onClick={this.checkbox}>
-                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorTransAir }}></div>
+                  <div className={'sub_radio_block unselectable'} style={{ backgroundColor: 'rgb(242, 166, 137)' }} onClick={this.checkboxEasyDay}>
+                    <div className={'radio_circle'} style={{ backgroundColor: this.state.colorEasyDay }}></div>
                     <div className={'radio_text_wrapper'}>
                       <p className={'radio_text'} style={{ color: 'black' }}>Короткая смена</p>
                     </div>
                   </div>
                 </div>
 
-                <Button
-                  type="primary"
-                  className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}
-                  onClick={this.step6}
-                >
-                  <span style={{ marginLeft: '10px' }}>🡲</span>
-                  <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
-                </Button>
+                {!this.state.checkboxLongDayEasyDay &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step6}
+                    disabled
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
+                {this.state.checkboxLongDayEasyDay &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }}
+                    onClick={this.step6}
+                  >
+                    <span style={{ marginLeft: '10px' }}>🡲</span>
+                    <span style={{ marginLeft: '15px' }}>Сохранить/Далее</span>
+                  </Button>
+                }
+
+
                 <Button
                   type="primary"
                   className='bidding-btn-step'
@@ -908,7 +1229,7 @@ class DashBoard extends Component {
                 type="primary"
                 className='bidding-btn'
                 style={{ float: 'right', marginRight: '20px' }}
-                onClick={this.step6}
+                onClick={this.step6Clear}
               >
                 <span style={{ marginLeft: '10px' }}>🡲</span>
                 <span style={{ marginLeft: '15px' }}>Пропустить</span>
@@ -939,7 +1260,7 @@ class DashBoard extends Component {
                       fill="#282828"
                     />
                   </svg>
-                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 6. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;
+                  <span className='newForm2'>&nbsp;&nbsp;&nbsp; 5. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
                 </div>
 
@@ -972,13 +1293,25 @@ class DashBoard extends Component {
                                         </div> */}
                   </div>
                 </div>
-                <Button
+
+                {this.state.selectedDates.length === 0 && <Button
                   type="primary"
                   className='bidding-btn-step'
-                  style={{ float: 'right', marginRight: '0px' }}>
-                  <span style={{ marginLeft: '10px' }}>&#10004;</span>
-                  <span style={{ marginLeft: '35px' }}>Сохранить</span>
+                  style={{ float: 'right', marginRight: '0px' }} disabled onClick={this.dataComponent}>
+
+                  <span style={{ marginLeft: '35px' }}>Сохранить/Далее</span>
                 </Button>
+
+                }
+
+                {this.state.selectedDates.length !== 0 &&
+                  <Button
+                    type="primary"
+                    className='bidding-btn-step'
+                    style={{ float: 'right', marginRight: '0px' }} onClick={this.dataComponent}>
+
+                    <span style={{ marginLeft: '35px' }}>Сохранить/Далее</span>
+                  </Button>}
 
                 <Button
                   type="primary"
@@ -991,6 +1324,19 @@ class DashBoard extends Component {
                 </Button>
 
               </Card>
+
+
+              <Button
+                type="primary"
+                className='bidding-btn'
+                style={{ float: 'right', marginRight: '20px' }}
+                onClick={this.dataComponent} value={'clear'}
+              >
+                <span style={{ marginLeft: '10px' }}>🡲</span>
+                <span style={{ marginLeft: '15px' }}>Пропустить</span>
+              </Button>
+
+
             </div>
           </div>
         }
@@ -1564,4 +1910,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);
+
+const Form_You = Form.create({ name: 'form_you' })(DashBoard)
+export default connect(mapStateToProps, mapDispatchToProps)(Form_You)
