@@ -2,6 +2,13 @@
     padding: 164px 164px 54px 164px;
 }
 
+.progress-page {
+    text-align: center;
+    border-radius: 4px;
+    padding: 30px 50px;
+    margin: 20px 0 0 0;
+}
+
 .head-panel {
     display: flex;
     justify-content: space-between;
@@ -110,7 +117,7 @@
     border-color: #7D58FF;
 }
 
-.bidding-btn:focus {
+.bidding-btn:focus{
     background: #7D58FF;
     border-color: #7D58FF;
 }

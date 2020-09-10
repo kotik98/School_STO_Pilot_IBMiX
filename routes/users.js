@@ -40,7 +40,7 @@ router.get("/api/profilePilot", sessionChecker, async (req, res, next) => {
       keyForNewPassword,
       email,
       wishForm,
-      arrWish
+      arrWish,
     };
     console.log('Да, вот он юзер', user)
     res.status(201).json({ response: user });

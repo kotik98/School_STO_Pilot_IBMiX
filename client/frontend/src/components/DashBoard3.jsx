@@ -686,7 +686,11 @@ class DashBoard extends Component {
       <div>
 
         <div className="dashBoardContainer">
-
+          {(this.state.loading || !this.props.users) && (
+              <div className='progress-page'>
+                <Spin size="small" tip="Загрузка..." />
+              </div>
+          )}
           {/* START HEAD PANEL */}
           <div className="head-panel">
             <div className='head-part'>
@@ -808,12 +812,6 @@ class DashBoard extends Component {
             </div>
           </div>
           {/* END HEAD PANEL */}
-
-          {(this.state.loading || !this.props.users) && (
-            <div style={{ textAlign: 'center', marginTop: '10px' }}>
-              <Spin size="small" tip="Загрузка..." />
-            </div>
-          )}
 
           {this.state.visibleSort === true && (
             <div className='modalWidth'>

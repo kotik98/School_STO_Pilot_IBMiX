@@ -45,6 +45,7 @@ async function foo() {
                 let obj = {}
 
                 if (k === 1) {
+
                     obj.month = {
                         description: 'Октябрь',
                         date: 10
@@ -108,6 +109,7 @@ async function foo() {
                         description: 'Ноябрь',
                         date: 11
                     }
+
                 }
 
 
