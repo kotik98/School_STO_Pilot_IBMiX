@@ -687,7 +687,7 @@ class DashBoard extends Component {
 
         <div className="dashBoardContainer">
           {(this.state.loading || !this.props.users) && (
-              <div className='progress-pages'>
+              <div className='progress-page'>
                 <Spin size="small" tip="Загрузка..." />
               </div>
           )}
