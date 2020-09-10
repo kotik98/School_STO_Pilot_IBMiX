@@ -105,12 +105,12 @@
     line-height: 12px;
 }
 
-.primary-btn:hover .bidding-btn:hover {
+.bidding-btn:hover {
     background: #7D58FF;
     border-color: #7D58FF;
 }
 
-.primary-btn:focus .bidding-btn:focus{
+.bidding-btn:focus{
     background: #7D58FF;
     border-color: #7D58FF;
 }

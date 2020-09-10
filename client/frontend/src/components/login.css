@@ -11,10 +11,53 @@
   height: 425px;
   /*margin-top: 200px;*/
   margin-top: 10%;
-
   background: #FFFFFF;
-  box-shadow: 0px 0px 10px -1px rgba(158, 158, 158, 0.25);
+  box-shadow: 0 0 10px -1px rgba(158, 158, 158, 0.25);
   border-radius: 15px;
+}
+
+.login-form a {
+  color: #252525;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 8px;
+}
+
+.login-form > div {
+  padding: unset;
+}
+
+
+.login-head {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background: #222222;
+  height: 166px;
+  padding-top: 46px;
+  padding-left: 44px;
+  margin-bottom:  12px;
+}
+
+/*.ant-card-body {
+  padding: unset;
+}*/
+
+.login-head h3 {
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 23px;
+  color: #FFFFFF;
+}
+
+.login-head img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 166px;
 }
 
 .login-form--input {
@@ -49,7 +92,7 @@
 }
 
 .primary-btn {
-  /*margin-top: 28px;*/
+  margin-top: 18px;
   background: #5459CD;
   border-color: #5459CD;
   width: 146px;

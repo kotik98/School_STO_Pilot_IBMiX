@@ -22,7 +22,8 @@ router.get("/api/profilePilot", sessionChecker, async (req, res, next) => {
       rewardsAndPunishments,
       phone,
       keyForNewPassword,
-      wishForm
+      wishForm,
+      arrWish,
     } = userMainInfo;
 
 
@@ -38,7 +39,8 @@ router.get("/api/profilePilot", sessionChecker, async (req, res, next) => {
       phone,
       keyForNewPassword,
       email,
-      wishForm
+      wishForm,
+      arrWish,
     };
     console.log('Да, вот он юзер', user)
     res.status(201).json({ response: user });
