@@ -1475,7 +1475,7 @@ class DashBoard extends Component {
 
         <div className="dashBoardContainer">
           <div className="dashBoardContent">
-            <div className='yourTrip'><font face="Arial Black">Заявка на текущий период:</font></div>
+            <div className='yourTrip' style={{ marginBottom: '15px' }}><font face="Arial Black">Заявка на текущий период:</font></div>
             <Card
               color="primary"
               className="userCardW shadow-sm"
@@ -1496,7 +1496,7 @@ class DashBoard extends Component {
                     </div>) ||
                     (this.props.user.wishForm &&
                       <div style={{ marginLeft: '10px' }}>
-                        <font face="Arial" color={'#ffffff'} size={4}>Октябрь</font>
+                        <font face="Arial" color={'#ffffff'} size={4}>Ноябрь</font>
                       </div>)}
                 </div>
 
@@ -1505,29 +1505,29 @@ class DashBoard extends Component {
 
                     <div>
                       <Buttonr
-                        onClick={() => this.changeDirection(user.longFly)}
+                        // onClick={this.step}
                         color="none"
                         className="userCardWP hoverCard shadow-lg"
                       >
                         <font color={'#5a5a5a'}>Направление: {user.longFly}</font>
                       </Buttonr>
                       <Buttonr
-                        onClick={() => this.changeDuration(user.timeFly)}
+                        // onClick={this.step3}
                         color="none"
                         className="userCardWP hoverCard shadow-lg"
                       >
-                        <font color={'#5a5a5a'}>Продолжительность рабочей смены: {user.timeFly}</font>
+                        <font color={'#5a5a5a'}>Продолжительность смены: {user.timeFly}</font>
                       </Buttonr>
                       <Buttonr
-                        onClick={() => this.changeWork(user.otherTime)}
+                        // onClick={() => this.changeWork(user.otherTime)}
                         color="none"
                         className="userCardWP hoverCard shadow-lg"
                       >
-                        <font color={'#5a5a5a'}>Желание дополнительной подработки: {user.otherTime}</font>
+                        <font color={'#5a5a5a'}>Подработка: {user.otherTime}</font>
                       </Buttonr>
 
                       <Buttonr
-                        onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
+                        // onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
                         color="none"
                         className="userCardWP hoverCard shadow-lg"
                       >
@@ -1539,7 +1539,7 @@ class DashBoard extends Component {
                       </Buttonr>
 
                       <Buttonr
-                        onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
+                        // onClick={() => this.changeDepartTime(user.preferenceTimeFly)}
                         color="none"
                         className="userCardWP hoverCard shadow-lg"
                       >
@@ -1551,7 +1551,7 @@ class DashBoard extends Component {
                           {user.selectedDates[0] !== "Не заполнено" &&
 
                             user.selectedDates.map((user, key) =>
-                              <span>{user.day}.{user.month}.{user.year} / </span>
+                              <span style={{ color: 'red' }}>  {user.day}.{user.month}.{user.year} </span>
 
 
 
@@ -1590,7 +1590,7 @@ class DashBoard extends Component {
             <div className='mediumText'><font face="Arial Black">История заявок:</font></div>
 
             {this.props.user.arrWish &&
-              this.props.user.arrWish.map((user, key) =>
+              this.props.user.arrWish.reverse().map((user, key) =>
                 <Card key={key} color="primary" className="userCardW shadow-sm" bordered={true}>
                   <div style={{ width: '60%', float: 'inherit' }}>
                     <div className="userCard1" style={{ width: '70%' }}>
@@ -1610,23 +1610,23 @@ class DashBoard extends Component {
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler2"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Продолжительность рабочей смены: {user.timeFly}</font>
+                        <font color={'#5a5a5a'}>Продолжительность смены: {user.otherTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler2"}>
                         <Cardr className="userCardW">
                           <CardBody>
-                            {user.timeFly}
+                            {user.otherTime}
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler3"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Желание дополнительной подработки: {user.otherTime}</font>
+                        <font color={'#5a5a5a'}>Подработка: {user.timeFly}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler3"}>
                         <Cardr className="userCardW">
                           <CardBody>
-                            {user.otherTime}
+                            {user.timeFly}
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
