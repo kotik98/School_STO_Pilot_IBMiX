@@ -1597,45 +1597,45 @@ class DashBoard extends Component {
                     </div>
                     <div>
                       <Buttonr color="none" id={"form" + key + "toggler1"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Направление: {user.longFly}</font>
+                        <font color={'#5a5a5a'}>Направление: {user.longFly[0].fly}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler1"}>
                         <Cardr className="userCardW">
                           <CardBody>
-                            {user.longFly}
+                            {user.longFly[0].fly}
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler2"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Продолжительность смены: {user.otherTime}</font>
+                        <font color={'#5a5a5a'}>Продолжительность смены: {user.otherTime[0].time}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler2"}>
                         <Cardr className="userCardW">
                           <CardBody>
-                            {user.otherTime}
+                            {user.otherTime[0].time}
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler3"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Подработка: {user.timeFly}</font>
+                        <font color={'#5a5a5a'}>Подработка: {user.timeFly[0].flyTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler3"}>
                         <Cardr className="userCardW">
                           <CardBody>
-                            {user.timeFly}
+                            {user.timeFly[0].flyTime}
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler4"} className="userCardGreen hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly}</font>
+                        <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly[0].dayTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler4"}>
                         <Cardr className="userCardW">
                           <CardBody>
-                            {user.preferenceTimeFly}
+                            {user.preferenceTimeFly[0].dayTime}
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
