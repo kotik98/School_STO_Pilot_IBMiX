@@ -115,47 +115,109 @@ async function foo() {
 
                 for (let i = 0; i < 4; i++) {
                     if (i === 0) {
+                        let arrLongFly = []
+                        let objLongFly = {}
+
                         let random = Math.random()
                         if (random > 0.5) {
-                            obj.longFly = 'Континентальные рейсы'
+                            // obj.longFly = 'Континентальные рейсы'
+                            objLongFly.fly = 'Континентальные рейсы'
                         } else {
-                            obj.longFly = 'Трансатлантические рейсы'
+                            // obj.longFly = 'Трансатлантические рейсы'
+                            objLongFly.fly = 'Трансатлантические рейсы'
                         }
+
+                        let random2 = Math.random()
+                        if (random2 > 0.5) {
+                            objLongFly.flag = true
+                        } else {
+                            objLongFly.flag = false
+                        }
+                        arrLongFly.push(objLongFly)
+                        obj.longFly = arrLongFly
+
+
                     } else if (i === 1) {
+                        let arrOtherTime = []
+                        let objOtherTime = {}
+
                         let random = Math.random()
                         if (random > 0.5) {
-                            obj.otherTime = 'Длительная смена'
+                            objOtherTime.time = 'Хочу работать с переработками'
                         } else {
-                            obj.otherTime = 'Короткая смена'
+                            objOtherTime.time = 'Переработки неприемлимы'
                         }
+
+                        let random2 = Math.random()
+                        if (random2 > 0.5) {
+                            objOtherTime.flag = true
+                        } else {
+                            objOtherTime.flag = false
+                        }
+                        arrOtherTime.push(objOtherTime)
+                        obj.otherTime = arrOtherTime
+
                     } else if (i === 2) {
+
+                        let arrTimeFly = []
+                        let objTimeFly = {}
+
                         let random = Math.random()
                         if (random > 0.5) {
-                            obj.timeFly = 'Хочу работать с переработками'
+                            objTimeFly.flyTime = 'Длительная смена'
                         } else {
-                            obj.timeFly = 'Переработки неприемлимы'
+                            objTimeFly.flyTime = 'Короткая смена'
                         }
+
+                        let random2 = Math.random()
+                        if (random2 > 0.5) {
+                            objTimeFly.flag = true
+                        } else {
+                            objTimeFly.flag = false
+                        }
+                        arrTimeFly.push(objTimeFly)
+                        obj.timeFly = arrTimeFly
+
                     } else if (i === 3) {
+
+
+                        let arrPreferenceTimeFly = []
+                        let objPreferenceTimeFly = {}
+
                         let random = Math.random()
                         if (random < 0.2) {
-                            obj.preferenceTimeFly = 'Утро(06: 00 - 12: 00)'
+                            objPreferenceTimeFly.dayTime = 'Утро(06: 00 - 12: 00)'
                         } else if (random > 0.2 && random < 0.4) {
-                            obj.preferenceTimeFly = 'День(12: 00 - 17: 00)'
+                            objPreferenceTimeFly.dayTime = 'День(12: 00 - 17: 00)'
                         } else if (random > 0.4 && random < 0.7) {
-                            obj.preferenceTimeFly = 'Вечер(17: 00 - 22: 00)'
+                            objPreferenceTimeFly.dayTime = 'Вечер(17: 00 - 22: 00)'
                         } else if (random > 0.7 && random < 1) {
-                            obj.preferenceTimeFly = 'Ночь(22: 00 - 06: 00)'
+                            objPreferenceTimeFly.dayTime = 'Ночь(22: 00 - 06: 00)'
                         }
+
+                        let random2 = Math.random()
+                        if (random2 > 0.5) {
+                            objPreferenceTimeFly.flag = true
+                        } else {
+                            objPreferenceTimeFly.flag = false
+                        }
+                        arrPreferenceTimeFly.push(objPreferenceTimeFly)
+                        obj.preferenceTimeFly = arrPreferenceTimeFly
+
+
+
+
                     }
 
                 }
                 arrWish.push(obj)
             }
         }
+
         randomInteger(1, 12)
         pilotCollection[j].arrWish = arrWish
         await pilotCollection[j].save();
     }
 }
 
-// foo()
+foo()
