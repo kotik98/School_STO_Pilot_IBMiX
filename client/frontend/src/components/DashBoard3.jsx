@@ -1608,7 +1608,7 @@ class DashBoard extends Component {
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler2"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Продолжительность смены: {user.otherTime[0].time}</font>
+                        <font color={'#5a5a5a'}>Подработка: {user.otherTime[0].time}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler2"}>
                         <Cardr className="userCardW">
@@ -1619,7 +1619,7 @@ class DashBoard extends Component {
                       </UncontrolledCollapse>
 
                       <Buttonr color="none" id={"form" + key + "toggler3"} className="userCardRed hoverCard shadow-lg">
-                        <font color={'#5a5a5a'}>Подработка: {user.timeFly[0].flyTime}</font>
+                        <font color={'#5a5a5a'}>Продолжительность смены: {user.timeFly[0].flyTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler3"}>
                         <Cardr className="userCardW">
