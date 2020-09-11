@@ -34,6 +34,12 @@ import { connect } from 'react-redux';
 import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from '../redux/action';
 import './DashBoard.css';
 
+
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
+
 const { Option } = Select;
 const { Panel } = Collapse;
 const openNotification = (placement, icon, title, message) => {
@@ -556,7 +562,8 @@ class DashBoard extends Component {
     });
   };
 
-  checkboxContinent = (e) => {
+  checkboxContinent = async (e) => {
+    alert('klmlkjk')
     this.setState({
       checkboxTransAir: false,
       checkboxContinent: true,
@@ -565,7 +572,27 @@ class DashBoard extends Component {
       checkboxTransAirCoontinent: true
 
     });
+    console.log('привет')
+    const reqComparison = await fetch('/api/getAirports', {
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        reliabilityIndex: this.props.user.reliabilityIndex,
+      }),
+    });
+    let cities = await reqComparison.json();
+    console.log(cities.response)
+    this.setState({
+      cities: cities.response
+    });
+
+
   };
+
+
 
   checkboxWork = (e) => {
     this.setState({
@@ -1042,6 +1069,57 @@ class DashBoard extends Component {
                       </div>
                     </div>
                   </div>
+
+                  <Select
+                    mode="multiple"
+                    style={{ width: '100%' }}
+                    placeholder="select one country"
+                    // defaultValue={['china']}
+                    onChange={handleChange}
+                  // optionLabelProp="label"
+                  >
+
+                    {this.state.cities && this.state.cities.map(city => (
+                      <Option value={city.cityName} key={city.cityName}>
+                        <div className="demo-option-label-item">
+                          {city.cityName}
+                        </div>
+                      </Option>
+                    ))}
+                    {/* 
+                    <Option value="china" label="China">
+                      <div className="demo-option-label-item">
+                        <span role="img" aria-label="China">
+                          🇨🇳
+        </span>
+        China (中国)
+      </div>
+                    </Option>
+                    <Option value="usa" label="USA">
+                      <div className="demo-option-label-item">
+                        <span role="img" aria-label="USA">
+                          🇺🇸
+        </span>
+        USA (美国)
+      </div>
+                    </Option>
+                    <Option value="japan" label="Japan">
+                      <div className="demo-option-label-item">
+                        <span role="img" aria-label="Japan">
+                          🇯🇵
+        </span>
+        Japan (日本)
+      </div>
+                    </Option>
+                    <Option value="korea" label="Korea">
+                      <div className="demo-option-label-item">
+                        <span role="img" aria-label="Korea">
+                          🇰🇷
+        </span>
+        Korea (韩国)
+      </div>
+                    </Option> */}
+                  </Select>,
 
                   {/* <RadioButtonList /> */}
                 </div>
@@ -1596,7 +1674,7 @@ class DashBoard extends Component {
                       </div>
                     </div>
                     <div>
-                      <Buttonr color="none" id={"form" + key + "toggler1"} className="userCardRed hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler1"} className={user.longFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Направление: {user.longFly[0].fly}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler1"}>
@@ -1607,7 +1685,7 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
 
-                      <Buttonr color="none" id={"form" + key + "toggler2"} className="userCardRed hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler2"} className={user.otherTime[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Подработка: {user.otherTime[0].time}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler2"}>
@@ -1618,7 +1696,7 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
 
-                      <Buttonr color="none" id={"form" + key + "toggler3"} className="userCardRed hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler3"} className={user.timeFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Продолжительность смены: {user.timeFly[0].flyTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler3"}>
@@ -1629,7 +1707,7 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
 
-                      <Buttonr color="none" id={"form" + key + "toggler4"} className="userCardGreen hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler4"} className={user.preferenceTimeFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly[0].dayTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler4"}>

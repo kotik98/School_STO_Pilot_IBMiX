@@ -9,19 +9,21 @@ router.post('/api/getAllFly', async (req, res) => {
   try {
     const flights = await Flights.find();
     // здесь будет обращение к базе
-    console.log('Пустой массив', flights);
-    return res.status(200).json({response: flights});
+    // console.log('Пустой массив', flights);
+    return res.status(200).json({ response: flights });
   } catch (e) {
-    res.status(400).json({response: 'fail'});
+    res.status(400).json({ response: 'fail' });
   }
 });
 
 router.post('/api/getAirports', async (req, res) => {
+  console.log('есть запрос', req.body.reliabilityIndex)
   try {
     const airports = await Airports.find();
-    return res.status(200).json({response: airports});
+    console.log(airports.length)
+    return res.status(200).json({ response: airports });
   } catch (e) {
-    res.status(400).json({response: 'fail'});
+    res.status(400).json({ response: 'fail' });
   }
 });
 
