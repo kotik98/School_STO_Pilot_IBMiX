@@ -1596,7 +1596,7 @@ class DashBoard extends Component {
                       </div>
                     </div>
                     <div>
-                      <Buttonr color="none" id={"form" + key + "toggler1"} className="userCardRed hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler1"} className={user.longFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Направление: {user.longFly[0].fly}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler1"}>
@@ -1607,7 +1607,7 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
 
-                      <Buttonr color="none" id={"form" + key + "toggler2"} className="userCardRed hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler2"} className={user.otherTime[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Подработка: {user.otherTime[0].time}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler2"}>
@@ -1618,7 +1618,7 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
 
-                      <Buttonr color="none" id={"form" + key + "toggler3"} className="userCardRed hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler3"} className={user.timeFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Продолжительность смены: {user.timeFly[0].flyTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler3"}>
@@ -1629,7 +1629,7 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
 
-                      <Buttonr color="none" id={"form" + key + "toggler4"} className="userCardGreen hoverCard shadow-lg">
+                      <Buttonr color="none" id={"form" + key + "toggler4"} className={user.preferenceTimeFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Предпочтительное время вылета: {user.preferenceTimeFly[0].dayTime}</font>
                       </Buttonr>
                       <UncontrolledCollapse toggler={"#form" + key + "toggler4"}>
@@ -1643,54 +1643,6 @@ class DashBoard extends Component {
                   </div>
 
                 </Card>)}
-
-            {/*логика отрисовки текущей заявки пользователя*/}
-            {/*<Card width='100%'
-          className="userCardW hoverCard"
-          title="Заявка на октябрь 2020 г."
-          bordered={false} style={{ width: 300 }}
-    >
-
-
-        {this.props.user.wishForm &&
-
-
-        this.props.user.wishForm.map((user, key) =>
-            <h3 style={{ float: "left" }}>
-
-                <div>
-                    <h5 style={{ float: "left" }}>
-                        Направление
-                    </h5>
-                    <h3 style={{ float: "left", color: 'blue' }}>
-                        {user.longFly}
-                    </h3>
-
-                    <h5 style={{ float: "left" }}>
-                        Продолжительность рабочей смены
-                    </h5>
-                    <h3 style={{ float: "left", color: 'blue' }}>
-                        {user.timeFly}
-                    </h3>
-
-                    <h5 style={{ float: "left" }}>
-                        Желание дополнительной подработки
-                    </h5>
-
-                    <h3 style={{ float: "left", color: 'blue' }}>
-                        {user.otherTime}
-                    </h3>
-
-                    <h5 style={{ float: "left" }}>
-                        Предпочтительное время вылета
-                    </h5>
-                    <h3 style={{ float: "left", color: 'blue' }}>
-                        {user.preferenceTimeFly}
-                    </h3>
-                </div>
-            </h3>
-        )}
-    </Card>*/}
 
           </div>
 
