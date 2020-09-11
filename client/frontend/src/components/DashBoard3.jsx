@@ -551,7 +551,7 @@ class DashBoard extends Component {
 
   };
 
-  checkboxTransAir = (e) => {
+  checkboxTransAir = async (e) => {
     this.setState({
       checkboxTransAir: true,
       checkboxContinent: false,
@@ -560,10 +560,29 @@ class DashBoard extends Component {
       checkboxTransAirCoontinent: true
 
     });
+
+    const reqComparison = await fetch('/api/getAirports', {
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        reliabilityIndex: this.props.user.reliabilityIndex,
+      }),
+    });
+    let cities = await reqComparison.json();
+    console.log(cities.response)
+    this.setState({
+      cities: []
+    });
+    this.setState({
+      cities: cities.response
+    });
   };
 
   checkboxContinent = async (e) => {
-    alert('klmlkjk')
+
     this.setState({
       checkboxTransAir: false,
       checkboxContinent: true,
@@ -572,8 +591,8 @@ class DashBoard extends Component {
       checkboxTransAirCoontinent: true
 
     });
-    console.log('привет')
-    const reqComparison = await fetch('/api/getAirports', {
+
+    const reqComparison = await fetch('/api/getAirports/russia', {
 
       headers: {
         'Content-Type': 'application/json',
@@ -1068,59 +1087,27 @@ class DashBoard extends Component {
                         <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
                       </div>
                     </div>
+
+
+                    <Select
+                      mode="multiple"
+                      style={{ width: '50%' }}
+                      placeholder="Приоритетный город"
+                      // defaultValue={['china']}
+                      onChange={handleChange}
+                    // optionLabelProp="label"
+                    >
+
+                      {this.state.cities && this.state.cities.map(city => (
+                        <Option value={city.cityName} key={city.cityName}>
+                          <div className="demo-option-label-item">
+                            {city.cityName}
+                          </div>
+                        </Option>
+                      ))}
+
+                    </Select>,
                   </div>
-
-                  <Select
-                    mode="multiple"
-                    style={{ width: '100%' }}
-                    placeholder="select one country"
-                    // defaultValue={['china']}
-                    onChange={handleChange}
-                  // optionLabelProp="label"
-                  >
-
-                    {this.state.cities && this.state.cities.map(city => (
-                      <Option value={city.cityName} key={city.cityName}>
-                        <div className="demo-option-label-item">
-                          {city.cityName}
-                        </div>
-                      </Option>
-                    ))}
-                    {/* 
-                    <Option value="china" label="China">
-                      <div className="demo-option-label-item">
-                        <span role="img" aria-label="China">
-                          🇨🇳
-        </span>
-        China (中国)
-      </div>
-                    </Option>
-                    <Option value="usa" label="USA">
-                      <div className="demo-option-label-item">
-                        <span role="img" aria-label="USA">
-                          🇺🇸
-        </span>
-        USA (美国)
-      </div>
-                    </Option>
-                    <Option value="japan" label="Japan">
-                      <div className="demo-option-label-item">
-                        <span role="img" aria-label="Japan">
-                          🇯🇵
-        </span>
-        Japan (日本)
-      </div>
-                    </Option>
-                    <Option value="korea" label="Korea">
-                      <div className="demo-option-label-item">
-                        <span role="img" aria-label="Korea">
-                          🇰🇷
-        </span>
-        Korea (韩国)
-      </div>
-                    </Option> */}
-                  </Select>,
-
                   {/* <RadioButtonList /> */}
                 </div>
                 {!this.state.checkboxTransAirCoontinent &&
