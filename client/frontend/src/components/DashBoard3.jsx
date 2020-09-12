@@ -77,6 +77,8 @@ class DashBoard extends Component {
 
       visible: false,
       visible2: false,
+      visible4: false,
+      flagVisit: false,
       // isRedirect: false,
       usersLength: null,
       newWish: false,
@@ -163,7 +165,11 @@ class DashBoard extends Component {
 
       await this.props.addUser(result.response);
 
-
+      if (result.response.flagVisit === false)
+        this.setState({
+          visible4: true,
+        });
+      console.log(result.response)
     }
 
     console.log('есть', this.props.user);
@@ -340,11 +346,31 @@ class DashBoard extends Component {
     });
   };
 
+
   handleCancel3 = () => {
 
     this.setState({
       visibleSort: false,
     });
+  };
+
+  handleCancel4 = async (e) => {
+    console.log(e);
+    this.setState({
+      visible4: false,
+    });
+
+    const response = await fetch('/expierence/pilot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.props.user.email,
+      })
+    })
+
+    const result = await response.json();
+    console.log(result)
+
   };
 
   getWorkingDays = () => {
@@ -1758,6 +1784,23 @@ class DashBoard extends Component {
     </Card>*/}
 
           </div>
+
+
+          <div className='modalWidth'>
+            <Modal
+
+              title="Детали полета"
+              visible={this.state.visible4}
+              onCancel={this.handleCancel4}
+
+              footer={[]}
+            >
+              <div style={{ textAlign: 'center' }}>
+                Правила для пилота, впервые посетившего сайт
+                    </div>
+            </Modal>
+          </div>
+
 
           {this.state.modalUser && (
             <div className='modalWidth'>
