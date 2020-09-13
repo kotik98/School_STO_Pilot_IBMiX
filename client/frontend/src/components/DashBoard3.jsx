@@ -1765,9 +1765,12 @@ class DashBoard extends Component {
               </div>
               <div className='yourTrip1'><font face="Arial Black">Ваши Рейсы</font></div>
               <div className="userCardW">
+
                 <Card className='sUserCard hoverCard' onClick={() => this.showSort()}> <font className="sortString"
                   face="Arial Black"><font
-                    face="Arial Black" color={'#615d73'}>Сортировка</font></font></Card>
+                    face="Arial Black" color={'#615d73'}>Сортировка</font></font>
+                </Card>
+
                 <Suspense fallback={<h1>Loading posts...</h1>}>
                   {this.props.user.arrFlights&&
 
@@ -1860,96 +1863,6 @@ class DashBoard extends Component {
           </div>
 
         </div>
-        {/* <div className="dashBoardContainer">
-
-                    <div className="dashBoardContent">
-
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-                        <div className="site-card-border-less-wrapper">
-                            <Card title="Рейс" bordered={false} style={{ width: 300 }}>
-                                <p>Откуда: Москва</p>
-                                <p>Куда: Париж</p>
-                                <p>Дата: 25.08.2020</p>
-                            </Card>
-                        </div>
-
-                    </div>
-
-
-                    <div className="site-card-border-less-wrapper">
-                        <div className="site-calendar-demo-card" style={{ backgroundColor: 'lightblue' }}>
-                            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-                        </div>
-                        <Card title="Хотелки на ноябрь" bordered={false} style={{ width: 300 }}>
-                            <p>Короткие полеты</p>
-                            <p>Утром</p>
-                            <p>В Рио-де-Жанейро</p>
-                        </Card>
-                        <Card title="Хотелки на октябрь" bordered={false} style={{ width: 300 }}>
-                            <p>Длительные полеты</p>
-                            <p>Вечером</p>
-                            <p>В Хабаровск</p>
-                        </Card>
-                    </div>
-                </div> */}
 
 
         <footer style={{ backgroundColor: '#4A76A8', color: '#ffffff', margin: '0 auto', width: '80%' }}

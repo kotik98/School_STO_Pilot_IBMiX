@@ -66,4 +66,4 @@ async function foo() {
     }
 }
 
-foo()
+//foo()
