@@ -1,4 +1,4 @@
-import React, {Suspense, Component, useState} from 'react';
+import React, { Suspense, Component } from 'react';
 import plane from '../images/plane.jpg';
 import moment from 'moment';
 import logo from '../images/logo.png';
@@ -33,6 +33,12 @@ import {
 import { connect } from 'react-redux';
 import { AddPhotoAC, AddUserAC, AddUsersDashBoard, SetPriority, SetFlightDirection, SetDayTime } from '../redux/action';
 import './DashBoard.css';
+
+
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
 
 const { Option } = Select;
 const { Panel } = Collapse;
@@ -71,6 +77,8 @@ class DashBoard extends Component {
 
       visible: false,
       visible2: false,
+      visible4: false,
+      flagVisit: false,
       // isRedirect: false,
       usersLength: null,
       newWish: false,
@@ -157,7 +165,11 @@ class DashBoard extends Component {
 
       await this.props.addUser(result.response);
 
-
+      if (result.response.flagVisit === false)
+        this.setState({
+          visible4: true,
+        });
+      console.log(result.response)
     }
 
     console.log('есть', this.props.user);
@@ -334,11 +346,31 @@ class DashBoard extends Component {
     });
   };
 
+
   handleCancel3 = () => {
 
     this.setState({
       visibleSort: false,
     });
+  };
+
+  handleCancel4 = async (e) => {
+    console.log(e);
+    this.setState({
+      visible4: false,
+    });
+
+    const response = await fetch('/expierence/pilot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.props.user.email,
+      })
+    })
+
+    const result = await response.json();
+    console.log(result)
+
   };
 
   getWorkingDays = () => {
@@ -545,7 +577,7 @@ class DashBoard extends Component {
 
   };
 
-  checkboxTransAir = (e) => {
+  checkboxTransAir = async (e) => {
     this.setState({
       checkboxTransAir: true,
       checkboxContinent: false,
@@ -554,9 +586,29 @@ class DashBoard extends Component {
       checkboxTransAirCoontinent: true
 
     });
+
+    const reqComparison = await fetch('/api/getAirports', {
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        reliabilityIndex: this.props.user.reliabilityIndex,
+      }),
+    });
+    let cities = await reqComparison.json();
+    console.log(cities.response)
+    this.setState({
+      cities: []
+    });
+    this.setState({
+      cities: cities.response
+    });
   };
 
-  checkboxContinent = (e) => {
+  checkboxContinent = async (e) => {
+
     this.setState({
       checkboxTransAir: false,
       checkboxContinent: true,
@@ -565,7 +617,27 @@ class DashBoard extends Component {
       checkboxTransAirCoontinent: true
 
     });
+
+    const reqComparison = await fetch('/api/getAirports/russia', {
+
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        reliabilityIndex: this.props.user.reliabilityIndex,
+      }),
+    });
+    let cities = await reqComparison.json();
+    console.log(cities.response)
+    this.setState({
+      cities: cities.response
+    });
+
+
   };
+
+
 
   checkboxWork = (e) => {
     this.setState({
@@ -1041,8 +1113,27 @@ class DashBoard extends Component {
                         <p className={'radio_text'} style={{ color: 'black' }}>Континентальные</p>
                       </div>
                     </div>
-                  </div>
 
+
+                    <Select
+                      mode="multiple"
+                      style={{ width: '50%' }}
+                      placeholder="Приоритетный город"
+                      // defaultValue={['china']}
+                      onChange={handleChange}
+                    // optionLabelProp="label"
+                    >
+
+                      {this.state.cities && this.state.cities.map(city => (
+                        <Option value={city.cityName} key={city.cityName}>
+                          <div className="demo-option-label-item">
+                            {city.cityName}
+                          </div>
+                        </Option>
+                      ))}
+
+                    </Select>,
+                  </div>
                   {/* <RadioButtonList /> */}
                 </div>
                 {!this.state.checkboxTransAirCoontinent &&
@@ -1646,6 +1737,23 @@ class DashBoard extends Component {
 
           </div>
 
+
+          <div className='modalWidth'>
+            <Modal
+
+              title="Детали полета"
+              visible={this.state.visible4}
+              onCancel={this.handleCancel4}
+
+              footer={[]}
+            >
+              <div style={{ textAlign: 'center' }}>
+                Правила для пилота, впервые посетившего сайт
+                    </div>
+            </Modal>
+          </div>
+
+
           {this.state.modalUser && (
             <div className='modalWidth'>
               <Modal
@@ -1744,6 +1852,41 @@ class DashBoard extends Component {
                           </p>
                         } type="info" />
                       </TabPane>
+                      <TabPane tab="Детали" key="2">
+                        <p>
+                        </p>
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Информация
+                                </div>
+
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div className={'fontModal'}>Информация
+                                </div>
+
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                      </TabPane>
 
                     </Tabs>
                   </div>
@@ -1761,6 +1904,7 @@ class DashBoard extends Component {
 
               <div className="site-calendar-demo-card" style={{ backgroundColor: '#F6F9FE' }}>
 
+
                 <CalendarWithButtons highlighted={this.state.workingDays} />
               </div>
               <div className='yourTrip1'><font face="Arial Black">Ваши Рейсы</font></div>
@@ -1772,9 +1916,9 @@ class DashBoard extends Component {
                 </Card>
 
                 <Suspense fallback={<h1>Loading posts...</h1>}>
-                  {this.props.user.arrFlights&&
+                  {this.props.users.response &&
 
-                    this.props.user.arrFlights.map((user, i) => {
+                    this.props.users.response.map((user, i) => {
 
                       // if (this.filterPrise(user.time)) {
                       if (user.city_photo) {
@@ -1804,9 +1948,8 @@ class DashBoard extends Component {
                         }
 
                         return (
-                            <div>
-                          <Buttonr id={"flight" + i + "toggler"}
-                            //onClick={() => this.showModal(user)}
+                          <Card key={i}
+                            onClick={() => this.showModal(user)}
                             className={styl}
                           // cover={
                           //     <img
@@ -1843,16 +1986,7 @@ class DashBoard extends Component {
                               <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
 
                             </div>
-                          </Buttonr>
-                              <UncontrolledCollapse toggler={"#flight" + i + "toggler"}>
-                                <Cardr className="userCardW">
-                                  <CardBody>
-                                    {user.where_from + ' - ' + user.where_to} <br/>
-                                    {'Аэропорт: ' + user.airport_name}
-                                  </CardBody>
-                                </Cardr>
-                              </UncontrolledCollapse>
-                            </div>
+                          </Card>
                         );
                       }
                     })}
