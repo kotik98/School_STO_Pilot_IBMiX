@@ -1,4 +1,4 @@
-import React, {Suspense, Component, useState} from 'react';
+import React, { Suspense, Component } from 'react';
 import plane from '../images/plane.jpg';
 import moment from 'moment';
 import logo from '../images/logo.png';
@@ -1744,6 +1744,41 @@ class DashBoard extends Component {
                           </p>
                         } type="info" />
                       </TabPane>
+                      <TabPane tab="Детали" key="2">
+                        <p>
+                        </p>
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Информация
+                                </div>
+
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div className={'fontModal'}>Информация
+                                </div>
+
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                        <Alert message={
+                          <p>
+                            <div style={{ color: 'black' }}>Заголовок</div>
+                            <div
+                              className={'fontModal'}>Информация
+                                </div>
+                          </p>
+                        } type="info" />
+                      </TabPane>
 
                     </Tabs>
                   </div>
@@ -1761,6 +1796,7 @@ class DashBoard extends Component {
 
               <div className="site-calendar-demo-card" style={{ backgroundColor: '#F6F9FE' }}>
 
+
                 <CalendarWithButtons highlighted={this.state.workingDays} />
               </div>
               <div className='yourTrip1'><font face="Arial Black">Ваши Рейсы</font></div>
@@ -1769,9 +1805,9 @@ class DashBoard extends Component {
                   face="Arial Black"><font
                     face="Arial Black" color={'#615d73'}>Сортировка</font></font></Card>
                 <Suspense fallback={<h1>Loading posts...</h1>}>
-                  {this.props.user.arrFlights&&
+                  {this.props.users.response &&
 
-                    this.props.user.arrFlights.map((user, i) => {
+                    this.props.users.response.map((user, i) => {
 
                       // if (this.filterPrise(user.time)) {
                       if (user.city_photo) {
@@ -1801,9 +1837,8 @@ class DashBoard extends Component {
                         }
 
                         return (
-                            <div>
-                          <Buttonr id={"flight" + i + "toggler"}
-                            //onClick={() => this.showModal(user)}
+                          <Card key={i}
+                            onClick={() => this.showModal(user)}
                             className={styl}
                           // cover={
                           //     <img
@@ -1840,16 +1875,7 @@ class DashBoard extends Component {
                               <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
 
                             </div>
-                          </Buttonr>
-                              <UncontrolledCollapse toggler={"#flight" + i + "toggler"}>
-                                <Cardr className="userCardW">
-                                  <CardBody>
-                                    {user.where_from + ' - ' + user.where_to} <br/>
-                                    {'Аэропорт: ' + user.airport_name}
-                                  </CardBody>
-                                </Cardr>
-                              </UncontrolledCollapse>
-                            </div>
+                          </Card>
                         );
                       }
                     })}
