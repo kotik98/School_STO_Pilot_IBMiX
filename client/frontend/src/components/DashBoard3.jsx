@@ -1915,7 +1915,7 @@ class DashBoard extends Component {
                     face="Arial Black" color={'#615d73'}>Сортировка</font></font>
                 </Card>
 
-                <Suspense fallback={<h1>Loading posts...</h1>}>
+                <Suspense fallback={<h1>Loading posts....</h1>}>
                   {this.props.users.response &&
 
                     this.props.users.response.map((user, i) => {
