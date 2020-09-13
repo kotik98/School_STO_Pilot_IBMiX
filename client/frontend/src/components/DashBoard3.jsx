@@ -1916,9 +1916,9 @@ class DashBoard extends Component {
                 </Card>
 
                 <Suspense fallback={<h1>Loading posts....</h1>}>
-                  {this.props.users.response &&
+                  {this.props.user.arrFlights &&
 
-                    this.props.users.response.map((user, i) => {
+                  this.props.user.arrFlights.map((user, i) => {
 
                       // if (this.filterPrise(user.time)) {
                       if (user.city_photo) {
@@ -1948,8 +1948,9 @@ class DashBoard extends Component {
                         }
 
                         return (
-                          <Card key={i}
-                            onClick={() => this.showModal(user)}
+                            <div>
+                              <Buttonr id={"flight" + i + "toggler"}
+                                  //onClick={() => this.showModal(user)}
                             className={styl}
                           // cover={
                           //     <img
@@ -1986,7 +1987,16 @@ class DashBoard extends Component {
                               <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
 
                             </div>
-                          </Card>
+                              </Buttonr>
+                              <UncontrolledCollapse toggler={"#flight" + i + "toggler"}>
+                                <Cardr className="userCardW">
+                                  <CardBody>
+                                    {user.where_from + ' - ' + user.where_to} <br/>
+                                    {'Аэропорт: ' + user.airport_name}
+                                  </CardBody>
+                                </Cardr>
+                              </UncontrolledCollapse>
+                            </div>
                         );
                       }
                     })}
