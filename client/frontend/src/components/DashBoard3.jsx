@@ -767,6 +767,7 @@ class DashBoard extends Component {
           <div className="head-panel">
             <div className='head-part'>
               <Button type="primary" className='bidding-btn' onClick={this.onNewWishList}>Новая заявка</Button>
+              {(this.props.user.crewRole === 'командир') && <Button type="primary" className='bidding-btn' onClick={() => this.props.history.push('/dashboardC')}>Аналитика</Button>}
               {/*<span className="dots" />*/}
 
               <div className='bidding-info'>
