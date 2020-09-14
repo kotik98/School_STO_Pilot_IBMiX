@@ -767,7 +767,7 @@ class DashBoard extends Component {
           <div className="head-panel">
             <div className='head-part'>
               <Button type="primary" className='bidding-btn' onClick={this.onNewWishList}>Новая заявка</Button>
-              {(this.props.user.crewRole === 'командир') && <Button type="primary" className='bidding-btn' onClick={() => this.props.history.push('/dashboardC')}>Аналитика</Button>}
+              {/* {(this.props.user.crewRole === 'командир') && <Button type="primary" className='bidding-btn' onClick={() => this.props.history.push('/dashboardC')}>Аналитика</Button>} */}
               {/*<span className="dots" />*/}
 
               <div className='bidding-info'>
@@ -809,53 +809,57 @@ class DashBoard extends Component {
                   30
                   </span>%
                 </div>
-              <div className='stats-icon'>
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <g filter="url(#filter0_d)">
-                    <path
-                      d="M33 20C33 27.1792 27.1792 33 20 33C12.8208 33 7 27.1792 7 20C7 12.8208 12.8208 7 20 7C26.3247 7 31.5978 11.5208 32.759 17.5096C32.9197 18.3129 33 19.1455 33 20Z"
-                      fill="#5459CD" />
-                  </g>
-                  <g filter="url(#filter1_d)">
-                    <path
-                      d="M33 18.0087C26.593 19.5005 20 21 20 21V7C26.4442 7 31.8168 11.7355 33 18.0087Z"
-                      fill="#FFDE84" />
-                  </g>
-                  <defs>
-                    <filter id="filter0_d" x="0" y="0" width="40" height="40"
-                      filterUnits="userSpaceOnUse"
-                      color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.5" />
-                      <feColorMatrix type="matrix"
-                        values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix"
-                        result="effect1_dropShadow" />
-                      <feBlend mode="normal" in="SourceGraphic"
-                        in2="effect1_dropShadow" result="shape" />
-                    </filter>
-                    <filter id="filter1_d" x="13" y="0" width="27" height="28"
-                      filterUnits="userSpaceOnUse"
-                      color-interpolation-filters="sRGB">
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix in="SourceAlpha" type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="3.5" />
-                      <feColorMatrix type="matrix"
-                        values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0" />
-                      <feBlend mode="normal" in2="BackgroundImageFix"
-                        result="effect1_dropShadow" />
-                      <feBlend mode="normal" in="SourceGraphic"
-                        in2="effect1_dropShadow" result="shape" />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
+
+
+              {(this.props.user.crewRole === 'командир') &&
+                <div className='stats-icon icons' onClick={() => this.props.history.push('/dashboardC')}>
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d)">
+                      <path
+                        d="M33 20C33 27.1792 27.1792 33 20 33C12.8208 33 7 27.1792 7 20C7 12.8208 12.8208 7 20 7C26.3247 7 31.5978 11.5208 32.759 17.5096C32.9197 18.3129 33 19.1455 33 20Z"
+                        fill="#5459CD" />
+                    </g>
+                    <g filter="url(#filter1_d)">
+                      <path
+                        d="M33 18.0087C26.593 19.5005 20 21 20 21V7C26.4442 7 31.8168 11.7355 33 18.0087Z"
+                        fill="#FFDE84" />
+                    </g>
+                    <defs>
+                      <filter id="filter0_d" x="0" y="0" width="40" height="40"
+                        filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                        <feOffset />
+                        <feGaussianBlur stdDeviation="3.5" />
+                        <feColorMatrix type="matrix"
+                          values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix"
+                          result="effect1_dropShadow" />
+                        <feBlend mode="normal" in="SourceGraphic"
+                          in2="effect1_dropShadow" result="shape" />
+                      </filter>
+                      <filter id="filter1_d" x="13" y="0" width="27" height="28"
+                        filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix in="SourceAlpha" type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                        <feOffset />
+                        <feGaussianBlur stdDeviation="3.5" />
+                        <feColorMatrix type="matrix"
+                          values="0 0 0 0 0.328368 0 0 0 0 0.3474 0 0 0 0 0.804167 0 0 0 0.1 0" />
+                        <feBlend mode="normal" in2="BackgroundImageFix"
+                          result="effect1_dropShadow" />
+                        <feBlend mode="normal" in="SourceGraphic"
+                          in2="effect1_dropShadow" result="shape" />
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              }
               {/* <Popover content={content} placement="bottom"> */}
               <Avatar
                 className="user-avatar"
@@ -1919,7 +1923,7 @@ class DashBoard extends Component {
                 <Suspense fallback={<h1>Loading posts....</h1>}>
                   {this.props.user.arrFlights &&
 
-                  this.props.user.arrFlights.map((user, i) => {
+                    this.props.user.arrFlights.map((user, i) => {
 
                       // if (this.filterPrise(user.time)) {
                       if (user.city_photo) {
@@ -1949,55 +1953,55 @@ class DashBoard extends Component {
                         }
 
                         return (
-                            <div>
-                              <Buttonr id={"flight" + i + "toggler"}
-                                  //onClick={() => this.showModal(user)}
-                            className={styl}
-                          // cover={
-                          //     <img
-                          //         style={{ borderRadius: "10px 10px 0px 0px" }}
-                          //         alt="example"
-                          //         src={srcImg}
-                          //     />
-                          // }
+                          <div>
+                            <Buttonr id={"flight" + i + "toggler"}
+                              //onClick={() => this.showModal(user)}
+                              className={styl}
+                            // cover={
+                            //     <img
+                            //         style={{ borderRadius: "10px 10px 0px 0px" }}
+                            //         alt="example"
+                            //         src={srcImg}
+                            //     />
+                            // }
 
-                          >
+                            >
 
 
-                            {/* <Alert style={{ background: 'white !important', width: '10%', height: '10%' }} message={
+                              {/* <Alert style={{ background: 'white !important', width: '10%', height: '10%' }} message={
                                         <p>
                                             <div
                                                 className={'fontModal'}>Информация
                                     </div>
                                         </p>
                                     } type="info" /> */}
-                            <div style={{ float: 'left' }}>
-                              <Tag className="userCardW"><font size={2} color={'#5459cd'}><b>123456</b></font></Tag>
-                            </div>
-                            <div style={{ float: 'left' }}>
-                              <font size={2} color={'#ffffff'}>Отбытие</font> <br />
-                              <img src={depart}></img>
-                              <font size={2} color={'#ffffff'} className="textRight">{user.time_of_departure}</font>
-                            </div>
-                            <div color={'#ffffff'} style={{ width: '2px', height: '55px', float: 'left' }}
-                              className="userCardW">
-                            </div>
-                            <div style={{ float: 'left' }}>
-                              <font size={2} color={'#ffffff'}>Прибытие</font> <br />
-                              <img src={land}></img>
-                              <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
+                              <div style={{ float: 'left' }}>
+                                <Tag className="userCardW"><font size={2} color={'#5459cd'}><b>123456</b></font></Tag>
+                              </div>
+                              <div style={{ float: 'left' }}>
+                                <font size={2} color={'#ffffff'}>Отбытие</font> <br />
+                                <img src={depart}></img>
+                                <font size={2} color={'#ffffff'} className="textRight">{user.time_of_departure}</font>
+                              </div>
+                              <div color={'#ffffff'} style={{ width: '2px', height: '55px', float: 'left' }}
+                                className="userCardW">
+                              </div>
+                              <div style={{ float: 'left' }}>
+                                <font size={2} color={'#ffffff'}>Прибытие</font> <br />
+                                <img src={land}></img>
+                                <font size={2} color={'#ffffff'} className="textRight">{user.time_of_arrival}</font>
 
-                            </div>
-                              </Buttonr>
-                              <UncontrolledCollapse toggler={"#flight" + i + "toggler"}>
-                                <Cardr className="userCardW">
-                                  <CardBody>
-                                    {user.where_from + ' - ' + user.where_to} <br/>
-                                    {'Аэропорт: ' + user.airport_name}
-                                  </CardBody>
-                                </Cardr>
-                              </UncontrolledCollapse>
-                            </div>
+                              </div>
+                            </Buttonr>
+                            <UncontrolledCollapse toggler={"#flight" + i + "toggler"}>
+                              <Cardr className="userCardW">
+                                <CardBody>
+                                  {user.where_from + ' - ' + user.where_to} <br />
+                                  {'Аэропорт: ' + user.airport_name}
+                                </CardBody>
+                              </Cardr>
+                            </UncontrolledCollapse>
+                          </div>
                         );
                       }
                     })}
