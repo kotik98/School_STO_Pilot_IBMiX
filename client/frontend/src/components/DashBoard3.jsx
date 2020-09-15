@@ -60,6 +60,13 @@ const content = (
   </div>
 );
 
+const rulesCount = (
+  <div>
+    <p>Коэффициент вероятности учета пожеланий. <br /> При увелечении количества преференций <br /> уменьшается коэфициент вероятности учета <br /> Вашего пожелания </p>
+
+  </div >
+);
+
 class DashBoard extends Component {
   constructor(props) {
     super(props);
@@ -1125,7 +1132,7 @@ class DashBoard extends Component {
                     <span className='newForm2'>
                       &nbsp;&nbsp;&nbsp; 6. Приоритет заявки</span> &nbsp;&nbsp;&nbsp;
                       <span className='newForm3'>Переместите бокс по приоритету</span>
-                    <span className='newForm4'>{points}</span>
+                    <Popover content={rulesCount} placement="bottom"><span className='newForm4'>{points}</span></Popover>
                   </div>
                   <div style={{ textAlign: 'left', height: '300px' }}>
                     {/* <ItemList />
@@ -1194,7 +1201,7 @@ class DashBoard extends Component {
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 1. Направление полета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
-                  <span className='newForm4'>{points}</span>
+                  <Popover content={rulesCount} placement="bottom"><span className='newForm4'>{points}</span></Popover>
                 </div>
 
                 <div style={{ textAlign: 'center', height: '300px' }}>
@@ -1309,7 +1316,7 @@ class DashBoard extends Component {
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 2. Выбор приоритетного времени вылета</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Переместите бокс по приоритету</span>
-                  <span className='newForm4'>{points}</span>
+                  <Popover content={rulesCount} placement="bottom"><span className='newForm4'>{points}</span></Popover>
                 </div>
                 <ItemList_day func={this.timeDayPreference} />
                 {this.state.timeDay.length === 0 &&
@@ -1385,7 +1392,7 @@ class DashBoard extends Component {
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 3. Преференции переработок</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
-                  <span className='newForm4'>{points}</span>
+                  <Popover content={rulesCount} placement="bottom"><span className='newForm4'>{points}</span></Popover>
                 </div>
 
                 {/* <div style={{ textAlign: 'center', height: '300px' }}>
@@ -1484,7 +1491,7 @@ class DashBoard extends Component {
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 4. Префренции длительности смены</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
-                  <span className='newForm4'>{points}</span>
+                  <Popover content={rulesCount} placement="bottom"><span className='newForm4'>{points}</span></Popover>
                 </div>
 
                 {/* <div style={{ textAlign: 'center', height: '300px' }}>
@@ -1582,7 +1589,7 @@ class DashBoard extends Component {
                   </svg>
                   <span className='newForm2'>&nbsp;&nbsp;&nbsp; 5. Выбор желаемых выходных дней</span> &nbsp;&nbsp;&nbsp;
                   <span className='newForm3'>Выберите одни из вариантов</span>
-                  <span className='newForm4'>{points}</span>
+                  <Popover content={rulesCount} placement="bottom"><span className='newForm4'>{points}</span></Popover>
                 </div>
 
                 <div className={'calendar_block'}>
