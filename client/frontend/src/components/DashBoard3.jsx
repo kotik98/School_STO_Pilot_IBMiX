@@ -752,37 +752,6 @@ class DashBoard extends Component {
     });
   };
 
-  increase = (a) => {
-    a += 1;
-  };
-
-  set_0 = (a) => {
-    a = 0;
-  };
-
-  satisfyingPicture = (count) => {
-    if(count === 0){
-      console.log(0);
-      return circle_0;
-    }
-    if(count === 1){
-      console.log(1);
-      return circle_25;
-    }
-    if(count === 2){
-      console.log(2);
-      return circle_50;
-    }
-    if(count === 3){
-      console.log(3);
-      return circle_75;
-    }
-    if(count === 4){
-      console.log(4);
-      return circle_100;
-    }
-    return circle_25
-  };
 
   render() {
     const { TabPane } = Tabs;
@@ -1885,8 +1854,6 @@ class DashBoard extends Component {
                     </div>
                   </div>
                   <div>
-                    <img src={this.satisfyingPicture(count_satisfied_wishes)} />
-                    {this.set_0(count_satisfied_wishes)}
                   </div>
 
                 </Card>)}
