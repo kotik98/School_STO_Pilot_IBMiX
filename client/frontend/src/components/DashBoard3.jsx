@@ -1,5 +1,10 @@
 import React, { Suspense, Component } from 'react';
 import plane from '../images/plane.jpg';
+import circle_0 from '../images/0%.png';
+import circle_25 from '../images/25%.png';
+import circle_50 from '../images/50%.png';
+import circle_75 from '../images/75%.png';
+import circle_100 from '../images/100%.png';
 import moment from 'moment';
 import logo from '../images/logo.png';
 import ItemList from '../components/DnD/itemList';
@@ -740,7 +745,37 @@ class DashBoard extends Component {
     });
   };
 
+  increase = (a) => {
+    a += 1;
+  };
 
+  set_0 = (a) => {
+    a = 0;
+  };
+
+  satisfyingPicture = (count) => {
+    if(count === 0){
+      console.log(0);
+      return circle_0;
+    }
+    if(count === 1){
+      console.log(1);
+      return circle_25;
+    }
+    if(count === 2){
+      console.log(2);
+      return circle_50;
+    }
+    if(count === 3){
+      console.log(3);
+      return circle_75;
+    }
+    if(count === 4){
+      console.log(4);
+      return circle_100;
+    }
+    return circle_25
+  };
 
   render() {
     const { TabPane } = Tabs;
@@ -789,7 +824,7 @@ class DashBoard extends Component {
     }
 
     let points = 100 - onePreference - twoPreference - thirdPreference - fourthPreference - fithPreference
-
+    let count_satisfied_wishes = 0;
 
 
     return (
@@ -1793,6 +1828,10 @@ class DashBoard extends Component {
                       </div>
                     </div>
                     <div>
+                      {user.longFly[0].flag && this.increase(count_satisfied_wishes)}
+                      {user.otherTime[0].flag && this.increase(count_satisfied_wishes)}
+                      {user.timeFly[0].flag && this.increase(count_satisfied_wishes)}
+                      {user.preferenceTimeFly[0].flag && this.increase(count_satisfied_wishes)}
                       <Buttonr color="none" id={"form" + key + "toggler1"} className={user.longFly[0].flag ? "userCardGreen hoverCard shadow-lg" : "userCardRed hoverCard shadow-lg"}>
                         <font color={'#5a5a5a'}>Направление: {user.longFly[0].fly}</font>
                       </Buttonr>
@@ -1837,6 +1876,10 @@ class DashBoard extends Component {
                         </Cardr>
                       </UncontrolledCollapse>
                     </div>
+                  </div>
+                  <div>
+                    <img src={this.satisfyingPicture(count_satisfied_wishes)} />
+                    {this.set_0(count_satisfied_wishes)}
                   </div>
 
                 </Card>)}
