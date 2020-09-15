@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-// import { data } from './data';
+import { data } from './data';
 import Item from './itemComponent';
 import './dnd_style.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-function ItemList(props) {
-    const [wishes, setWishes] = useState(props.data);
+function ItemList() {
+    const [wishes, setWishes] = useState(data);
 
     const handleDragEnd = (result) => {
         const { destination, source } = result;
@@ -19,32 +19,24 @@ function ItemList(props) {
         new_wishes.splice(source.index, 1);
         new_wishes.splice(destination.index, 0, element);
         setWishes(new_wishes);
-        console.log(props.func(new_wishes))
-
+        console.log(new_wishes)
     }
 
     return (
-        <div >
-            <div className={'prioritet_header_block'}>
-                <p className={'prioritet_text'}>Приоритетно</p>
-                <p className={'prioritet_text'}>Не приоритетно</p>
-            </div>
-            <DragDropContext onDragEnd={handleDragEnd}>
-                <Droppable droppableId={'droppable-1'} direction={'horizontal'}>
-                    {provided => (
-                        <div
-                            className='block'
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
-                        >
-                            {wishes.map((item, index) => <Item item={item} index={index} key={item.name + '_sprestay'} />)}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-
-            </DragDropContext>
-        </div>);
+        <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId={'droppable-1'} direction={'horizontal'}>
+                {provided => (
+                    <div
+                        className='block'
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                    >
+                        {wishes.map((item, index) => <Item item={item} index={index} key={item.name + '_sprestay'} />)}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+        </DragDropContext>);
 }
 
 export default ItemList;
