@@ -317,6 +317,40 @@ class DashBoard extends Component {
     // })
   };
 
+  showDiagram = (flag1, flag2, flag3, flag4) => {
+    let arr = [flag1, flag2, flag3, flag4]
+    let count1 = 0;
+    let count2 = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === true) {
+        count1++
+      } else {
+        count2++
+      }
+
+    }
+
+    console.log(count1, count2)
+
+    if (count1 === 0) {
+      console.log('0/100')
+      return '0/100'
+    } else if (count1 === 1) {
+      console.log('25/75')
+      return '25/75'
+    } else if (count1 === 2) {
+      console.log('50/50')
+      return '50/50'
+    } else if (count1 === 3) {
+      console.log('75/25')
+      return '75/25'
+    } else if (count1 === 4) {
+      console.log('100/0')
+      return '100/0'
+    }
+  };
+
 
   onChangeLongWork = (checked) => {
     this.setState({ showLongWork: checked });
@@ -332,7 +366,6 @@ class DashBoard extends Component {
       maxPrice: value[1],
     });
   };
-
 
   filterTime = (time) => {
     return this.state.minTime <= time && time <= this.state.maxTime;
@@ -1851,6 +1884,9 @@ class DashBoard extends Component {
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
+                      <br />
+                      {user && this.showDiagram(user.longFly[0].flag, user.otherTime[0].flag, user.timeFly[0].flag, user.preferenceTimeFly[0].flag)} + вывод соответствующей картинки
+
                     </div>
                   </div>
                   <div>
