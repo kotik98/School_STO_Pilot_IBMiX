@@ -775,6 +775,7 @@ class DashBoard extends Component {
   };
 
 
+
   render() {
     const { TabPane } = Tabs;
     const { cities } = this.state;
@@ -794,9 +795,9 @@ class DashBoard extends Component {
 
     let twoPreference;
     if (this.state.timeDay.length !== 0) {
-      twoPreference = 15
+      twoPreference = 15;
     } else {
-      twoPreference = 0
+      twoPreference = 0;
     }
 
     let thirdPreference;
@@ -821,8 +822,7 @@ class DashBoard extends Component {
       fithPreference = 0
     }
 
-    let points = 100 - onePreference - twoPreference - thirdPreference - fourthPreference - fithPreference
-    let count_satisfied_wishes = 0;
+    let points = 100 - onePreference - twoPreference - thirdPreference - fourthPreference - fithPreference;
 
     let date = new Date(), y = date.getFullYear(), m = date.getMonth();
     let firstDay = new Date(y, m, 1);
@@ -1875,6 +1875,9 @@ class DashBoard extends Component {
                           </CardBody>
                         </Cardr>
                       </UncontrolledCollapse>
+                      <br />
+                      {user && this.showDiagram(user.longFly[0].flag, user.otherTime[0].flag, user.timeFly[0].flag, user.preferenceTimeFly[0].flag)} + вывод соответствующей картинки
+
                     </div>
                   </div>
                   <div style={{ float: 'right', margin: '60px'}} >
