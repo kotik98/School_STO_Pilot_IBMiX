@@ -801,9 +801,9 @@ class DashBoard extends Component {
 
     let twoPreference;
     if (this.state.timeDay.length !== 0) {
-      twoPreference = 15
+      twoPreference = 15;
     } else {
-      twoPreference = 0
+      twoPreference = 0;
     }
 
     let thirdPreference;
@@ -828,7 +828,7 @@ class DashBoard extends Component {
       fithPreference = 0
     }
 
-    let points = 100 - onePreference - twoPreference - thirdPreference - fourthPreference - fithPreference
+    let points = 100 - onePreference - twoPreference - thirdPreference - fourthPreference - fithPreference;
 
 
 
