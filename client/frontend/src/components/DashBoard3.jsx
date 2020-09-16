@@ -414,17 +414,17 @@ class DashBoard extends Component {
   };
 
   getWorkingDays = () => {
-    if (this.props.users.response) {
+    if (this.props.user.arrFlights) {
       let days = [];
-      this.props.users.response.map((user, i) => {
-        let year_month_day = user.time_of_departure.split('-', 3);
+      this.props.user.arrFlights.map((user, i) => {
+        let year_month_day = user.time_of_departure.split('-', 9);
         days.push({
           year: parseInt(year_month_day[0]),
           month: parseInt(year_month_day[1]),
           day: parseInt(year_month_day[2]),
         });
       });
-      console.log(days);
+      console.log('Здесь дни', days);
       return days;
     }
   };
